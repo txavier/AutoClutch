@@ -18,7 +18,7 @@ namespace AutoClutch.Auto.Repo.Objects
         private readonly DbContext _context;
 
         private readonly DbSet<TEntity> _dbSet;
-
+        
         public Repository(DbContext context)
         {
             if (context == null)
