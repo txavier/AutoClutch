@@ -85,3 +85,6 @@ _itemRepository.Update(item);
 
 #Using the Get method and passing a fluent Func to it.
 var items = _itemRepository.Get(filter: i => i.itemId == firstItemAttribute.itemId).ToList();
+
+#Check out the project located here for a working project using the suggestions above.
+https://github.com/txavier/LiteratureAssistant

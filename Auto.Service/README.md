@@ -80,8 +80,25 @@ namespace LiteratureAssistant.Core.Services
 		:
 		:
 
+#Inherit from IService in your Core Service Interface.
+
+Your service delaration.
+public class ItemService : Service<item>, IItemService
+    {
+	:
+	:
+
+Your service interface declaration.
+public interface IItemService : IService<item>
+    {
+	:
+	:
+
 #Calling the repostory in a method in your core service.
-_itemRepository.Update(item);
+this.Update(item);
 
 #Using the Get method and passing a fluent Func to it.
-var items = _itemRepository.Get(filter: i => i.itemId == firstItemAttribute.itemId).ToList();
+var items = this.Get(filter: i => i.itemId == firstItemAttribute.itemId).ToList();
+
+#Check out the project located here for a working project using the suggestions above.
+https://github.com/txavier/LiteratureAssistant
