@@ -24,7 +24,6 @@ of this generic repository.
 Here is a simple example of how to use structuremap with AutoRepo.
 
 public class DefaultRegistry : Registry {
-
         public DefaultRegistry() {
             Scan(
                 scan => {
@@ -82,17 +81,7 @@ namespace LiteratureAssistant.Core.Services
 		:
 
 #Calling the repostory in a method in your core service.
-
-:
-:
 _itemRepository.Update(item);
-:
-:
 
 #Using the Get method and passing a fluent Func to it.
-
-:
-:
 var items = _itemRepository.Get(filter: i => i.itemId == firstItemAttribute.itemId).ToList();
-:
-:
