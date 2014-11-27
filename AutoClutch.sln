@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.Repo", "Auto.Repo\Auto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.Service", "Auto.Service\Auto.Service.csproj", "{E4224CC6-BDFC-467E-A26B-4DFC17DC478F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EA3D26BA-D686-4EC6-85BF-C1CC4DE92F21}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
