@@ -60,6 +60,7 @@
     <None Include="packages.config" />
     <None Include="Packages\AutoClutch.AutoRepo.1.0.0.nupkg" />
     <None Include="Packages\AutoClutch.AutoRepo.1.0.1.nupkg" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
