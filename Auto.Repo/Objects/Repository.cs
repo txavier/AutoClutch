@@ -31,6 +31,11 @@ namespace AutoClutch.Auto.Repo.Objects
             _dbSet = context.Set<TEntity>();
         }
 
+        /// <summary>
+        /// This method gets a single entity by its primary key.
+        /// </summary>
+        /// <param name="entityId"></param>
+        /// <returns></returns>
         public TEntity Find(object entityId)
         {
             var result = _dbSet.Find(entityId);
