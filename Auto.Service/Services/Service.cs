@@ -12,9 +12,34 @@ namespace AutoClutch.Auto.Service.Services
     {
         private readonly IRepository<TEntity> _repository;
 
+        /// <summary>
+        /// If audit is turned on and the entity has the properties created date 
+        /// and modified date and soft delete, then this will fill those 
+        /// properties with the correct values.
+        /// </summary>
+        public bool audit { get; set; }
+
+        /// <summary>
+        /// This is a property that is used be the audit feature. The default 
+        /// created date property name is "createdDate".
+        /// </summary>
+        public string createdDatePropertyName { get; set; }
+
+        /// <summary>
+        /// This is a property that is used be the audit feature. The default 
+        /// created date property name is "modifiedDate".
+        /// </summary>
+        public string modifiedDatePropertyName { get; set; }
+
         public Service(IRepository<TEntity> repository)
         {
             this._repository = repository;
+
+            audit = false;
+
+            createdDatePropertyName = "createdDate";
+
+            modifiedDatePropertyName = "modifiedDate";
         }
 
         public async Task<TEntity> FindAsync(object entityId)
@@ -36,6 +61,13 @@ namespace AutoClutch.Auto.Service.Services
 
         public TEntity Add(TEntity entity, bool dontSave = false)
         {
+            // If auditing has been enabled for this entity then 
+            // if it has the necessary property names set there values.
+            if (audit)
+            {
+                SetAuditAddProperties(entity);
+            }
+
             var result = _repository.Add(entity, dontSave: dontSave);
 
             return result;
@@ -43,11 +75,25 @@ namespace AutoClutch.Auto.Service.Services
 
         public async Task<TEntity> AddAsync(TEntity entity, bool dontSave = false)
         {
+            // If auditing has been enabled for this entity then 
+            // if it has the necessary property names set there values.
+            if (audit)
+            {
+                SetAuditAddProperties(entity);
+            }
+
             var result = await _repository.AddAsync(entity, dontSave: dontSave);
 
             return result;
         }
 
+        /// <summary>
+        /// This mehod adds a range of entities to the database.
+        /// </summary>
+        /// <param name="entities"></param>
+        /// <param name="dontSave"></param>
+        /// <returns></returns>
+        /// <remarks>Please note at this time auditing is not enabled for AddRange methods.</remarks>
         public async Task<IEnumerable<TEntity>> AddRangeAsync(IEnumerable<TEntity> entities, bool dontSave = false)
         {
             var result = await _repository.AddRangeAsync(entities, dontSave: dontSave);
@@ -55,6 +101,13 @@ namespace AutoClutch.Auto.Service.Services
             return result;
         }
 
+        /// <summary>
+        /// This mehod adds a range of entities to the database.
+        /// </summary>
+        /// <param name="entities"></param>
+        /// <param name="dontSave"></param>
+        /// <returns></returns>
+        /// <remarks>Please note at this time auditing is not enabled for AddRange methods.</remarks>
         public IEnumerable<TEntity> AddRange(IEnumerable<TEntity> entities, bool dontSave = false)
         {
             var result = _repository.AddRange(entities, dontSave: dontSave);
@@ -64,6 +117,13 @@ namespace AutoClutch.Auto.Service.Services
 
         public TEntity Update(TEntity entity, bool dontSave = false)
         {
+            // If auditing has been enabled for this entity then 
+            // if it has the necessary property names set there values.
+            if (audit)
+            {
+                SetAuditUpdateProperties(entity);
+            }
+
             var result = _repository.Update(entity, dontSave: dontSave);
 
             return result;
@@ -71,6 +131,13 @@ namespace AutoClutch.Auto.Service.Services
 
         public async Task<TEntity> UpdateAsync(TEntity entity, bool dontSave = false)
         {
+            // If auditing has been enabled for this entity then 
+            // if it has the necessary property names set there values.
+            if (audit)
+            {
+                SetAuditUpdateProperties(entity);
+            }
+
             var result = await _repository.UpdateAsync(entity, dontSave: dontSave);
 
             return result;
@@ -90,12 +157,26 @@ namespace AutoClutch.Auto.Service.Services
 
             if((int)idObject == 0)
             {
+                // If auditing has been enabled for this entity then 
+                // if it has the necessary property names set there values.
+                if (audit)
+                {
+                    SetAuditAddProperties(entity);
+                }
+
                 var newEntity = _repository.Add(entity, dontSave: dontSave);
 
                 return newEntity;
             }
             else
             {
+                // If auditing has been enabled for this entity then 
+                // if it has the necessary property names set there values.
+                if (audit)
+                {
+                    SetAuditUpdateProperties(entity);
+                }
+
                 var updatedEntity = _repository.Update(entity, dontSave: dontSave);
 
                 return updatedEntity;
@@ -164,6 +245,57 @@ namespace AutoClutch.Auto.Service.Services
         public async Task<int> SaveChangesAsync()
         {
             var result = await _repository.SaveChangesAsync();
+
+            return result;
+        }
+
+        /// <summary>
+        /// If auditing has been enabled for this entity then 
+        /// if it has the necessary property names set there values.
+        /// </summary>
+        /// <param name="entity"></param>
+        private void SetAuditAddProperties(TEntity entity)
+        {
+            var propertyNames = GetEntityPropertyNames(entity);
+
+            // If there is a createdDate property on this entity then set it to the
+            // time this add method is called.
+            if (propertyNames.Contains(createdDatePropertyName))
+            {
+                _repository.SetEntityValueByPropertyName(entity, createdDatePropertyName, DateTime.Now);
+            }
+
+            if (propertyNames.Contains(modifiedDatePropertyName))
+            {
+                _repository.SetEntityValueByPropertyName(entity, modifiedDatePropertyName, DateTime.Now);
+            }
+        }
+
+        /// <summary>
+        /// If auditing has been enabled for this entity then 
+        /// if it has the necessary property names set there values.
+        /// </summary>
+        /// <param name="entity"></param>
+        private void SetAuditUpdateProperties(TEntity entity)
+        {
+            var propertyNames = GetEntityPropertyNames(entity);
+
+            // If there is a modified date property on this entity then set it to the
+            // time this add method is called.
+            if (propertyNames.Contains(modifiedDatePropertyName))
+            {
+                _repository.SetEntityValueByPropertyName(entity, modifiedDatePropertyName, DateTime.Now);
+            }
+        }
+
+        /// <summary>
+        /// This method gets the property names of a generic object.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public System.Collections.Generic.IEnumerable<string> GetEntityPropertyNames(TEntity entity)
+        {
+            var result = _repository.GetEntityPropertyNames(entity);
 
             return result;
         }

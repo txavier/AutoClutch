@@ -1,0 +1,7 @@
+﻿ - To add new audit columns to existing tables the following SQL command was used.
+
+	ALTER TABLE [table name]
+	ADD [createdDate] [datetime2](7) NULL,
+		[modifiedDate] [datetime2](7) NULL,
+		[lastModifiedByUserName] [nvarchar](50) NULL,
+		[softDelete] [bit] NULL

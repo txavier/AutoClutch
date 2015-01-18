@@ -401,6 +401,31 @@ namespace AutoClutch.Auto.Repo.Objects
             }
         }
 
+        /// <summary>
+        /// This method gets the property names of a generic object.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public IEnumerable<string> GetEntityPropertyNames(TEntity entity)
+        {
+            var result = ((IObjectContextAdapter)_context).ObjectContext.CreateObjectSet<TEntity>().EntitySet.ElementType.Members.Select(i => i.Name);
+
+            return result;
+        }
+
+        /// <summary>
+        /// This method sets the entities property to a value by its string property name.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="propertyName"></param>
+        /// <param name="value"></param>
+        public void SetEntityValueByPropertyName(TEntity entity, string propertyName, object value)
+        {
+            Type type = typeof(TEntity);
+
+            type.GetProperty(propertyName).SetValue(entity, value);
+        }
+
         private bool disposed = false;
 
         public void Dispose()
