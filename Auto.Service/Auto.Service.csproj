@@ -49,10 +49,10 @@
       <Name>Auto.Repo</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Packages\" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="Packages\AutoClutch.AutoService.1.0.0.nupkg" />
+    <None Include="Packages\AutoClutch.AutoService.1.0.1.nupkg" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>

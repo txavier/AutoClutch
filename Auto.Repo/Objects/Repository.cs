@@ -13,7 +13,7 @@ using AutoClutch.Auto.Repo.Interfaces;
 
 namespace AutoClutch.Auto.Repo.Objects
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> : IDisposable, IRepository<TEntity> where TEntity : class
     {
         private readonly DbContext _context;
 
