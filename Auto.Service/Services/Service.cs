@@ -204,13 +204,22 @@ namespace AutoClutch.Auto.Service.Services
             return result;
         }
 
-        public IEnumerable<TEntity> Get(System.Linq.Expressions.Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IEnumerable<TEntity>> distinctBy = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy = null, int? skip = null, int? take = null, string includeProperties = "")
+        public IEnumerable<TEntity> Get(
+            System.Linq.Expressions.Expression<Func<TEntity, bool>> filter = null, 
+            Func<IQueryable<TEntity>, IEnumerable<TEntity>> distinctBy = null, 
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, 
+            Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy = null, 
+            int? skip = null, 
+            int? take = null, 
+            string includeProperties = "")
         {
             var result = _repository.Get(
                 filter: filter,
                 distinctBy: distinctBy,
                 orderBy: orderBy,
                 maxBy: maxBy,
+                skip: skip,
+                take: take,
                 includeProperties: includeProperties);
 
             return result;
