@@ -91,7 +91,7 @@ namespace AutoClutch.Auto.Repo.Objects
 
             if (skip.HasValue && orderBy == null)
             {
-                throw new ArgumentNullException("Unable to skip records if these are not ordered elements.");
+                throw new ArgumentNullException("orderby");
             }
 
             skip = skip ?? 0;
