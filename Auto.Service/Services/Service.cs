@@ -211,7 +211,9 @@ namespace AutoClutch.Auto.Service.Services
             Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy = null, 
             int? skip = null, 
             int? take = null, 
-            string includeProperties = "")
+            string includeProperties = "",
+            bool lazyLoadingEnabled = true, 
+            bool proxyCreationEnabled = true)
         {
             var result = _repository.Get(
                 filter: filter,
@@ -220,7 +222,9 @@ namespace AutoClutch.Auto.Service.Services
                 maxBy: maxBy,
                 skip: skip,
                 take: take,
-                includeProperties: includeProperties);
+                includeProperties: includeProperties,
+                lazyLoadingEnabled: lazyLoadingEnabled,
+                proxyCreationEnabled: proxyCreationEnabled);
 
             return result;
         }

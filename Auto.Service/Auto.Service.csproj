@@ -53,6 +53,8 @@
   <ItemGroup>
     <None Include="Packages\AutoClutch.AutoService.1.0.0.nupkg" />
     <None Include="Packages\AutoClutch.AutoService.1.0.1.nupkg" />
+    <None Include="Packages\AutoClutch.AutoService.1.0.2.nupkg" />
+    <None Include="Packages\AutoClutch.AutoService.1.0.3.nupkg" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>

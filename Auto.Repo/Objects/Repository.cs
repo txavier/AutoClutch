@@ -82,8 +82,13 @@ namespace AutoClutch.Auto.Repo.Objects
             Func<IQueryable<TEntity>, IEnumerable<TEntity>> distinctBy = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy = null,
-            int? skip = null, int? take = null, string includeProperties = "")
+            int? skip = null, int? take = null, string includeProperties = "",
+            bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true)
         {
+            _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
+
+            _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+
             if (skip.HasValue && orderBy == null)
             {
                 throw new ArgumentNullException("Unable to skip records if these are not ordered elements.");
