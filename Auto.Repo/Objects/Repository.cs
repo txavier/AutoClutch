@@ -122,10 +122,13 @@ namespace AutoClutch.Auto.Repo.Objects
                 query = query.Where(filter);
             }
 
-            foreach (var includeProperty in includeProperties.Split
-                (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            if (includeProperties != null && !string.IsNullOrEmpty(includeProperties.Trim()))
             {
-                query = query.Include(includeProperty);
+                foreach (var includeProperty in includeProperties.Split
+                    (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProperty);
+                }
             }
 
             IEnumerable<TEntity> resultEnumerable = null;
