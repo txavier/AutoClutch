@@ -280,6 +280,8 @@ namespace AutoClutch.Auto.Repo.Objects
 
             _context.Configuration.LazyLoadingEnabled = true;
 
+            _context.Configuration.AutoDetectChangesEnabled = false;
+
             // Get the value of the primary key.
             var id = GetEntityIdObject(entity);
 
@@ -297,6 +299,8 @@ namespace AutoClutch.Auto.Repo.Objects
             _context.Configuration.ProxyCreationEnabled = tempProxyCreationEnabled;
 
             _context.Configuration.LazyLoadingEnabled = tempLazyLoadingEnabled;
+
+            _context.Configuration.AutoDetectChangesEnabled = true;
 
             return baseEntity;
         }
