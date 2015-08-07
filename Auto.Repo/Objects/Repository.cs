@@ -270,17 +270,14 @@ namespace AutoClutch.Auto.Repo.Objects
             return result;
         }
 
+        /// <summary>
+        /// https://msdn.microsoft.com/en-us/data/jj592676.aspx
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="dontSave"></param>
+        /// <returns></returns>
         public TEntity Update(TEntity entity, bool dontSave = false)
         {
-            //// Get the value of the primary key.
-            //var id = GetEntityIdObject(entity);
-
-            //// Get the orginal object from the database.
-            //TEntity baseEntity = Find(id);
-
-            //// Using ValueInjector to inject the updated values into the context connected entity.
-            //baseEntity.InjectFrom(entity);
-
             _context.Entry(entity).State = EntityState.Modified;
 
             if (!dontSave)
