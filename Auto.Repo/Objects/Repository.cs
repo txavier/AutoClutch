@@ -272,17 +272,19 @@ namespace AutoClutch.Auto.Repo.Objects
 
         public TEntity Update(TEntity entity, bool dontSave = false)
         {
+            var tempProxyCreationEnabled = _context.Configuration.ProxyCreationEnabled;
+
+            var tempLazyLoadingEnabled = _context.Configuration.LazyLoadingEnabled;
+
+            _context.Configuration.ProxyCreationEnabled = true;
+
+            _context.Configuration.LazyLoadingEnabled = true;
+
             // Get the value of the primary key.
             var id = GetEntityIdObject(entity);
 
-            var tempProxyCreationEnabled = _context.Configuration.ProxyCreationEnabled;
-
-            _context.Configuration.ProxyCreationEnabled = false;
-
             // Get the orginal object from the database.
             TEntity baseEntity = Find(id);
-
-            _context.Configuration.ProxyCreationEnabled = tempProxyCreationEnabled;
 
             // Using ValueInjector to inject the updated values into the context connected entity.
             baseEntity.InjectFrom(entity);
@@ -291,6 +293,10 @@ namespace AutoClutch.Auto.Repo.Objects
             {
                 SaveChanges();
             }
+
+            _context.Configuration.ProxyCreationEnabled = tempProxyCreationEnabled;
+
+            _context.Configuration.LazyLoadingEnabled = tempLazyLoadingEnabled;
 
             return baseEntity;
         }

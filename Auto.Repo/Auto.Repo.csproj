@@ -63,6 +63,7 @@
     <None Include="Packages\AutoClutch.AutoRepo.1.0.4.nupkg" />
     <None Include="Packages\AutoClutch.AutoRepo.1.0.5.nupkg" />
     <None Include="Packages\AutoClutch.AutoRepo.1.0.6.nupkg" />
+    <None Include="Packages\AutoClutch.AutoRepo.1.0.7.nupkg" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup />
