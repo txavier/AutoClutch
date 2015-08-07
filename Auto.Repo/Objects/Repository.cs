@@ -211,9 +211,15 @@ namespace AutoClutch.Auto.Repo.Objects
             return entities;
         }
 
+        /// <summary>
+        /// https://msdn.microsoft.com/en-us/data/jj592676.aspx
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="dontSave"></param>
+        /// <returns></returns>
         public TEntity Add(TEntity entity, bool dontSave = false)
         {
-            _dbSet.Add(entity);
+            _context.Entry(entity).State = EntityState.Added;
 
             if (!dontSave)
             {
