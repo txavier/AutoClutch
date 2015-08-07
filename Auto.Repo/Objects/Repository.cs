@@ -272,37 +272,23 @@ namespace AutoClutch.Auto.Repo.Objects
 
         public TEntity Update(TEntity entity, bool dontSave = false)
         {
-            var tempProxyCreationEnabled = _context.Configuration.ProxyCreationEnabled;
+            //// Get the value of the primary key.
+            //var id = GetEntityIdObject(entity);
 
-            var tempLazyLoadingEnabled = _context.Configuration.LazyLoadingEnabled;
+            //// Get the orginal object from the database.
+            //TEntity baseEntity = Find(id);
 
-            _context.Configuration.ProxyCreationEnabled = true;
+            //// Using ValueInjector to inject the updated values into the context connected entity.
+            //baseEntity.InjectFrom(entity);
 
-            _context.Configuration.LazyLoadingEnabled = true;
-
-            _context.Configuration.AutoDetectChangesEnabled = false;
-
-            // Get the value of the primary key.
-            var id = GetEntityIdObject(entity);
-
-            // Get the orginal object from the database.
-            TEntity baseEntity = Find(id);
-
-            // Using ValueInjector to inject the updated values into the context connected entity.
-            baseEntity.InjectFrom(entity);
+            _context.Entry(entity).State = EntityState.Modified;
 
             if (!dontSave)
             {
                 SaveChanges();
             }
 
-            _context.Configuration.ProxyCreationEnabled = tempProxyCreationEnabled;
-
-            _context.Configuration.LazyLoadingEnabled = tempLazyLoadingEnabled;
-
-            _context.Configuration.AutoDetectChangesEnabled = true;
-
-            return baseEntity;
+            return entity;
         }
 
         public TEntity Delete(TEntity entity, bool dontSave = false)
