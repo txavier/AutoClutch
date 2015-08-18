@@ -284,7 +284,13 @@ namespace AutoClutch.Auto.Repo.Objects
         /// <returns></returns>
         public TEntity Update(TEntity entity, bool dontSave = false)
         {
-            _context.Entry(entity).State = EntityState.Modified;
+            var id = GetEntityIdObject(entity);
+
+            TEntity baseEntity = Find(id);
+
+            _context.Entry(baseEntity).State = EntityState.Unchanged;
+
+            baseEntity.InjectFrom(entity);
 
             if (!dontSave)
             {
