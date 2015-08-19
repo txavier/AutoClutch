@@ -288,9 +288,12 @@ namespace AutoClutch.Auto.Repo.Objects
 
             TEntity baseEntity = Find(id);
 
-            _context.Entry(baseEntity).State = EntityState.Unchanged;
+            if (_context.Entry(baseEntity).State != EntityState.Modified)
+            {
+                _context.Entry(baseEntity).State = EntityState.Unchanged;
 
-            baseEntity.InjectFrom(entity);
+                baseEntity.InjectFrom(entity);
+            }
 
             if (!dontSave)
             {
