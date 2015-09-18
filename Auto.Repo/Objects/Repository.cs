@@ -39,7 +39,7 @@ namespace AutoClutch.Auto.Repo.Objects
         public TEntity Find(object entityId)
         {
             var result = _dbSet.Find(entityId);
-
+            
             return result;
         }
 
@@ -226,7 +226,11 @@ namespace AutoClutch.Auto.Repo.Objects
                 SaveChanges();
             }
 
-            return entity;
+            var id = GetEntityIdObject(entity);
+
+            TEntity baseEntity = Find(id);
+
+            return baseEntity;
         }
 
         public async Task<TEntity> UpdateAsync(TEntity entity, bool dontSave = false)
@@ -300,7 +304,7 @@ namespace AutoClutch.Auto.Repo.Objects
                 SaveChanges();
             }
 
-            return entity;
+            return baseEntity;
         }
 
         public TEntity Delete(TEntity entity, bool dontSave = false)
