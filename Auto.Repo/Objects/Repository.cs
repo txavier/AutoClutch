@@ -282,6 +282,7 @@ namespace AutoClutch.Auto.Repo.Objects
 
         /// <summary>
         /// https://msdn.microsoft.com/en-us/data/jj592676.aspx
+        /// http://www.entityframeworktutorial.net/EntityFramework5/update-entity-graph-using-dbcontext.aspx
         /// </summary>
         /// <param name="entity"></param>
         /// <param name="dontSave"></param>
@@ -292,11 +293,29 @@ namespace AutoClutch.Auto.Repo.Objects
 
             TEntity baseEntity = Find(id);
 
-            if (_context.Entry(baseEntity).State != EntityState.Modified)
-            {
-                _context.Entry(baseEntity).State = EntityState.Unchanged;
+            _context.Entry(baseEntity).CurrentValues.SetValues(entity);
 
-                baseEntity.InjectFrom(entity);
+            _context.Entry(baseEntity).State = EntityState.Modified;
+
+            // Get all of the entries that are in the state of added and check to see if 
+            // their primary key exists and set them to modified if this key is not 0.
+            // This prevents duplicate child elements from being added to the database.
+            var entries = _context.ChangeTracker.Entries().Where(i => i.State == EntityState.Added);
+
+            foreach(var entry in entries)
+            {
+                var entityType = entry.Entity.GetType();
+
+                // If the convention was used [Table Name]Id for the primary key then
+                // try to get this primary key and use it to set thestate of the model
+                // to modified so that the database can update it if the model's 
+                // primary key is a number that is not 0.
+                var entryId = entry.Property(entityType.Name + "Id").CurrentValue;
+
+                if (entryId != null && entryId.GetType().Name == "Int32" && (int)entryId != 0)
+                {
+                    entry.State = EntityState.Modified;
+                }
             }
 
             if (!dontSave)
