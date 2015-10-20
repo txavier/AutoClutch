@@ -23,65 +23,65 @@ of this generic repository.
 ## Dependency Injection Example
 Here is a simple example of how to use structuremap with AutoRepo.
 
-public class DefaultRegistry : Registry {
-        public DefaultRegistry() {
-            Scan(
-                scan => {
-                    scan.TheCallingAssembly();
-                    scan.WithDefaultConventions();
-                });
+	public class DefaultRegistry : Registry {
+	        public DefaultRegistry() {
+	            Scan(
+	                scan => {
+	                    scan.TheCallingAssembly();
+	                    scan.WithDefaultConventions();
+	                });
 
-            For<DbContext>().HybridHttpOrThreadLocalScoped().Use<MyDbContext>();
-
-			// The below line is only needed if you are going to use the generic service 
-			// abstraction layer 'AutoClutch.AutoService'.
-            For(typeof(IService<>)).Use(typeof(Service<>));		
-
-            For(typeof(IRepository<>)).Use(typeof(Repository<>));
-
-            For<IItemService>().Use<ItemService>();
-
-            For<IUserService>().Use<UserService>();
-
-            Policies.SetAllProperties(prop => prop.OfType<IService<item>>());
-
-            Policies.SetAllProperties(prop => prop.OfType<IItemService>());
-
-            Policies.SetAllProperties(prop => prop.OfType<IUserService>());
-        }
+	            For<DbContext>().HybridHttpOrThreadLocalScoped().Use<MyDbContext>();
+	
+				// The below line is only needed if you are going to use the generic service 
+				// abstraction layer 'AutoClutch.AutoService'.
+	            For(typeof(IService<>)).Use(typeof(Service<>));		
+	
+	            For(typeof(IRepository<>)).Use(typeof(Repository<>));
+	
+	            For<IItemService>().Use<ItemService>();
+	
+	            For<IUserService>().Use<UserService>();
+	
+	            Policies.SetAllProperties(prop => prop.OfType<IService<item>>());
+	
+	            Policies.SetAllProperties(prop => prop.OfType<IItemService>());
+	
+	            Policies.SetAllProperties(prop => prop.OfType<IUserService>());
+	        }
 
 ## Core Service Constructor
 To initialize the repository in your Service class use the following example.
 
-namespace LiteratureAssistant.Core.Services
-{
-    public class ItemService : Service<item>, IItemService
-    {
-        private readonly IRepository<item> _itemRepository;
-        
-        private readonly IService<itemAttribute> _itemAttributeService;
-
-        private readonly IService<templateAttribute> _templateAttributeService;
-
-        public int ItemTemplateId { get; set; }
-
-        public ItemService(IRepository<item> itemRepository, IService<itemAttribute> itemAttributeService,
-            IService<templateAttribute> templateAttributeService) :
-            base(itemRepository)
-        {
-            _itemRepository = itemRepository;
-
-            _itemAttributeService = itemAttributeService;
-
-            _templateAttributeService = templateAttributeService;
-        }
-
-		:
-		:
-		:
+	namespace LiteratureAssistant.Core.Services
+	{
+	    public class ItemService : Service<item>, IItemService
+	    {
+	        private readonly IRepository<item> _itemRepository;
+	        
+	        private readonly IService<itemAttribute> _itemAttributeService;
+	
+	        private readonly IService<templateAttribute> _templateAttributeService;
+	
+	        public int ItemTemplateId { get; set; }
+	
+	        public ItemService(IRepository<item> itemRepository, IService<itemAttribute> itemAttributeService,
+	            IService<templateAttribute> templateAttributeService) :
+	            base(itemRepository)
+	        {
+	            _itemRepository = itemRepository;
+	
+	            _itemAttributeService = itemAttributeService;
+	
+	            _templateAttributeService = templateAttributeService;
+	        }
+	
+			:
+			:
+			:
 
 #Calling the repostory in a method in your core service.
-_itemRepository.Update(item);
+	_itemRepository.Update(item);
 
 #Using the Get method and passing a fluent Func to it.
-var items = _itemRepository.Get(filter: i => i.itemId == firstItemAttribute.itemId).ToList();
+	var items = _itemRepository.Get(filter: i => i.itemId == firstItemAttribute.itemId).ToList();
