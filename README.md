@@ -20,6 +20,10 @@ Following the N-Tier course, Part 1 and Part 2, in PluralSight,
 Onion Architecture Domain Driven Design was referenced for the layout
 of this generic repository.
 
+##Planned Future Updates
+AutoClutch.AutoAudit for keeping a table of audit changes made to the data.  
+Regex Matching for entire object graph updates.
+
 ## Dependency Injection Example
 Here is a simple example of how to use structuremap with AutoRepo.
 
@@ -82,6 +86,27 @@ To initialize the repository in your Service class use the following example.
 
 #Calling the repostory in a method in your core service.
 	_itemRepository.Update(item);
+	
+Or, if your service has inherited IService<item>...
+
+	_itemService.Update(item);
+
+
+#Entire Object Graph Updating
+In previous versions developers using AutoClutch would have to break apart their disconnected object graph and update each child separately.  This has been done away with in versions 2.0 and later.  Now you as the developer no longer has to worry about updating each child element.  In the example above, 
+	_itemRepository.Update(item);
+	_itemService.Update(item);
+If the disconnected object "item" has a child element in it "itemChild" and "itemChild" has changed then the above command will update "itemChild" in the database.  In previous versions of this library you would have to call "_itemService.update(itemChild)" as a separate call, so this subsequent call is now no longer needed.
+
+
+##Important
+Please note that in order to take advantage of the entire object graph update feature you must follow the table, primary key naming convention like this: "[Table Name]Id". So if your table name is "Employee" then your primary key name should be "EmployeeId".  
+
+One of planned changes, is to include the naming convention for a primary key "Id", "[Table Name]id", or any other Regex match in an array of matches.  If you want to make use of these features right away create a issue and I will try to prioritize this for you.  Or better yet, create a pull request!
 
 #Using the Get method and passing a fluent Func to it.
 	var items = _itemRepository.Get(filter: i => i.itemId == firstItemAttribute.itemId).ToList();
+
+Or, if your service has inherited IService<item>...
+
+	var items = _itemService.Get(filter: i => i.itemId == firstItemAttribute.itemId).ToList();
