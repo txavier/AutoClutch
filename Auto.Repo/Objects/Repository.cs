@@ -1,12 +1,10 @@
-﻿using Auto.Repo.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using Omu.ValueInjecter;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using AutoClutch.Auto.Repo.Interfaces;
