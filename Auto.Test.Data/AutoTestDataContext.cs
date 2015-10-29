@@ -4,8 +4,9 @@ namespace Auto.Test.Data
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using TrackerEnabledDbContext.Common.Extensions;
 
-    public partial class AutoTestDataContext : DbContext
+    public partial class AutoTestDataContext : TrackerEnabledDbContext.TrackerContext
     {
         public AutoTestDataContext()
             : base("name=AutoTestDataContext")
@@ -20,10 +21,18 @@ namespace Auto.Test.Data
         {
             //DatabaseGeneratedAttribute
 
-            modelBuilder.Entity<user>()
+            var userEntity = modelBuilder.Entity<user>();
+
+            userEntity.TrackAllProperties();
+
+            userEntity
                 .HasMany(e => e.locations)
                 .WithOptional(e => e.user)
                 .HasForeignKey(e => e.contactUserId);
+
+            modelBuilder.Entity<location>().TrackAllProperties();
+
+            modelBuilder.Entity<facility>().TrackAllProperties();
         }
     }
 }
