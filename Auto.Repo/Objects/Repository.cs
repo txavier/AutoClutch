@@ -8,16 +8,19 @@ using System.Threading.Tasks;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using AutoClutch.Auto.Repo.Interfaces;
+using System.Text.RegularExpressions;
 
 namespace AutoClutch.Auto.Repo.Objects
 {
     public class Repository<TEntity> : IDisposable, IRepository<TEntity> where TEntity : class
     {
-        private readonly DbContext _context;
+        private readonly TrackerEnabledDbContext.TrackerContext _context;
 
         private readonly DbSet<TEntity> _dbSet;
-        
-        public Repository(DbContext context)
+
+        public string RegexMatchPrimaryKeyIdPattern { get; set; }
+
+        public Repository(TrackerEnabledDbContext.TrackerContext context)
         {
             if (context == null)
             {
@@ -27,6 +30,8 @@ namespace AutoClutch.Auto.Repo.Objects
             _context = context;
 
             _dbSet = context.Set<TEntity>();
+
+            RegexMatchPrimaryKeyIdPattern = null;
         }
 
         /// <summary>
@@ -37,7 +42,7 @@ namespace AutoClutch.Auto.Repo.Objects
         public TEntity Find(object entityId)
         {
             var result = _dbSet.Find(entityId);
-            
+
             return result;
         }
 
@@ -65,10 +70,15 @@ namespace AutoClutch.Auto.Repo.Objects
         /// </summary>
         /// <param name="filter"></param>
         /// <param name="orderBy"></param>
-        /// <param name="includeProperties"></param>
+        /// <param name="includeProperties">This will tell entity framework to return the specified properties from the database.</param>
         /// <param name="distinctBy">
-        /// This is the distinct by parameter that you can pass a lamdba function to for evaluation.
+        /// /// This is the distinct by parameter that you can pass a lamdba function to for evaluation.
         /// http://pranayamr.blogspot.com/2013/01/distinctby-in-linq.html
+        /// </param>
+        /// <param name="searchParameters">
+        /// If you have a enumerable list of strings and wish to use them to query
+        /// data your data with instead of using the fluent i.e. (i => i.name == "facility2") you can query with
+        /// a string of searchParameters that follow the form "name:facility2", "state:state3".
         /// </param>
         /// <returns></returns>
         /// <remarks>
@@ -81,7 +91,8 @@ namespace AutoClutch.Auto.Repo.Objects
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy = null,
             int? skip = null, int? take = null, string includeProperties = "",
-            bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true)
+            IEnumerable<string> searchParameters = null, bool lazyLoadingEnabled = true,
+            bool proxyCreationEnabled = true)
         {
             _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
 
@@ -96,7 +107,7 @@ namespace AutoClutch.Auto.Repo.Objects
 
             take = take ?? Int32.MaxValue;
 
-            IEnumerable<TEntity> resultEnumerable = GetQuery(filter, distinctBy, orderBy, maxBy, includeProperties);
+            IEnumerable<TEntity> resultEnumerable = GetQuery(filter, distinctBy, orderBy, maxBy, includeProperties, searchParameters);
 
             resultEnumerable = resultEnumerable.Skip(skip.Value).Take(take.Value);
 
@@ -107,13 +118,50 @@ namespace AutoClutch.Auto.Repo.Objects
             return resultList;
         }
 
+        /// <summary>
+        /// This method generates an expression that can be used to return the value for 
+        /// a property given its property name and type.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="RT"></typeparam>
+        /// <param name="propertyName"></param>
+        /// <returns></returns>
+        private Expression<Func<T, RT>> MakeGetter<T, RT>(string propertyName)
+        {
+            ParameterExpression input = Expression.Parameter(typeof(T));
+
+            var expr = Expression.Property(input, typeof(T).GetProperty(propertyName));
+
+            return Expression.Lambda<Func<T, RT>>(expr, input);
+        }
+
         private IEnumerable<TEntity> GetQuery(Expression<Func<TEntity, bool>> filter,
             Func<IQueryable<TEntity>, IEnumerable<TEntity>> distinctBy,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy,
             Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy,
-            string includeProperties)
+            string includeProperties, IEnumerable<string> searchParameters)
         {
             IQueryable<TEntity> query = _dbSet;
+
+            if (searchParameters != null && searchParameters.Any())
+            {
+                foreach (var parameter in searchParameters)
+                {
+                    string parameterName = parameter.Split(":".ToCharArray()).First();
+
+                    string parameterValue = parameter.Split(":".ToCharArray()).Last();
+
+                    Expression<Func<TEntity, string>> func = MakeGetter<TEntity, string>(parameterName);
+
+                    // For contains see this reference
+                    // http://stackoverflow.com/questions/278684/how-do-i-create-an-expression-tree-to-represent-string-containsterm-in-c
+                    Expression ge = Expression.Equal(func.Body, Expression.Constant(parameterValue));
+
+                    var lambda = Expression.Lambda<Func<TEntity, bool>>(ge, func.Parameters);
+
+                    query = query.Where(lambda);
+                }
+            }
 
             if (filter != null)
             {
@@ -160,50 +208,49 @@ namespace AutoClutch.Auto.Repo.Objects
             return resultEnumerable;
         }
 
-
         public virtual int GetCount(
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IEnumerable<TEntity>> distinctBy = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy = null,
-            string includeProperties = "")
+            string includeProperties = "", IEnumerable<string> searchParameters = null)
         {
-            var result = GetQuery(filter, distinctBy, orderBy, maxBy, includeProperties).Count();
+            var result = GetQuery(filter, distinctBy, orderBy, maxBy, includeProperties, searchParameters).Count();
 
             return result;
         }
 
-        public async Task<IEnumerable<TEntity>> AddRangeAsync(IEnumerable<TEntity> entities, bool dontSave = false)
+        public async Task<IEnumerable<TEntity>> AddRangeAsync(IEnumerable<TEntity> entities, string loggedInUserName = null, bool dontSave = false)
         {
             _dbSet.AddRange(entities);
 
             if (!dontSave)
             {
-                await SaveChangesAsync();
+                await SaveChangesAsync(loggedInUserName);
             }
 
             return entities;
         }
 
-        public async Task<TEntity> AddAsync(TEntity entity, bool dontSave = false)
+        public async Task<TEntity> AddAsync(TEntity entity, string loggedInUserName = null, bool dontSave = false)
         {
-            _dbSet.Add(entity);
+            _context.Entry(entity).State = EntityState.Added;
 
             if (!dontSave)
             {
-                await SaveChangesAsync();
+                await SaveChangesAsync(loggedInUserName);
             }
 
             return entity;
         }
 
-        public IEnumerable<TEntity> AddRange(IEnumerable<TEntity> entities, bool dontSave = false)
+        public IEnumerable<TEntity> AddRange(IEnumerable<TEntity> entities, string loggedInUserName = null, bool dontSave = false)
         {
             _dbSet.AddRange(entities);
 
             if (!dontSave)
             {
-                SaveChanges();
+                SaveChanges(loggedInUserName);
             }
 
             return entities;
@@ -215,13 +262,13 @@ namespace AutoClutch.Auto.Repo.Objects
         /// <param name="entity"></param>
         /// <param name="dontSave"></param>
         /// <returns></returns>
-        public TEntity Add(TEntity entity, bool dontSave = false)
+        public TEntity Add(TEntity entity, string loggedInUserName = null, bool dontSave = false)
         {
             _context.Entry(entity).State = EntityState.Added;
 
             if (!dontSave)
             {
-                SaveChanges();
+                SaveChanges(loggedInUserName);
             }
 
             var id = GetEntityIdObject(entity);
@@ -231,18 +278,15 @@ namespace AutoClutch.Auto.Repo.Objects
             return baseEntity;
         }
 
-        public async Task<TEntity> UpdateAsync(TEntity entity, bool dontSave = false)
+        public async Task<TEntity> UpdateAsync(TEntity entity, string loggedInUserName = null, bool dontSave = false, string regexMatchPrimaryKeyIdPattern = null)
         {
-            if (_context.Entry(entity).State == EntityState.Detached)
-            {
-                _dbSet.Attach(entity);
-            }
-
-            _context.Entry(entity).State = EntityState.Modified;
+            // Call the update method already implemented and at the end 
+            // await the save changes if dont save was passed as true.
+            Update(entity, dontSave: false, regexMatchPrimaryKeyIdPattern: regexMatchPrimaryKeyIdPattern);
 
             if (!dontSave)
             {
-                await SaveChangesAsync();
+                await SaveChangesAsync(loggedInUserName);
             }
 
             return entity;
@@ -284,8 +328,13 @@ namespace AutoClutch.Auto.Repo.Objects
         /// </summary>
         /// <param name="entity"></param>
         /// <param name="dontSave"></param>
+        /// <param name="regexMatchPrimaryKeyIdPattern">In order to update child models in your model this method 
+        /// needs to find the primary key of those child models. If you follow the naming convention like this
+        /// [Your Table Name]Id for your primary key then this will happen automatically for you.  Otherwise if 
+        /// you follow a different naming convention, use this parameter to indicate the regex that will match 
+        /// the primary key of your table.</param>
         /// <returns></returns>
-        public TEntity Update(TEntity entity, bool dontSave = false)
+        public TEntity Update(TEntity entity, string loggedInUserName = null, bool dontSave = false, string regexMatchPrimaryKeyIdPattern = null)
         {
             var id = GetEntityIdObject(entity);
 
@@ -300,31 +349,76 @@ namespace AutoClutch.Auto.Repo.Objects
             // This prevents duplicate child elements from being added to the database.
             var entries = _context.ChangeTracker.Entries().Where(i => i.State == EntityState.Added);
 
-            foreach(var entry in entries)
+            foreach (var entry in entries)
             {
-                var entityType = entry.Entity.GetType();
-
                 // If the convention was used [Table Name]Id for the primary key then
-                // try to get this primary key and use it to set thestate of the model
+                // try to get this primary key and use it to set the state of the model
                 // to modified so that the database can update it if the model's 
                 // primary key is a number that is not 0.
-                var entryId = entry.Property(entityType.Name + "Id").CurrentValue;
+                string idPropertyName = null;
 
-                if (entryId != null && entryId.GetType().Name == "Int32" && (int)entryId != 0)
+                idPropertyName = RetrieveChildModelId(regexMatchPrimaryKeyIdPattern, entry);
+
+                // Only change the state if the id name of this model can be found.
+                if (idPropertyName != null && entry.CurrentValues.PropertyNames.Contains(idPropertyName))
                 {
-                    entry.State = EntityState.Modified;
+                    var entryId = entry.Property(idPropertyName).CurrentValue;
+
+                    if (entryId != null && entryId.GetType().Name == "Int32" && (int)entryId != 0)
+                    {
+                        entry.State = EntityState.Modified;
+                    }
                 }
             }
 
             if (!dontSave)
             {
-                SaveChanges();
+                SaveChanges(loggedInUserName);
             }
 
             return baseEntity;
         }
 
-        public TEntity Delete(TEntity entity, bool dontSave = false)
+        /// <summary>
+        /// Retrieve the primary key name of the child model.
+        /// </summary>
+        /// <param name="regexMatchPrimaryKeyIdPattern"></param>
+        /// <param name="entry"></param>
+        /// <returns></returns>
+        private string RetrieveChildModelId(string regexMatchPrimaryKeyIdPattern, DbEntityEntry entry)
+        {
+            var entityType = entry.Entity.GetType();
+
+            var idPropertyName = string.Empty;
+
+            if (entry.CurrentValues.PropertyNames.Contains(entityType.Name + "Id"))
+            {
+                idPropertyName = entityType.Name + "Id";
+            }
+            else if (entry.CurrentValues.PropertyNames.Contains(entityType.Name.ToLower() + "Id"))
+            {
+                idPropertyName = entityType.Name.ToLower() + "Id";
+            }
+            else if ((regexMatchPrimaryKeyIdPattern ?? this.RegexMatchPrimaryKeyIdPattern) != null)
+            {
+                foreach (var propertyName in entry.CurrentValues.PropertyNames)
+                {
+                    if (Regex.IsMatch(propertyName, (regexMatchPrimaryKeyIdPattern ?? this.RegexMatchPrimaryKeyIdPattern)))
+                    {
+                        idPropertyName = propertyName;
+
+                        break;
+                    }
+                }
+            }
+
+            // If nothing was found return null.
+            idPropertyName = idPropertyName == string.Empty ? null : idPropertyName;
+
+            return idPropertyName;
+        }
+
+        public TEntity Delete(TEntity entity, string loggedInUserName = null, bool dontSave = false)
         {
             if (_context.Entry(entity).State == EntityState.Detached)
             {
@@ -335,13 +429,13 @@ namespace AutoClutch.Auto.Repo.Objects
 
             if (!dontSave)
             {
-                SaveChanges();
+                SaveChanges(loggedInUserName);
             }
 
             return entity;
         }
 
-        public TEntity Delete(int id, bool dontSave = false)
+        public TEntity Delete(int id, string loggedInUserName = null, bool dontSave = false)
         {
             var entity = _dbSet.Find(id);
 
@@ -350,7 +444,7 @@ namespace AutoClutch.Auto.Repo.Objects
             return entity;
         }
 
-        public async Task<TEntity> DeleteAsync(int id, bool dontSave = false)
+        public async Task<TEntity> DeleteAsync(int id, string loggedInUserName = null, bool dontSave = false)
         {
             var entity = await _dbSet.FindAsync(id);
 
@@ -359,7 +453,7 @@ namespace AutoClutch.Auto.Repo.Objects
             return result;
         }
 
-        private async Task<TEntity> DeleteAsync(TEntity entity, bool dontSave = false)
+        private async Task<TEntity> DeleteAsync(TEntity entity, string loggedInUserName = null, bool dontSave = false)
         {
             if (entity == null)
             {
@@ -375,7 +469,7 @@ namespace AutoClutch.Auto.Repo.Objects
 
             if (!dontSave)
             {
-                await SaveChangesAsync();
+                await SaveChangesAsync(loggedInUserName);
             }
 
             return entity;
@@ -386,11 +480,11 @@ namespace AutoClutch.Auto.Repo.Objects
         /// </summary>
         /// <param name="context">The context.</param>
         /// <remarks>http://stackoverflow.com/questions/10219864/ef-code-first-how-do-i-see-entityvalidationerrors-property-from-the-nuget-pac</remarks>
-        public int SaveChanges()
+        public int SaveChanges(string loggedInUserName = null)
         {
             try
             {
-                var saveChangesInt = _context.SaveChanges();
+                var saveChangesInt = _context.SaveChanges(loggedInUserName);
 
                 return saveChangesInt;
             }
@@ -415,11 +509,11 @@ namespace AutoClutch.Auto.Repo.Objects
             }
         }
 
-        public async Task<int> SaveChangesAsync()
+        public async Task<int> SaveChangesAsync(string loggedInUserName = null)
         {
             try
             {
-                var saveChangesInt = await _context.SaveChangesAsync();
+                var saveChangesInt = await _context.SaveChangesAsync(loggedInUserName);
 
                 return saveChangesInt;
             }
@@ -490,6 +584,7 @@ namespace AutoClutch.Auto.Repo.Objects
 
             this.disposed = true;
         }
+
 
     }
 }
