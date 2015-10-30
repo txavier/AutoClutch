@@ -28,9 +28,13 @@ Following the N-Tier course, Part 1 and Part 2, in PluralSight,
 Onion Architecture Domain Driven Design was referenced for the layout
 of this generic repository.
 
-##Planned Future Updates
-AutoClutch.AutoAudit for keeping a table of audit changes made to the data.  
-Regex Matching for entire object graph updates.
+## Features Included in the Latest Update
+### Audit Logs 
+Includes audit support from the Tracker-Enabled-DbContext project (https://github.com/bilal-fazlani/tracker-enabled-dbcontext) (http://bilal-fazlani.github.io/tracker-enabled-dbcontext/).
+
+### String Querying
+Includes support for querying the data by fluent or with strings.  String support provided by the Dynamic Linq project
+(http://jasonwatmore.com/post/2014/07/16/Dynamic-LINQ-Using-strings-to-sort-by-properties-and-child-object-properties.aspx) (https://github.com/kahanu/System.Linq.Dynamic).
 
 ## Dependency Injection Example
 Here is a simple example of how to use structuremap with AutoRepo.
