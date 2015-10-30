@@ -68,6 +68,10 @@
     <Compile Include="Migrations\201510291858278_InitialMigration.Designer.cs">
       <DependentUpon>201510291858278_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201510292048045_AddFacilityTypeToFacilityModel.cs" />
+    <Compile Include="Migrations\201510292048045_AddFacilityTypeToFacilityModel.Designer.cs">
+      <DependentUpon>201510292048045_AddFacilityTypeToFacilityModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\facility.cs" />
     <Compile Include="Models\location.cs" />
@@ -81,6 +85,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201510291858278_InitialMigration.resx">
       <DependentUpon>201510291858278_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510292048045_AddFacilityTypeToFacilityModel.resx">
+      <DependentUpon>201510292048045_AddFacilityTypeToFacilityModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

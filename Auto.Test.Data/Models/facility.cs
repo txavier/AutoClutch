@@ -16,6 +16,8 @@ namespace Auto.Test.Data
         [Required]
         public string name { get; set; }
 
+        public string facilityType { get; set; }
+
         public virtual location location { get; set; }
     }
 }

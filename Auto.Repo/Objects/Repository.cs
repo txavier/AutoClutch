@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Auto.Repo.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using AutoClutch.Auto.Repo.Interfaces;
 using System.Text.RegularExpressions;
+using System.Linq.Dynamic;
 
 namespace AutoClutch.Auto.Repo.Objects
 {
@@ -87,27 +89,35 @@ namespace AutoClutch.Auto.Repo.Objects
         /// </remarks>
         public virtual IEnumerable<TEntity> Get(
             Expression<Func<TEntity, bool>> filter = null,
+            string searchParameters = null,
             Func<IQueryable<TEntity>, IEnumerable<TEntity>> distinctBy = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            string orderByString = null,
             Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy = null,
-            int? skip = null, int? take = null, string includeProperties = "",
-            IEnumerable<string> searchParameters = null, bool lazyLoadingEnabled = true,
+            int? skip = null, 
+            int? take = null, 
+            string includeProperties = "",
+            bool lazyLoadingEnabled = true, 
             bool proxyCreationEnabled = true)
         {
             _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
 
             _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
 
-            if (skip.HasValue && orderBy == null)
-            {
-                throw new ArgumentNullException("orderby");
-            }
-
             skip = skip ?? 0;
 
             take = take ?? Int32.MaxValue;
 
-            IEnumerable<TEntity> resultEnumerable = GetQuery(filter, distinctBy, orderBy, maxBy, includeProperties, searchParameters);
+            IEnumerable<TEntity> resultEnumerable = GetQuery(filter, searchParameters, distinctBy, orderBy, orderByString, maxBy, includeProperties);
+
+            // Skip and take require an ordered enumerable.  So if no orderby was passed and
+            // a skip value is given, order by the primary key.
+            if (skip.HasValue && orderBy == null && orderByString == null)
+            {
+                var entityKeyName = GetEntityKeyName(resultEnumerable.First());
+
+                resultEnumerable.OrderBy(entityKeyName);
+            }
 
             resultEnumerable = resultEnumerable.Skip(skip.Value).Take(take.Value);
 
@@ -118,49 +128,20 @@ namespace AutoClutch.Auto.Repo.Objects
             return resultList;
         }
 
-        /// <summary>
-        /// This method generates an expression that can be used to return the value for 
-        /// a property given its property name and type.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <typeparam name="RT"></typeparam>
-        /// <param name="propertyName"></param>
-        /// <returns></returns>
-        private Expression<Func<T, RT>> MakeGetter<T, RT>(string propertyName)
-        {
-            ParameterExpression input = Expression.Parameter(typeof(T));
-
-            var expr = Expression.Property(input, typeof(T).GetProperty(propertyName));
-
-            return Expression.Lambda<Func<T, RT>>(expr, input);
-        }
-
-        private IEnumerable<TEntity> GetQuery(Expression<Func<TEntity, bool>> filter,
+        private IEnumerable<TEntity> GetQuery(
+            Expression<Func<TEntity, bool>> filter,
+            string searchParameters,
             Func<IQueryable<TEntity>, IEnumerable<TEntity>> distinctBy,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy,
+            string orderByString,
             Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy,
-            string includeProperties, IEnumerable<string> searchParameters)
+            string includeProperties)
         {
             IQueryable<TEntity> query = _dbSet;
 
-            if (searchParameters != null && searchParameters.Any())
+            if (!string.IsNullOrWhiteSpace(searchParameters))
             {
-                foreach (var parameter in searchParameters)
-                {
-                    string parameterName = parameter.Split(":".ToCharArray()).First();
-
-                    string parameterValue = parameter.Split(":".ToCharArray()).Last();
-
-                    Expression<Func<TEntity, string>> func = MakeGetter<TEntity, string>(parameterName);
-
-                    // For contains see this reference
-                    // http://stackoverflow.com/questions/278684/how-do-i-create-an-expression-tree-to-represent-string-containsterm-in-c
-                    Expression ge = Expression.Equal(func.Body, Expression.Constant(parameterValue));
-
-                    var lambda = Expression.Lambda<Func<TEntity, bool>>(ge, func.Parameters);
-
-                    query = query.Where(lambda);
-                }
+                query = query.Where(searchParameters);
             }
 
             if (filter != null)
@@ -168,13 +149,18 @@ namespace AutoClutch.Auto.Repo.Objects
                 query = query.Where(filter);
             }
 
-            if (includeProperties != null && !string.IsNullOrEmpty(includeProperties.Trim()))
+            if (!string.IsNullOrWhiteSpace(includeProperties))
             {
                 foreach (var includeProperty in includeProperties.Split
                     (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                 {
                     query = query.Include(includeProperty);
                 }
+            }
+
+            if (!string.IsNullOrWhiteSpace(orderByString))
+            {
+                query = query.OrderBy(orderByString);
             }
 
             IEnumerable<TEntity> resultEnumerable = null;
@@ -210,12 +196,14 @@ namespace AutoClutch.Auto.Repo.Objects
 
         public virtual int GetCount(
             Expression<Func<TEntity, bool>> filter = null,
+            string searchParameters = null,
             Func<IQueryable<TEntity>, IEnumerable<TEntity>> distinctBy = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            string orderByString = null,
             Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy = null,
-            string includeProperties = "", IEnumerable<string> searchParameters = null)
+            string includeProperties = "")
         {
-            var result = GetQuery(filter, distinctBy, orderBy, maxBy, includeProperties, searchParameters).Count();
+            var result = GetQuery(filter, searchParameters, distinctBy, orderBy, orderByString, maxBy, includeProperties).Count();
 
             return result;
         }

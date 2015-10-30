@@ -161,7 +161,7 @@ namespace AutoClutch.Auto.Service.Services
             int? skip = null, 
             int? take = null, 
             string includeProperties = "",
-            IEnumerable<string> searchParameters = null,
+            string searchParameters = null,
             bool lazyLoadingEnabled = true, 
             bool proxyCreationEnabled = true)
         {
@@ -173,30 +173,33 @@ namespace AutoClutch.Auto.Service.Services
                 skip: skip,
                 take: take,
                 includeProperties: includeProperties,
-                searchParameters: searchParameters,
+                filterString: searchParameters,
                 lazyLoadingEnabled: lazyLoadingEnabled,
                 proxyCreationEnabled: proxyCreationEnabled);
 
             return result;
         }
 
-        public int GetCount(System.Linq.Expressions.Expression<Func<TEntity, bool>> filter = null, 
+        public int GetCount(
+            System.Linq.Expressions.Expression<Func<TEntity, bool>> filter = null, 
+            string filterString = null,
             Func<IQueryable<TEntity>, 
             IEnumerable<TEntity>> distinctBy = null, 
             Func<IQueryable<TEntity>, 
             IOrderedQueryable<TEntity>> orderBy = null, 
+            string orderByString = null,
             Func<IEnumerable<TEntity>, 
             IEnumerable<TEntity>> maxBy = null, 
-            string includeProperties = "",
-            IEnumerable<string> searchParameters = null)
+            string includeProperties = "")
         {
             var result = _repository.GetCount(
                 filter: filter,
+                filterString: filterString,
                 distinctBy: distinctBy,
                 orderBy: orderBy,
+                orderByString: orderByString,
                 maxBy: maxBy,
-                includeProperties: includeProperties,
-                searchParameters: searchParameters);
+                includeProperties: includeProperties);
 
             return result;
         }
