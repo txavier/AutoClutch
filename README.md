@@ -15,6 +15,12 @@ add on top of it over time other libraries that would give me
 the functionality I need (i.e. Auditing, Item Tracking, etc.,). I 
 believed a simple core was the right place to start.
 
+## Nuget Package
+AutoService includes both the generic repository and a generic service for you to inherit your services from if you wish. https://www.nuget.org/packages/AutoClutch.AutoService/
+	Install-Package AutoClutch.AutoService
+Or if you want just the repository bit
+	Install-Package AutoClutch.AutoRepo
+
 ## Data structure
 Following the N-Tier course, Part 1 and Part 2, in PluralSight,
 Onion Architecture Domain Driven Design was referenced for the layout
