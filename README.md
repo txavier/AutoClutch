@@ -17,8 +17,10 @@ believed a simple core was the right place to start.
 
 ## Nuget Package
 AutoService includes both the generic repository and a generic service for you to inherit your services from if you wish. https://www.nuget.org/packages/AutoClutch.AutoService/
+	
 	Install-Package AutoClutch.AutoService
 Or if you want just the repository bit
+	
 	Install-Package AutoClutch.AutoRepo
 
 ## Data structure
