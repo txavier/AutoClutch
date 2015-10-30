@@ -110,7 +110,7 @@ namespace AutoClutch.Auto.Repo.Objects
 
             IEnumerable<TEntity> resultEnumerable = GetQuery(filter, searchParameters, distinctBy, orderBy, orderByString, maxBy, includeProperties);
 
-            if(resultEnumerable.Any())
+            if(!resultEnumerable.Any())
             {
                 return new List<TEntity>();
             }
