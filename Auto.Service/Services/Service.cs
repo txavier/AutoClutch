@@ -155,25 +155,27 @@ namespace AutoClutch.Auto.Service.Services
         /// <returns></returns>
         public IEnumerable<TEntity> Get(
             System.Linq.Expressions.Expression<Func<TEntity, bool>> filter = null, 
+            string filterString = null,
             Func<IQueryable<TEntity>, IEnumerable<TEntity>> distinctBy = null, 
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, 
+            string orderByString = null,
             Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy = null, 
             int? skip = null, 
             int? take = null, 
             string includeProperties = "",
-            string searchParameters = null,
             bool lazyLoadingEnabled = true, 
             bool proxyCreationEnabled = true)
         {
             var result = _repository.Get(
                 filter: filter,
+                filterString: filterString,
                 distinctBy: distinctBy,
                 orderBy: orderBy,
+                orderByString: orderByString,
                 maxBy: maxBy,
                 skip: skip,
                 take: take,
                 includeProperties: includeProperties,
-                filterString: searchParameters,
                 lazyLoadingEnabled: lazyLoadingEnabled,
                 proxyCreationEnabled: proxyCreationEnabled);
 
