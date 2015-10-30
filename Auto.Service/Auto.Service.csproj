@@ -60,6 +60,10 @@
     <None Include="Packages\AutoClutch.AutoService.1.0.6.nupkg" />
     <None Include="Packages\AutoClutch.AutoService.1.0.7.nupkg" />
     <None Include="Packages\AutoClutch.AutoService.1.0.9.nupkg" />
+    <None Include="Packages\AutoClutch.AutoService.1.1.0.nupkg" />
+    <None Include="Packages\AutoClutch.AutoService.2.0.nupkg" />
+    <None Include="Packages\AutoClutch.AutoService.2.1.nupkg" />
+    <None Include="Packages\AutoClutch.AutoService.2.2.nupkg" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>

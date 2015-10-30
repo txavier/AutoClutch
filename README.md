@@ -15,14 +15,26 @@ add on top of it over time other libraries that would give me
 the functionality I need (i.e. Auditing, Item Tracking, etc.,). I 
 believed a simple core was the right place to start.
 
+## Nuget Package
+AutoService includes both the generic repository and a generic service for you to inherit your services from if you wish. https://www.nuget.org/packages/AutoClutch.AutoService/
+	
+	Install-Package AutoClutch.AutoService
+Or if you want just the repository bit
+	
+	Install-Package AutoClutch.AutoRepo
+
 ## Data structure
 Following the N-Tier course, Part 1 and Part 2, in PluralSight,
 Onion Architecture Domain Driven Design was referenced for the layout
 of this generic repository.
 
-##Planned Future Updates
-AutoClutch.AutoAudit for keeping a table of audit changes made to the data.  
-Regex Matching for entire object graph updates.
+## Features Included in the Latest Update
+### Audit Logs 
+Includes audit support from the Tracker-Enabled-DbContext project (https://github.com/bilal-fazlani/tracker-enabled-dbcontext) (http://bilal-fazlani.github.io/tracker-enabled-dbcontext/).
+
+### String Querying
+Includes support for querying the data by fluent or with strings.  String support provided by the Dynamic Linq project
+(http://jasonwatmore.com/post/2014/07/16/Dynamic-LINQ-Using-strings-to-sort-by-properties-and-child-object-properties.aspx) (https://github.com/kahanu/System.Linq.Dynamic).
 
 ## Dependency Injection Example
 Here is a simple example of how to use structuremap with AutoRepo.
