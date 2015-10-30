@@ -110,6 +110,11 @@ namespace AutoClutch.Auto.Repo.Objects
 
             IEnumerable<TEntity> resultEnumerable = GetQuery(filter, searchParameters, distinctBy, orderBy, orderByString, maxBy, includeProperties);
 
+            if(resultEnumerable.Any())
+            {
+                return new List<TEntity>();
+            }
+
             // Skip and take require an ordered enumerable.  So if no orderby was passed and
             // a skip value is given, order by the primary key.
             if (skip.HasValue && orderBy == null && orderByString == null)
