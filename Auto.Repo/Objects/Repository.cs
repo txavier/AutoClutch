@@ -41,15 +41,23 @@ namespace AutoClutch.Auto.Repo.Objects
         /// </summary>
         /// <param name="entityId"></param>
         /// <returns></returns>
-        public TEntity Find(object entityId)
+        public TEntity Find(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true)
         {
+            _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
+
+            _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+
             var result = _dbSet.Find(entityId);
 
             return result;
         }
 
-        public async Task<TEntity> FindAsync(object entityId)
+        public async Task<TEntity> FindAsync(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true)
         {
+            _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
+
+            _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+
             var result = await _dbSet.FindAsync(entityId);
 
             return result;
@@ -60,8 +68,12 @@ namespace AutoClutch.Auto.Repo.Objects
             return _context.Set<TEntity>();
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public IEnumerable<TEntity> GetAll(bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true)
         {
+            _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
+
+            _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+
             var result = GetAllAsQueryable().ToList();
 
             return result;
@@ -213,8 +225,12 @@ namespace AutoClutch.Auto.Repo.Objects
             return result;
         }
 
-        public async Task<IEnumerable<TEntity>> AddRangeAsync(IEnumerable<TEntity> entities, string loggedInUserName = null, bool dontSave = false)
+        public async Task<IEnumerable<TEntity>> AddRangeAsync(IEnumerable<TEntity> entities, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false)
         {
+            _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
+
+            _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+
             _dbSet.AddRange(entities);
 
             if (!dontSave)
@@ -225,8 +241,12 @@ namespace AutoClutch.Auto.Repo.Objects
             return entities;
         }
 
-        public async Task<TEntity> AddAsync(TEntity entity, string loggedInUserName = null, bool dontSave = false)
+        public async Task<TEntity> AddAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false)
         {
+            _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
+
+            _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+
             _context.Entry(entity).State = EntityState.Added;
 
             if (!dontSave)
@@ -237,8 +257,12 @@ namespace AutoClutch.Auto.Repo.Objects
             return entity;
         }
 
-        public IEnumerable<TEntity> AddRange(IEnumerable<TEntity> entities, string loggedInUserName = null, bool dontSave = false)
+        public IEnumerable<TEntity> AddRange(IEnumerable<TEntity> entities, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false)
         {
+            _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
+
+            _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+
             _dbSet.AddRange(entities);
 
             if (!dontSave)
@@ -255,8 +279,12 @@ namespace AutoClutch.Auto.Repo.Objects
         /// <param name="entity"></param>
         /// <param name="dontSave"></param>
         /// <returns></returns>
-        public TEntity Add(TEntity entity, string loggedInUserName = null, bool dontSave = false)
+        public TEntity Add(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false)
         {
+            _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
+
+            _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+
             _context.Entry(entity).State = EntityState.Added;
 
             if (!dontSave)
@@ -271,8 +299,12 @@ namespace AutoClutch.Auto.Repo.Objects
             return baseEntity;
         }
 
-        public async Task<TEntity> UpdateAsync(TEntity entity, string loggedInUserName = null, bool dontSave = false, string regexMatchPrimaryKeyIdPattern = null)
+        public async Task<TEntity> UpdateAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false, string regexMatchPrimaryKeyIdPattern = null)
         {
+            _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
+
+            _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+
             // Call the update method already implemented and at the end 
             // await the save changes if dont save was passed as true.
             Update(entity, dontSave: false, regexMatchPrimaryKeyIdPattern: regexMatchPrimaryKeyIdPattern);
@@ -327,8 +359,12 @@ namespace AutoClutch.Auto.Repo.Objects
         /// you follow a different naming convention, use this parameter to indicate the regex that will match 
         /// the primary key of your table.</param>
         /// <returns></returns>
-        public TEntity Update(TEntity entity, string loggedInUserName = null, bool dontSave = false, string regexMatchPrimaryKeyIdPattern = null)
+        public TEntity Update(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false, string regexMatchPrimaryKeyIdPattern = null)
         {
+            _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
+
+            _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+
             var id = GetEntityIdObject(entity);
 
             TEntity baseEntity = Find(id);

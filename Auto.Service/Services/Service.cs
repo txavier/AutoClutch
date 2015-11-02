@@ -17,47 +17,33 @@ namespace AutoClutch.Auto.Service.Services
             this._repository = repository;
         }
 
-        public async Task<TEntity> FindAsync(object entityId)
+        public async Task<TEntity> FindAsync(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true)
         {
-            return await _repository.FindAsync(entityId);
+            return await _repository.FindAsync(entityId, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled);
         }
 
-        public TEntity Find(object entityId)
+        public TEntity Find(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true)
         {
-            return _repository.Find(entityId);
+            return _repository.Find(entityId, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public IEnumerable<TEntity> GetAll(bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true)
         {
-            var result = _repository.GetAll().ToList();
+            var result = _repository.GetAll(lazyLoadingEnabled: true, proxyCreationEnabled: true).ToList();
 
             return result;
         }
 
-        public TEntity Add(TEntity entity, string loggedInUserName = null, bool dontSave = false)
+        public TEntity Add(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false)
         {
-            var result = _repository.Add(entity, loggedInUserName, dontSave: dontSave);
+            var result = _repository.Add(entity, loggedInUserName, lazyLoadingEnabled: true, proxyCreationEnabled: true, dontSave: dontSave);
 
             return result;
         }
 
-        public async Task<TEntity> AddAsync(TEntity entity, string loggedInUserName = null, bool dontSave = false)
+        public async Task<TEntity> AddAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false)
         {
-            var result = await _repository.AddAsync(entity, loggedInUserName, dontSave: dontSave);
-
-            return result;
-        }
-
-        /// <summary>
-        /// This mehod adds a range of entities to the database.
-        /// </summary>
-        /// <param name="entities"></param>
-        /// <param name="dontSave"></param>
-        /// <returns></returns>
-        /// <remarks>Please note at this time auditing is not enabled for AddRange methods.</remarks>
-        public async Task<IEnumerable<TEntity>> AddRangeAsync(IEnumerable<TEntity> entities, string loggedInUserName = null, bool dontSave = false)
-        {
-            var result = await _repository.AddRangeAsync(entities, loggedInUserName, dontSave: dontSave);
+            var result = await _repository.AddAsync(entity, loggedInUserName, lazyLoadingEnabled: true, proxyCreationEnabled: true, dontSave: dontSave);
 
             return result;
         }
@@ -69,23 +55,37 @@ namespace AutoClutch.Auto.Service.Services
         /// <param name="dontSave"></param>
         /// <returns></returns>
         /// <remarks>Please note at this time auditing is not enabled for AddRange methods.</remarks>
-        public IEnumerable<TEntity> AddRange(IEnumerable<TEntity> entities, string loggedInUserName = null, bool dontSave = false)
+        public async Task<IEnumerable<TEntity>> AddRangeAsync(IEnumerable<TEntity> entities, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false)
         {
-            var result = _repository.AddRange(entities, loggedInUserName, dontSave: dontSave);
+            var result = await _repository.AddRangeAsync(entities, loggedInUserName, lazyLoadingEnabled: true, proxyCreationEnabled: true, dontSave: dontSave);
 
             return result;
         }
 
-        public TEntity Update(TEntity entity, string loggedInUserName = null, bool dontSave = false)
+        /// <summary>
+        /// This mehod adds a range of entities to the database.
+        /// </summary>
+        /// <param name="entities"></param>
+        /// <param name="dontSave"></param>
+        /// <returns></returns>
+        /// <remarks>Please note at this time auditing is not enabled for AddRange methods.</remarks>
+        public IEnumerable<TEntity> AddRange(IEnumerable<TEntity> entities, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false)
         {
-            var result = _repository.Update(entity, loggedInUserName, dontSave: dontSave);
+            var result = _repository.AddRange(entities, loggedInUserName, lazyLoadingEnabled: true, proxyCreationEnabled: true, dontSave: dontSave);
 
             return result;
         }
 
-        public async Task<TEntity> UpdateAsync(TEntity entity, string loggedInUserName = null, bool dontSave = false)
+        public TEntity Update(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false)
         {
-            var result = await _repository.UpdateAsync(entity, loggedInUserName, dontSave: dontSave);
+            var result = _repository.Update(entity, loggedInUserName, lazyLoadingEnabled: true, proxyCreationEnabled: true, dontSave: dontSave);
+
+            return result;
+        }
+
+        public async Task<TEntity> UpdateAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false)
+        {
+            var result = await _repository.UpdateAsync(entity, loggedInUserName, lazyLoadingEnabled: true, proxyCreationEnabled: true, dontSave: dontSave);
 
             return result;
         }
@@ -98,19 +98,19 @@ namespace AutoClutch.Auto.Service.Services
         /// <param name="entity">This is the entity that must have an integer key.</param>
         /// <param name="dontSave"></param>
         /// <returns></returns>
-        public TEntity AddOrUpdate(TEntity entity, string loggedInUserName = null, bool dontSave = false)
+        public TEntity AddOrUpdate(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false)
         {
             var idObject = _repository.GetEntityIdObject(entity);
 
             if((int)idObject == 0)
             {
-                var newEntity = _repository.Add(entity, loggedInUserName, dontSave: dontSave);
+                var newEntity = _repository.Add(entity, loggedInUserName, lazyLoadingEnabled: true, proxyCreationEnabled: true, dontSave: dontSave);
 
                 return newEntity;
             }
             else
             {
-                var updatedEntity = _repository.Update(entity, loggedInUserName, dontSave: dontSave);
+                var updatedEntity = _repository.Update(entity, loggedInUserName, lazyLoadingEnabled: true, proxyCreationEnabled: true, dontSave: dontSave);
 
                 return updatedEntity;
             }
@@ -230,6 +230,13 @@ namespace AutoClutch.Auto.Service.Services
             var result = _repository.GetEntityPropertyNames(entity);
 
             return result;
+        }
+
+        public object GetEntityIdObject(TEntity entity)
+        {
+            var idObject = _repository.GetEntityIdObject(entity);
+
+            return idObject;
         }
 
     }

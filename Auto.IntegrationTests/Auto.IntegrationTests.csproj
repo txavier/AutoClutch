@@ -72,6 +72,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Objects\Repository_FindShould.cs" />
     <Compile Include="Objects\Repository_GetShould.cs" />
     <Compile Include="Objects\Repository_UpdateShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
