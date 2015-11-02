@@ -37,7 +37,7 @@ Includes support for querying the data by fluent or with strings.  String suppor
 (http://jasonwatmore.com/post/2014/07/16/Dynamic-LINQ-Using-strings-to-sort-by-properties-and-child-object-properties.aspx) (https://github.com/kahanu/System.Linq.Dynamic).
 
 ## Dependency Injection Example
-Here is a simple example of how to use structuremap with AutoRepo.
+Here is a simple example of how to use structuremap with AutoRepo.  Please note the 'TrackerEnabledDbContext.TrackerContext' class inherits from the 'DbContext' class.  So you will have to specify this 'TrackerEnabledDbContext.TrackerContext' for your dependency injection engine to find a concrete class for.
 
 	public class DefaultRegistry : Registry {
 	        public DefaultRegistry() {
@@ -47,7 +47,7 @@ Here is a simple example of how to use structuremap with AutoRepo.
 	                    scan.WithDefaultConventions();
 	                });
 
-	            For<DbContext>().HybridHttpOrThreadLocalScoped().Use<MyDbContext>();
+	            For<TrackerEnabledDbContext.TrackerContext>().HybridHttpOrThreadLocalScoped().Use<MyDbContext>();
 	
 				// The below line is only needed if you are going to use the generic service 
 				// abstraction layer 'AutoClutch.AutoService'.
@@ -65,6 +65,58 @@ Here is a simple example of how to use structuremap with AutoRepo.
 	
 	            Policies.SetAllProperties(prop => prop.OfType<IUserService>());
 	        }
+
+## Your Code-First Context Class
+Please note that your context class has to inherit from 'TrackerEnabledDbContext.TrackerContext'.
+
+		namespace LiteratureAssistant.Data
+		{
+		    using System;
+		    using System.Data.Entity;
+		    using System.ComponentModel.DataAnnotations.Schema;
+		    using System.Linq;
+		    using LiteratureAssistant.Core.Models;
+		
+		    public partial class MyDbContext : TrackerEnabledDbContext.TrackerContext
+		    {
+		        public MyDbContext()
+		            : base("name=MyDbContext")
+		        {
+		        }
+		
+		        public virtual DbSet<changeOrder> changeOrders { get; set; }
+		        public virtual DbSet<changeOrderType> changeOrderTypes { get; set; }
+		        public virtual DbSet<contract> contracts { get; set; }
+		        public virtual DbSet<contractCategory> contractCategories { get; set; }
+		        public virtual DbSet<contractor> contractors { get; set; }
+		        :
+		        :
+		        :
+		
+		        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		        {
+		            modelBuilder.Entity<changeOrder>()
+		                .Property(e => e.engineerEstimate)
+		                .HasPrecision(19, 4);
+		
+		            modelBuilder.Entity<changeOrder>()
+		                .Property(e => e.proposalAmount)
+		                .HasPrecision(19, 4);
+		
+		            modelBuilder.Entity<changeOrder>()
+		                .Property(e => e.bwtApprovalAmount)
+		                .HasPrecision(19, 4);
+		
+		            modelBuilder.Entity<changeOrder>()
+		                .Property(e => e.registeredAmount)
+		                .HasPrecision(19, 4);
+		
+		            :
+		            :
+		            :
+		        }
+		    }
+		}
 
 ## Core Service Constructor
 To initialize the repository in your Service class use the following example.
