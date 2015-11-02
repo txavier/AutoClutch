@@ -4,6 +4,7 @@ namespace AutoClutch.Auto.Service.Interfaces
     public interface IService<TEntity>
      where TEntity : class
     {
+        System.Collections.Generic.IEnumerable<Auto.Service.Objects.Error> Errors { get; set; }
         TEntity Add(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false);
         System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<TEntity>> AddRangeAsync(System.Collections.Generic.IEnumerable<TEntity> entities, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false);
         System.Threading.Tasks.Task<TEntity> AddAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false);
@@ -21,5 +22,7 @@ namespace AutoClutch.Auto.Service.Interfaces
         System.Threading.Tasks.Task<int> SaveChangesAsync(string loggedInUserName = null);
         TEntity Update(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false);
         System.Threading.Tasks.Task<TEntity> UpdateAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false);
+        System.Collections.Generic.IEnumerable<string> GetEntityPropertyNames(TEntity entity);
+        object GetEntityIdObject(TEntity entity);
     }
 }

@@ -12,9 +12,13 @@ namespace AutoClutch.Auto.Service.Services
     {
         private readonly IRepository<TEntity> _repository;
 
+        public IEnumerable<Auto.Service.Objects.Error> Errors { get; set; }
+
         public Service(IRepository<TEntity> repository)
         {
             this._repository = repository;
+
+            Errors = new List<Auto.Service.Objects.Error>();
         }
 
         public async Task<TEntity> FindAsync(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true)
@@ -216,6 +220,13 @@ namespace AutoClutch.Auto.Service.Services
         public async Task<int> SaveChangesAsync(string loggedInUserName = null)
         {
             var result = await _repository.SaveChangesAsync(loggedInUserName);
+
+            return result;
+        }
+
+        public bool Exists(object entityIdObject)
+        {
+            var result = _repository.Exists(entityIdObject);
 
             return result;
         }

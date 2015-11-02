@@ -54,5 +54,7 @@ namespace AutoClutch.Auto.Repo.Interfaces
         /// <param name="propertyName"></param>
         /// <param name="value"></param>
         void SetEntityValueByPropertyName(TEntity entity, string propertyName, object value);
+
+        bool Exists(object entityIdObject);
     }
 }

@@ -36,6 +36,34 @@ namespace AutoClutch.Auto.Repo.Objects
             RegexMatchPrimaryKeyIdPattern = null;
         }
 
+        public bool Exists(object entityIdObject)
+        {
+            if(entityIdObject == null)
+            {
+                return false;
+            }
+
+            var found = false;
+
+            var result = Find(entityIdObject);
+
+            if (result != null)
+            {
+                found = true;
+            }
+
+            return found;
+        }
+
+        public bool Exists(TEntity entity)
+        {
+            var entityIdObject = GetEntityIdObject(entity);
+
+            var found = Exists(entityIdObject);
+
+            return found;
+        }
+
         /// <summary>
         /// This method gets a single entity by its primary key.
         /// </summary>
