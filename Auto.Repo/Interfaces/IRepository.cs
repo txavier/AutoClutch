@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+[assembly: CLSCompliant(true)]
 
 namespace AutoClutch.Auto.Repo.Interfaces
 {

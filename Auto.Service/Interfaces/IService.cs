@@ -1,4 +1,6 @@
 ﻿using System;
+[assembly: CLSCompliant(true)]
+
 namespace AutoClutch.Auto.Service.Interfaces
 {
     public interface IService<TEntity>
