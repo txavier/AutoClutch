@@ -24,5 +24,6 @@ namespace AutoClutch.Auto.Service.Interfaces
         System.Threading.Tasks.Task<TEntity> UpdateAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false);
         System.Collections.Generic.IEnumerable<string> GetEntityPropertyNames(TEntity entity);
         object GetEntityIdObject(TEntity entity);
+        bool Exists(object entityIdObject);
     }
 }
