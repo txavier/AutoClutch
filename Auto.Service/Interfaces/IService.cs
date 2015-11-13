@@ -6,6 +6,7 @@ namespace AutoClutch.Auto.Service.Interfaces
     public interface IService<TEntity>
      where TEntity : class
     {
+        void Dispose();
         System.Collections.Generic.IEnumerable<Auto.Service.Objects.Error> Errors { get; set; }
         TEntity Add(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false);
         System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<TEntity>> AddRangeAsync(System.Collections.Generic.IEnumerable<TEntity> entities, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false);

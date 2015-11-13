@@ -18,7 +18,7 @@ namespace AutoClutch.Auto.Repo.Objects
     {
         private readonly TrackerEnabledDbContext.TrackerContext _context;
 
-        private readonly DbSet<TEntity> _dbSet;
+        private DbSet<TEntity> _dbSet;
 
         public string RegexMatchPrimaryKeyIdPattern { get; set; }
 
@@ -38,7 +38,7 @@ namespace AutoClutch.Auto.Repo.Objects
 
         public bool Exists(object entityIdObject)
         {
-            if(entityIdObject == null)
+            if (entityIdObject == null)
             {
                 return false;
             }
@@ -134,10 +134,10 @@ namespace AutoClutch.Auto.Repo.Objects
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string orderByString = null,
             Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy = null,
-            int? skip = null, 
-            int? take = null, 
+            int? skip = null,
+            int? take = null,
             string includeProperties = "",
-            bool lazyLoadingEnabled = true, 
+            bool lazyLoadingEnabled = true,
             bool proxyCreationEnabled = true)
         {
             _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
@@ -150,7 +150,7 @@ namespace AutoClutch.Auto.Repo.Objects
 
             IEnumerable<TEntity> resultEnumerable = GetQuery(filter, searchParameters, distinctBy, orderBy, orderByString, maxBy, includeProperties);
 
-            if(!resultEnumerable.Any())
+            if (!resultEnumerable.Any())
             {
                 return new List<TEntity>();
             }
@@ -620,7 +620,7 @@ namespace AutoClutch.Auto.Repo.Objects
             type.GetProperty(propertyName).SetValue(entity, value);
         }
 
-        private bool disposed = false;
+        bool _disposed = false;
 
         public void Dispose()
         {
@@ -629,17 +629,29 @@ namespace AutoClutch.Auto.Repo.Objects
             GC.SuppressFinalize(this);
         }
 
+        ~Repository()
+        {
+            Dispose(false);
+        }
+
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (_disposed)
             {
-                if (disposing)
-                {
-                    _context.Dispose();
-                }
+                return;
             }
 
-            this.disposed = true;
+            if (disposing)
+            {
+                // Free managed objects.
+                _context.Dispose();
+            }
+
+            // Release any unmanaged objects.
+            _dbSet = null;
+
+
+            _disposed = true;
         }
 
 

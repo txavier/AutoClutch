@@ -7,6 +7,8 @@ namespace AutoClutch.Auto.Repo.Interfaces
     public interface IRepository<TEntity>
      where TEntity : class
     {
+        void Dispose();
+
         TEntity Add(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false);
 
         System.Threading.Tasks.Task<IEnumerable<TEntity>> AddRangeAsync(IEnumerable<TEntity> entities, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false);
