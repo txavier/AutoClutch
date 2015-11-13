@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AutoClutch.Auto.Service.Services
 {
-    public class Service<TEntity> : IService<TEntity> where TEntity : class
+    public class Service<TEntity> : IDisposable, IService<TEntity> where TEntity : class
     {
         private readonly IRepository<TEntity> _repository;
 
@@ -249,6 +249,43 @@ namespace AutoClutch.Auto.Service.Services
 
             return idObject;
         }
+
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // Dispose managed state (managed objects).
+                    _repository.Dispose();
+                }
+
+                // Free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // Set large fields to null.
+                Errors = null;
+
+                disposedValue = true;
+            }
+        }
+
+        // Dispose(bool disposing) above has code to free unmanaged resources.
+        ~Service()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(false);
+        }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        #endregion
 
     }
 }
