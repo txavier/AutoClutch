@@ -7,13 +7,13 @@ namespace Auto.Test.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddFacilityTypeToFacilityModel : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddFacilityTypeToFacilityModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201510292048045_AddFacilityTypeToFacilityModel"; }
+            get { return "201511150826041_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

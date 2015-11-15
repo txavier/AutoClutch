@@ -16,13 +16,15 @@ namespace AutoClutch.Auto.Repo.Objects
 {
     public class Repository<TEntity> : IDisposable, IRepository<TEntity> where TEntity : class
     {
-        private readonly TrackerEnabledDbContext.TrackerContext _context;
+        private readonly DbContext _context;
 
         private DbSet<TEntity> _dbSet;
 
+        public IEnumerable<Error> Errors { get; set; }
+
         public string RegexMatchPrimaryKeyIdPattern { get; set; }
 
-        public Repository(TrackerEnabledDbContext.TrackerContext context)
+        public Repository(DbContext context)
         {
             if (context == null)
             {
@@ -34,6 +36,8 @@ namespace AutoClutch.Auto.Repo.Objects
             _dbSet = context.Set<TEntity>();
 
             RegexMatchPrimaryKeyIdPattern = null;
+
+            Errors = new List<Error>();
         }
 
         public bool Exists(object entityIdObject)
@@ -541,9 +545,18 @@ namespace AutoClutch.Auto.Repo.Objects
         {
             try
             {
-                var saveChangesInt = _context.SaveChanges(loggedInUserName);
+                int? saveChangesInt = null;
 
-                return saveChangesInt;
+                if (_context is TrackerEnabledDbContext.TrackerContext)
+                {
+                    saveChangesInt = ((TrackerEnabledDbContext.TrackerContext)_context).SaveChanges(loggedInUserName);
+                }
+                else
+                {
+                    saveChangesInt = _context.SaveChanges();
+                }
+
+                return saveChangesInt ?? -1;
             }
             catch (DbEntityValidationException ex)
             {
@@ -566,13 +579,31 @@ namespace AutoClutch.Auto.Repo.Objects
             }
         }
 
+        public IEnumerable<Error> GetAnyAvailableValidationErrors()
+        {
+            foreach (var dbEntityValidationResults in _context.GetValidationErrors())
+            {
+                foreach (var dbEntityValidationResult in dbEntityValidationResults.ValidationErrors)
+                {
+                    ((List<Error>)Errors).Add(new Error { Description = dbEntityValidationResult.ErrorMessage, Property = dbEntityValidationResult.PropertyName });
+                }
+            }
+
+            return Errors;
+        }
+
         public async Task<int> SaveChangesAsync(string loggedInUserName = null)
         {
             try
             {
-                var saveChangesInt = await _context.SaveChangesAsync(loggedInUserName);
-
-                return saveChangesInt;
+                if (_context is TrackerEnabledDbContext.TrackerContext)
+                {
+                    return await ((TrackerEnabledDbContext.TrackerContext)_context).SaveChangesAsync(loggedInUserName);
+                }
+                else
+                {
+                    return await _context.SaveChangesAsync();
+                }
             }
             catch (DbEntityValidationException ex)
             {
@@ -649,6 +680,8 @@ namespace AutoClutch.Auto.Repo.Objects
 
             // Release any unmanaged objects.
             _dbSet = null;
+
+            Errors = null;
 
 
             _disposed = true;

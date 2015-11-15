@@ -4,10 +4,12 @@ using System.Collections.Generic;
 
 namespace AutoClutch.Auto.Repo.Interfaces
 {
-    public interface IRepository<TEntity>
+    public interface IRepository<TEntity> : IDisposable
      where TEntity : class
     {
-        void Dispose();
+        System.Collections.Generic.IEnumerable<Repo.Objects.Error> Errors { get; set; }
+
+        IEnumerable<Objects.Error> GetAnyAvailableValidationErrors();
 
         TEntity Add(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool dontSave = false);
 

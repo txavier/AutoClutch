@@ -3,7 +3,7 @@ namespace Auto.Test.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialMigration : DbMigration
+    public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
@@ -33,6 +33,40 @@ namespace Auto.Test.Data.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AuditLogs", t => t.AuditLogId, cascadeDelete: true)
                 .Index(t => t.AuditLogId);
+            
+            CreateTable(
+                "dbo.facility",
+                c => new
+                    {
+                        facilityId = c.Int(nullable: false, identity: true),
+                        locationId = c.Int(),
+                        name = c.String(nullable: false),
+                        facilityType = c.String(),
+                    })
+                .PrimaryKey(t => t.facilityId)
+                .ForeignKey("dbo.location", t => t.locationId)
+                .Index(t => t.locationId);
+            
+            CreateTable(
+                "dbo.location",
+                c => new
+                    {
+                        locationId = c.Int(nullable: false, identity: true),
+                        contactUserId = c.Int(),
+                        name = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.locationId)
+                .ForeignKey("dbo.user", t => t.contactUserId)
+                .Index(t => t.contactUserId);
+            
+            CreateTable(
+                "dbo.user",
+                c => new
+                    {
+                        userId = c.Int(nullable: false, identity: true),
+                        name = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.userId);
             
         }
         

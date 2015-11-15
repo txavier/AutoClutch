@@ -1,4 +1,5 @@
 ﻿using AutoClutch.Auto.Repo.Interfaces;
+using AutoClutch.Auto.Repo.Objects;
 using AutoClutch.Auto.Service.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,13 @@ namespace AutoClutch.Auto.Service.Services
     {
         private readonly IRepository<TEntity> _repository;
 
-        public IEnumerable<Auto.Service.Objects.Error> Errors { get; set; }
+        public IEnumerable<Error> Errors { get; set; }
 
         public Service(IRepository<TEntity> repository)
         {
             this._repository = repository;
 
-            Errors = new List<Auto.Service.Objects.Error>();
+            Errors = new List<Error>();
         }
 
         public async Task<TEntity> FindAsync(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true)
@@ -248,6 +249,13 @@ namespace AutoClutch.Auto.Service.Services
             var idObject = _repository.GetEntityIdObject(entity);
 
             return idObject;
+        }
+
+        public IEnumerable<Error> GetAnyAvailableValidationErrors()
+        {
+            var validationErrors = _repository.GetAnyAvailableValidationErrors();
+
+            return validationErrors;
         }
 
         #region IDisposable Support

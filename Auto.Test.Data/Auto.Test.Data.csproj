@@ -63,14 +63,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoTestDataContextNonTrackerEnabled.cs" />
     <Compile Include="AutoTestDataContext.cs" />
-    <Compile Include="Migrations\201510291858278_InitialMigration.cs" />
-    <Compile Include="Migrations\201510291858278_InitialMigration.Designer.cs">
-      <DependentUpon>201510291858278_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201510292048045_AddFacilityTypeToFacilityModel.cs" />
-    <Compile Include="Migrations\201510292048045_AddFacilityTypeToFacilityModel.Designer.cs">
-      <DependentUpon>201510292048045_AddFacilityTypeToFacilityModel.cs</DependentUpon>
+    <Compile Include="Migrations\201511150826041_InitialCreate.cs" />
+    <Compile Include="Migrations\201511150826041_InitialCreate.Designer.cs">
+      <DependentUpon>201511150826041_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\facility.cs" />
@@ -83,11 +80,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201510291858278_InitialMigration.resx">
-      <DependentUpon>201510291858278_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201510292048045_AddFacilityTypeToFacilityModel.resx">
-      <DependentUpon>201510292048045_AddFacilityTypeToFacilityModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511150826041_InitialCreate.resx">
+      <DependentUpon>201511150826041_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
