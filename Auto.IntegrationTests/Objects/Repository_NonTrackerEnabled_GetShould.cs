@@ -51,7 +51,7 @@ namespace AutoClutch.Auto.Repo.Objects.Tests
 
 
                 // Act.
-                var retrievedFacility = facilityRepository.Get(searchParameters: "facilityType=\"Government\"");
+                var retrievedFacility = facilityRepository.Get(filterString: "facilityType=\"Government\"");
 
                 // Assert.
                 Assert.IsTrue(retrievedFacility != null);
@@ -116,7 +116,7 @@ namespace AutoClutch.Auto.Repo.Objects.Tests
 
 
                 // Act.
-                var retrievedFacility = facilityRepository.Get(searchParameters: "facilityType=\"Government\"", skip: 1);
+                var retrievedFacility = facilityRepository.Get(filterString: "facilityType=\"Government\"", skip: 1);
 
                 // Assert.
                 Assert.IsTrue(retrievedFacility != null);
@@ -181,7 +181,7 @@ namespace AutoClutch.Auto.Repo.Objects.Tests
 
 
                 // Act.
-                var retrievedFacility = facilityRepository.Get(searchParameters: "facilityType=\"Government\"", orderByString: "name descending");
+                var retrievedFacility = facilityRepository.Get(filterString: "facilityType=\"Government\"", orderByString: "name descending");
 
                 // Assert.
                 Assert.IsTrue(retrievedFacility != null);

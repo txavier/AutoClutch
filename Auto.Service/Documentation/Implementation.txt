@@ -5,3 +5,11 @@
 		[modifiedDate] [datetime2](7) NULL,
 		[lastModifiedByUserName] [nvarchar](50) NULL,
 		[softDelete] [bit] NULL
+
+ - Added idisposable implementation as found here
+	
+	https://lostechies.com/chrispatterson/2012/11/29/idisposable-done-right/
+
+ - Added Detect Changes method parameter.
+
+	http://blog.oneunicorn.com/2012/03/12/secrets-of-detectchanges-part-3-switching-off-automatic-detectchanges/
