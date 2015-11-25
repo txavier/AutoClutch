@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using TrackerEnabledDbContext.Common.Models;
 
 [assembly: CLSCompliant(true)]
 
@@ -14,11 +15,10 @@ namespace AutoClutch.Auto.Repo.Interfaces
     {
         IEnumerable<Error> Errors { get; set; }
         string RegexMatchPrimaryKeyIdPattern { get; set; }
-
+        IEnumerable<AuditLog> EntityAuditLog(object entityId);
         TEntity Add(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false);
         Task<TEntity> AddAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false);
         IEnumerable<TEntity> AddRange(IEnumerable<TEntity> entities, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false);
-        Task<IEnumerable<TEntity>> AddRangeAsync(IEnumerable<TEntity> entities, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false);
         TEntity Delete(TEntity entity, string loggedInUserName = null, bool dontSave = false);
         TEntity Delete(int id, string loggedInUserName = null, bool dontSave = false);
         Task<TEntity> DeleteAsync(int id, string loggedInUserName = null, bool dontSave = false);
@@ -39,5 +39,6 @@ namespace AutoClutch.Auto.Repo.Interfaces
         void SetEntityValueByPropertyName(TEntity entity, string propertyName, object value);
         TEntity Update(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false, string regexMatchPrimaryKeyIdPattern = null);
         Task<TEntity> UpdateAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false, string regexMatchPrimaryKeyIdPattern = null);
+        IQueryable<TEntity> Queryable();
     }
 }

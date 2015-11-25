@@ -10,14 +10,15 @@ using System.Data.Entity.Validation;
 using AutoClutch.Auto.Repo.Interfaces;
 using System.Text.RegularExpressions;
 using System.Linq.Dynamic;
+using TrackerEnabledDbContext.Common.Models;
 
 namespace AutoClutch.Auto.Repo.Objects
 {
-    public class Repository<TEntity> : IDisposable, IRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private readonly DbContext _context;
 
-        private DbSet<TEntity> _dbSet;
+        private readonly DbSet<TEntity> _dbSet;
 
         public IEnumerable<Error> Errors { get; set; }
 
@@ -30,9 +31,13 @@ namespace AutoClutch.Auto.Repo.Objects
                 throw new ArgumentNullException("context");
             }
 
+            //context.Configuration.ProxyCreationEnabled = false;
+
+            //context.Configuration.LazyLoadingEnabled = false;
+
             _context = context;
 
-            _dbSet = context.Set<TEntity>();
+            _dbSet = _context.Set<TEntity>();
 
             RegexMatchPrimaryKeyIdPattern = null;
 
@@ -128,16 +133,16 @@ namespace AutoClutch.Auto.Repo.Objects
         public IEnumerable<TEntity> GetAll(bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true)
         {
             try
-            { 
-            _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
+            {
+                _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
 
-            _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+                _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
 
                 _context.Configuration.AutoDetectChangesEnabled = autoDetectChangesEnabled;
 
-            var result = GetAllAsQueryable().ToList();
+                var result = GetAllAsQueryable().ToList();
 
-            return result;
+                return result;
             }
             finally
             {
@@ -184,48 +189,48 @@ namespace AutoClutch.Auto.Repo.Objects
             bool autoDetectChanges = true)
         {
             try
-            { 
-            _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
+            {
+                _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
 
-            _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+                _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
 
                 _context.Configuration.AutoDetectChangesEnabled = autoDetectChanges;
 
-            skip = skip ?? 0;
+                skip = skip ?? 0;
 
-            take = take ?? Int32.MaxValue;
+                take = take ?? Int32.MaxValue;
 
-            IEnumerable<TEntity> resultEnumerable = GetQuery(filter, filterString, distinctBy, orderBy, orderByString, maxBy, includeProperties);
+                IEnumerable<TEntity> resultEnumerable = GetQuery(filter, filterString, distinctBy, orderBy, orderByString, maxBy, includeProperties);
 
-            if (!resultEnumerable.Any())
-            {
-                return new List<TEntity>();
-            }
+                if (!resultEnumerable.Any())
+                {
+                    return new List<TEntity>();
+                }
 
-            // Skip and take require an ordered enumerable.  So if no orderby was passed and
-            // a skip value is given, order by the primary key.
-            if (skip.HasValue && orderBy == null && orderByString == null)
-            {
-                var entityKeyName = GetEntityKeyName(resultEnumerable.First());
+                // Skip and take require an ordered enumerable.  So if no orderby was passed and
+                // a skip value is given, order by the primary key.
+                if (skip.HasValue && orderBy == null && orderByString == null)
+                {
+                    var entityKeyName = GetEntityKeyName(resultEnumerable.First());
 
-                resultEnumerable.OrderBy(entityKeyName);
-            }
+                    resultEnumerable.OrderBy(entityKeyName);
+                }
 
-            resultEnumerable = resultEnumerable.Skip(skip.Value).Take(take.Value);
+                resultEnumerable = resultEnumerable.Skip(skip.Value).Take(take.Value);
 
-            List<TEntity> resultList = new List<TEntity>();
+                List<TEntity> resultList = new List<TEntity>();
 
-            resultList = resultEnumerable.ToList();
+                resultList = resultEnumerable.ToList();
 
-            return resultList;
+                return resultList;
             }
             finally
             {
-                _context.Configuration.LazyLoadingEnabled = true;
+                //_context.Configuration.LazyLoadingEnabled = true;
 
-                _context.Configuration.ProxyCreationEnabled = true;
+                //_context.Configuration.ProxyCreationEnabled = true;
 
-                _context.Configuration.AutoDetectChangesEnabled = true;
+                //_context.Configuration.AutoDetectChangesEnabled = true;
             }
         }
 
@@ -238,7 +243,7 @@ namespace AutoClutch.Auto.Repo.Objects
             Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy,
             string includeProperties)
         {
-            IQueryable<TEntity> query = _dbSet;
+            IQueryable<TEntity> query = _context.Set<TEntity>();
 
             if (!string.IsNullOrWhiteSpace(searchParameters))
             {
@@ -306,7 +311,25 @@ namespace AutoClutch.Auto.Repo.Objects
             return result;
         }
 
-        public async Task<IEnumerable<TEntity>> AddRangeAsync(IEnumerable<TEntity> entities, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
+        public IEnumerable<AuditLog> EntityAuditLog(object entityId)
+        {
+            if (_context is TrackerEnabledDbContext.TrackerContext)
+            {
+                var result = ((TrackerEnabledDbContext.TrackerContext)_context).GetLogs<TEntity>(entityId).ToList();
+
+                return result;
+            }
+
+            return null;
+        }
+
+        public async Task<TEntity> AddAsync(
+            TEntity entity,
+            string loggedInUserName = null,
+            bool lazyLoadingEnabled = true,
+            bool proxyCreationEnabled = true,
+            bool autoDetectChangesEnabled = true,
+            bool dontSave = false)
         {
             try
             {
@@ -316,14 +339,15 @@ namespace AutoClutch.Auto.Repo.Objects
 
                 _context.Configuration.AutoDetectChangesEnabled = autoDetectChangesEnabled;
 
-                _dbSet.AddRange(entities);
+                _context.Entry(entity).State = EntityState.Added;
 
                 if (!dontSave)
                 {
                     await SaveChangesAsync(loggedInUserName);
                 }
 
-                return entities;
+                return entity;
+
             }
             finally
             {
@@ -335,51 +359,16 @@ namespace AutoClutch.Auto.Repo.Objects
             }
         }
 
-        public async Task<TEntity> AddAsync(
-            TEntity entity, 
-            string loggedInUserName = null, 
-            bool lazyLoadingEnabled = true, 
-            bool proxyCreationEnabled = true, 
+        public IEnumerable<TEntity> AddRange(
+            IEnumerable<TEntity> entities,
+            string loggedInUserName = null,
+            bool lazyLoadingEnabled = true,
+            bool proxyCreationEnabled = true,
             bool autoDetectChangesEnabled = true,
             bool dontSave = false)
         {
             try
-            { 
-            _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
-
-            _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
-
-            _context.Configuration.AutoDetectChangesEnabled = autoDetectChangesEnabled;
-
-            _context.Entry(entity).State = EntityState.Added;
-
-            if (!dontSave)
             {
-                await SaveChangesAsync(loggedInUserName);
-            }
-
-            return entity;
-         
-            }
-            finally
-            {
-                _context.Configuration.LazyLoadingEnabled = true;
-
-                _context.Configuration.ProxyCreationEnabled = true;
-
-                _context.Configuration.AutoDetectChangesEnabled = true;
-            }
-}
-
-        public IEnumerable<TEntity> AddRange(
-            IEnumerable<TEntity> entities, 
-            string loggedInUserName = null, 
-            bool lazyLoadingEnabled = true, 
-            bool proxyCreationEnabled = true, 
-            bool autoDetectChangesEnabled = true,
-            bool dontSave = false)
-        {
-            try {
                 _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
 
                 _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
@@ -448,7 +437,7 @@ namespace AutoClutch.Auto.Repo.Objects
 
                 _context.Configuration.AutoDetectChangesEnabled = true;
             }
-}
+        }
 
         public async Task<TEntity> UpdateAsync(
             TEntity entity,
@@ -456,7 +445,7 @@ namespace AutoClutch.Auto.Repo.Objects
             bool lazyLoadingEnabled = true,
             bool proxyCreationEnabled = true,
             bool autoDetectChangesEnabled = true,
-            bool dontSave = false, 
+            bool dontSave = false,
             string regexMatchPrimaryKeyIdPattern = null)
         {
             try
@@ -531,12 +520,12 @@ namespace AutoClutch.Auto.Repo.Objects
         /// the primary key of your table.</param>
         /// <returns></returns>
         public TEntity Update(
-            TEntity entity, 
-            string loggedInUserName = null, 
-            bool lazyLoadingEnabled = true, 
-            bool proxyCreationEnabled = true, 
+            TEntity entity,
+            string loggedInUserName = null,
+            bool lazyLoadingEnabled = true,
+            bool proxyCreationEnabled = true,
             bool autoDetectChangesEnabled = true,
-            bool dontSave = false, 
+            bool dontSave = false,
             string regexMatchPrimaryKeyIdPattern = null)
         {
             try
@@ -810,6 +799,18 @@ namespace AutoClutch.Auto.Repo.Objects
             type.GetProperty(propertyName).SetValue(entity, value);
         }
 
+        /// <summary>
+        /// Quaint little method picked up from here, 
+        /// https://genericunitofworkandrepositories.codeplex.com/SourceControl/latest#main/Source/Repository.Pattern.Ef6/Repository.cs
+        /// This could signal the possible end of the Get(filter: ) method.
+        /// Experimental.
+        /// </summary>
+        /// <returns></returns>
+        public IQueryable<TEntity> Queryable()
+        {
+            return _dbSet;
+        }
+
         bool _disposed = false;
 
         public void Dispose()
@@ -838,10 +839,7 @@ namespace AutoClutch.Auto.Repo.Objects
             }
 
             // Release any unmanaged objects.
-            _dbSet = null;
-
             Errors = null;
-
 
             _disposed = true;
         }

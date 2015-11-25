@@ -18,7 +18,6 @@ namespace AutoClutch.Auto.Service.Interfaces
         Task<TEntity> AddAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false);
         TEntity AddOrUpdate(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false);
         IEnumerable<TEntity> AddRange(IEnumerable<TEntity> entities, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false);
-        Task<IEnumerable<TEntity>> AddRangeAsync(IEnumerable<TEntity> entities, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false);
         TEntity Delete(TEntity entity, string loggedInUserName = null, bool dontSave = false);
         TEntity Delete(int id, string loggedInUserName = null, bool dontSave = false);
         Task<TEntity> DeleteAsync(int id, string loggedInUserName = null, bool dontSave = false);
@@ -36,5 +35,6 @@ namespace AutoClutch.Auto.Service.Interfaces
         Task<int> SaveChangesAsync(string loggedInUserName = null);
         TEntity Update(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false);
         Task<TEntity> UpdateAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false);
+        IQueryable<TEntity> Queryable();
     }
 }

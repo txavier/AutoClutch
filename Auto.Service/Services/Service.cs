@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AutoClutch.Auto.Service.Services
 {
-    public class Service<TEntity> : IDisposable, IService<TEntity> where TEntity : class
+    public class Service<TEntity> : IService<TEntity> where TEntity : class
     {
         private readonly IRepository<TEntity> _repository;
 
@@ -49,20 +49,6 @@ namespace AutoClutch.Auto.Service.Services
         public async Task<TEntity> AddAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
         {
             var result = await _repository.AddAsync(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
-
-            return result;
-        }
-
-        /// <summary>
-        /// This mehod adds a range of entities to the database.
-        /// </summary>
-        /// <param name="entities"></param>
-        /// <param name="dontSave"></param>
-        /// <returns></returns>
-        /// <remarks>Please note at this time auditing is not enabled for AddRange methods.</remarks>
-        public async Task<IEnumerable<TEntity>> AddRangeAsync(IEnumerable<TEntity> entities, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
-        {
-            var result = await _repository.AddRangeAsync(entities, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
             return result;
         }
@@ -248,6 +234,8 @@ namespace AutoClutch.Auto.Service.Services
 
             return validationErrors;
         }
+
+        public IQueryable<TEntity> Queryable() { return _repository.Queryable(); }
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls

@@ -50,12 +50,12 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="TrackerEnabledDbContext, Version=3.3.12.0, Culture=neutral, PublicKeyToken=4f92af0b908c4a0a, processorArchitecture=MSIL">
-      <HintPath>..\packages\TrackerEnabledDbContext.3.3.12\lib\net45\TrackerEnabledDbContext.dll</HintPath>
+    <Reference Include="TrackerEnabledDbContext, Version=3.5.0.0, Culture=neutral, PublicKeyToken=4f92af0b908c4a0a, processorArchitecture=MSIL">
+      <HintPath>..\packages\TrackerEnabledDbContext.3.5\lib\net45\TrackerEnabledDbContext.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="TrackerEnabledDbContext.Common, Version=3.3.12.0, Culture=neutral, PublicKeyToken=4f92af0b908c4a0a, processorArchitecture=MSIL">
-      <HintPath>..\packages\TrackerEnabledDbContext.Common.3.3.12\lib\net45\TrackerEnabledDbContext.Common.dll</HintPath>
+    <Reference Include="TrackerEnabledDbContext.Common, Version=3.5.0.0, Culture=neutral, PublicKeyToken=4f92af0b908c4a0a, processorArchitecture=MSIL">
+      <HintPath>..\packages\TrackerEnabledDbContext.Common.3.5\lib\net45\TrackerEnabledDbContext.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -72,17 +72,23 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Objects\Repository_EntityHistory_Should.cs" />
     <Compile Include="Objects\Repository_ExistsShould.cs" />
     <Compile Include="Objects\Repository_FindShould.cs" />
     <Compile Include="Objects\Repository_NonTrackerEnabled_GetShould.cs" />
     <Compile Include="Objects\Repository_GetShould.cs" />
     <Compile Include="Objects\Repository_UpdateShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Service_Get_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Auto.Repo\Auto.Repo.csproj">
       <Project>{DBF36A7C-7697-41A0-86C6-80A0623026AE}</Project>
       <Name>Auto.Repo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Auto.Service\Auto.Service.csproj">
+      <Project>{E4224CC6-BDFC-467E-A26B-4DFC17DC478F}</Project>
+      <Name>Auto.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\Auto.Test.Data\Auto.Test.Data.csproj">
       <Project>{da88f473-e68e-4bfb-985b-42d549a59ab5}</Project>
