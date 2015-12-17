@@ -24,6 +24,18 @@ namespace AutoClutch.Auto.Repo.Objects
 
         public string RegexMatchPrimaryKeyIdPattern { get; set; }
 
+        public bool ProxyCreationEnabled
+        {
+            get { return _context.Configuration.ProxyCreationEnabled; }
+            set { _context.Configuration.ProxyCreationEnabled = value; }
+        }
+
+        public bool LazyLoadingEnabled
+        {
+            get { return _context.Configuration.LazyLoadingEnabled; }
+            set { _context.Configuration.LazyLoadingEnabled = value; }
+        }
+
         public Repository(DbContext context)
         {
             if (context == null)
@@ -458,7 +470,7 @@ namespace AutoClutch.Auto.Repo.Objects
 
                 // Call the update method already implemented and at the end 
                 // await the save changes if dont save was passed as true.
-                Update(entity, dontSave: false, regexMatchPrimaryKeyIdPattern: regexMatchPrimaryKeyIdPattern);
+                Update(entity, dontSave: true, regexMatchPrimaryKeyIdPattern: regexMatchPrimaryKeyIdPattern);
 
                 if (!dontSave)
                 {

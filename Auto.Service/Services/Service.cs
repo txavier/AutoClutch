@@ -15,6 +15,18 @@ namespace AutoClutch.Auto.Service.Services
 
         public IEnumerable<Error> Errors { get; set; }
 
+        public bool ProxyCreationEnabled
+        {
+            get { return _repository.ProxyCreationEnabled; }
+            set { _repository.ProxyCreationEnabled = value; }
+        }
+
+        public bool LazyLoadingEnabled
+        {
+            get { return _repository.LazyLoadingEnabled; }
+            set { _repository.LazyLoadingEnabled = value; }
+        }
+
         public Service(IRepository<TEntity> repository)
         {
             this._repository = repository;
@@ -177,11 +189,13 @@ namespace AutoClutch.Auto.Service.Services
 
         public int GetCount(
             System.Linq.Expressions.Expression<Func<TEntity, bool>> filter = null, 
+            string filterString = null,
             Func<IQueryable<TEntity>, IEnumerable<TEntity>> distinctBy = null, 
             Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy = null)
         {
             var result = _repository.GetCount(
                 filter: filter,
+                filterString: filterString,
                 distinctBy: distinctBy,
                 maxBy: maxBy);
 

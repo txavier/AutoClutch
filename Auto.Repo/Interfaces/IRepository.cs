@@ -13,6 +13,8 @@ namespace AutoClutch.Auto.Repo.Interfaces
     public interface IRepository<TEntity> : IDisposable
      where TEntity : class
     {
+        bool LazyLoadingEnabled { get; set; }
+        bool ProxyCreationEnabled { get; set; }
         IEnumerable<Error> Errors { get; set; }
         string RegexMatchPrimaryKeyIdPattern { get; set; }
         IEnumerable<AuditLog> EntityAuditLog(object entityId);
