@@ -55,12 +55,16 @@ namespace AutoClutch.Auto.Service.Services
         {
             var result = _repository.Add(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
+            Errors = Errors.Concat(_repository.Errors);
+
             return result;
         }
 
         public async Task<TEntity> AddAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
         {
             var result = await _repository.AddAsync(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
+
+            Errors = Errors.Concat(_repository.Errors);
 
             return result;
         }
@@ -83,12 +87,16 @@ namespace AutoClutch.Auto.Service.Services
         {
             var result = _repository.Update(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
+            Errors = Errors.Concat(_repository.Errors);
+
             return result;
         }
 
         public async Task<TEntity> UpdateAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
         {
             var result = await _repository.UpdateAsync(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
+
+            Errors = Errors.Concat(_repository.Errors);
 
             return result;
         }
@@ -109,11 +117,15 @@ namespace AutoClutch.Auto.Service.Services
             {
                 var newEntity = _repository.Add(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
+                Errors = Errors.Concat(_repository.Errors);
+
                 return newEntity;
             }
             else
             {
                 var updatedEntity = _repository.Update(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
+
+                Errors = Errors.Concat(_repository.Errors);
 
                 return updatedEntity;
             }
@@ -123,6 +135,8 @@ namespace AutoClutch.Auto.Service.Services
         {
             var result = _repository.Delete(id, loggedInUserName, dontSave: dontSave);
 
+            Errors = Errors.Concat(_repository.Errors);
+
             return result;
         }
 
@@ -130,12 +144,16 @@ namespace AutoClutch.Auto.Service.Services
         {
             var result = _repository.Delete(entity, loggedInUserName, dontSave: dontSave);
 
+            Errors = Errors.Concat(_repository.Errors);
+
             return result;
         }
 
         public async Task<TEntity> DeleteAsync(int id, string loggedInUserName = null, bool dontSave = false)
         {
             var result = await _repository.DeleteAsync(id, loggedInUserName, dontSave: dontSave);
+
+            Errors = Errors.Concat(_repository.Errors);
 
             return result;
         }

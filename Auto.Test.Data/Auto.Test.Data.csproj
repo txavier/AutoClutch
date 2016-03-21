@@ -73,6 +73,7 @@
     <Compile Include="Models\facility.cs" />
     <Compile Include="Models\location.cs" />
     <Compile Include="Models\user.cs" />
+    <Compile Include="Models\Partials\user.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

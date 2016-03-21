@@ -84,5 +84,22 @@ namespace AutoClutch.Auto.Repo.Objects.Tests
                 context.SaveChanges();
             }
         }
+
+        [TestMethod()]
+        public void Validate()
+        {
+            // Arrange.
+            var context = new AutoTestDataContext();
+
+            var userRepository = new Repository<user>(context);
+
+            var user = new user() { name = "user1", userId = -1 };
+
+            // Act.
+            userRepository.Add(user);
+
+            // Assert.
+            Assert.IsTrue(userRepository.Errors.Any());
+        }
     }
 }

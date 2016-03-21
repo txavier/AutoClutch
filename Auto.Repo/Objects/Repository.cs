@@ -430,6 +430,11 @@ namespace AutoClutch.Auto.Repo.Objects
 
                 _context.Entry(entity).State = EntityState.Added;
 
+                if(GetAnyAvailableValidationErrors().Any())
+                {
+                    return null;
+                }
+
                 if (!dontSave)
                 {
                     SaveChanges(loggedInUserName);
@@ -581,6 +586,11 @@ namespace AutoClutch.Auto.Repo.Objects
                             entry.State = EntityState.Modified;
                         }
                     }
+                }
+
+                if (GetAnyAvailableValidationErrors().Any())
+                {
+                    return null;
                 }
 
                 if (!dontSave)
