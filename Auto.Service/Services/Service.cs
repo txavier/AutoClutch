@@ -80,6 +80,8 @@ namespace AutoClutch.Auto.Service.Services
         {
             var result = _repository.AddRange(entities, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
+            Errors = Errors.Concat(_repository.Errors);
+
             return result;
         }
 

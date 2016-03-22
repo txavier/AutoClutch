@@ -353,6 +353,11 @@ namespace AutoClutch.Auto.Repo.Objects
 
                 _context.Entry(entity).State = EntityState.Added;
 
+                if (GetAnyAvailableValidationErrors().Any())
+                {
+                    return null;
+                }
+
                 if (!dontSave)
                 {
                     await SaveChangesAsync(loggedInUserName);
@@ -388,6 +393,11 @@ namespace AutoClutch.Auto.Repo.Objects
                 _context.Configuration.AutoDetectChangesEnabled = autoDetectChangesEnabled;
 
                 _dbSet.AddRange(entities);
+
+                if (GetAnyAvailableValidationErrors().Any())
+                {
+                    return null;
+                }
 
                 if (!dontSave)
                 {
@@ -476,6 +486,11 @@ namespace AutoClutch.Auto.Repo.Objects
                 // Call the update method already implemented and at the end 
                 // await the save changes if dont save was passed as true.
                 Update(entity, dontSave: true, regexMatchPrimaryKeyIdPattern: regexMatchPrimaryKeyIdPattern);
+
+                if (GetAnyAvailableValidationErrors().Any())
+                {
+                    return null;
+                }
 
                 if (!dontSave)
                 {
@@ -658,6 +673,11 @@ namespace AutoClutch.Auto.Repo.Objects
 
             _dbSet.Remove(entity);
 
+            if (GetAnyAvailableValidationErrors().Any())
+            {
+                return null;
+            }
+
             if (!dontSave)
             {
                 SaveChanges(loggedInUserName);
@@ -697,6 +717,11 @@ namespace AutoClutch.Auto.Repo.Objects
             }
 
             _dbSet.Remove(entity);
+
+            if (GetAnyAvailableValidationErrors().Any())
+            {
+                return null;
+            }
 
             if (!dontSave)
             {

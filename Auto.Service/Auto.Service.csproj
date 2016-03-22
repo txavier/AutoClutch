@@ -79,6 +79,7 @@
     <None Include="Packages\AutoClutch.AutoService.3.5.1.nupkg" />
     <None Include="Packages\AutoClutch.AutoService.3.5.nupkg" />
     <None Include="Packages\AutoClutch.AutoService.3.6.nupkg" />
+    <None Include="Packages\AutoClutch.AutoService.3.8.nupkg" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
