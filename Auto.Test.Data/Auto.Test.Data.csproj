@@ -69,6 +69,10 @@
     <Compile Include="Migrations\201511150826041_InitialCreate.Designer.cs">
       <DependentUpon>201511150826041_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604152213206_MakeFacilityISoftDeletable.cs" />
+    <Compile Include="Migrations\201604152213206_MakeFacilityISoftDeletable.Designer.cs">
+      <DependentUpon>201604152213206_MakeFacilityISoftDeletable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\facility.cs" />
     <Compile Include="Models\location.cs" />
@@ -84,6 +88,15 @@
     <EmbeddedResource Include="Migrations\201511150826041_InitialCreate.resx">
       <DependentUpon>201511150826041_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604152213206_MakeFacilityISoftDeletable.resx">
+      <DependentUpon>201604152213206_MakeFacilityISoftDeletable.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Auto.Service\Auto.Service.csproj">
+      <Project>{e4224cc6-bdfc-467e-a26b-4dfc17dc478f}</Project>
+      <Name>Auto.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,5 +1,6 @@
 namespace Auto.Test.Data
 {
+    using AutoClutch.Auto.Service.Interfaces;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -7,7 +8,7 @@ namespace Auto.Test.Data
     using System.Data.Entity.Spatial;
 
     [Table("facility")]
-    public partial class facility
+    public partial class facility : ISoftDeletable
     {
         public int facilityId { get; set; }
 
@@ -19,5 +20,7 @@ namespace Auto.Test.Data
         public string facilityType { get; set; }
 
         public virtual location location { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

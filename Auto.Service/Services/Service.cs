@@ -4,12 +4,13 @@ using AutoClutch.Auto.Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AutoClutch.Auto.Service.Services
 {
-    public class Service<TEntity> : IService<TEntity> where TEntity : class
+    public class Service<TEntity> : IService<TEntity> where TEntity : class, new()
     {
         private readonly IRepository<TEntity> _repository;
 
@@ -34,19 +35,48 @@ namespace AutoClutch.Auto.Service.Services
             Errors = new List<Error>();
         }
 
-        public async Task<TEntity> FindAsync(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true)
+        public async Task<TEntity> FindAsync(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, 
+            bool? includeSoftDeleted = null)
         {
-            return await _repository.FindAsync(entityId, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled);
+            var entity = await _repository.FindAsync(entityId, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled);
+
+            // If this is an entity with an interface ISoftdeletable and it is 
+            // set to deleted then dont indicate that this object exists unless
+            // we are checking for deleted objects also.
+            if (IsIncludeSoftDeleted(includeSoftDeleted, entity))
+            {
+                return null;
+            }
+
+            return entity;
         }
 
-        public TEntity Find(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true)
+        public TEntity Find(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool? includeSoftDeleted = null)
         {
-            return _repository.Find(entityId, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled);
+            var entity = _repository.Find(entityId, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled);
+
+            // If this is an entity with an interface ISoftdeletable and it is 
+            // set to deleted then dont indicate that this object exists unless
+            // we are checking for deleted objects also.
+            if (IsIncludeSoftDeleted(includeSoftDeleted, entity))
+            {
+                return null;
+            }
+
+            return entity;
         }
 
-        public IEnumerable<TEntity> GetAll(bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true)
+        public IEnumerable<TEntity> GetAll(bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool? includeSoftDeleted = null)
         {
-            var result = _repository.GetAll(lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled).ToList();
+            var result = _repository.GetAll(lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled);
+
+            // If this is an entity with an interface ISoftdeletable and it is 
+            // set to deleted then dont return this object unless
+            // we are checking for deleted objects also.
+            if (IsIncludeSoftDeleted(includeSoftDeleted))
+            {
+                result = result.Where(i => !((ISoftDeletable)result).IsDeleted);
+            }
 
             return result;
         }
@@ -133,8 +163,22 @@ namespace AutoClutch.Auto.Service.Services
             }
         }
 
-        public TEntity Delete(int id, string loggedInUserName = null, bool dontSave = false)
+        public TEntity Delete(int id, string loggedInUserName = null, bool softDelete = false, bool dontSave = false)
         {
+            if (softDelete)
+            {
+                var entity = Find(id);
+
+                if (entity is ISoftDeletable)
+                {
+                    (entity as ISoftDeletable).IsDeleted = true;
+
+                    var softDeleteResult = Update(entity, loggedInUserName, dontSave: dontSave);
+
+                    return softDeleteResult;
+                }
+            }
+
             var result = _repository.Delete(id, loggedInUserName, dontSave: dontSave);
 
             Errors = Errors.Concat(_repository.Errors);
@@ -142,17 +186,22 @@ namespace AutoClutch.Auto.Service.Services
             return result;
         }
 
-        public TEntity Delete(TEntity entity, string loggedInUserName = null, bool dontSave = false)
+        public async Task<TEntity> DeleteAsync(int id, string loggedInUserName = null, bool softDelete = false, bool dontSave = false)
         {
-            var result = _repository.Delete(entity, loggedInUserName, dontSave: dontSave);
+            if(softDelete)
+            {
+                var entity = await FindAsync(id);
 
-            Errors = Errors.Concat(_repository.Errors);
+                if(entity is ISoftDeletable)
+                {
+                    (entity as ISoftDeletable).IsDeleted = true;
 
-            return result;
-        }
+                    var softDeleteResult = await UpdateAsync(entity, loggedInUserName, dontSave: dontSave);
 
-        public async Task<TEntity> DeleteAsync(int id, string loggedInUserName = null, bool dontSave = false)
-        {
+                    return softDeleteResult;
+                }
+            }
+
             var result = await _repository.DeleteAsync(id, loggedInUserName, dontSave: dontSave);
 
             Errors = Errors.Concat(_repository.Errors);
@@ -188,8 +237,23 @@ namespace AutoClutch.Auto.Service.Services
             string includeProperties = "",
             bool lazyLoadingEnabled = true, 
             bool proxyCreationEnabled = true,
-            bool autoDetectChangesEnabled = true)
+            bool autoDetectChangesEnabled = true, bool? includeSoftDeleted = null)
         {
+            // If this is an entity with an interface ISoftdeletable and it is 
+            // set to deleted then dont return this object unless
+            // we are checking for deleted objects also.
+            if (IsIncludeSoftDeleted(includeSoftDeleted))
+            {
+                if (string.IsNullOrWhiteSpace(filterString))
+                {
+                    filterString += "IsDeleted=false";
+                }
+                else
+                {
+                    filterString += " AND IsDeleted=false";
+                }
+            }
+
             var result = _repository.Get(
                 filter: filter,
                 filterString: filterString,
@@ -211,8 +275,16 @@ namespace AutoClutch.Auto.Service.Services
             System.Linq.Expressions.Expression<Func<TEntity, bool>> filter = null, 
             string filterString = null,
             Func<IQueryable<TEntity>, IEnumerable<TEntity>> distinctBy = null, 
-            Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy = null)
+            Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy = null, bool? includeSoftDeleted = null)
         {
+            // If this is an entity with an interface ISoftdeletable and it is 
+            // set to deleted then dont return this object unless
+            // we are checking for deleted objects also.
+            if (IsIncludeSoftDeleted(includeSoftDeleted))
+            {
+                filterString += " AND IsDeleted=false";
+            }
+
             var result = _repository.GetCount(
                 filter: filter,
                 filterString: filterString,
@@ -236,27 +308,116 @@ namespace AutoClutch.Auto.Service.Services
             return result;
         }
 
-        public bool Exists(object entityIdObject)
+        public bool Exists(object entityIdObject, bool? includeSoftDeleted = null)
         {
-            var result = _repository.Exists(entityIdObject);
+            if (entityIdObject == null)
+            {
+                return false;
+            }
 
-            return result;
+            var found = false;
+
+            var result = Find(entityIdObject, includeSoftDeleted: includeSoftDeleted);
+
+            if (result != null)
+            {
+                found = true;
+            }
+
+            return found;
         }
 
+        public async Task<bool> ExistsAsync(object entityIdObject, bool? includeSoftDeleted = null)
+        {
+            if (entityIdObject == null)
+            {
+                return false;
+            }
+
+            var found = false;
+
+            var result = await FindAsync(entityIdObject, includeSoftDeleted: includeSoftDeleted);
+
+            if (result != null)
+            {
+                found = true;
+            }
+
+            return found;
+        }
         /// <summary>
         /// This method gets the property names of a generic object.
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public System.Collections.Generic.IEnumerable<string> GetEntityPropertyNames(TEntity entity)
+        public System.Collections.Generic.IEnumerable<string> GetEntityPropertyNames(TEntity entity, bool? includeSoftDeleted = null)
         {
+            // If this is an entity with an interface ISoftdeletable and it is 
+            // set to deleted then dont return this object unless
+            // we are checking for deleted objects also.
+            if (IsIncludeSoftDeleted(includeSoftDeleted, entity))
+            {
+                return new List<string>();
+            }
+
             var result = _repository.GetEntityPropertyNames(entity);
 
             return result;
         }
 
-        public object GetEntityIdObject(TEntity entity)
+        public static bool IsIncludeSoftDeleted(bool? includeSoftDeleted)
         {
+            var result = ((includeSoftDeleted != null) && !(includeSoftDeleted ?? false) && (new TEntity() is ISoftDeletable));
+            
+            return result;
+        }
+
+
+        public static bool IsIncludeSoftDeleted(bool? includeSoftDeleted, TEntity entity, out ISoftDeletable softDeletableEntity)
+        {
+            var result = ((includeSoftDeleted != null) && !(includeSoftDeleted ?? false) && (entity is ISoftDeletable));
+
+            if (result)
+            {
+                softDeletableEntity = entity as ISoftDeletable;
+
+                result = result && softDeletableEntity.IsDeleted;
+            }
+            else
+            {
+                softDeletableEntity = null;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// This method is just like the method of the same name with one parameter.  However, if you use this one 
+        /// and supply the entity that you are inspecting the result will be faster than that of the said method 
+        /// because the first method has to new up a TEntity to determine if it is ISoftDeletable.
+        /// </summary>
+        /// <param name="includeSoftDeleted"></param>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public static bool IsIncludeSoftDeleted(bool? includeSoftDeleted, TEntity entity)
+        {
+            ISoftDeletable softDeletableEntity;
+
+            var result = IsIncludeSoftDeleted(includeSoftDeleted, entity, out softDeletableEntity);
+
+            return result;
+        }
+
+        public object GetEntityIdObject(TEntity entity, bool? includeSoftDeleted = null)
+        {
+            // If this is an entity with an interface ISoftdeletable and it is 
+            // set to deleted then dont return this object unless
+            // we are checking for deleted objects also.
+            if (IsIncludeSoftDeleted(includeSoftDeleted, entity))
+            {
+                return null;
+            }
+
             var idObject = _repository.GetEntityIdObject(entity);
 
             return idObject;
@@ -269,7 +430,20 @@ namespace AutoClutch.Auto.Service.Services
             return validationErrors;
         }
 
-        public IQueryable<TEntity> Queryable() { return _repository.Queryable(); }
+        public IQueryable<TEntity> Queryable(bool? includeSoftDeleted = null)
+        {
+            var result = _repository.Queryable();
+
+            // If this is an entity with an interface ISoftdeletable and it is 
+            // set to deleted then dont return this object unless
+            // we are checking for deleted objects also.
+            if (IsIncludeSoftDeleted(includeSoftDeleted) && result.Any())
+            {
+                result = result.Where("IsDeleted=false");
+            }
+
+            return result;
+        }
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls

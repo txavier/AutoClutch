@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.Repo", "Auto.Repo\Auto.Repo.csproj", "{DBF36A7C-7697-41A0-86C6-80A0623026AE}"
 EndProject
@@ -17,6 +17,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.IntegrationTests", "Auto.IntegrationTests\Auto.IntegrationTests.csproj", "{BC02EF5E-9BEC-41DF-8189-7AFDFFD4957F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.Test.Data", "Auto.Test.Data\Auto.Test.Data.csproj", "{DA88F473-E68E-4BFB-985B-42D549A59AB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.UnitTests", "Auto.UnitTests\Auto.UnitTests.csproj", "{E43317CB-E226-454A-A4B4-757D5C8B6A59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +42,10 @@ Global
 		{DA88F473-E68E-4BFB-985B-42D549A59AB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA88F473-E68E-4BFB-985B-42D549A59AB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA88F473-E68E-4BFB-985B-42D549A59AB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E43317CB-E226-454A-A4B4-757D5C8B6A59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E43317CB-E226-454A-A4B4-757D5C8B6A59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E43317CB-E226-454A-A4B4-757D5C8B6A59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E43317CB-E226-454A-A4B4-757D5C8B6A59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -47,5 +53,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{BC02EF5E-9BEC-41DF-8189-7AFDFFD4957F} = {02DFAD48-FC0F-423F-9A8F-E7E26FE7F803}
 		{DA88F473-E68E-4BFB-985B-42D549A59AB5} = {02DFAD48-FC0F-423F-9A8F-E7E26FE7F803}
+		{E43317CB-E226-454A-A4B4-757D5C8B6A59} = {02DFAD48-FC0F-423F-9A8F-E7E26FE7F803}
 	EndGlobalSection
 EndGlobal

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Auto.Test.Data;
 using AutoClutch.Auto.Repo.Objects;
 
-namespace AutoClutch.Auto.Service.Services.Tests
+namespace AutoClutch.Auto.Service.Services.IntegrationTests
 {
     [TestClass()]
     public class Service_Get_Should

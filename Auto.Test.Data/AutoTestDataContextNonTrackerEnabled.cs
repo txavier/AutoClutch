@@ -5,7 +5,7 @@ namespace Auto.Test.Data
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
     using TrackerEnabledDbContext.Common.Extensions;
-
+    using AutoClutch.Auto.Service.Interfaces;
     public partial class AutoTestDataContextNonTrackerEnabled : DbContext
     {
         public AutoTestDataContextNonTrackerEnabled()
@@ -29,6 +29,9 @@ namespace Auto.Test.Data
                 .HasMany(e => e.locations)
                 .WithOptional(e => e.user)
                 .HasForeignKey(e => e.contactUserId);
+
+
+            // Tracker configuration.
 
             modelBuilder.Entity<location>().TrackAllProperties();
 

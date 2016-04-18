@@ -19,23 +19,23 @@ namespace AutoClutch.Auto.Service.Interfaces
         Task<TEntity> AddAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false);
         TEntity AddOrUpdate(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false);
         IEnumerable<TEntity> AddRange(IEnumerable<TEntity> entities, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false);
-        TEntity Delete(TEntity entity, string loggedInUserName = null, bool dontSave = false);
-        TEntity Delete(int id, string loggedInUserName = null, bool dontSave = false);
-        Task<TEntity> DeleteAsync(int id, string loggedInUserName = null, bool dontSave = false);
+        TEntity Delete(int id, string loggedInUserName = null, bool dontSave = false, bool softDelete = false);
+        Task<TEntity> DeleteAsync(int id, string loggedInUserName = null, bool dontSave = false, bool softDelete = false);
         void Dispose();
-        bool Exists(object entityIdObject);
-        TEntity Find(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true);
-        Task<TEntity> FindAsync(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true);
-        IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, string filterString = null, Func<IQueryable<TEntity>, IEnumerable<TEntity>> distinctBy = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string orderByString = null, Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy = null, int? skip = default(int?), int? take = default(int?), string includeProperties = "", bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true);
-        IEnumerable<TEntity> GetAll(bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true);
+        bool Exists(object entityIdObject, bool? includeSoftDeleted = null);
+        Task<bool> ExistsAsync(object entityIdObject, bool? includeSoftDeleted = null);
+        TEntity Find(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool? includeSoftDeleted = null);
+        Task<TEntity> FindAsync(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool? includeSoftDeleted = null);
+        IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, string filterString = null, Func<IQueryable<TEntity>, IEnumerable<TEntity>> distinctBy = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string orderByString = null, Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy = null, int? skip = default(int?), int? take = default(int?), string includeProperties = "", bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool? includeSoftDeleted = null);
+        IEnumerable<TEntity> GetAll(bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool? includeSoftDeleted = null);
         IEnumerable<Error> GetAnyAvailableValidationErrors();
-        int GetCount(Expression<Func<TEntity, bool>> filter = null, string filterString = null, Func<IQueryable<TEntity>, IEnumerable<TEntity>> distinctBy = null, Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy = null);
-        object GetEntityIdObject(TEntity entity);
-        IEnumerable<string> GetEntityPropertyNames(TEntity entity);
+        int GetCount(Expression<Func<TEntity, bool>> filter = null, string filterString = null, Func<IQueryable<TEntity>, IEnumerable<TEntity>> distinctBy = null, Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy = null, bool? includeSoftDeleted = null);
+        object GetEntityIdObject(TEntity entity, bool? includeSoftDeleted = null);
+        IEnumerable<string> GetEntityPropertyNames(TEntity entity, bool? includeSoftDeleted = null);
         int SaveChanges(string loggedInUserName = null);
         Task<int> SaveChangesAsync(string loggedInUserName = null);
         TEntity Update(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false);
         Task<TEntity> UpdateAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false);
-        IQueryable<TEntity> Queryable();
+        IQueryable<TEntity> Queryable(bool? includeSoftDeleted = null);
     }
 }
