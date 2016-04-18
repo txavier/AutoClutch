@@ -367,7 +367,7 @@ namespace AutoClutch.Auto.Service.Services
 
         public static bool IsIncludeSoftDeleted(bool? includeSoftDeleted)
         {
-            var result = ((includeSoftDeleted != null) && !(includeSoftDeleted ?? false) && (new TEntity() is ISoftDeletable));
+            var result = (!(includeSoftDeleted ?? false) && (new TEntity() is ISoftDeletable));
             
             return result;
         }
@@ -375,7 +375,7 @@ namespace AutoClutch.Auto.Service.Services
 
         public static bool IsIncludeSoftDeleted(bool? includeSoftDeleted, TEntity entity, out ISoftDeletable softDeletableEntity)
         {
-            var result = ((includeSoftDeleted != null) && !(includeSoftDeleted ?? false) && (entity is ISoftDeletable));
+            var result = (!(includeSoftDeleted ?? false) && (entity is ISoftDeletable));
 
             if (result)
             {

@@ -20,8 +20,6 @@ namespace Auto.IntegrationTests.Services
             try
             {
                 // Arrange.
-                TrackerEnabledDbContext.Common.Configuration.GlobalTrackingConfig.SetSoftDeletableCriteria<ISoftDeletable>(entity => entity.IsDeleted);
-
                 var context = new AutoTestDataContextNonTrackerEnabled();
 
                 // Add a user.

@@ -53,12 +53,12 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TrackerEnabledDbContext, Version=3.5.0.0, Culture=neutral, PublicKeyToken=4f92af0b908c4a0a, processorArchitecture=MSIL">
-      <HintPath>..\packages\TrackerEnabledDbContext.3.5\lib\net45\TrackerEnabledDbContext.dll</HintPath>
+    <Reference Include="TrackerEnabledDbContext, Version=3.5.2.0, Culture=neutral, PublicKeyToken=4f92af0b908c4a0a, processorArchitecture=MSIL">
+      <HintPath>..\packages\TrackerEnabledDbContext.3.5.2\lib\net45\TrackerEnabledDbContext.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="TrackerEnabledDbContext.Common, Version=3.5.0.0, Culture=neutral, PublicKeyToken=4f92af0b908c4a0a, processorArchitecture=MSIL">
-      <HintPath>..\packages\TrackerEnabledDbContext.Common.3.5\lib\net45\TrackerEnabledDbContext.Common.dll</HintPath>
+    <Reference Include="TrackerEnabledDbContext.Common, Version=3.5.2.0, Culture=neutral, PublicKeyToken=4f92af0b908c4a0a, processorArchitecture=MSIL">
+      <HintPath>..\packages\TrackerEnabledDbContext.Common.3.5.2\lib\net45\TrackerEnabledDbContext.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -72,6 +72,10 @@
     <Compile Include="Migrations\201604152213206_MakeFacilityISoftDeletable.cs" />
     <Compile Include="Migrations\201604152213206_MakeFacilityISoftDeletable.Designer.cs">
       <DependentUpon>201604152213206_MakeFacilityISoftDeletable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604181852485_UpdateTrackerEnabledDb.cs" />
+    <Compile Include="Migrations\201604181852485_UpdateTrackerEnabledDb.Designer.cs">
+      <DependentUpon>201604181852485_UpdateTrackerEnabledDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\facility.cs" />
@@ -90,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604152213206_MakeFacilityISoftDeletable.resx">
       <DependentUpon>201604152213206_MakeFacilityISoftDeletable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604181852485_UpdateTrackerEnabledDb.resx">
+      <DependentUpon>201604181852485_UpdateTrackerEnabledDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
