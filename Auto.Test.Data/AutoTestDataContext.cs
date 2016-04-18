@@ -5,7 +5,7 @@ namespace Auto.Test.Data
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
     using TrackerEnabledDbContext.Common.Extensions;
-
+    using AutoClutch.Auto.Service.Interfaces;
     public partial class AutoTestDataContext : TrackerEnabledDbContext.TrackerContext
     {
         public AutoTestDataContext()
@@ -29,6 +29,8 @@ namespace Auto.Test.Data
                 .HasMany(e => e.locations)
                 .WithOptional(e => e.user)
                 .HasForeignKey(e => e.contactUserId);
+
+            TrackerEnabledDbContext.Common.Configuration.GlobalTrackingConfig.SetSoftDeletableCriteria<ISoftDeletable>(entity => entity.IsDeleted);
 
             modelBuilder.Entity<location>().TrackAllProperties();
 

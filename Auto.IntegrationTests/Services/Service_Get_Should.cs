@@ -77,7 +77,7 @@ namespace AutoClutch.Auto.Service.Services.IntegrationTests
             finally
             {
                 // Clean up database.
-                var context = new AutoTestDataContext();
+                var context = new AutoTestDataContextNonTrackerEnabled();
 
                 context.users.RemoveRange(context.users.ToList());
 
@@ -85,11 +85,15 @@ namespace AutoClutch.Auto.Service.Services.IntegrationTests
 
                 context.facilities.RemoveRange(context.facilities.ToList());
 
-                context.LogDetails.RemoveRange(context.LogDetails.ToList());
-
-                context.AuditLog.RemoveRange(context.AuditLog.ToList());
-
                 context.SaveChanges();
+
+                var context2 = new AutoTestDataContext();
+
+                context2.LogDetails.RemoveRange(context2.LogDetails.ToList());
+
+                context2.AuditLog.RemoveRange(context2.AuditLog.ToList());
+
+                context2.SaveChanges();
             }
         }
 
@@ -152,7 +156,7 @@ namespace AutoClutch.Auto.Service.Services.IntegrationTests
             finally
             {
                 // Clean up database.
-                var context = new AutoTestDataContext();
+                var context = new AutoTestDataContextNonTrackerEnabled();
 
                 context.users.RemoveRange(context.users.ToList());
 
@@ -160,11 +164,15 @@ namespace AutoClutch.Auto.Service.Services.IntegrationTests
 
                 context.facilities.RemoveRange(context.facilities.ToList());
 
-                context.LogDetails.RemoveRange(context.LogDetails.ToList());
-
-                context.AuditLog.RemoveRange(context.AuditLog.ToList());
-
                 context.SaveChanges();
+
+                var context2 = new AutoTestDataContext();
+
+                context2.LogDetails.RemoveRange(context2.LogDetails.ToList());
+
+                context2.AuditLog.RemoveRange(context2.AuditLog.ToList());
+
+                context2.SaveChanges();
             }
         }
     }

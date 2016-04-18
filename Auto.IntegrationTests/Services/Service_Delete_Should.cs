@@ -20,7 +20,7 @@ namespace Auto.IntegrationTests.Services
             try
             {
                 // Arrange.
-                var context = new AutoTestDataContextNonTrackerEnabled();
+                var context = new AutoTestDataContext();
 
                 // Add a user.
                 var user = new user() { name = "user1" };
@@ -54,12 +54,12 @@ namespace Auto.IntegrationTests.Services
                 facilityService.Add(facility3, "theox");
 
                 // Act.
-                var result = new Service<facility>(new Repository<facility>(new AutoTestDataContextNonTrackerEnabled())).Delete(facility3.facilityId, softDelete: true);
+                var result = new Service<facility>(new Repository<facility>(new AutoTestDataContext())).Delete(facility3.facilityId, softDelete: true);
 
-                var shouldNotHaveIt = new Service<facility>(new Repository<facility>(new AutoTestDataContextNonTrackerEnabled())).Queryable()
+                var shouldNotHaveIt = new Service<facility>(new Repository<facility>(new AutoTestDataContext())).Queryable()
                     .Where(i => i.facilityId == facility3.facilityId);
 
-                var shouldHaveIt = new Service<facility>(new Repository<facility>(new AutoTestDataContextNonTrackerEnabled())).Queryable(includeSoftDeleted: true)
+                var shouldHaveIt = new Service<facility>(new Repository<facility>(new AutoTestDataContext())).Queryable(includeSoftDeleted: true)
                     .Where(i => i.facilityId == facility3.facilityId);
 
                 // Assert.
@@ -70,7 +70,7 @@ namespace Auto.IntegrationTests.Services
             finally
             {
                 // Clean up database.
-                var context = new AutoTestDataContext();
+                var context = new AutoTestDataContextNonTrackerEnabled();
 
                 context.users.RemoveRange(context.users.ToList());
 
@@ -78,11 +78,15 @@ namespace Auto.IntegrationTests.Services
 
                 context.facilities.RemoveRange(context.facilities.ToList());
 
-                context.LogDetails.RemoveRange(context.LogDetails.ToList());
-
-                context.AuditLog.RemoveRange(context.AuditLog.ToList());
-
                 context.SaveChanges();
+
+                var context2 = new AutoTestDataContext();
+
+                context2.LogDetails.RemoveRange(context2.LogDetails.ToList());
+
+                context2.AuditLog.RemoveRange(context2.AuditLog.ToList());
+
+                context2.SaveChanges();
             }
         }
     }

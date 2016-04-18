@@ -73,7 +73,7 @@ namespace AutoClutch.Auto.Repo.Objects.Tests
             finally
             {
                 // Clean up database.
-                var context = new AutoTestDataContext();
+                var context = new AutoTestDataContextNonTrackerEnabled();
 
                 context.users.RemoveRange(context.users.ToList());
 
@@ -82,6 +82,14 @@ namespace AutoClutch.Auto.Repo.Objects.Tests
                 context.facilities.RemoveRange(context.facilities.ToList());
 
                 context.SaveChanges();
+
+                var context2 = new AutoTestDataContext();
+
+                context2.LogDetails.RemoveRange(context2.LogDetails.ToList());
+
+                context2.AuditLog.RemoveRange(context2.AuditLog.ToList());
+
+                context2.SaveChanges();
             }
         }
 

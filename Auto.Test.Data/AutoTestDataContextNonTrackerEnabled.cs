@@ -32,11 +32,9 @@ namespace Auto.Test.Data
 
 
             // Tracker configuration.
-            //TrackerEnabledDbContext.Common.Configuration.GlobalTrackingConfig.SetSoftDeletableCriteria<ISoftDeletable>(entity => entity.IsDeleted);
+            //modelBuilder.Entity<location>().TrackAllProperties();
 
-            modelBuilder.Entity<location>().TrackAllProperties();
-
-            modelBuilder.Entity<facility>().TrackAllProperties();
+            //modelBuilder.Entity<facility>().TrackAllProperties();
         }
     }
 }
