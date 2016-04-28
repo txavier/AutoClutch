@@ -57,36 +57,6 @@
   <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Packages\AutoClutch.AutoService.1.0.0.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.1.0.1.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.1.0.2.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.1.0.3.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.1.0.4.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.1.0.5.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.1.0.6.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.1.0.7.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.1.0.9.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.1.1.0.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.2.0.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.2.1.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.2.2.1.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.2.2.2.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.2.2.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.2.3.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.2.5.1.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.2.5.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.2.6.1.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.2.6.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.3.0.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.3.1.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.3.2.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.3.3.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.3.4.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.3.5.1.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.3.5.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.3.6.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.3.8.nupkg" />
-    <None Include="Packages\AutoClutch.AutoService.3.9.nupkg" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>

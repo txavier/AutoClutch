@@ -173,7 +173,7 @@ namespace AutoClutch.Auto.Service.Services
                 {
                     (entity as ISoftDeletable).IsDeleted = true;
 
-                    var softDeleteResult = Update(entity, loggedInUserName, dontSave: dontSave);
+                    var softDeleteResult = Update(entity, loggedInUserName: loggedInUserName, dontSave: dontSave);
 
                     return softDeleteResult;
                 }

@@ -392,7 +392,7 @@ namespace AutoClutch.Auto.Repo.Objects
 
                 _context.Configuration.AutoDetectChangesEnabled = autoDetectChangesEnabled;
 
-                _dbSet.AddRange(entities);
+                entities = _dbSet.AddRange(entities);
 
                 if (GetAnyAvailableValidationErrors().Any())
                 {
