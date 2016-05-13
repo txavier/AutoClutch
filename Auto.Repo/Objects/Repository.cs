@@ -776,15 +776,15 @@ namespace AutoClutch.Auto.Repo.Objects
 
         public IEnumerable<Error> GetAnyAvailableValidationErrors()
         {
-            foreach (var dbEntityValidationResults in _context.GetValidationErrors())
+            foreach (var dbEntityValidationResults in _context.GetValidationErrors().Distinct())
             {
-                foreach (var dbEntityValidationResult in dbEntityValidationResults.ValidationErrors)
+                foreach (var dbEntityValidationResult in dbEntityValidationResults.ValidationErrors.Distinct())
                 {
                     ((List<Error>)Errors).Add(new Error { Description = dbEntityValidationResult.ErrorMessage, Property = dbEntityValidationResult.PropertyName });
                 }
             }
 
-            return Errors;
+            return Errors.Distinct();
         }
 
         public async Task<int> SaveChangesAsync(string loggedInUserName = null)

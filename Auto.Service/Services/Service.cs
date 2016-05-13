@@ -85,7 +85,7 @@ namespace AutoClutch.Auto.Service.Services
         {
             var result = _repository.Add(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
-            Errors = Errors.Concat(_repository.Errors);
+            Errors = Errors.Concat(_repository.Errors).Distinct();
 
             return result;
         }
@@ -94,7 +94,7 @@ namespace AutoClutch.Auto.Service.Services
         {
             var result = await _repository.AddAsync(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
-            Errors = Errors.Concat(_repository.Errors);
+            Errors = Errors.Concat(_repository.Errors).Distinct();
 
             return result;
         }
@@ -110,7 +110,7 @@ namespace AutoClutch.Auto.Service.Services
         {
             var result = _repository.AddRange(entities, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
-            Errors = Errors.Concat(_repository.Errors);
+            Errors = Errors.Concat(_repository.Errors).Distinct();
 
             return result;
         }
@@ -119,7 +119,7 @@ namespace AutoClutch.Auto.Service.Services
         {
             var result = _repository.Update(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
-            Errors = Errors.Concat(_repository.Errors);
+            Errors = Errors.Concat(_repository.Errors).Distinct();
 
             return result;
         }
@@ -128,7 +128,7 @@ namespace AutoClutch.Auto.Service.Services
         {
             var result = await _repository.UpdateAsync(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
-            Errors = Errors.Concat(_repository.Errors);
+            Errors = Errors.Concat(_repository.Errors).Distinct();
 
             return result;
         }
@@ -149,7 +149,7 @@ namespace AutoClutch.Auto.Service.Services
             {
                 var newEntity = _repository.Add(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
-                Errors = Errors.Concat(_repository.Errors);
+                Errors = Errors.Concat(_repository.Errors).Distinct();
 
                 return newEntity;
             }
@@ -157,7 +157,7 @@ namespace AutoClutch.Auto.Service.Services
             {
                 var updatedEntity = _repository.Update(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
-                Errors = Errors.Concat(_repository.Errors);
+                Errors = Errors.Concat(_repository.Errors).Distinct();
 
                 return updatedEntity;
             }
@@ -181,7 +181,7 @@ namespace AutoClutch.Auto.Service.Services
 
             var result = _repository.Delete(id, loggedInUserName, dontSave: dontSave);
 
-            Errors = Errors.Concat(_repository.Errors);
+            Errors = Errors.Concat(_repository.Errors).Distinct();
 
             return result;
         }
@@ -204,7 +204,7 @@ namespace AutoClutch.Auto.Service.Services
 
             var result = await _repository.DeleteAsync(id, loggedInUserName, dontSave: dontSave);
 
-            Errors = Errors.Concat(_repository.Errors);
+            Errors = Errors.Concat(_repository.Errors).Distinct();
 
             return result;
         }
