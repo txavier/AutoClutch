@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 [assembly: CLSCompliant(true)]
 
-namespace AutoClutch.Auto.Service.Interfaces
+namespace AutoClutch.Auto.Core.Interfaces
 {
     public interface IService<TEntity> : IDisposable
      where TEntity : class

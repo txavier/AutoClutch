@@ -1,6 +1,6 @@
 namespace Auto.Test.Data
 {
-    using AutoClutch.Auto.Service.Interfaces;
+    using AutoClutch.Auto.Core.Interfaces;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;

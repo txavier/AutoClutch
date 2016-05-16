@@ -9,7 +9,7 @@ using Auto.Test.Data;
 using AutoClutch.Auto.Repo.Objects;
 using Moq;
 using AutoClutch.Auto.Repo.Interfaces;
-using AutoClutch.Auto.Service.Interfaces;
+
 using StructureMap.AutoMocking.Moq;
 
 namespace AutoClutch.Auto.Service.Services.UnitTests

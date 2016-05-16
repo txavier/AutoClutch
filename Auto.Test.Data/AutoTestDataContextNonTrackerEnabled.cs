@@ -5,7 +5,7 @@ namespace Auto.Test.Data
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
     using TrackerEnabledDbContext.Common.Extensions;
-    using AutoClutch.Auto.Service.Interfaces;
+
     public partial class AutoTestDataContextNonTrackerEnabled : DbContext
     {
         public AutoTestDataContextNonTrackerEnabled()

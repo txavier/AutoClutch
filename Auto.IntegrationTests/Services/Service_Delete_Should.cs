@@ -1,6 +1,5 @@
 ﻿using Auto.Test.Data;
 using AutoClutch.Auto.Repo.Objects;
-using AutoClutch.Auto.Service.Interfaces;
 using AutoClutch.Auto.Service.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
