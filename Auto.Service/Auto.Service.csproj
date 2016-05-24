@@ -65,10 +65,19 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Documentation\AutoClutch Templates Guide.docx" />
+    <None Include="Documentation\AutoClutch.CompositionRoot.zip" />
+    <None Include="Documentation\AutoClutch.Core.zip" />
+    <None Include="Documentation\AutoClutch.Data.zip" />
+    <None Include="Documentation\AutoClutch.Infrastructure.zip" />
+    <None Include="Documentation\AutoClutch.IntegrationTests.zip" />
+    <None Include="Documentation\AutoClutch.Site.zip" />
+    <None Include="Documentation\AutoClutch.UnitTests Template - Moq Structuremap.zip" />
     <None Include="packages.config" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Documentation\AutoClutch ReadMe.txt" />
     <Content Include="Documentation\Implementation.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
