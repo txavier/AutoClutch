@@ -1,0 +1,72 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Users</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row col-lg-12">
+    <a class="btn btn-default" href="#/engineer">Add User</a>
+</div>
+<div class="row col-lg-12">
+    <label class="control-label">{{ vm.totalItems }} Total Users</label>
+</div>
+<div class="row col-lg-12">
+    <table class="table table-striped">
+        <tr>
+            <th>
+                <a data-ng-click="vm.setSortOrder('name')">Name</a>
+            </th>
+            <th>
+                <a data-ng-click="vm.setSortOrder('phoneNumber')">Phone Number</a>
+            </th>
+            <th>
+                <a data-ng-click="vm.setSortOrder('emailAddress')">Email Address</a>
+            </th>
+            <th>
+                <a data-ng-click="vm.setSortOrder('section')">Section</a>
+            </th>
+            <th>
+                <a data-ng-click="vm.setSortOrder('areaEngineer')">Area Engineer</a>
+            </th>
+            <th>
+                <a data-ng-click="vm.setSortOrder('sectionChief')">Section Chief</a>
+            </th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <tr ng-repeat="user in vm.entities">
+            <td>
+                {{ user.name }}
+            </td>
+            <td>
+                {{ user.phoneNumber | tel }}
+            </td>
+            <td>
+                {{ user.emailAddress }}
+            </td>
+            <td>
+                {{ user.section.name }}
+            </td>
+            <td>
+                {{ user.areaEngineer ? 'Yes' : 'No' }}
+            </td>
+            <td>
+                {{ user.sectionChief ? 'Yes' : 'No' }}
+            </td>
+            <td>
+                <a class="btn btn-default" href="#/engineer/{{ user.engineerId }}">
+                    Edit
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-default" data-ng-click="vm.deleteEntity(user.userId)">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    </table>
+    <div class="form-group">
+        <pagination total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.currentPage" ng-change="vm.pageChanged()" max-size="7" boundary-links="true"
+                    rotate="false"></pagination>
+    </div>
+</div>

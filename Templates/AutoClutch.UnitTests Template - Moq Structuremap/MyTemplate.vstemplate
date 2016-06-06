@@ -1,0 +1,70 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>AutoClutch.UnitTests Template - Moq Structuremap</Name>
+    <Description>This unit test template uses MSTest, MOQ and Structuremap for unit tests.</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>AutoClutch.UnitTests Template - Moq Structuremap</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="ContractTrackingManagement.UnitTests.csproj" File="ContractTrackingManagement.UnitTests.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="App.config">App.config</ProjectItem>
+      <Folder Name="bin" TargetFolderName="bin">
+        <Folder Name="Debug" TargetFolderName="Debug">
+          <ProjectItem ReplaceParameters="false" TargetFileName="Auto.Repo.dll">Auto.Repo.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Auto.Service.dll">Auto.Service.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Elmah.dll">Elmah.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="EntityFramework.dll">EntityFramework.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="EntityFramework.MappingAPI.dll">EntityFramework.MappingAPI.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="EntityFramework.SqlServer.dll">EntityFramework.SqlServer.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll">Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Microsoft.Web.Infrastructure.dll">Microsoft.Web.Infrastructure.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Moq.dll">Moq.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Newtonsoft.Json.dll">Newtonsoft.Json.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="StructureMap.AutoMocking.Moq.dll">StructureMap.AutoMocking.Moq.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="StructureMap.dll">StructureMap.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="StructureMap.Net4.dll">StructureMap.Net4.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="System.Linq.Dynamic.dll">System.Linq.Dynamic.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="System.Net.Http.Formatting.dll">System.Net.Http.Formatting.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.Http.dll">System.Web.Http.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.Http.WebHost.dll">System.Web.Http.WebHost.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.Mvc.dll">System.Web.Mvc.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.Optimization.dll">System.Web.Optimization.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.Razor.dll">System.Web.Razor.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.WebPages.Deployment.dll">System.Web.WebPages.Deployment.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.WebPages.dll">System.Web.WebPages.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.WebPages.Razor.dll">System.Web.WebPages.Razor.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="TrackerEnabledDbContext.Common.dll">TrackerEnabledDbContext.Common.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="TrackerEnabledDbContext.dll">TrackerEnabledDbContext.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="WebActivatorEx.dll">WebActivatorEx.dll</ProjectItem>
+        </Folder>
+      </Folder>
+      <Folder Name="Controllers" TargetFolderName="Controllers">
+        <ProjectItem ReplaceParameters="true" TargetFileName="BaseApiController_GetDynamicQueryShould.cs">BaseApiController_GetDynamicQueryShould.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Models" TargetFolderName="Models">
+        <Folder Name="Partials" TargetFolderName="Partials">
+          <ProjectItem ReplaceParameters="true" TargetFileName="contract_GetCurrentContractValueDisplayShould.cs">contract_GetCurrentContractValueDisplayShould.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="contract_GetProjectRetainageDisplayShould.cs">contract_GetProjectRetainageDisplayShould.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="payment_GetLineADisplayShould.cs">payment_GetLineADisplayShould.cs</ProjectItem>
+        </Folder>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Services" TargetFolderName="Services">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ImportService_ImportShould.cs">ImportService_ImportShould.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ImportService_IsValidXmlShould.cs">ImportService_IsValidXmlShould.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="WorkOrderService_GetNewWorkOrderNumberShould.cs">WorkOrderService_GetNewWorkOrderNumberShould.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

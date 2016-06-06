@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{383CC64E-0EBD-4222-8168-AA2D4BE84257}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>$safeprojectname$</RootNamespace>
+    <AssemblyName>$safeprojectname$</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Auto.Repo, Version=1.0.8.14, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoClutch.AutoRepo.3.12\lib\net45\Auto.Repo.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Auto.Service, Version=1.0.8.14, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoClutch.AutoService.3.12\lib\net45\Auto.Service.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.MappingAPI, Version=6.1.0.9, Culture=neutral, PublicKeyToken=7ee2e825d201459e, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.MappingAPI.6.1.0.9\lib\net45\EntityFramework.MappingAPI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap, Version=4.0.1.318, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.4.0.1.318\lib\net40\StructureMap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap.Net4, Version=4.0.1.318, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.4.0.1.318\lib\net40\StructureMap.Net4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.4\lib\net40\System.Linq.Dynamic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TrackerEnabledDbContext, Version=3.5.2.0, Culture=neutral, PublicKeyToken=4f92af0b908c4a0a, processorArchitecture=MSIL">
+      <HintPath>..\packages\TrackerEnabledDbContext.3.5.2\lib\net45\TrackerEnabledDbContext.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TrackerEnabledDbContext.Common, Version=3.5.2.0, Culture=neutral, PublicKeyToken=4f92af0b908c4a0a, processorArchitecture=MSIL">
+      <HintPath>..\packages\TrackerEnabledDbContext.Common.3.5.2\lib\net45\TrackerEnabledDbContext.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="Controllers\BaseApiController_GetShould.cs" />
+    <Compile Include="Data\EfQueryLowFundContractCountBySectionOfLoggedInUser_QueryLowFundContractCountBySectionOfLoggedInUserShould.cs" />
+    <Compile Include="Data\EfQueryWorkOrdersPerContractByEngineer_QueryWorkOrdersPerContractByEngineerShould.cs" />
+    <Compile Include="Getters\ImportFilesGetter_GetXMLImportFilesShould.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ContractService_QueryExpiringContractCountBySectionOfLoggedInUserShould.cs" />
+    <Compile Include="Services\ContractService_QueryLowFundContractCountBySectionOfLoggedInUserShould.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="bin\Debug\access-contractdb-xml\Administrator.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Change Order.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\CO Type.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Contract Category.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Contract Information.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Contract Status.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Contract Type.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Contractor.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Deduction Types.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Deductions.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Engineer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Evaluations.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Field Reports.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Filter Contract Status.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Filter Engineer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Filter Location.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Filter WO Status.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Location.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Original or Renewal.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Payment Type.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Payments.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\PM Reports.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Repair Type.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Section Chief PW.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Sections.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Service Type.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\WO History.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\WO Status.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Work Orders.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\access-contractdb-xml\Yes No.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ContractTrackingManagement.Core\ContractTrackingManagement.Core.csproj">
+      <Project>{3b826046-ac3c-4f1f-9a74-7a7cf8c47a19}</Project>
+      <Name>ContractTrackingManagement.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ContractTrackingManagement.Infrastructure\ContractTrackingManagement.Infrastructure.csproj">
+      <Project>{8353E604-41E2-4BB7-B50E-4CEFF06DA666}</Project>
+      <Name>ContractTrackingManagement.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ContractTrackingManagement\ContractTrackingManagement.csproj">
+      <Project>{3C8AAC44-3940-493C-A453-67F34A6847E7}</Project>
+      <Name>ContractTrackingManagement</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\access-contractdb-xml\Administrator.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Change Order.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\CO Type.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Contract Category.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Contract Information.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Contract Status.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Contract Type.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Contractor.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Deduction Types.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Deductions.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Engineer.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Evaluations.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Field Reports.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Filter Contract Status.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Filter Engineer.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Filter Location.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Filter WO Status.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Location.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Original or Renewal.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Payment Type.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Payments.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\PM Reports.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Repair Type.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Section Chief PW.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Sections.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Service Type.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\WO History.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\WO Status.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Work Orders.xml" />
+    <Content Include="bin\Debug\access-contractdb-xml\Yes No.xml" />
+    <Content Include="bin\Debug\Auto.Repo.dll" />
+    <Content Include="bin\Debug\Auto.Service.dll" />
+    <Content Include="bin\Debug\EntityFramework.dll" />
+    <Content Include="bin\Debug\EntityFramework.MappingAPI.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.dll" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

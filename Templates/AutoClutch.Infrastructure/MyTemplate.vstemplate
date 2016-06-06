@@ -1,0 +1,63 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>AutoClutch.Infrastructure</Name>
+    <Description>AutoClutch infrastructure layer template.</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>AutoClutch.Infrastructure</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.png</Icon>
+    <PreviewImage>__PreviewImage.png</PreviewImage>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="AutoClutch.Infrastructure.csproj" File="AutoClutch.Infrastructure.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="App.config">App.config</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="App.Debug.config">App.Debug.config</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="App.Release.config">App.Release.config</ProjectItem>
+      <Folder Name="Data" TargetFolderName="Data">
+        <ProjectItem ReplaceParameters="true" TargetFileName="EfQueryContractTotalsPerSection.cs">EfQueryContractTotalsPerSection.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Facades" TargetFolderName="Facades">
+        <ProjectItem ReplaceParameters="true" TargetFileName="DocumentManagementServiceFacade.cs">DocumentManagementServiceFacade.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Getters" TargetFolderName="Getters">
+        <ProjectItem ReplaceParameters="true" TargetFileName="EnvironmentConfigSettingsGetter.cs">EnvironmentConfigSettingsGetter.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ImportFilesGetter.cs">ImportFilesGetter.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="SqlServerReportGetter.cs">SqlServerReportGetter.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Settings.settings">Settings.settings</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Settings.Designer.cs">Settings.Designer.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Service References" TargetFolderName="Service References" />
+      <Folder Name="Web References" TargetFolderName="Web References">
+        <Folder Name="DocumentManagementService" TargetFolderName="DocumentManagementService">
+          <ProjectItem ReplaceParameters="true" TargetFileName="Reference.map">Reference.map</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="DocumentObject.datasource">DocumentObject.datasource</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="DocumentObjectDetail.datasource">DocumentObjectDetail.datasource</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="FileObject.datasource">FileObject.datasource</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Reference.cs">Reference.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Service1.disco">Service1.disco</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Service1.wsdl">Service1.wsdl</ProjectItem>
+        </Folder>
+        <Folder Name="ReportExecutionService" TargetFolderName="ReportExecutionService">
+          <ProjectItem ReplaceParameters="true" TargetFileName="Reference.map">Reference.map</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="DocumentMapNode.datasource">DocumentMapNode.datasource</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ExecutionInfo.datasource">ExecutionInfo.datasource</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ExecutionInfo2.datasource">ExecutionInfo2.datasource</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Extension.datasource">Extension.datasource</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Reference.cs">Reference.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Warning.datasource">Warning.datasource</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="reportexecution2005.wsdl">reportexecution2005.wsdl</ProjectItem>
+        </Folder>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

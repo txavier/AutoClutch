@@ -1,0 +1,51 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Setting</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row col-lg-12">
+    <a class="btn btn-default" href="#/add-or-update-setting">Add Setting</a>
+</div>
+<div class="row col-lg-12">
+    <label class="control-label">{{ vm.totalItems }} Total Settings</label>
+</div>
+<div class="row col-lg-12">
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Setting
+            </th>
+            <th>
+                Value
+            </th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <tr ng-repeat="setting in vm.entities">
+            <td>
+                {{ setting.settingKey }}
+            </td>
+            <td>
+                {{ setting.settingValue }}
+            </td>
+            <td>
+                <a class="btn btn-default" href="#/add-or-update-setting/{{ setting.settingId }}">
+                    Edit
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-default" data-ng-click="vm.deleteEntity(setting.settingId)">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    </table>
+    <div class="form-group">
+        <pagination total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.currentPage" ng-change="vm.pageChanged()" max-size="7" boundary-links="true"
+                    rotate="false"></pagination>
+    </div>
+</div>
+<div class="row col-lg-12">
+    <back-button inner-class="btn btn-default pull-right"></back-button>
+</div>

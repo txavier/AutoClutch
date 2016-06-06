@@ -1,0 +1,955 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetFileDetailsList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fileIds" type="tns:ArrayOfLong" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLong">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="long" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFileDetailsListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFileDetailsListResult" type="tns:ArrayOfDocumentObjectDetail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDocumentObjectDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DocumentObjectDetail" nillable="true" type="tns:DocumentObjectDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DocumentObjectDetail">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="objectDetailId" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="objectDetailName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="objectDetailType" type="tns:DocumentObjectDetailType" />
+          <s:element minOccurs="1" maxOccurs="1" name="objectDateCreated" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="DocumentObjectDetailType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Folder" />
+          <s:enumeration value="File" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetFileDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fileId" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFileDetailsResult" type="tns:DocumentObjectDetail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateFolder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="foldername" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateFolderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateFolderResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateChildFolder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="childFolderName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="parentFolderId" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateChildFolderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateChildFolderResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PutFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="folderId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileStream" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PutFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PutFileResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fileId" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFileResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTopLevelFolderId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="folderName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTopLevelFolderIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetTopLevelFolderIdResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChildFolderId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="folderName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="parentFolderId" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChildFolderIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetChildFolderIdResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChildFolderIdByParentName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="folderName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="parentFolderName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChildFolderIdByParentNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetChildFolderIdByParentNameResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFolderContents">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="folderId" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFolderContentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFolderContentsResult" type="tns:ArrayOfDocumentObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDocumentObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DocumentObject" nillable="true" type="tns:DocumentObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DocumentObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="objectId" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="objectName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="objectType" type="tns:DocumentObjectType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="DocumentObjectType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Folder" />
+          <s:enumeration value="File" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="DoesFileExist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="topFolderName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="filename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoesFileExistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DoesFileExistResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoesFileExistFileId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="topFolderName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="filename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoesFileExistFileIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DoesFileExistFileIdResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFilenameFromId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fileId" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFilenameFromIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFilenameFromIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fileId" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFileResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SearchFileByFilename">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchFileByFilenameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchFileByFilenameResult" type="tns:ArrayOfFileObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfFileObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FileObject" nillable="true" type="tns:FileObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FileObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="FileId" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateCreated" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFileParent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fileID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileParentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetFileParentResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFolderParent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="folderID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFolderParentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetFolderParentResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFoldernameParent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fileID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFoldernameParentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFoldernameParentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fileId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileStream" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateFileResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetFolderContentsDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="folderId" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFolderContentsDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFolderContentsDetailResult" type="tns:ArrayOfDocumentObjectDetail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllTopLevelFolders">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllTopLevelFoldersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllTopLevelFoldersResult" type="tns:ArrayOfDocumentObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetFileDetailsListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileDetailsList" />
+  </wsdl:message>
+  <wsdl:message name="GetFileDetailsListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileDetailsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetFileDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateFolderSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateFolder" />
+  </wsdl:message>
+  <wsdl:message name="CreateFolderSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateFolderResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateChildFolderSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateChildFolder" />
+  </wsdl:message>
+  <wsdl:message name="CreateChildFolderSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateChildFolderResponse" />
+  </wsdl:message>
+  <wsdl:message name="PutFileSoapIn">
+    <wsdl:part name="parameters" element="tns:PutFile" />
+  </wsdl:message>
+  <wsdl:message name="PutFileSoapOut">
+    <wsdl:part name="parameters" element="tns:PutFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFile" />
+  </wsdl:message>
+  <wsdl:message name="GetFileSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTopLevelFolderIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTopLevelFolderId" />
+  </wsdl:message>
+  <wsdl:message name="GetTopLevelFolderIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTopLevelFolderIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetChildFolderIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetChildFolderId" />
+  </wsdl:message>
+  <wsdl:message name="GetChildFolderIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetChildFolderIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetChildFolderIdByParentNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetChildFolderIdByParentName" />
+  </wsdl:message>
+  <wsdl:message name="GetChildFolderIdByParentNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetChildFolderIdByParentNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFolderContentsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFolderContents" />
+  </wsdl:message>
+  <wsdl:message name="GetFolderContentsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFolderContentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoesFileExistSoapIn">
+    <wsdl:part name="parameters" element="tns:DoesFileExist" />
+  </wsdl:message>
+  <wsdl:message name="DoesFileExistSoapOut">
+    <wsdl:part name="parameters" element="tns:DoesFileExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoesFileExistFileIdSoapIn">
+    <wsdl:part name="parameters" element="tns:DoesFileExistFileId" />
+  </wsdl:message>
+  <wsdl:message name="DoesFileExistFileIdSoapOut">
+    <wsdl:part name="parameters" element="tns:DoesFileExistFileIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFilenameFromIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFilenameFromId" />
+  </wsdl:message>
+  <wsdl:message name="GetFilenameFromIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFilenameFromIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFileSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteFile" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFileSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchFileByFilenameSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchFileByFilename" />
+  </wsdl:message>
+  <wsdl:message name="SearchFileByFilenameSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchFileByFilenameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileParentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileParent" />
+  </wsdl:message>
+  <wsdl:message name="GetFileParentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileParentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFolderParentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFolderParent" />
+  </wsdl:message>
+  <wsdl:message name="GetFolderParentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFolderParentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFoldernameParentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFoldernameParent" />
+  </wsdl:message>
+  <wsdl:message name="GetFoldernameParentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFoldernameParentResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFileSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateFile" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFileSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFolderContentsDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFolderContentsDetail" />
+  </wsdl:message>
+  <wsdl:message name="GetFolderContentsDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFolderContentsDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTopLevelFoldersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllTopLevelFolders" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTopLevelFoldersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllTopLevelFoldersResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Service1Soap">
+    <wsdl:operation name="GetFileDetailsList">
+      <wsdl:input message="tns:GetFileDetailsListSoapIn" />
+      <wsdl:output message="tns:GetFileDetailsListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileDetails">
+      <wsdl:input message="tns:GetFileDetailsSoapIn" />
+      <wsdl:output message="tns:GetFileDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateFolder">
+      <wsdl:input message="tns:CreateFolderSoapIn" />
+      <wsdl:output message="tns:CreateFolderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateChildFolder">
+      <wsdl:input message="tns:CreateChildFolderSoapIn" />
+      <wsdl:output message="tns:CreateChildFolderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PutFile">
+      <wsdl:input message="tns:PutFileSoapIn" />
+      <wsdl:output message="tns:PutFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <wsdl:input message="tns:GetFileSoapIn" />
+      <wsdl:output message="tns:GetFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTopLevelFolderId">
+      <wsdl:input message="tns:GetTopLevelFolderIdSoapIn" />
+      <wsdl:output message="tns:GetTopLevelFolderIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChildFolderId">
+      <wsdl:input message="tns:GetChildFolderIdSoapIn" />
+      <wsdl:output message="tns:GetChildFolderIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChildFolderIdByParentName">
+      <wsdl:input message="tns:GetChildFolderIdByParentNameSoapIn" />
+      <wsdl:output message="tns:GetChildFolderIdByParentNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderContents">
+      <wsdl:input message="tns:GetFolderContentsSoapIn" />
+      <wsdl:output message="tns:GetFolderContentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoesFileExist">
+      <wsdl:input message="tns:DoesFileExistSoapIn" />
+      <wsdl:output message="tns:DoesFileExistSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoesFileExistFileId">
+      <wsdl:input message="tns:DoesFileExistFileIdSoapIn" />
+      <wsdl:output message="tns:DoesFileExistFileIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilenameFromId">
+      <wsdl:input message="tns:GetFilenameFromIdSoapIn" />
+      <wsdl:output message="tns:GetFilenameFromIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFile">
+      <wsdl:input message="tns:DeleteFileSoapIn" />
+      <wsdl:output message="tns:DeleteFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchFileByFilename">
+      <wsdl:input message="tns:SearchFileByFilenameSoapIn" />
+      <wsdl:output message="tns:SearchFileByFilenameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileParent">
+      <wsdl:input message="tns:GetFileParentSoapIn" />
+      <wsdl:output message="tns:GetFileParentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderParent">
+      <wsdl:input message="tns:GetFolderParentSoapIn" />
+      <wsdl:output message="tns:GetFolderParentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFoldernameParent">
+      <wsdl:input message="tns:GetFoldernameParentSoapIn" />
+      <wsdl:output message="tns:GetFoldernameParentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFile">
+      <wsdl:input message="tns:UpdateFileSoapIn" />
+      <wsdl:output message="tns:UpdateFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderContentsDetail">
+      <wsdl:input message="tns:GetFolderContentsDetailSoapIn" />
+      <wsdl:output message="tns:GetFolderContentsDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTopLevelFolders">
+      <wsdl:input message="tns:GetAllTopLevelFoldersSoapIn" />
+      <wsdl:output message="tns:GetAllTopLevelFoldersSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetFileDetailsList">
+      <soap:operation soapAction="http://tempuri.org/GetFileDetailsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileDetails">
+      <soap:operation soapAction="http://tempuri.org/GetFileDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateFolder">
+      <soap:operation soapAction="http://tempuri.org/CreateFolder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateChildFolder">
+      <soap:operation soapAction="http://tempuri.org/CreateChildFolder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutFile">
+      <soap:operation soapAction="http://tempuri.org/PutFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <soap:operation soapAction="http://tempuri.org/GetFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTopLevelFolderId">
+      <soap:operation soapAction="http://tempuri.org/GetTopLevelFolderId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChildFolderId">
+      <soap:operation soapAction="http://tempuri.org/GetChildFolderId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChildFolderIdByParentName">
+      <soap:operation soapAction="http://tempuri.org/GetChildFolderIdByParentName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderContents">
+      <soap:operation soapAction="http://tempuri.org/GetFolderContents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoesFileExist">
+      <soap:operation soapAction="http://tempuri.org/DoesFileExist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoesFileExistFileId">
+      <soap:operation soapAction="http://tempuri.org/DoesFileExistFileId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilenameFromId">
+      <soap:operation soapAction="http://tempuri.org/GetFilenameFromId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFile">
+      <soap:operation soapAction="http://tempuri.org/DeleteFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchFileByFilename">
+      <soap:operation soapAction="http://tempuri.org/SearchFileByFilename" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileParent">
+      <soap:operation soapAction="http://tempuri.org/GetFileParent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderParent">
+      <soap:operation soapAction="http://tempuri.org/GetFolderParent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFoldernameParent">
+      <soap:operation soapAction="http://tempuri.org/GetFoldernameParent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFile">
+      <soap:operation soapAction="http://tempuri.org/UpdateFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderContentsDetail">
+      <soap:operation soapAction="http://tempuri.org/GetFolderContentsDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTopLevelFolders">
+      <soap:operation soapAction="http://tempuri.org/GetAllTopLevelFolders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetFileDetailsList">
+      <soap12:operation soapAction="http://tempuri.org/GetFileDetailsList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetFileDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateFolder">
+      <soap12:operation soapAction="http://tempuri.org/CreateFolder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateChildFolder">
+      <soap12:operation soapAction="http://tempuri.org/CreateChildFolder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutFile">
+      <soap12:operation soapAction="http://tempuri.org/PutFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <soap12:operation soapAction="http://tempuri.org/GetFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTopLevelFolderId">
+      <soap12:operation soapAction="http://tempuri.org/GetTopLevelFolderId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChildFolderId">
+      <soap12:operation soapAction="http://tempuri.org/GetChildFolderId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChildFolderIdByParentName">
+      <soap12:operation soapAction="http://tempuri.org/GetChildFolderIdByParentName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderContents">
+      <soap12:operation soapAction="http://tempuri.org/GetFolderContents" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoesFileExist">
+      <soap12:operation soapAction="http://tempuri.org/DoesFileExist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoesFileExistFileId">
+      <soap12:operation soapAction="http://tempuri.org/DoesFileExistFileId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilenameFromId">
+      <soap12:operation soapAction="http://tempuri.org/GetFilenameFromId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFile">
+      <soap12:operation soapAction="http://tempuri.org/DeleteFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchFileByFilename">
+      <soap12:operation soapAction="http://tempuri.org/SearchFileByFilename" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileParent">
+      <soap12:operation soapAction="http://tempuri.org/GetFileParent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderParent">
+      <soap12:operation soapAction="http://tempuri.org/GetFolderParent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFoldernameParent">
+      <soap12:operation soapAction="http://tempuri.org/GetFoldernameParent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFile">
+      <soap12:operation soapAction="http://tempuri.org/UpdateFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderContentsDetail">
+      <soap12:operation soapAction="http://tempuri.org/GetFolderContentsDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTopLevelFolders">
+      <soap12:operation soapAction="http://tempuri.org/GetAllTopLevelFolders" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="Service1Soap" binding="tns:Service1Soap">
+      <soap:address location="http://oitappsdev02/dms_ws/Service1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Service1Soap12" binding="tns:Service1Soap12">
+      <soap12:address location="http://oitappsdev02/dms_ws/Service1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>@ViewBag.Title - Contract Tracking Management System</title>
+
+    @Html.Raw(JSNLog.JavascriptLogging.Configure())
+
+    @Styles.Render("~/Content/css")
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+
+</head>
+
+<body ng-app="app">
+
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img class="navbar-img pull-left " src="~/Content/img/P9faj3fB.png" />
+                <a class="navbar-brand" href="#/home">AutoClutch DEP System Template @ViewBag.Title</a>
+            </div>
+            <!-- /.navbar-header -->
+            <ul class="nav navbar-top-links navbar-right">
+                <li><a href="~/elmah"><i class="fa fa-list-ol fa-users fa-fw"></i>System Reported Problems</a></li>
+                <li><a href="http://lfktfs02:8080/tfs/BWT/$safeprojectname$"><i class="fa fa-bug fa-users fa-fw"></i>Report a bug</a></li>
+                <li><a href="~/help"><i class="fa fa-gears fa-fw"></i>API Reference</a></li>
+                <li>
+                    <a href="#">@(string.IsNullOrWhiteSpace(User.Identity.Name) ? "[No User Found]" : User.Identity.Name)</a>
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+
+
+            <!-- /.navbar-top-links -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            @*http://stackoverflow.com/questions/15417125/submit-form-on-pressing-enter-with-angularjs*@
+                            @*When a user presses the enter key after entering a search term, then run goToContract()*@
+                            <div class="input-group custom-search-form" ng-keyup="$event.keyCode == 13 && vm.goToContract(vm.contract)">
+                                <xs-auto-input data-ng-model="vm.contract" array-of-objects="vm.contracts" array-display-key="contractNumber" editable="true"
+                                               inner-class="form-control" live-search="true"></xs-auto-input>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" data-ng-click="vm.goToContract(vm.contract)">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a class="" href="#/home"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#/settings"><i class="fa fa-sliders fa-fw"></i> Settings<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#/histories">Audit History</a>
+                                </li>
+                                <li>
+                                    <a href="#/user-action-logs">User Action Logs</a>
+                                </li>
+                                <li>
+                                    <a href="#/engineers">Users</a>
+                                </li>
+                                <li>
+                                    <a href="#/contractors">Contractors</a>
+                                </li>
+                                @*<li>
+                                        <a href="#/users">User Profiles</a>
+                                    </li>
+                                    <li>
+                                        <a href="#/locations">Locations</a>
+                                    </li>
+                                    <li>
+                                        <a href="#/advanced-settings">Advanced Settings</a>
+                                    </li>*@
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+
+        </nav>
+
+        <toaster-container toaster-options="{'position-class': 'toast-top-full-width', 'preventduplicates': true}"></toaster-container>
+        <div ng-if="false" id="page-wrapper">
+            @RenderBody()
+        </div>
+        <div id="page-wrapper" ng-if="true" ng-view class="view-animate-container view-animate">
+            @*@RenderBody()*@
+        </div>
+
+        <!--<div class="pull-right" data-ng-class="{'col-md-10': masterPageVm.showPushOutMenu, 'col-md-12': !masterPageVm.showPushOutMenu }">
+            <toaster-container toaster-options="{'position-class': 'toast-top-full-width', 'preventduplicates': true}"></toaster-container>
+            <div id="page-wrapper" ng-view class="view-animate-container view-animate">
+                @*@RenderBody()*@
+            </div>
+        </div>-->
+        <!-- /#page-wrapper -->
+    </div>
+
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/angular-third-party")
+    @Scripts.Render("~/bundles/angular-shared-directives")
+    @Scripts.Render("~/bundles/angular-app")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/sbAdmin")
+    @Scripts.Render("~/bundles/angular-third-party-datepicker-moment-shared-directives-moment-filter")
+    @RenderSection("scripts", required: false)
+
+</body>
+
+</html>
