@@ -1,0 +1,5 @@
+﻿/*http://stackoverflow.com/questions/2091168/disable-a-link-using-css*/
+.not-active {
+    pointer-events: none;
+    cursor: default;
+}
