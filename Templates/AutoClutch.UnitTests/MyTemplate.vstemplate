@@ -18,32 +18,6 @@
       <ProjectItem ReplaceParameters="true" TargetFileName="App.config">App.config</ProjectItem>
       <Folder Name="bin" TargetFolderName="bin">
         <Folder Name="Debug" TargetFolderName="Debug">
-          <ProjectItem ReplaceParameters="false" TargetFileName="Auto.Repo.dll">Auto.Repo.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="Auto.Service.dll">Auto.Service.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="Elmah.dll">Elmah.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="EntityFramework.dll">EntityFramework.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="EntityFramework.MappingAPI.dll">EntityFramework.MappingAPI.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="EntityFramework.SqlServer.dll">EntityFramework.SqlServer.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll">Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="Microsoft.Web.Infrastructure.dll">Microsoft.Web.Infrastructure.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="Moq.dll">Moq.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="Newtonsoft.Json.dll">Newtonsoft.Json.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="StructureMap.AutoMocking.Moq.dll">StructureMap.AutoMocking.Moq.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="StructureMap.dll">StructureMap.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="StructureMap.Net4.dll">StructureMap.Net4.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="System.Linq.Dynamic.dll">System.Linq.Dynamic.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="System.Net.Http.Formatting.dll">System.Net.Http.Formatting.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.Http.dll">System.Web.Http.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.Http.WebHost.dll">System.Web.Http.WebHost.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.Mvc.dll">System.Web.Mvc.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.Optimization.dll">System.Web.Optimization.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.Razor.dll">System.Web.Razor.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.WebPages.Deployment.dll">System.Web.WebPages.Deployment.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.WebPages.dll">System.Web.WebPages.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.WebPages.Razor.dll">System.Web.WebPages.Razor.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="TrackerEnabledDbContext.Common.dll">TrackerEnabledDbContext.Common.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="TrackerEnabledDbContext.dll">TrackerEnabledDbContext.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="WebActivatorEx.dll">WebActivatorEx.dll</ProjectItem>
         </Folder>
       </Folder>
       <Folder Name="Controllers" TargetFolderName="Controllers">

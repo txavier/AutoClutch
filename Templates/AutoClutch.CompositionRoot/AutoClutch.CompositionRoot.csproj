@@ -128,9 +128,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\StructureMap.dll" />
-    <Content Include="bin\Debug\StructureMap.Net4.dll" />
-    <Content Include="bin\Debug\StructureMap.Web.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -141,4 +138,3 @@
   </Target>
   -->
 </Project>
-
