@@ -21,7 +21,9 @@
         <Folder Name="Debug" TargetFolderName="Debug">
         </Folder>
       </Folder>
-      <Folder Name="Documents" TargetFolderName="Documents" />
+      <Folder Name="Documents" TargetFolderName="Documents">
+		<ProjectItem ReplaceParameters="true" TargetFileName="ELMAH-1.2-db-SQLServer.sql">ELMAH-1.2-db-SQLServer.sql</ProjectItem>
+	  </Folder>
       <Folder Name="Interfaces" TargetFolderName="Interfaces">
         <ProjectItem ReplaceParameters="true" TargetFileName="IAuthorizeService.cs">IAuthorizeService.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IContractDocumentService.cs">IContractDocumentService.cs</ProjectItem>
