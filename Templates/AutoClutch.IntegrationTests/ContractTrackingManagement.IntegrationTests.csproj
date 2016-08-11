@@ -261,11 +261,6 @@
     <Content Include="bin\Debug\access-contractdb-xml\WO Status.xml" />
     <Content Include="bin\Debug\access-contractdb-xml\Work Orders.xml" />
     <Content Include="bin\Debug\access-contractdb-xml\Yes No.xml" />
-    <Content Include="bin\Debug\Auto.Repo.dll" />
-    <Content Include="bin\Debug\Auto.Service.dll" />
-    <Content Include="bin\Debug\EntityFramework.dll" />
-    <Content Include="bin\Debug\EntityFramework.MappingAPI.dll" />
-    <Content Include="bin\Debug\EntityFramework.SqlServer.dll" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
@@ -295,4 +290,3 @@
   </Target>
   -->
 </Project>
-

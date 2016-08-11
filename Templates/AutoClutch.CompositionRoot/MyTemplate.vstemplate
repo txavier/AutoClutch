@@ -19,9 +19,6 @@
       <ProjectItem ReplaceParameters="true" TargetFileName="App.config">App.config</ProjectItem>
       <Folder Name="bin" TargetFolderName="bin">
         <Folder Name="Debug" TargetFolderName="Debug">
-          <ProjectItem ReplaceParameters="false" TargetFileName="StructureMap.dll">StructureMap.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="StructureMap.Net4.dll">StructureMap.Net4.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="StructureMap.Web.dll">StructureMap.Web.dll</ProjectItem>
         </Folder>
       </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="DefaultRegistry.cs">DefaultRegistry.cs</ProjectItem>

@@ -157,16 +157,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\Auto.Repo.dll" />
-    <Content Include="bin\Debug\Auto.Service.dll" />
-    <Content Include="bin\Debug\EntityFramework.dll" />
-    <Content Include="bin\Debug\EntityFramework.MappingAPI.dll" />
-    <Content Include="bin\Debug\EntityFramework.SqlServer.dll" />
-    <Content Include="bin\Debug\StructureMap.dll" />
-    <Content Include="bin\Debug\StructureMap.Net4.dll" />
-    <Content Include="bin\Debug\System.Linq.Dynamic.dll" />
-    <Content Include="bin\Debug\TrackerEnabledDbContext.Common.dll" />
-    <Content Include="bin\Debug\TrackerEnabledDbContext.dll" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Documents\" />
@@ -180,4 +170,3 @@
   </Target>
   -->
 </Project>
-

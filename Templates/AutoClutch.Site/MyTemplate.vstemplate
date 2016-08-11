@@ -133,43 +133,6 @@
         </Folder>
       </Folder>
       <Folder Name="bin" TargetFolderName="bin">
-        <ProjectItem ReplaceParameters="false" TargetFileName="Antlr3.Runtime.dll">Antlr3.Runtime.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="Auto.Repo.dll">Auto.Repo.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="Auto.Service.dll">Auto.Service.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="Common.Logging.Core.dll">Common.Logging.Core.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="Common.Logging.dll">Common.Logging.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="Common.Logging.Elmah.v2.dll">Common.Logging.Elmah.v2.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="Elmah.dll">Elmah.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="Elmah.Mvc.dll">Elmah.Mvc.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="EntityFramework.dll">EntityFramework.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="EntityFramework.MappingAPI.dll">EntityFramework.MappingAPI.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="EntityFramework.SqlServer.dll">EntityFramework.SqlServer.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="JSNLog.dll">JSNLog.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="Microsoft.Web.Infrastructure.dll">Microsoft.Web.Infrastructure.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="MoreLinq.dll">MoreLinq.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="Newtonsoft.Json.dll">Newtonsoft.Json.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="StructureMap.dll">StructureMap.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="StructureMap.Net4.dll">StructureMap.Net4.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="StructureMap.Web.dll">StructureMap.Web.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="System.Linq.Dynamic.dll">System.Linq.Dynamic.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="System.Net.Http.Formatting.dll">System.Net.Http.Formatting.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.Helpers.dll">System.Web.Helpers.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.Http.dll">System.Web.Http.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.Http.WebHost.dll">System.Web.Http.WebHost.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.Mvc.dll">System.Web.Mvc.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.Optimization.dll">System.Web.Optimization.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.Razor.dll">System.Web.Razor.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.WebPages.Deployment.dll">System.Web.WebPages.Deployment.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.WebPages.dll">System.Web.WebPages.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="System.Web.WebPages.Razor.dll">System.Web.WebPages.Razor.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="TrackerEnabledDbContext.Common.dll">TrackerEnabledDbContext.Common.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="TrackerEnabledDbContext.dll">TrackerEnabledDbContext.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="WebActivatorEx.dll">WebActivatorEx.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="WebGrease.dll">WebGrease.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="XavierEnterpriseLibrary.Core.dll">XavierEnterpriseLibrary.Core.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="XavierEnterpriseLibrary.Infrastructure.dll">XavierEnterpriseLibrary.Infrastructure.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="zxing.dll">zxing.dll</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="zxing.presentation.dll">zxing.presentation.dll</ProjectItem>
       </Folder>
       <Folder Name="Content" TargetFolderName="Content">
         <ProjectItem ReplaceParameters="true" TargetFileName="angular-chart.css">angular-chart.css</ProjectItem>

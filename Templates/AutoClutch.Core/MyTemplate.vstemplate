@@ -19,16 +19,6 @@
       <ProjectItem ReplaceParameters="true" TargetFileName="App.config">App.config</ProjectItem>
       <Folder Name="bin" TargetFolderName="bin">
         <Folder Name="Debug" TargetFolderName="Debug">
-          <ProjectItem ReplaceParameters="false" TargetFileName="Auto.Repo.dll">Auto.Repo.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="Auto.Service.dll">Auto.Service.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="EntityFramework.dll">EntityFramework.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="EntityFramework.MappingAPI.dll">EntityFramework.MappingAPI.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="EntityFramework.SqlServer.dll">EntityFramework.SqlServer.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="StructureMap.dll">StructureMap.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="StructureMap.Net4.dll">StructureMap.Net4.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="System.Linq.Dynamic.dll">System.Linq.Dynamic.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="TrackerEnabledDbContext.Common.dll">TrackerEnabledDbContext.Common.dll</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="TrackerEnabledDbContext.dll">TrackerEnabledDbContext.dll</ProjectItem>
         </Folder>
       </Folder>
       <Folder Name="Documents" TargetFolderName="Documents" />
