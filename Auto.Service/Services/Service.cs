@@ -228,10 +228,10 @@ namespace AutoClutch.Auto.Service.Services
         public IEnumerable<TEntity> Get(
             System.Linq.Expressions.Expression<Func<TEntity, bool>> filter = null, 
             string filterString = null,
-            Func<IQueryable<TEntity>, IEnumerable<TEntity>> distinctBy = null, 
+            Func<IQueryable<TEntity>, IQueryable<TEntity>> distinctBy = null, 
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, 
             string orderByString = null,
-            Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy = null, 
+            Func<IEnumerable<TEntity>, IQueryable<TEntity>> maxBy = null, 
             int? skip = null, 
             int? take = null, 
             string includeProperties = "",
@@ -274,8 +274,8 @@ namespace AutoClutch.Auto.Service.Services
         public int GetCount(
             System.Linq.Expressions.Expression<Func<TEntity, bool>> filter = null, 
             string filterString = null,
-            Func<IQueryable<TEntity>, IEnumerable<TEntity>> distinctBy = null, 
-            Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy = null, bool? includeSoftDeleted = null)
+            Func<IQueryable<TEntity>, IQueryable<TEntity>> distinctBy = null, 
+            Func<IEnumerable<TEntity>, IQueryable<TEntity>> maxBy = null, bool? includeSoftDeleted = null)
         {
             // If this is an entity with an interface ISoftdeletable and it is 
             // set to deleted then dont return this object unless
@@ -480,7 +480,14 @@ namespace AutoClutch.Auto.Service.Services
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
         #endregion
 
+        public string GetEntityKeyName(TEntity entity)
+        {
+            var result = _repository.GetEntityKeyName(entity);
+
+            return result;
+        }
     }
 }

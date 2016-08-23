@@ -189,10 +189,10 @@ namespace AutoClutch.Auto.Repo.Objects
         public virtual IEnumerable<TEntity> Get(
             Expression<Func<TEntity, bool>> filter = null,
             string filterString = null,
-            Func<IQueryable<TEntity>, IEnumerable<TEntity>> distinctBy = null,
+            Func<IQueryable<TEntity>, IQueryable<TEntity>> distinctBy = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string orderByString = null,
-            Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy = null,
+            Func<IEnumerable<TEntity>, IQueryable<TEntity>> maxBy = null,
             int? skip = null,
             int? take = null,
             string includeProperties = "",
@@ -212,9 +212,9 @@ namespace AutoClutch.Auto.Repo.Objects
 
                 take = take ?? Int32.MaxValue;
 
-                IEnumerable<TEntity> resultEnumerable = GetQuery(filter, filterString, distinctBy, orderBy, orderByString, maxBy, includeProperties);
+                var resultQueryable = GetQuery(filter, filterString, distinctBy, orderBy, orderByString, maxBy, includeProperties);
 
-                if (!resultEnumerable.Any())
+                if (!resultQueryable.Any())
                 {
                     return new List<TEntity>();
                 }
@@ -223,16 +223,14 @@ namespace AutoClutch.Auto.Repo.Objects
                 // a skip value is given, order by the primary key.
                 if (skip.HasValue && orderBy == null && orderByString == null)
                 {
-                    var entityKeyName = GetEntityKeyName(resultEnumerable.First());
+                    var entityKeyName = GetEntityKeyName(resultQueryable.First());
 
-                    resultEnumerable.OrderBy(entityKeyName);
+                    resultQueryable = resultQueryable.OrderBy(entityKeyName);
                 }
 
-                resultEnumerable = resultEnumerable.Skip(skip.Value).Take(take.Value);
+                resultQueryable = resultQueryable.Skip(skip.Value).Take(take.Value);
 
-                List<TEntity> resultList = new List<TEntity>();
-
-                resultList = resultEnumerable.ToList();
+                var resultList = resultQueryable.ToList();
 
                 return resultList;
             }
@@ -246,13 +244,13 @@ namespace AutoClutch.Auto.Repo.Objects
             }
         }
 
-        private IEnumerable<TEntity> GetQuery(
+        private IQueryable<TEntity> GetQuery(
             Expression<Func<TEntity, bool>> filter,
             string searchParameters,
-            Func<IQueryable<TEntity>, IEnumerable<TEntity>> distinctBy,
+            Func<IQueryable<TEntity>, IQueryable<TEntity>> distinctBy,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy,
             string orderByString,
-            Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy,
+            Func<IEnumerable<TEntity>, IQueryable<TEntity>> maxBy,
             string includeProperties)
         {
             IQueryable<TEntity> query = _context.Set<TEntity>();
@@ -281,42 +279,42 @@ namespace AutoClutch.Auto.Repo.Objects
                 query = query.OrderBy(orderByString);
             }
 
-            IEnumerable<TEntity> resultEnumerable = null;
+            IQueryable<TEntity> resultQueryable = null;
 
             // Implements distinct and orderby.
             if (orderBy != null && distinctBy != null)
             {
                 var result = distinctBy(orderBy(query));
 
-                resultEnumerable = result;
+                resultQueryable = result;
             }
             else if (orderBy != null)
             {
                 var result = orderBy(query);
 
-                resultEnumerable = result;
+                resultQueryable = result;
             }
             else if (distinctBy != null)
             {
                 var result = maxBy == null ? distinctBy(query) : maxBy(distinctBy(query));
 
-                resultEnumerable = result;
+                resultQueryable = result;
             }
             else
             {
                 var result = maxBy == null ? query : maxBy(query);
 
-                resultEnumerable = result;
+                resultQueryable = result;
             }
 
-            return resultEnumerable;
+            return resultQueryable;
         }
 
         public virtual int GetCount(
             Expression<Func<TEntity, bool>> filter = null,
             string filterString = null,
-            Func<IQueryable<TEntity>, IEnumerable<TEntity>> distinctBy = null,
-            Func<IEnumerable<TEntity>, IEnumerable<TEntity>> maxBy = null)
+            Func<IQueryable<TEntity>, IQueryable<TEntity>> distinctBy = null,
+            Func<IEnumerable<TEntity>, IQueryable<TEntity>> maxBy = null)
         {
             var result = GetQuery(filter, filterString, distinctBy, null, null, maxBy, null).Count();
 
