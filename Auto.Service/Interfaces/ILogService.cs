@@ -20,7 +20,7 @@ namespace AutoClutch.Auto.Core.Interfaces
 
     public interface ILogService<TEntity> : ILogService, IService<userActionLog>
     {
-        //IEnumerable<userActionLog> GetLatestUserActionLogs(int take = 10);
+        new IEnumerable<userActionLog> GetLatestUserActionLogs(int take = 10);
 
         Task<userActionLog> InfoAsync(TEntity entity, int recordId, EventType eventType, string message = null, string entityName = null, string loggedInUserName = null, bool useToString = false);
 

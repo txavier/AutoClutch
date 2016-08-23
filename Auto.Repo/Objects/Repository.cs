@@ -43,10 +43,6 @@ namespace AutoClutch.Auto.Repo.Objects
                 throw new ArgumentNullException("context");
             }
 
-            //context.Configuration.ProxyCreationEnabled = false;
-
-            //context.Configuration.LazyLoadingEnabled = false;
-
             _context = context;
 
             _dbSet = _context.Set<TEntity>();
@@ -56,7 +52,7 @@ namespace AutoClutch.Auto.Repo.Objects
             Errors = new List<Error>();
         }
 
-        public bool Exists(object entityIdObject)
+        public virtual bool Exists(object entityIdObject)
         {
             if (entityIdObject == null)
             {
@@ -75,7 +71,7 @@ namespace AutoClutch.Auto.Repo.Objects
             return found;
         }
 
-        public bool Exists(TEntity entity)
+        public virtual bool Exists(TEntity entity)
         {
             var entityIdObject = GetEntityIdObject(entity);
 
@@ -89,7 +85,7 @@ namespace AutoClutch.Auto.Repo.Objects
         /// </summary>
         /// <param name="entityId"></param>
         /// <returns></returns>
-        public TEntity Find(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true)
+        public virtual TEntity Find(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true)
         {
             try
             {
@@ -113,7 +109,7 @@ namespace AutoClutch.Auto.Repo.Objects
             }
         }
 
-        public async Task<TEntity> FindAsync(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true)
+        public virtual async Task<TEntity> FindAsync(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true)
         {
             try
             {
@@ -142,7 +138,7 @@ namespace AutoClutch.Auto.Repo.Objects
             return _context.Set<TEntity>();
         }
 
-        public IEnumerable<TEntity> GetAll(bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true)
+        public virtual IEnumerable<TEntity> GetAll(bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true)
         {
             try
             {
@@ -333,7 +329,7 @@ namespace AutoClutch.Auto.Repo.Objects
             return null;
         }
 
-        public async Task<TEntity> AddAsync(
+        public virtual async Task<TEntity> AddAsync(
             TEntity entity,
             string loggedInUserName = null,
             bool lazyLoadingEnabled = true,
@@ -374,7 +370,7 @@ namespace AutoClutch.Auto.Repo.Objects
             }
         }
 
-        public IEnumerable<TEntity> AddRange(
+        public virtual IEnumerable<TEntity> AddRange(
             IEnumerable<TEntity> entities,
             string loggedInUserName = null,
             bool lazyLoadingEnabled = true,
@@ -420,7 +416,7 @@ namespace AutoClutch.Auto.Repo.Objects
         /// <param name="entity"></param>
         /// <param name="dontSave"></param>
         /// <returns></returns>
-        public TEntity Add(
+        public virtual TEntity Add(
             TEntity entity,
             string loggedInUserName = null,
             bool lazyLoadingEnabled = true,
@@ -464,7 +460,7 @@ namespace AutoClutch.Auto.Repo.Objects
             }
         }
 
-        public async Task<TEntity> UpdateAsync(
+        public virtual async Task<TEntity> UpdateAsync(
             TEntity entity,
             string loggedInUserName = null,
             bool lazyLoadingEnabled = true,
@@ -549,7 +545,7 @@ namespace AutoClutch.Auto.Repo.Objects
         /// you follow a different naming convention, use this parameter to indicate the regex that will match 
         /// the primary key of your table.</param>
         /// <returns></returns>
-        public TEntity Update(
+        public virtual TEntity Update(
             TEntity entity,
             string loggedInUserName = null,
             bool lazyLoadingEnabled = true,
@@ -662,7 +658,7 @@ namespace AutoClutch.Auto.Repo.Objects
             return idPropertyName;
         }
 
-        public TEntity Delete(TEntity entity, string loggedInUserName = null, bool dontSave = false)
+        public virtual TEntity Delete(TEntity entity, string loggedInUserName = null, bool dontSave = false)
         {
             if (_context.Entry(entity).State == EntityState.Detached)
             {
@@ -684,7 +680,7 @@ namespace AutoClutch.Auto.Repo.Objects
             return entity;
         }
 
-        public TEntity Delete(int id, string loggedInUserName = null, bool dontSave = false)
+        public virtual TEntity Delete(int id, string loggedInUserName = null, bool dontSave = false)
         {
             var entity = _dbSet.Find(id);
 
@@ -693,7 +689,7 @@ namespace AutoClutch.Auto.Repo.Objects
             return entity;
         }
 
-        public async Task<TEntity> DeleteAsync(int id, string loggedInUserName = null, bool dontSave = false)
+        public virtual async Task<TEntity> DeleteAsync(int id, string loggedInUserName = null, bool dontSave = false)
         {
             var entity = await _dbSet.FindAsync(id);
 
@@ -734,7 +730,7 @@ namespace AutoClutch.Auto.Repo.Objects
         /// </summary>
         /// <param name="context">The context.</param>
         /// <remarks>http://stackoverflow.com/questions/10219864/ef-code-first-how-do-i-see-entityvalidationerrors-property-from-the-nuget-pac</remarks>
-        public int SaveChanges(string loggedInUserName = null)
+        public virtual int SaveChanges(string loggedInUserName = null)
         {
             try
             {
@@ -785,7 +781,7 @@ namespace AutoClutch.Auto.Repo.Objects
             return Errors.Distinct();
         }
 
-        public async Task<int> SaveChangesAsync(string loggedInUserName = null)
+        public virtual async Task<int> SaveChangesAsync(string loggedInUserName = null)
         {
             try
             {
@@ -851,7 +847,7 @@ namespace AutoClutch.Auto.Repo.Objects
         /// Experimental.
         /// </summary>
         /// <returns></returns>
-        public IQueryable<TEntity> Queryable()
+        public virtual IQueryable<TEntity> Queryable()
         {
             return _dbSet;
         }

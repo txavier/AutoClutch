@@ -35,7 +35,7 @@ namespace AutoClutch.Auto.Service.Services
             Errors = new List<Error>();
         }
 
-        public async Task<TEntity> FindAsync(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, 
+        public virtual async Task<TEntity> FindAsync(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, 
             bool? includeSoftDeleted = null)
         {
             var entity = await _repository.FindAsync(entityId, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled);
@@ -51,7 +51,7 @@ namespace AutoClutch.Auto.Service.Services
             return entity;
         }
 
-        public TEntity Find(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool? includeSoftDeleted = null)
+        public virtual TEntity Find(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool? includeSoftDeleted = null)
         {
             var entity = _repository.Find(entityId, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled);
 
@@ -66,7 +66,7 @@ namespace AutoClutch.Auto.Service.Services
             return entity;
         }
 
-        public IEnumerable<TEntity> GetAll(bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool? includeSoftDeleted = null)
+        public virtual IEnumerable<TEntity> GetAll(bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool? includeSoftDeleted = null)
         {
             var result = _repository.GetAll(lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled);
 
@@ -81,7 +81,7 @@ namespace AutoClutch.Auto.Service.Services
             return result;
         }
 
-        public TEntity Add(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
+        public virtual TEntity Add(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
         {
             var result = _repository.Add(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
@@ -90,7 +90,7 @@ namespace AutoClutch.Auto.Service.Services
             return result;
         }
 
-        public async Task<TEntity> AddAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
+        public virtual async Task<TEntity> AddAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
         {
             var result = await _repository.AddAsync(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
@@ -106,7 +106,7 @@ namespace AutoClutch.Auto.Service.Services
         /// <param name="dontSave"></param>
         /// <returns></returns>
         /// <remarks>Please note at this time auditing is not enabled for AddRange methods.</remarks>
-        public IEnumerable<TEntity> AddRange(IEnumerable<TEntity> entities, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
+        public virtual IEnumerable<TEntity> AddRange(IEnumerable<TEntity> entities, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
         {
             var result = _repository.AddRange(entities, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
@@ -115,7 +115,7 @@ namespace AutoClutch.Auto.Service.Services
             return result;
         }
 
-        public TEntity Update(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
+        public virtual TEntity Update(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
         {
             var result = _repository.Update(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
@@ -124,7 +124,7 @@ namespace AutoClutch.Auto.Service.Services
             return result;
         }
 
-        public async Task<TEntity> UpdateAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
+        public virtual async Task<TEntity> UpdateAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
         {
             var result = await _repository.UpdateAsync(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
@@ -141,7 +141,7 @@ namespace AutoClutch.Auto.Service.Services
         /// <param name="entity">This is the entity that must have an integer key.</param>
         /// <param name="dontSave"></param>
         /// <returns></returns>
-        public TEntity AddOrUpdate(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
+        public virtual TEntity AddOrUpdate(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
         {
             var idObject = _repository.GetEntityIdObject(entity);
 
@@ -163,7 +163,7 @@ namespace AutoClutch.Auto.Service.Services
             }
         }
 
-        public TEntity Delete(int id, string loggedInUserName = null, bool softDelete = false, bool dontSave = false)
+        public virtual TEntity Delete(int id, string loggedInUserName = null, bool softDelete = false, bool dontSave = false)
         {
             if (softDelete)
             {
@@ -186,7 +186,7 @@ namespace AutoClutch.Auto.Service.Services
             return result;
         }
 
-        public async Task<TEntity> DeleteAsync(int id, string loggedInUserName = null, bool softDelete = false, bool dontSave = false)
+        public virtual async Task<TEntity> DeleteAsync(int id, string loggedInUserName = null, bool softDelete = false, bool dontSave = false)
         {
             if(softDelete)
             {
@@ -225,7 +225,7 @@ namespace AutoClutch.Auto.Service.Services
         /// a string of searchParameters that follow the form "name:facility2", "state:state3".
         /// </param>
         /// <returns></returns>
-        public IEnumerable<TEntity> Get(
+        public virtual IEnumerable<TEntity> Get(
             System.Linq.Expressions.Expression<Func<TEntity, bool>> filter = null, 
             string filterString = null,
             Func<IQueryable<TEntity>, IQueryable<TEntity>> distinctBy = null, 
@@ -271,7 +271,7 @@ namespace AutoClutch.Auto.Service.Services
             return result;
         }
 
-        public int GetCount(
+        public virtual int GetCount(
             System.Linq.Expressions.Expression<Func<TEntity, bool>> filter = null, 
             string filterString = null,
             Func<IQueryable<TEntity>, IQueryable<TEntity>> distinctBy = null, 
@@ -294,21 +294,21 @@ namespace AutoClutch.Auto.Service.Services
             return result;
         }
 
-        public int SaveChanges(string loggedInUserName = null)
+        public virtual int SaveChanges(string loggedInUserName = null)
         {
             var result = _repository.SaveChanges(loggedInUserName);
 
             return result;
         }
 
-        public async Task<int> SaveChangesAsync(string loggedInUserName = null)
+        public virtual async Task<int> SaveChangesAsync(string loggedInUserName = null)
         {
             var result = await _repository.SaveChangesAsync(loggedInUserName);
 
             return result;
         }
 
-        public bool Exists(object entityIdObject, bool? includeSoftDeleted = null)
+        public virtual bool Exists(object entityIdObject, bool? includeSoftDeleted = null)
         {
             if (entityIdObject == null)
             {
@@ -327,7 +327,7 @@ namespace AutoClutch.Auto.Service.Services
             return found;
         }
 
-        public async Task<bool> ExistsAsync(object entityIdObject, bool? includeSoftDeleted = null)
+        public virtual async Task<bool> ExistsAsync(object entityIdObject, bool? includeSoftDeleted = null)
         {
             if (entityIdObject == null)
             {
@@ -408,7 +408,7 @@ namespace AutoClutch.Auto.Service.Services
             return result;
         }
 
-        public object GetEntityIdObject(TEntity entity, bool? includeSoftDeleted = null)
+        public virtual object GetEntityIdObject(TEntity entity, bool? includeSoftDeleted = null)
         {
             // If this is an entity with an interface ISoftdeletable and it is 
             // set to deleted then dont return this object unless
@@ -430,7 +430,7 @@ namespace AutoClutch.Auto.Service.Services
             return validationErrors;
         }
 
-        public IQueryable<TEntity> Queryable(bool? includeSoftDeleted = null)
+        public virtual IQueryable<TEntity> Queryable(bool? includeSoftDeleted = null)
         {
             var result = _repository.Queryable();
 
@@ -483,7 +483,7 @@ namespace AutoClutch.Auto.Service.Services
 
         #endregion
 
-        public string GetEntityKeyName(TEntity entity)
+        public virtual string GetEntityKeyName(TEntity entity)
         {
             var result = _repository.GetEntityKeyName(entity);
 

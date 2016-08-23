@@ -57,7 +57,7 @@ namespace Auto.Service.Services
             return result;
         }
 
-        public IEnumerable<userActionLog> GetLatestUserActionLogs(int take = 10)
+        public virtual IEnumerable<userActionLog> GetLatestUserActionLogs(int take = 10)
         {
             var result = Queryable().OrderByDescending(i => i.userActionLogId).Take(take);
 
@@ -135,7 +135,7 @@ namespace Auto.Service.Services
 
             var typeName = entity.GetType().Name;
 
-            var toString = useToString && !entity.ToString().Contains("ContractTrackingManagement.Core.Models") ? entity.ToString() : null;
+            var toString = useToString && !entity.ToString().Contains(System.Reflection.Assembly.GetAssembly(this.GetType()).GetType().Namespace + ".Core.Models") ? entity.ToString() : null;
 
             var result = await base.InfoAsync(typeName, typeFullName, recordId, eventType, message, entityName, loggedInUserName, toString);
 
