@@ -14,6 +14,8 @@
         , 'chart.js'
         , 'ngAnimate'
         , 'ngFileUpload'
+        , 'angularBingMaps'
+        , 'isteven-multi-select'
     ]);
 
     angular

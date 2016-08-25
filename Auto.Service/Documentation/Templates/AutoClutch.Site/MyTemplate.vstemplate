@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
     <Name>AutoClutch.Site</Name>
-    <Description>Web site template featuring the autoclutch library.</Description>
+    <Description>Website template featuring the AutoClutch library.</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
@@ -15,20 +15,19 @@
     <PreviewImage>__PreviewImage.png</PreviewImage>
   </TemplateData>
   <TemplateContent>
-    <Project TargetFileName="MyTestProjectB.csproj" File="MyTestProjectB.csproj" ReplaceParameters="true">
+    <Project TargetFileName="AutoClutch.csproj" File="AutoClutch.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="false" TargetFileName=".bowerrc">.bowerrc</ProjectItem>
       <Folder Name="app" TargetFolderName="app">
+        <Folder Name="about" TargetFolderName="about">
+          <ProjectItem ReplaceParameters="true" TargetFileName="about.controller.js">about.controller.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="about.html">about.html</ProjectItem>
+        </Folder>
         <Folder Name="access" TargetFolderName="access">
           <ProjectItem ReplaceParameters="true" TargetFileName="access.css">access.css</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="access.directive.js">access.directive.js</ProjectItem>
         </Folder>
         <ProjectItem ReplaceParameters="true" TargetFileName="app.config.js">app.config.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="app.module.js">app.module.js</ProjectItem>
-        <Folder Name="engineers" TargetFolderName="engineers">
-          <ProjectItem ReplaceParameters="true" TargetFileName="engineer.controller.js">engineer.controller.js</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="engineer.html">engineer.html</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="engineers.controller.js">engineers.controller.js</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="engineers.html">engineers.html</ProjectItem>
-        </Folder>
         <Folder Name="histories" TargetFolderName="histories">
           <ProjectItem ReplaceParameters="true" TargetFileName="histories.controller.js">histories.controller.js</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="histories.html">histories.html</ProjectItem>
@@ -72,6 +71,14 @@
         <Folder Name="user-action-logs" TargetFolderName="user-action-logs">
           <ProjectItem ReplaceParameters="true" TargetFileName="user-action-logs.controller.js">user-action-logs.controller.js</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="user-action-logs.html">user-action-logs.html</ProjectItem>
+        </Folder>
+        <Folder Name="users" TargetFolderName="users">
+          <ProjectItem ReplaceParameters="true" TargetFileName="add-user.controller.js">add-user.controller.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="add-user.html">add-user.html</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="update-user.controller.js">update-user.controller.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="update-user.html">update-user.html</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="users.controller.js">users.controller.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="users.html">users.html</ProjectItem>
         </Folder>
       </Folder>
       <Folder Name="App_Data" TargetFolderName="App_Data" />
@@ -132,8 +139,7 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="XmlDocumentationProvider.cs">XmlDocumentationProvider.cs</ProjectItem>
         </Folder>
       </Folder>
-      <Folder Name="bin" TargetFolderName="bin">
-      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
       <Folder Name="Content" TargetFolderName="Content">
         <ProjectItem ReplaceParameters="true" TargetFileName="angular-chart.css">angular-chart.css</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="animations.css">animations.css</ProjectItem>
@@ -142,6 +148,7 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="datetimepicker.css">datetimepicker.css</ProjectItem>
         <Folder Name="img" TargetFolderName="img">
           <ProjectItem ReplaceParameters="false" TargetFileName="200px-New_York_City_Department_of_Environmental_Protection_logo.png">200px-New_York_City_Department_of_Environmental_Protection_logo.png</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="contacts.png">contacts.png</ProjectItem>
           <ProjectItem ReplaceParameters="false" TargetFileName="P9faj3fB.png">P9faj3fB.png</ProjectItem>
         </Folder>
         <ProjectItem ReplaceParameters="true" TargetFileName="loading-bar.min.css">loading-bar.min.css</ProjectItem>
@@ -160,16 +167,16 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="ui-bootstrap-csp.css">ui-bootstrap-csp.css</ProjectItem>
       </Folder>
       <Folder Name="Controllers" TargetFolderName="Controllers">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AboutController.cs">AboutController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="AuthorizationController.cs">AuthorizationController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="BaseApiController.cs">BaseApiController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="DashboardController.cs">DashboardController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="EngineersController.cs">EngineersController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="FilesController.cs">FilesController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="HistoriesController.cs">HistoriesController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="HomeController.cs">HomeController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ReportsController.cs">ReportsController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="SettingsController.cs">SettingsController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="UserActionLogsController.cs">UserActionLogsController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="UsersController.cs">UsersController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ValuesController.cs">ValuesController.cs</ProjectItem>
       </Folder>
       <Folder Name="DependencyResolution" TargetFolderName="DependencyResolution">

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataComparison>
+  <Version>10</Version>
+  <ConnectionProperties1>
+    <ConnectionString>Data Source=lfkbwtstgsql01;Initial Catalog=NerdLunchDev;Persist Security Info=True;User ID=steinfeld;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=600;Encrypt=False;TrustServerCertificate=True</ConnectionString>
+    <FullDisplayName>lfkbwtstgsql01.NerdLunchDev (steinfeld)</FullDisplayName>
+  </ConnectionProperties1>
+  <ConnectionProperties2>
+    <ConnectionString>Data Source=lfkbwtstgsql01;Initial Catalog=NerdLunchUat;Persist Security Info=True;User ID=steinfeld;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=600;Encrypt=False;TrustServerCertificate=True</ConnectionString>
+    <FullDisplayName>lfkbwtstgsql01.NerdLunchUat (steinfeld)</FullDisplayName>
+  </ConnectionProperties2>
+  <SessionSettings>Default</SessionSettings>
+</DataComparison>

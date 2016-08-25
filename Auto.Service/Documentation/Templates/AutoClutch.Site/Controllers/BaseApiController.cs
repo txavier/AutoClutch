@@ -1,4 +1,4 @@
-﻿using AutoClutch.Auto.Service.Interfaces;
+﻿using AutoClutch.Auto.Core.Interfaces;
 using $safeprojectname$.Core.Objects;
 using $safeprojectname$.DependencyResolution;
 using Elmah;
@@ -26,11 +26,17 @@ namespace $safeprojectname$.Controllers
 
         private ILogService<TEntity> _logService;
 
-        public BaseApiController(IService<TEntity> service, ILogService<TEntity> logService)
+        private IAutoClutchAuthorizationService _autoClutchAuthorizationService;
+
+        public BaseApiController(IService<TEntity> service,
+            Core.Interfaces.ILogService<TEntity> logService = null,
+            IAutoClutchAuthorizationService autoClutchAuthorizationService = null)
         {
             _service = service;
 
             _logService = logService;
+
+            _autoClutchAuthorizationService = autoClutchAuthorizationService;
         }
 
         public BaseApiController(IService<TEntity> service)
@@ -81,6 +87,12 @@ namespace $safeprojectname$.Controllers
         {
             try
             {
+                if (_autoClutchAuthorizationService != null &&
+                    !_autoClutchAuthorizationService.IsAuthorized(User, ControllerContext.Request.Method.Method, ControllerContext.Request.RequestUri.AbsoluteUri))
+                {
+                    return Unauthorized();
+                }
+
                 var skip = (page - 1) * perPage;
 
                 // If sort is descending then change the '-' sign which represents the descending order
@@ -143,12 +155,26 @@ namespace $safeprojectname$.Controllers
                             }
                         }
 
+                        // The injected authorization service may filter the requested fields here.
+                        if (_autoClutchAuthorizationService != null)
+                        {
+                            fields = _autoClutchAuthorizationService.GetFilteredFields(User, ControllerContext.Request.Method.Method, ControllerContext.Request.RequestUri.AbsoluteUri, fields.Split(",".ToCharArray()))
+                                .Aggregate((current, next) => current + "," + next);
+                        }
+
                         var selectedResult1 = result.Select("new(" + fields + ")", expandedObjects);
 
                         return Ok(selectedResult1);
                     }
                     else
                     {
+                        // The injected authorization service may filter the requested fields here.
+                        if (_autoClutchAuthorizationService != null)
+                        {
+                            fields = _autoClutchAuthorizationService.GetFilteredFields(User, ControllerContext.Request.Method.Method, ControllerContext.Request.RequestUri.AbsoluteUri, fields.Split(",".ToCharArray()))
+                                .Aggregate((current, next) => current + "," + next);
+                        }
+
                         var selectedResult2 = result.Select("new(" + fields + ")");
 
                         return Ok(selectedResult2);
@@ -179,7 +205,7 @@ namespace $safeprojectname$.Controllers
                         }
                     }
 
-                    var expandedObjectsString = expand == null ? string.Empty : "," + resultingObjects.Aggregate((current, next) => current + ", " + next);
+                    var expandedObjectsString = expand == null ? string.Empty : "," + resultingObjects.Aggregate((current, next) => current + "," + next);
 
                     // If there arent any items then return the empty set.
                     if (!result.Any())
@@ -191,16 +217,30 @@ namespace $safeprojectname$.Controllers
                     fields = result.First().GetType().GetProperties().Select(i => i.Name).Aggregate((current, next) => current + ", " + next) + expandedObjectsString;
 
                     // Get distinct fields so that there is no overlap.
-                    fields = fields.Split(",".ToCharArray()).Distinct().Aggregate((current, next) => current + ", " + next);
+                    fields = fields.Split(",".ToCharArray()).Distinct().Aggregate((current, next) => current + "," + next);
 
-                    var selectedResult3 = result.Select("new(" + fields + ")");
+                    try
+                    {
+                        // The injected authorization service may filter the requested fields here.
+                        if (_autoClutchAuthorizationService != null)
+                        {
+                            fields = _autoClutchAuthorizationService.GetFilteredFields(User, ControllerContext.Request.Method.Method, ControllerContext.Request.RequestUri.AbsoluteUri, fields.Split(",".ToCharArray()))
+                                .Aggregate((current, next) => current + "," + next);
+                        }
 
-                    return Ok(selectedResult3);
+                        var selectedResult3 = result.Select("new(" + fields + ")");
+
+                        return Ok(selectedResult3);
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        throw new ArgumentException("Argument exception caught.  The fileds value is fields: " + fields, ex);
+                    }
                 }
             }
             catch (Exception ex)
             {
-                ErrorSignal.FromCurrentContext().Raise(ex);
+                _logService.Info(ex);
 
                 return InternalServerError(ex);
             }
@@ -299,6 +339,12 @@ namespace $safeprojectname$.Controllers
         {
             try
             {
+                if (_autoClutchAuthorizationService != null &&
+                    !_autoClutchAuthorizationService.IsAuthorized(User, ControllerContext.Request.Method.Method, ControllerContext.Request.RequestUri.AbsoluteUri))
+                {
+                    return -1;
+                }
+
                 if (search != null)
                 {
                     q = GetDynamicQuery(search, searchFields, q, typeof(TEntity));
@@ -312,7 +358,7 @@ namespace $safeprojectname$.Controllers
             }
             catch (Exception ex)
             {
-                ErrorSignal.FromCurrentContext().Raise(ex);
+                _logService.Info(ex);
             }
 
             return -1;
@@ -342,7 +388,10 @@ namespace $safeprojectname$.Controllers
             }
             catch (Exception ex)
             {
-                ErrorSignal.FromCurrentContext().Raise(ex);
+                if (_logService != null)
+                {
+                    _logService.Info(ex);
+                }
 
                 return InternalServerError(ex);
             }
@@ -354,6 +403,12 @@ namespace $safeprojectname$.Controllers
         {
             try
             {
+                if (_autoClutchAuthorizationService != null &&
+                    !_autoClutchAuthorizationService.IsAuthorized(User, ControllerContext.Request.Method.Method, ControllerContext.Request.RequestUri.AbsoluteUri))
+                {
+                    return Unauthorized();
+                }
+
                 if (!ModelState.IsValid)
                 {
                     return BadRequest(ModelState);
@@ -366,7 +421,9 @@ namespace $safeprojectname$.Controllers
 
                 var errors1 = _service.GetAnyAvailableValidationErrors();
 
-                await _service.UpdateAsync(entity, loggedInUserName: GetLoggedInUserName(), lazyLoadingEnabled: false, proxyCreationEnabled: false);
+                var loggedInUserName = _autoClutchAuthorizationService?.GetLoggedInUserName(User);
+
+                await _service.UpdateAsync(entity, loggedInUserName, lazyLoadingEnabled: false, proxyCreationEnabled: false);
 
                 // Get any errors.
                 var errors = _service.Errors;
@@ -379,7 +436,7 @@ namespace $safeprojectname$.Controllers
                 // If a logging service has been injected then use it.
                 if (_logService != null)
                 {
-                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), EventType.Modified, loggedInUserName: GetLoggedInUserName(), useToString: true);
+                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), EventType.Modified, loggedInUserName: loggedInUserName, useToString: true);
                 }
 
                 //return StatusCode(HttpStatusCode.NoContent);
@@ -398,15 +455,13 @@ namespace $safeprojectname$.Controllers
             }
             catch (Exception ex)
             {
-                ErrorSignal.FromCurrentContext().Raise(ex);
+                if (_logService != null)
+                {
+                    _logService.Info(ex);
+                }
 
                 return InternalServerError(ex);
             }
-        }
-
-        private string GetLoggedInUserName()
-        {
-            return User.Identity.Name.Split("\\".ToCharArray()).Last();
         }
 
         // POST: api/plantUsers
@@ -415,12 +470,20 @@ namespace $safeprojectname$.Controllers
         {
             try
             {
+                if (_autoClutchAuthorizationService != null &&
+                    !_autoClutchAuthorizationService.IsAuthorized(User, ControllerContext.Request.Method.Method, ControllerContext.Request.RequestUri.AbsoluteUri))
+                {
+                    return Unauthorized();
+                }
+
                 if (!ModelState.IsValid)
                 {
                     return BadRequest(ModelState);
                 }
 
-                await _service.AddAsync(entity, loggedInUserName: GetLoggedInUserName(), lazyLoadingEnabled: false, proxyCreationEnabled: false);
+                var loggedInUserName = _autoClutchAuthorizationService?.GetLoggedInUserName(User);
+
+                await _service.AddAsync(entity, loggedInUserName: loggedInUserName, lazyLoadingEnabled: false, proxyCreationEnabled: false);
 
                 // Get any errors.
                 var errors = _service.Errors;
@@ -433,7 +496,7 @@ namespace $safeprojectname$.Controllers
                 // If a logging service has been injected then use it.
                 if (_logService != null)
                 {
-                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), EventType.Added, loggedInUserName: GetLoggedInUserName(), useToString: true);
+                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), EventType.Added, loggedInUserName: loggedInUserName, useToString: true);
                 }
 
                 // Null is passed because the entity coming back from the service layer is 
@@ -444,7 +507,10 @@ namespace $safeprojectname$.Controllers
             }
             catch (Exception ex)
             {
-                ErrorSignal.FromCurrentContext().Raise(ex);
+                if (_logService != null)
+                {
+                    _logService.Info(ex);
+                }
 
                 return InternalServerError(ex);
             }
@@ -460,10 +526,16 @@ namespace $safeprojectname$.Controllers
         /// http://aspnetwebstack.codeplex.com/workitem/1480
         /// </remarks>
         [HttpDelete]
-        public virtual async Task<IHttpActionResult> Delete(int id, bool? softDelete)
+        public virtual async Task<IHttpActionResult> Delete(int id, bool? softDelete = null)
         {
             try
             {
+                if (_autoClutchAuthorizationService != null &&
+                    !_autoClutchAuthorizationService.IsAuthorized(User, ControllerContext.Request.Method.Method, ControllerContext.Request.RequestUri.AbsoluteUri))
+                {
+                    return Unauthorized();
+                }
+
                 var entity = await _service.FindAsync(id);
 
                 if (entity == null)
@@ -471,22 +543,27 @@ namespace $safeprojectname$.Controllers
                     return NotFound();
                 }
 
-                // The below line has been commented out because the softdelete is not working.
-                //var result = await _service.DeleteAsync(id, loggedInUserName: GetLoggedInUserName(), softDelete: (softDelete ?? false));
+                var loggedInUserName = _autoClutchAuthorizationService?.GetLoggedInUserName(User);
 
-                var result = await _service.DeleteAsync(id, loggedInUserName: GetLoggedInUserName());
+                // The below line has been commented out because the softdelete is not working.
+                //var result = await _service.DeleteAsync(id, loggedInUserName: loggedInUserName, softDelete: (softDelete ?? false));
+
+                var result = await _service.DeleteAsync(id, loggedInUserName: loggedInUserName);
 
                 // If a logging service has been injected then use it.
                 if (_logService != null)
                 {
-                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), (softDelete ?? false) ? EventType.SoftDeleted : EventType.Deleted, loggedInUserName: GetLoggedInUserName(), useToString: true);
+                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), (softDelete ?? false) ? EventType.SoftDeleted : EventType.Deleted, loggedInUserName: loggedInUserName, useToString: true);
                 }
 
                 return Ok(result);
             }
             catch (Exception ex)
             {
-                ErrorSignal.FromCurrentContext().Raise(ex);
+                if (_logService != null)
+                {
+                    _logService.Info(ex);
+                }
 
                 return InternalServerError(ex);
             }

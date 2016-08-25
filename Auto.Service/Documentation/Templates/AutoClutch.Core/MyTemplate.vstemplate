@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
     <Name>AutoClutch.Core</Name>
-    <Description>AutoClutch Core layer template</Description>
+    <Description>AutoClutch Core layer template.</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
@@ -15,25 +15,27 @@
     <PreviewImage>__PreviewImage.png</PreviewImage>
   </TemplateData>
   <TemplateContent>
-    <Project TargetFileName="MyProjectTestA.Core.csproj" File="MyProjectTestA.Core.csproj" ReplaceParameters="true">
+    <Project TargetFileName="AutoClutch.Core.csproj" File="AutoClutch.Core.csproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="true" TargetFileName="App.config">App.config</ProjectItem>
-      <Folder Name="bin" TargetFolderName="bin">
-        <Folder Name="Debug" TargetFolderName="Debug">
-        </Folder>
-      </Folder>
       <Folder Name="Documents" TargetFolderName="Documents">
-		<ProjectItem ReplaceParameters="true" TargetFileName="ELMAH-1.2-db-SQLServer.sql">ELMAH-1.2-db-SQLServer.sql</ProjectItem>
-	  </Folder>
+        <ProjectItem ReplaceParameters="false" TargetFileName=".bowerrc">.bowerrc</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName=".gitconfig">.gitconfig</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName=".npmrc">.npmrc</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="cntlm-0.92.3-setup.exe">cntlm-0.92.3-setup.exe</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="cntlm.ini">cntlm.ini</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Dynamic Expressions.html">Dynamic Expressions.html</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ELMAH-1.2-db-SQLServer.sql">ELMAH-1.2-db-SQLServer.sql</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="NerdLunch Requirements Document.docx">NerdLunch Requirements Document.docx</ProjectItem>
+      </Folder>
       <Folder Name="Interfaces" TargetFolderName="Interfaces">
         <ProjectItem ReplaceParameters="true" TargetFileName="IAuthorizeService.cs">IAuthorizeService.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IConfigSettingsGetter.cs">IConfigSettingsGetter.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IContractDocumentService.cs">IContractDocumentService.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IDocumentManagementServiceFacade.cs">IDocumentManagementServiceFacade.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IDocumentService.cs">IDocumentService.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="IEfQueryContractTotalsPerSection.cs">IEfQueryContractTotalsPerSection.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IEnvironmentConfigSettingsGetter.cs">IEnvironmentConfigSettingsGetter.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IGeoClientGetter.cs">IGeoClientGetter.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IImportFilesGetter.cs">IImportFilesGetter.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ILogService.cs">ILogService.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="IMetricService.cs">IMetricService.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IReportService.cs">IReportService.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ISettingService.cs">ISettingService.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ISqlServerReportGetter.cs">ISqlServerReportGetter.cs</ProjectItem>
@@ -41,19 +43,18 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="IXmlValidatorService.cs">IXmlValidatorService.cs</ProjectItem>
       </Folder>
       <Folder Name="Models" TargetFolderName="Models">
-        <ProjectItem ReplaceParameters="true" TargetFileName="engineer.cs">engineer.cs</ProjectItem>
         <Folder Name="Partials" TargetFolderName="Partials">
-          <ProjectItem ReplaceParameters="true" TargetFileName="engineer.cs">engineer.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="user.cs">user.cs</ProjectItem>
         </Folder>
         <ProjectItem ReplaceParameters="true" TargetFileName="setting.cs">setting.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="userActionLog.cs">userActionLog.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="user.cs">user.cs</ProjectItem>
       </Folder>
       <Folder Name="Objects" TargetFolderName="Objects">
         <ProjectItem ReplaceParameters="true" TargetFileName="DEPFile.cs">DEPFile.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="EventType.cs">EventType.cs</ProjectItem>
+        <Folder Name="GeoClient" TargetFolderName="GeoClient">
+          <ProjectItem ReplaceParameters="true" TargetFileName="GeoClient.cs">GeoClient.cs</ProjectItem>
+        </Folder>
         <ProjectItem ReplaceParameters="true" TargetFileName="RequirementCheck.cs">RequirementCheck.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="SearchCriteria.cs">SearchCriteria.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="SearchParam.cs">SearchParam.cs</ProjectItem>
       </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
       <Folder Name="Properties" TargetFolderName="Properties">
@@ -63,16 +64,14 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="AuthorizeService.cs">AuthorizeService.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ContractDocumentService.cs">ContractDocumentService.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="DocumentService.cs">DocumentService.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="MetricService.cs">MetricService.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ReportService.cs">ReportService.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="SettingService.cs">SettingService.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="TrackerEnabledService.cs">TrackerEnabledService.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="UserActionLogService.cs">UserActionLogService.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="UserService.cs">UserService.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="XmlValidatorService.cs">XmlValidatorService.cs</ProjectItem>
       </Folder>
       <Folder Name="ViewModels" TargetFolderName="ViewModels">
         <ProjectItem ReplaceParameters="true" TargetFileName="BaseHistoryVM.cs">BaseHistoryVM.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="GraphViewModel.cs">GraphViewModel.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="LogDetail.cs">LogDetail.cs</ProjectItem>
       </Folder>
     </Project>

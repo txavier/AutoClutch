@@ -1,4 +1,6 @@
-﻿using $safeprojectname$.DocumentManagementService;
+﻿using NerdLunch.Core.Interfaces;
+using NerdLunch.Core.Objects;
+using $safeprojectname$.DocumentManagementService;
 using System;
 using System.Collections.Generic;
 using System.Linq;

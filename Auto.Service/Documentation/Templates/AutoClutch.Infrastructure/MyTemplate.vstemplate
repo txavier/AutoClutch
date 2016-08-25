@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
     <Name>AutoClutch.Infrastructure</Name>
-    <Description>AutoClutch infrastructure layer template.</Description>
+    <Description>AutoClutch infrastructure layer template</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
@@ -20,13 +20,16 @@
       <ProjectItem ReplaceParameters="true" TargetFileName="App.Debug.config">App.Debug.config</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="App.Release.config">App.Release.config</ProjectItem>
       <Folder Name="Data" TargetFolderName="Data">
-        <ProjectItem ReplaceParameters="true" TargetFileName="EfQueryContractTotalsPerSection.cs">EfQueryContractTotalsPerSection.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="EfDataDbContext.cs">EfDataDbContext.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="TrackingConfig.cs">TrackingConfig.cs</ProjectItem>
       </Folder>
       <Folder Name="Facades" TargetFolderName="Facades">
         <ProjectItem ReplaceParameters="true" TargetFileName="DocumentManagementServiceFacade.cs">DocumentManagementServiceFacade.cs</ProjectItem>
       </Folder>
       <Folder Name="Getters" TargetFolderName="Getters">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ConfigSettingsGetter.cs">ConfigSettingsGetter.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="EnvironmentConfigSettingsGetter.cs">EnvironmentConfigSettingsGetter.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="GeoClientGetter.cs">GeoClientGetter.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ImportFilesGetter.cs">ImportFilesGetter.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="SqlServerReportGetter.cs">SqlServerReportGetter.cs</ProjectItem>
       </Folder>

@@ -54,11 +54,9 @@
     <Compile Include="Documentation\Templates\AutoClutch.Core\Interfaces\IContractDocumentService.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\Interfaces\IDocumentManagementServiceFacade.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\Interfaces\IDocumentService.cs" />
-    <Compile Include="Documentation\Templates\AutoClutch.Core\Interfaces\IEfQueryContractTotalsPerSection.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\Interfaces\IEnvironmentConfigSettingsGetter.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\Interfaces\IImportFilesGetter.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\Interfaces\ILogService.cs" />
-    <Compile Include="Documentation\Templates\AutoClutch.Core\Interfaces\IMetricService.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\Interfaces\IReportService.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\Interfaces\ISettingService.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\Interfaces\ISqlServerReportGetter.cs" />
@@ -67,7 +65,6 @@
     <Compile Include="Documentation\Templates\AutoClutch.Core\Models\engineer.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\Models\Partials\engineer.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\Models\setting.cs" />
-    <Compile Include="Documentation\Templates\AutoClutch.Core\Models\userActionLog.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\Objects\DEPFile.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\Objects\EventType.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\Objects\RequirementCheck.cs" />
@@ -77,19 +74,13 @@
     <Compile Include="Documentation\Templates\AutoClutch.Core\Services\AuthorizeService.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\Services\ContractDocumentService.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\Services\DocumentService.cs" />
-    <Compile Include="Documentation\Templates\AutoClutch.Core\Services\MetricService.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\Services\ReportService.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\Services\SettingService.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\Services\TrackerEnabledService.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\Services\UserActionLogService.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\Services\XmlValidatorService.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\ViewModels\BaseHistoryVM.cs" />
-    <Compile Include="Documentation\Templates\AutoClutch.Core\ViewModels\GraphViewModel.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Core\ViewModels\LogDetail.cs" />
-    <Compile Include="Documentation\Templates\AutoClutch.Data\EfDataDbContext.cs" />
-    <Compile Include="Documentation\Templates\AutoClutch.Data\Properties\AssemblyInfo.cs" />
-    <Compile Include="Documentation\Templates\AutoClutch.Data\TrackingConfig.cs" />
-    <Compile Include="Documentation\Templates\AutoClutch.Infrastructure\Data\EfQueryContractTotalsPerSection.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Infrastructure\Facades\DocumentManagementServiceFacade.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Infrastructure\Getters\EnvironmentConfigSettingsGetter.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Infrastructure\Getters\ImportFilesGetter.cs" />
@@ -126,7 +117,6 @@
     <Compile Include="Documentation\Templates\AutoClutch.Site\Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Site\Controllers\AuthorizationController.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Site\Controllers\BaseApiController.cs" />
-    <Compile Include="Documentation\Templates\AutoClutch.Site\Controllers\DashboardController.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Site\Controllers\EngineersController.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Site\Controllers\FilesController.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.Site\Controllers\HistoriesController.cs" />
@@ -166,20 +156,28 @@
       <Name>Auto.Repo</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Documentation\Templates\AutoClutch.Infrastructure\Data\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Documentation\AutoClutch Templates Guide.docx" />
     <None Include="Documentation\Templates\AutoClutch Templates Guide.docx" />
-    <None Include="Documentation\Templates\AutoClutch.CompositionRoot\App.config" />
-    <None Include="Documentation\Templates\AutoClutch.CompositionRoot\packages.config" />
+    <None Include="Documentation\Templates\AutoClutch.CompositionRoot\App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Documentation\Templates\AutoClutch.CompositionRoot\packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Documentation\Templates\AutoClutch.Core\App.config" />
-    <None Include="Documentation\Templates\AutoClutch.Core\packages.config" />
-    <None Include="Documentation\Templates\AutoClutch.Data\App.config" />
-    <None Include="Documentation\Templates\AutoClutch.Data\packages.config" />
+    <None Include="Documentation\Templates\AutoClutch.Core\packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Documentation\Templates\AutoClutch.Infrastructure\App.config" />
     <None Include="Documentation\Templates\AutoClutch.Infrastructure\App.Debug.config" />
     <None Include="Documentation\Templates\AutoClutch.Infrastructure\App.Release.config" />
-    <None Include="Documentation\Templates\AutoClutch.Infrastructure\packages.config" />
+    <None Include="Documentation\Templates\AutoClutch.Infrastructure\packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Documentation\Templates\AutoClutch.Infrastructure\Properties\Settings.settings" />
     <None Include="Documentation\Templates\AutoClutch.Infrastructure\Web References\DocumentManagementService\DocumentObject.datasource" />
     <None Include="Documentation\Templates\AutoClutch.Infrastructure\Web References\DocumentManagementService\DocumentObjectDetail.datasource" />
@@ -244,7 +242,9 @@
     <None Include="Documentation\Templates\AutoClutch.Site\fonts\glyphicons-halflings-regular.ttf" />
     <None Include="Documentation\Templates\AutoClutch.Site\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Documentation\Templates\AutoClutch.Site\fonts\glyphicons-halflings-regular.woff2" />
-    <None Include="Documentation\Templates\AutoClutch.Site\packages.config" />
+    <None Include="Documentation\Templates\AutoClutch.Site\packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Documentation\Templates\AutoClutch.Site\Properties\PublishProfiles\Staging.pubxml" />
     <None Include="Documentation\Templates\AutoClutch.Site\Scripts\angular-chart\angular-chart.min.js.map" />
     <None Include="Documentation\Templates\AutoClutch.Site\Scripts\jquery-1.10.2.min.map" />
@@ -255,8 +255,12 @@
     <None Include="Documentation\Templates\AutoClutch.Site\Views\Shared\_Layout.cshtml" />
     <None Include="Documentation\Templates\AutoClutch.Site\Views\Web.config" />
     <None Include="Documentation\Templates\AutoClutch.Site\Views\_ViewStart.cshtml" />
-    <None Include="Documentation\Templates\AutoClutch.Site\Web.config" />
-    <None Include="Documentation\Templates\AutoClutch.Site\Web.Debug.config" />
+    <None Include="Documentation\Templates\AutoClutch.Site\Web.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Documentation\Templates\AutoClutch.Site\Web.Debug.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Documentation\Templates\AutoClutch.Site\Web.Release.config" />
     <None Include="Documentation\Templates\AutoClutch.UnitTests\App.config" />
     <None Include="Documentation\Templates\AutoClutch.UnitTests\packages.config" />
@@ -268,20 +272,22 @@
     <Content Include="Documentation\Implementation.txt" />
     <Content Include="Documentation\Templates\AutoClutch ReadMe.txt" />
     <Content Include="Documentation\Templates\AutoClutch.CompositionRoot\AutoClutch.CompositionRoot.csproj" />
-    <Content Include="Documentation\Templates\AutoClutch.CompositionRoot\MyTemplate.vstemplate" />
+    <Content Include="Documentation\Templates\AutoClutch.CompositionRoot\MyTemplate.vstemplate">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Documentation\Templates\AutoClutch.CompositionRoot\__PreviewImage.png" />
     <Content Include="Documentation\Templates\AutoClutch.CompositionRoot\__TemplateIcon.png" />
     <Content Include="Documentation\Templates\AutoClutch.Core\Documents\ELMAH-1.2-db-SQLServer.sql" />
     <Content Include="Documentation\Templates\AutoClutch.Core\MyProjectTestA.Core.csproj" />
-    <Content Include="Documentation\Templates\AutoClutch.Core\MyTemplate.vstemplate" />
+    <Content Include="Documentation\Templates\AutoClutch.Core\MyTemplate.vstemplate">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Documentation\Templates\AutoClutch.Core\__PreviewImage.png" />
     <Content Include="Documentation\Templates\AutoClutch.Core\__TemplateIcon.png" />
-    <Content Include="Documentation\Templates\AutoClutch.Data\MyProjectTestA.Data.csproj" />
-    <Content Include="Documentation\Templates\AutoClutch.Data\MyTemplate.vstemplate" />
-    <Content Include="Documentation\Templates\AutoClutch.Data\__PreviewImage.png" />
-    <Content Include="Documentation\Templates\AutoClutch.Data\__TemplateIcon.png" />
     <Content Include="Documentation\Templates\AutoClutch.Infrastructure\AutoClutch.Infrastructure.csproj" />
-    <Content Include="Documentation\Templates\AutoClutch.Infrastructure\MyTemplate.vstemplate" />
+    <Content Include="Documentation\Templates\AutoClutch.Infrastructure\MyTemplate.vstemplate">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Documentation\Templates\AutoClutch.Infrastructure\Web References\DocumentManagementService\Service1.disco" />
     <Content Include="Documentation\Templates\AutoClutch.Infrastructure\__PreviewImage.png" />
     <Content Include="Documentation\Templates\AutoClutch.Infrastructure\__TemplateIcon.png" />
@@ -350,7 +356,9 @@
     <Content Include="Documentation\Templates\AutoClutch.Site\fonts\font-awesome-4.6.1\HELP-US-OUT.txt" />
     <Content Include="Documentation\Templates\AutoClutch.Site\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Documentation\Templates\AutoClutch.Site\Global.asax" />
-    <Content Include="Documentation\Templates\AutoClutch.Site\MyTemplate.vstemplate" />
+    <Content Include="Documentation\Templates\AutoClutch.Site\MyTemplate.vstemplate">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Documentation\Templates\AutoClutch.Site\MyTestProjectB.csproj" />
     <Content Include="Documentation\Templates\AutoClutch.Site\NuGet\readme.txt" />
     <Content Include="Documentation\Templates\AutoClutch.Site\Project_Readme.html" />
