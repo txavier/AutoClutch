@@ -77,9 +77,9 @@
             var searchCriteria = {
                 q: 'workOrderStatusId=1'
             }
-
-            if (vm.loggedInUser) {
-                searchCriteria.q += ' AND contract.sectionId=' + vm.loggedInUser.sectionId;
+            
+            if(vm.loggedInUser) {
+                searchCriteria.q += ' AND contract.sectionId='  + vm.loggedInUser.sectionId;
             }
 
             // If this is not a top level user then only show them information for their 
@@ -96,7 +96,7 @@
         }
 
         function isTopLevelUser() {
-            if (!vm.loggedInUser) {
+            if(!vm.loggedInUser) {
                 return false;
             }
 

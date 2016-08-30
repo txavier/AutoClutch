@@ -1,5 +1,4 @@
-﻿using AutoClutch.Auto.Core.Interfaces;
-using AutoClutch.Auto.Core.Objects;
+﻿using AutoClutch.Auto.Service.Interfaces;
 using $safeprojectname$.Core.Interfaces;
 using $safeprojectname$.Core.Models;
 using $safeprojectname$.Core.Services;

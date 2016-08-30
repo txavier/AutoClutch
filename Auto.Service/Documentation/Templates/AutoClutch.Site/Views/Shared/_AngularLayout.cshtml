@@ -41,13 +41,12 @@
                     <span class="icon-bar"></span>
                 </button>
                 <img class="navbar-img pull-left " src="~/Content/img/P9faj3fB.png" />
-                <a class="navbar-brand" href="#/home">$safeprojectname$ @ViewBag.Title</a>
+                <a class="navbar-brand" href="#/home">AutoClutch DEP System Template @ViewBag.Title</a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
                 <li><a href="~/elmah"><i class="fa fa-list-ol fa-users fa-fw"></i>System Reported Problems</a></li>
                 <li><a href="http://lfktfs02:8080/tfs/BWT/$safeprojectname$"><i class="fa fa-bug fa-users fa-fw"></i>Report a bug</a></li>
-                <li><a href="#/about"><i class="fa fa-info fa-fw"></i>About</a></li>
                 <li><a href="~/help"><i class="fa fa-gears fa-fw"></i>API Reference</a></li>
                 <li>
                     <a href="#">@(string.IsNullOrWhiteSpace(User.Identity.Name) ? "[No User Found]" : User.Identity.Name)</a>
@@ -87,7 +86,7 @@
                                     <a href="#/user-action-logs">User Action Logs</a>
                                 </li>
                                 <li>
-                                    <a href="#/users">Users</a>
+                                    <a href="#/engineers">Users</a>
                                 </li>
                                 <li>
                                     <a href="#/contractors">Contractors</a>
@@ -130,7 +129,6 @@
         <!-- /#page-wrapper -->
     </div>
 
-    @*<script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>*@
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/angular-third-party")
     @Scripts.Render("~/bundles/angular-shared-directives")

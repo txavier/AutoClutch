@@ -1,5 +1,4 @@
-﻿using $safeprojectname$.CompositionRoot;
-using StructureMap;
+﻿using StructureMap;
 using System;
 using System.Collections.Generic;
 using System.Linq;

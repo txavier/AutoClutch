@@ -9,7 +9,7 @@ namespace $safeprojectname$
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/wwwroot/lib/jquery/dist/jquery.min.js"));
+                        "~/Scripts/jquery-{version}.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -17,29 +17,25 @@ namespace $safeprojectname$
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+                      "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                "~/wwwroot/lib/angular/angular.min.js",
-                "~/wwwroot/lib/angular-route/angular-route.min.js",
-                "~/wwwroot/lib/angular-animate/angular-animate.min.js"
+                "~/Scripts/angular.min.js"
+                , "~/Scripts/angular-route.min.js"
+                , "~/Scripts/angular-animate.min.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/angular-third-party").Include(
-                "~/wwwroot/lib/angular-bootstrap/ui-bootstrap-tpls.min.js"
-                , "~/wwwroot/lib/nya-bootstrap-select/dist/js/nya-bs-select.min.js"
-                , "~/wwwroot/lib/angular-loading-bar/build/loading-bar.min.js"
-                , "~/wwwroot/lib/AngularJS-Toaster/toaster.min.js"
+                "~/Scripts/angular-ui/ui-bootstrap-tpls-0.14.2.min.js"
+                , "~/Scripts/nya-bs-select.js"
+                , "~/Scripts/loading-bar.min.js"
+                , "~/Scripts/toaster.min.js"
                 , "~/Scripts/jsnlog.min.js"
-                , "~/wwwroot/lib/Chart.js/Chart.js"
-                , "~/wwwroot/lib/angular-chart.js/dist/angular-chart.min.js"
-                , "~/wwwroot/lib/ng-file-upload/ng-file-upload.min.js"
-                , "~/wwwroot/lib/ng-file-upload/ng-file-upload-shim.min.js"
-                , "~/wwwroot/lib/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"
-                , "~/wwwroot/lib/angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js"
-                , "~/wwwroot/lib/angular-bing-maps/dist/angular-bing-maps.min.js"
-                , "~/wwwroot/lib/angular-multi-select/isteven-multi-select.js"
+                , "~/Scripts/chartjs/chart.min.js"
+                , "~/Scripts/angular-chart/angular-chart.min.js"
+                , "~/Scripts/ng-file-upload.min.js"
+                , "~/Scripts/ng-file-upload-shim.min.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/angular-third-party-datepicker-moment-shared-directives-moment-filter").Include(
@@ -54,22 +50,48 @@ namespace $safeprojectname$
                 "~/app/services/data.service.js",
                 "~/app/services/authentication.service.js",
                 "~/app/services/jsonPointerParseService.js",
+                "~/app/services/contract.service.js",
                 "~/app/services/error.service.js",
                 "~/app/services/report.service.js",
                 "~/app/services/authorization.service.js",
                 "~/app/services/document-upload.service.js",
                 "~/app/home/home.controller.js",
                 "~/app/sidebar/sidebar.controller.js",
+                "~/app/contracts/contract.controller.js",
+                "~/app/contracts/contracts.controller.js",
+                "~/app/contracts/add-contract.controller.js",
+                "~/app/payments/add-payment.controller.js",
+                "~/app/payments/update-payment.controller.js",
+                "~/app/deductions/add-deduction.controller.js",
+                "~/app/change-orders/add-change-order.controller.js",
+                "~/app/change-orders/update-change-order.controller.js",
                 "~/app/specifications/specification.controller.js",
                 "~/app/master-page/master-page.controller.js",
+                "~/app/work-orders/work-orders.controller.js",
+                "~/app/work-orders/add-work-order.controller.js",
+                "~/app/work-orders/update-work-order.controller.js",
+                "~/app/work-order-histories/work-order-histories.controller.js",
+                "~/app/evaluations/add-evaluation.controller.js",
+                "~/app/deductions/deductions.controller.js",
+                "~/app/payments/payments.controller.js",
+                "~/app/deductions/deduction.controller.js",
+                "~/app/payments/payment-documents.controller.js",
                 "~/app/histories/histories.controller.js",
                 "~/app/histories/history.controller.js",
+                "~/app/contracts/add-renewal-contract.controller.js",
+                "~/app/kpi/kpi-report.controller.js",
+                "~/app/contracts/contract-report.controller.js",
+                "~/app/specifications/add-specification.controller.js",
                 "~/app/payments/payment-pdf.controller.js",
-                "~/app/user-action-logs/user-action-logs.controller.js",
-                "~/app/users/users.controller.js",
-                "~/app/users/update-user.controller.js",
-                "~/app/users/add-user.controller.js",
-                "~/app/about/about.controller.js"
+                "~/app/engineers/engineer.controller.js",
+                "~/app/engineers/engineers.controller.js",
+                "~/app/contractors/contractors.controller.js",
+                "~/app/contractors/add-contractor.controller.js",
+                "~/app/contractors/update-contractor.controller.js",
+                "~/app/contractor-contact-persons/add-contractor-contact-person.controller.js",
+                "~/app/contractor-contact-persons/contractor-contact-persons.controller.js",
+                "~/app/contractor-contact-persons/update-contractor-contact-person.controller.js",
+                "~/app/user-action-logs/user-action-logs.controller.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/angular-shared-directives").Include(
@@ -87,6 +109,7 @@ namespace $safeprojectname$
                 , "~/shared-directives/focus-me/focus-me.js"
                 , "~/shared-directives/blur-currency/blur-currency.js"
                 // Solution specific directives.
+                , "~/app/contracts/contract-details.directive.js"
                 , "~/app/reports/report.directive.js"
                 , "~/app/access/access.directive.js"
                 ));
@@ -99,11 +122,11 @@ namespace $safeprojectname$
                 ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/wwwroot/lib/AngularJS-Toaster/toaster.min.css",
-                "~/wwwroot/lib/angular-loading-bar/build/loading-bar.min.css",
-                "~/wwwroot/lib/angular-bootstrap/ui-bootstrap-csp.css",
-                "~/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
-                "~/wwwroot/lib/nya-bootstrap-select/dist/css/nya-bs-select.min.css",
+                "~/Content/toaster.min.css",
+                "~/Content/loading-bar.min.css",
+                "~/Content/ui-bootstrap-csp.css",
+                "~/Content/bootstrap.min.css",
+                "~/Content/nya-bs-select.min.css",
                 "~/Content/plugins/metisMenu/metisMenu.min.css",
                 "~/Content/timeline.css",
                 "~/Content/sb-admin-2.css",
@@ -116,8 +139,7 @@ namespace $safeprojectname$
                 "~/shared-directives/box-button/box-button.css",
                 "~/shared-directives/auto-input/auto-input.css",
                 "~/Content/site.css",
-                "~/app/access/access.css",
-                "~/wwwroot/lib/angular-multi-select/isteven-multi-select.css"
+                "~/app/access/access.css"
                 ));
 
             BundleTable.EnableOptimizations = false;

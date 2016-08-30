@@ -1,4 +1,5 @@
-﻿using $safeprojectname$.Core.Interfaces;
+﻿using AutoClutch.Auto.Service.Interfaces;
+using $safeprojectname$.Core.Interfaces;
 using $safeprojectname$.Core.Models;
 using $safeprojectname$.DependencyResolution;
 using System;

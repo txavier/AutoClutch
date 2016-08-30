@@ -1,5 +1,4 @@
-﻿using NerdLunch.Core.Interfaces;
-using $safeprojectname$.ReportExecutionService;
+﻿using $safeprojectname$.ReportExecutionService;
 using System;
 using System.Collections.Generic;
 using System.Linq;

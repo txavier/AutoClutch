@@ -442,13 +442,17 @@ namespace AutoClutch.Auto.Repo.Objects
                 if (!dontSave)
                 {
                     SaveChanges(loggedInUserName);
+
+                    var id = GetEntityIdObject(entity);
+
+                    TEntity baseEntity = Find(id);
+
+                    return baseEntity;
                 }
-
-                var id = GetEntityIdObject(entity);
-
-                TEntity baseEntity = Find(id);
-
-                return baseEntity;
+                else
+                {
+                    return entity;
+                }
             }
             finally
             {

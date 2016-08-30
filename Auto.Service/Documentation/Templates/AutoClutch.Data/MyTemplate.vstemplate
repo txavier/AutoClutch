@@ -1,13 +1,13 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
-    <Name>AutoClutch.CompositionRoot</Name>
-    <Description>AutoClutch composition root layer template.</Description>
+    <Name>AutoClutch.Data</Name>
+    <Description>AutoClutch data layer template.</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
     <SortOrder>1000</SortOrder>
     <CreateNewFolder>true</CreateNewFolder>
-    <DefaultName>AutoClutch.CompositionRoot</DefaultName>
+    <DefaultName>AutoClutch.Data</DefaultName>
     <ProvideDefaultName>true</ProvideDefaultName>
     <LocationField>Enabled</LocationField>
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
@@ -15,17 +15,14 @@
     <PreviewImage>__PreviewImage.png</PreviewImage>
   </TemplateData>
   <TemplateContent>
-    <Project TargetFileName="AutoClutch.CompositionRoot.csproj" File="AutoClutch.CompositionRoot.csproj" ReplaceParameters="true">
+    <Project TargetFileName="MyProjectTestA.Data.csproj" File="MyProjectTestA.Data.csproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="true" TargetFileName="App.config">App.config</ProjectItem>
-      <Folder Name="bin" TargetFolderName="bin">
-        <Folder Name="Debug" TargetFolderName="Debug">
-        </Folder>
-      </Folder>
-      <ProjectItem ReplaceParameters="true" TargetFileName="DefaultRegistry.cs">DefaultRegistry.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="EfDataDbContext.cs">EfDataDbContext.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
       <Folder Name="Properties" TargetFolderName="Properties">
         <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
       </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="TrackingConfig.cs">TrackingConfig.cs</ProjectItem>
     </Project>
   </TemplateContent>
 </VSTemplate>
