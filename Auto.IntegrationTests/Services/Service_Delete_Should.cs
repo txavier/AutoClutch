@@ -129,7 +129,7 @@ namespace Auto.IntegrationTests.Services
                 facilityService.Add(facility3, "theox");
 
                 // Act.
-                var result = new Service<facility>(new Repository<facility>(new AutoTestDataContext())).DeleteAsync(facility3.facilityId, "theox", softDelete: true);
+                var result = new Service<facility>(new Repository<facility>(new AutoTestDataContext())).DeleteAsync(facility3.facilityId, "theox", softDelete: true).Result;
 
                 var shouldNotHaveIt = new Service<facility>(new Repository<facility>(new AutoTestDataContext())).Queryable()
                     .Where(i => i.facilityId == facility3.facilityId);
