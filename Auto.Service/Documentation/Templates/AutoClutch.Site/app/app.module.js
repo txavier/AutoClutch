@@ -12,7 +12,6 @@
         , 'ngAnimate'
         , 'ui.bootstrap.datetimepicker'
         , 'chart.js'
-        , 'ngAnimate'
         , 'ngFileUpload'
     ]);
 
