@@ -270,7 +270,6 @@
     <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Results\ChallengeResult.cs" />
     <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Startup.cs" />
-    <Compile Include="Interfaces\ILogService.cs" />
     <Compile Include="Interfaces\IService.cs" />
     <Compile Include="Models\userActionLog.cs" />
     <Compile Include="Objects\EventType.cs" />
