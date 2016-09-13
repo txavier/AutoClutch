@@ -1,0 +1,5 @@
+﻿ - The security setup was designed with the help of the following site.
+	- http://www.asp.net/web-api/overview/security/external-authentication-services
+
+ - Using Bower
+	- http://stackoverflow.com/questions/31872622/using-grunt-bower-gulp-npm-with-visual-studio-2015-for-a-asp-net-4-5-project
