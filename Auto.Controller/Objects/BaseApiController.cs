@@ -1,17 +1,16 @@
-﻿using AutoClutch.Auto.Core.Interfaces;
+﻿using AutoClutch.Controller.Interfaces;
+using AutoClutch.Core.Interfaces;
+using AutoClutch.Core.Objects;
+using AutoClutch.Log.Interfaces;
+using AutoClutch.Repo.Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.ComponentModel;
-using AutoClutch.Auto.Core.Objects;
-using Auto.Controller.Interfaces;
-using AutoClutch.Auto.Log.Interfaces;
 
-namespace Auto.Controller.Objects
+namespace AutoClutch.Controller.Objects
 {
     public class BaseApiController<TEntity> : ApiController
         where TEntity : class
@@ -44,7 +43,7 @@ namespace Auto.Controller.Objects
         /// </summary>
         /// <param name="errors"></param>
         /// <returns></returns>
-        protected IHttpActionResult RetrieveErrorResult(IEnumerable<AutoClutch.Auto.Repo.Objects.Error> errors)
+        protected IHttpActionResult RetrieveErrorResult(IEnumerable<Error> errors)
         {
             if (errors != null && errors.Any())
             {

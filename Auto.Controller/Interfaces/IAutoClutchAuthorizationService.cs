@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Security.Principal;
 
-namespace Auto.Controller.Interfaces
+namespace AutoClutch.Controller.Interfaces
 {
     public interface IAutoClutchAuthorizationService
     {

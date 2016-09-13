@@ -1,4 +1,4 @@
-﻿namespace AutoClutch.Auto.Core.Interfaces
+﻿namespace AutoClutch.Core.Interfaces
 {
     public interface ISoftDeletable
     {

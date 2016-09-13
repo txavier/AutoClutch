@@ -1,14 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AutoClutch.Auto.Service.Services;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Auto.Test.Data;
-using AutoClutch.Auto.Repo.Objects;
+using AutoClutch.Repo.Objects;
+using AutoClutch.Core.Services;
 
-namespace AutoClutch.Auto.Service.Services.IntegrationTests
+namespace AutoClutch.Service.Services.IntegrationTests
 {
     [TestClass()]
     public class Service_Get_Should

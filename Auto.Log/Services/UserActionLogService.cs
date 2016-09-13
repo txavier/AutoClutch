@@ -1,16 +1,14 @@
-﻿using AutoClutch.Auto.Core.Interfaces;
-using AutoClutch.Auto.Core.Objects;
-using AutoClutch.Auto.Log.Interfaces;
-using AutoClutch.Auto.Repo.Interfaces;
-using AutoClutch.Auto.Service.Services;
+﻿using AutoClutch.Core.Objects;
+using AutoClutch.Core.Services;
+using AutoClutch.Log.Interfaces;
+using AutoClutch.Repo.Interfaces;
 using Elmah;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace AutoClutch.Auto.Log.Services
+namespace AutoClutch.Log.Services
 {
     public class UserActionLogService : Service<userActionLog>, ILogService
     {

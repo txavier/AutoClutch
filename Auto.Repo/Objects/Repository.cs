@@ -7,12 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
-using AutoClutch.Auto.Repo.Interfaces;
 using System.Text.RegularExpressions;
 using System.Linq.Dynamic;
 using TrackerEnabledDbContext.Common.Models;
+using AutoClutch.Repo.Interfaces;
 
-namespace AutoClutch.Auto.Repo.Objects
+namespace AutoClutch.Repo.Objects
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AutoClutch.Auto.Core.Objects
+namespace AutoClutch.Core.Objects
 {
     [Table("userActionLog")]
     public partial class userActionLog

@@ -1,4 +1,4 @@
-﻿using AutoClutch.Auto.Repo.Objects;
+﻿using AutoClutch.Repo.Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using TrackerEnabledDbContext.Common.Models;
 
 [assembly: CLSCompliant(true)]
 
-namespace AutoClutch.Auto.Repo.Interfaces
+namespace AutoClutch.Repo.Interfaces
 {
     public interface IRepository<TEntity> : IDisposable
      where TEntity : class

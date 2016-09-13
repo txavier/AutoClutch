@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutoClutch.Auto.Repo.Objects
+namespace AutoClutch.Repo.Objects
 {
     public class Error
     {

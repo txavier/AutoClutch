@@ -1,18 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AutoClutch.Auto.Service.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Auto.Test.Data;
-using AutoClutch.Auto.Repo.Objects;
-using Moq;
-using AutoClutch.Auto.Repo.Interfaces;
 
-using StructureMap.AutoMocking.Moq;
-
-namespace AutoClutch.Auto.Service.Services.UnitTests
+namespace AutoClutch.Service.Services.UnitTests
 {
     [TestClass()]
     public class Service_Delete_Should

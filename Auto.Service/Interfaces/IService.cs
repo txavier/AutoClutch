@@ -1,4 +1,4 @@
-﻿using AutoClutch.Auto.Repo.Objects;
+﻿using AutoClutch.Repo.Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 [assembly: CLSCompliant(true)]
 
-namespace AutoClutch.Auto.Core.Interfaces
+namespace AutoClutch.Core.Interfaces
 {
     public interface IService<TEntity> : IDisposable
      where TEntity : class

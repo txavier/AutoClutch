@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoClutch.Auto.Repo.Objects;
+﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Auto.Test.Data;
 
-namespace AutoClutch.Auto.Repo.Objects.Tests
+namespace AutoClutch.Repo.Objects.Tests
 {
     [TestClass()]
     public class Repository_UpdateShould

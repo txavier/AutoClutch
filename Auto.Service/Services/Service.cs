@@ -1,14 +1,13 @@
-﻿using AutoClutch.Auto.Core.Interfaces;
-using AutoClutch.Auto.Repo.Interfaces;
-using AutoClutch.Auto.Repo.Objects;
+﻿using AutoClutch.Core.Interfaces;
+using AutoClutch.Repo.Interfaces;
+using AutoClutch.Repo.Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace AutoClutch.Auto.Service.Services
+namespace AutoClutch.Core.Services
 {
     public class Service<TEntity> : IService<TEntity> where TEntity : class, new()
     {
