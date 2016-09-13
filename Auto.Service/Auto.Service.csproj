@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Auto.Service</RootNamespace>
     <AssemblyName>Auto.Service</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -100,6 +105,64 @@
     <None Include="Documentation\Templates\AutoClutch.IntegrationTests\Properties\AssemblyInfo.cs" />
     <None Include="Documentation\Templates\AutoClutch.IntegrationTests\Services\ContractService_QueryExpiringContractCountBySectionOfLoggedInUserShould.cs" />
     <None Include="Documentation\Templates\AutoClutch.IntegrationTests\Services\ContractService_QueryLowFundContractCountBySectionOfLoggedInUserShould.cs" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\.bowerrc" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Views\Help\Api.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Views\Help\Index.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Views\Web.config" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\bower.json" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\package.json" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\packages.config" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Properties\PublishProfiles\victortango.xaviersoftware.com - Web Deploy.pubxml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Scripts\jquery-1.10.2.min.map" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Account\ConfirmEmail.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Account\ExternalLoginConfirmation.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Account\ExternalLoginFailure.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Account\ForgotPassword.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Account\Login.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Account\Register.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Account\ResetPassword.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Account\ResetPasswordConfirmation.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Account\SendCode.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Account\VerifyCode.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Home\Index.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Home\_Home.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Manage\AddPhoneNumber.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Manage\ChangePassword.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Manage\Index.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Manage\ManageLogins.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Manage\SetPassword.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Manage\VerifyPhoneNumber.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Shared\Error.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Shared\Lockout.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Shared\_Layout.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Shared\_LoginPartial.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\Web.config" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Views\_ViewStart.cshtml" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Web.config" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Web.Debug.config" />
+    <None Include="Documentation\Templates\AutoClutch.OAuthSite\Web.Release.config" />
     <None Include="Documentation\Templates\AutoClutch.Site\App_Start\BundleConfig.cs" />
     <None Include="Documentation\Templates\AutoClutch.Site\App_Start\FilterConfig.cs" />
     <None Include="Documentation\Templates\AutoClutch.Site\App_Start\JSNLogConfig.cs" />
@@ -147,9 +210,67 @@
     <None Include="Documentation\Templates\AutoClutch.UnitTests\Services\ImportService_ImportShould.cs" />
     <None Include="Documentation\Templates\AutoClutch.UnitTests\Services\ImportService_IsValidXmlShould.cs" />
     <None Include="Documentation\Templates\AutoClutch.UnitTests\Services\WorkOrderService_GetNewWorkOrderNumberShould.cs" />
-    <None Include="Documentation\Templates\AutoClutch.Data\EfDataDbContext.cs" />
-    <None Include="Documentation\Templates\AutoClutch.Data\Properties\AssemblyInfo.cs" />
-    <None Include="Documentation\Templates\AutoClutch.Data\TrackingConfig.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.Data\EfDataDbContext.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.Data\Properties\AssemblyInfo.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.Data\TrackingConfig.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\App_Start\BundleConfig.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\App_Start\FilterConfig.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\App_Start\IdentityConfig.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\App_Start\RouteConfig.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\App_Start\Startup.Auth.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\App_Start\WebApiConfig.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\ApiDescriptionExtensions.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\App_Start\HelpPageConfig.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Controllers\HelpController.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\HelpPageAreaRegistration.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\ModelDescriptions\CollectionModelDescription.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\ModelDescriptions\EnumTypeModelDescription.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\ModelDescriptions\EnumValueDescription.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\ModelDescriptions\IModelDocumentationProvider.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\ModelDescriptions\KeyValuePairModelDescription.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\ModelDescriptions\ModelDescription.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\ModelDescriptions\ModelDescriptionGenerator.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\ModelDescriptions\ModelNameAttribute.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\ModelDescriptions\ModelNameHelper.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\ModelDescriptions\ParameterAnnotation.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\ModelDescriptions\ParameterDescription.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\ModelDescriptions\SimpleTypeModelDescription.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\Models\HelpPageApiModel.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\SampleGeneration\ImageSample.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\SampleGeneration\InvalidSample.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\SampleGeneration\TextSample.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Controllers\AccountController.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Controllers\actionFiguresController.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Controllers\HomeController.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Controllers\ManageController.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Controllers\MeController.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\DependencyResolution\IoC.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\DependencyResolution\StructureMapWebApiControllerActivator.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Migrations\201609061950480_InitialSecurityMigration.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Migrations\201609061950480_InitialSecurityMigration.Designer.cs">
+      <DependentUpon>201609061950480_InitialSecurityMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Migrations\Configuration.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Models\AccountViewModels.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Models\IdentityModels.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Models\ManageViewModels.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Models\MeViewModels.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Properties\AssemblyInfo.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Results\ChallengeResult.cs" />
+    <Compile Include="Documentation\Templates\AutoClutch.OAuthSite\Startup.cs" />
+    <Compile Include="Interfaces\ILogService.cs" />
     <Compile Include="Interfaces\IService.cs" />
     <Compile Include="Models\userActionLog.cs" />
     <Compile Include="Objects\EventType.cs" />
@@ -311,6 +432,120 @@
     <Content Include="Documentation\Templates\AutoClutch.IntegrationTests\AutoClutch.IntegrationTests.csproj" />
     <Content Include="Documentation\Templates\AutoClutch.IntegrationTests\MyTemplate.vstemplate" />
     <Content Include="Documentation\Templates\AutoClutch.IntegrationTests\__TemplateIcon.ico" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\app\action-figures\add-action-figure.controller.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\app\action-figures\add-action-figure.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\app\action-figures\view-action-figure.controller.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\app\action-figures\view-action-figure.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\app\app.config.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\app\app.module.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\app\home\home.controller.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\app\home\home.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\app\login\login.controller.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\app\login\login.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\app\services\data.service.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\app\services\error.service.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Areas\HelpPage\HelpPage.css" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Content\bootstrap.css" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Content\bootstrap.min.css" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Content\Site.css" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Documents\Permissions Needed.PNG" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Documents\Project Information.txt" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\favicon.ico" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\FoxtrotAlpha.csproj" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Global.asax" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\MyTemplate.vstemplate" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Project_Readme.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\javascripts\sections\artistd1da.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\javascripts\sections\feedback40d0.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\javascripts\sections\get_startede6f7.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\javascripts\sections\labele27f.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\javascripts\sections\listsb68f.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\javascripts\sections\marketplace781c.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\javascripts\sections\marketplace_list671e.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\javascripts\sections\marketplace_seller_listc029.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\javascripts\sections\quicklistfc5b.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\javascripts\sections\recommendationsa3bf.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\javascripts\sections\release6b46.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\javascripts\sections\reviews7db4.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\javascripts\sections\user49ae.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\stylesheets\components\image_gallery3597.css" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\stylesheets\discogs89b1.css" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\stylesheets\libraries\chartist\chartistd797.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\stylesheets\sections\about209e.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\stylesheets\sections\appcbe0.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\stylesheets\sections\artist804c.css" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\stylesheets\sections\eventsefda.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\stylesheets\sections\forum4b7d.css" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\stylesheets\sections\genre03fe.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\stylesheets\sections\get_starteda712.css" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\stylesheets\sections\groupf961.css" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\stylesheets\sections\help_docs9efb.css" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\stylesheets\sections\lists65b6.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\stylesheets\sections\marketplaced40e.css" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\stylesheets\sections\marketplace_menus3542.css" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\stylesheets\sections\quicklister4e0b.css" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\stylesheets\sections\releaselistacb9.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\dst\stylesheets\sections\support9b2a.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\file-store\BAN15824.jpg" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\file-store\GG10669.jpg" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\file-store\HAS24943.jpg" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\file-store\HAS24944.jpg" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\file-store\HAS24946.jpg" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\file-store\MED10914.jpg" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\file-store\TAK11955.jpg" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\file-store\TAK12222.jpg" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\file-store\TAK12274.jpg" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\advertise\160x600.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\advertise\300x250.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\advertise\320x50.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\advertise\728x90.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\advertise\970x90.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\advertise\media-kit-thumbnail.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\ajax-loader-big.gif" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\apple-touch-icon-precomposed.png" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\border.png" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\default-artist.png" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\default-label.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\default-release-cassette.png" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\default-release-cd.png" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\default-release-file.png" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\default-release.png" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\discogs%404009caf.png" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\discogs%40400a87f.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\discogs-whitee4da.png" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\favicon-16x16.png" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\favicon-32x32.png" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\favicon-96x96.png" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\get_started\album-covers9caf.jpg" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\get_started\album-coversf5b0.jpg" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\google-plus-icon9caf.png" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\header-user-profile.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\help_docs_bg9caf.html" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\spacer9caf.gif" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\s.discogs.com\images\sprite39caf.png" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Scripts\app\app.datamodel.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Scripts\app\app.viewmodel.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Scripts\app\common.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Scripts\app\home.viewmodel.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Scripts\app\_run.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Scripts\bootstrap.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Scripts\bootstrap.min.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Scripts\jquery-1.10.2.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Scripts\knockout-2.3.0.debug.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Scripts\knockout-2.3.0.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Scripts\knockout.validation.debug.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Scripts\knockout.validation.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Scripts\modernizr-2.6.2.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Scripts\respond.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Scripts\respond.min.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Scripts\sammy-0.7.4.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Scripts\sammy-0.7.4.min.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\Scripts\_references.js" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\__PreviewImage.png" />
+    <Content Include="Documentation\Templates\AutoClutch.OAuthSite\__TemplateIcon.png" />
     <Content Include="Documentation\Templates\AutoClutch.Site\app\about\about.controller.js" />
     <Content Include="Documentation\Templates\AutoClutch.Site\app\about\about.html" />
     <Content Include="Documentation\Templates\AutoClutch.Site\app\access\access.css" />
@@ -448,6 +683,11 @@
     <Content Include="Documentation\Templates\AutoClutch.UnitTests\AutoClutch.UnitTests.csproj" />
     <Content Include="Documentation\Templates\AutoClutch.UnitTests\MyTemplate.vstemplate" />
     <Content Include="Documentation\Templates\AutoClutch.UnitTests\__TemplateIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Documentation\Templates\AutoClutch.OAuthSite\Migrations\201609061950480_InitialSecurityMigration.resx">
+      <DependentUpon>201609061950480_InitialSecurityMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

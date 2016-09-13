@@ -256,6 +256,7 @@ namespace AutoClutch.Auto.Repo.Objects.Tests
 
                 facilityRepository.Add(facility3, "theox");
 
+                facilityRepository.ProxyCreationEnabled = false;
 
                 // Act.
                 var retrievedFacility = facilityRepository.Get(filterString: "facilityType=\"Commercial\"", proxyCreationEnabled: false, lazyLoadingEnabled: false);
