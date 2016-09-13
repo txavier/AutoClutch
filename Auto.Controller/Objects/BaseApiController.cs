@@ -107,14 +107,16 @@ namespace Auto.Controller.Objects
                     return Ok(countResult);
                 }
 
+                _service.LazyLoadingEnabled = false;
+
+                _service.ProxyCreationEnabled = false;
+
                 var result = _service.Get(
                     skip: skip,
                     take: perPage,
                     includeProperties: expand,
                     filterString: q,
-                    orderByString: sort,
-                    lazyLoadingEnabled: false,
-                    proxyCreationEnabled: false);
+                    orderByString: sort);
 
                 //var result = fields == null ? _service.Queryable().Where(q ?? "1 = 1").OrderBy(sort).Skip(skip).Take(perPage)
                 //    : _service.Queryable().Where(q ?? "1 = 1").OrderBy(sort).Include("engineerContracts.engineer").Select("new(" + fields + ")").Skip(skip).Take(perPage);
@@ -364,7 +366,11 @@ namespace Auto.Controller.Objects
         {
             try
             {
-                var result = await _service.FindAsync(id, lazyLoadingEnabled: false, proxyCreationEnabled: false);
+                _service.LazyLoadingEnabled = false;
+
+                _service.ProxyCreationEnabled = false;
+
+                var result = await _service.FindAsync(id);
 
                 if (result == null)
                 {
@@ -418,7 +424,11 @@ namespace Auto.Controller.Objects
 
                 var loggedInUserName = _autoClutchAuthorizationService?.GetLoggedInUserName(User);
 
-                await _service.UpdateAsync(entity, loggedInUserName, lazyLoadingEnabled: false, proxyCreationEnabled: false);
+                _service.LazyLoadingEnabled = false;
+
+                _service.ProxyCreationEnabled = false;
+
+                await _service.UpdateAsync(entity, loggedInUserName);
 
                 // Get any errors.
                 var errors = _service.Errors;
@@ -478,7 +488,11 @@ namespace Auto.Controller.Objects
 
                 var loggedInUserName = _autoClutchAuthorizationService?.GetLoggedInUserName(User);
 
-                await _service.AddAsync(entity, loggedInUserName: loggedInUserName, lazyLoadingEnabled: false, proxyCreationEnabled: false);
+                _service.LazyLoadingEnabled = false;
+
+                _service.ProxyCreationEnabled = false;
+
+                await _service.AddAsync(entity, loggedInUserName: loggedInUserName);
 
                 // Get any errors.
                 var errors = _service.Errors;

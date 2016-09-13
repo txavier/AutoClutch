@@ -49,9 +49,12 @@ namespace AutoClutch.Auto.Repo.Objects.Tests
 
                 facilityRepository.Add(facility3, "theox");
 
+                facilityRepository.LazyLoadingEnabled = false;
+
+                facilityRepository.ProxyCreationEnabled = true;
 
                 // Act.
-                var retrievedFacility = facilityRepository.Find(facility3.facilityId, lazyLoadingEnabled: false, proxyCreationEnabled: true);
+                var retrievedFacility = facilityRepository.Find(facility3.facilityId);
 
                 // Assert.
                 Assert.IsTrue(retrievedFacility != null);

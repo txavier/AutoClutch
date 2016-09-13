@@ -258,8 +258,10 @@ namespace AutoClutch.Auto.Repo.Objects.Tests
 
                 facilityRepository.ProxyCreationEnabled = false;
 
+                facilityRepository.LazyLoadingEnabled = false;
+
                 // Act.
-                var retrievedFacility = facilityRepository.Get(filterString: "facilityType=\"Commercial\"", proxyCreationEnabled: false, lazyLoadingEnabled: false);
+                var retrievedFacility = facilityRepository.Get(filterString: "facilityType=\"Commercial\"");
 
                 // Assert.
                 Assert.IsTrue(retrievedFacility != null);
@@ -326,9 +328,12 @@ namespace AutoClutch.Auto.Repo.Objects.Tests
 
                 facilityRepository.Add(facility3, "theox");
 
+                facilityRepository.ProxyCreationEnabled = false;
+
+                facilityRepository.LazyLoadingEnabled = false;
 
                 // Act.
-                var retrievedFacility = facilityRepository.Get(filterString: "facilityType=\"Commercial\"", skip: 0, take: 2, proxyCreationEnabled: false, lazyLoadingEnabled: false);
+                var retrievedFacility = facilityRepository.Get(filterString: "facilityType=\"Commercial\"", skip: 0, take: 2);
 
                 // Assert.
                 Assert.IsTrue(retrievedFacility != null);
