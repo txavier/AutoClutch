@@ -30,10 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -50,6 +46,11 @@
   <ItemGroup>
     <None Include="Documentation\Templates\AutoClutch.CompositionRoot\DefaultRegistry.cs" />
     <None Include="Documentation\Templates\AutoClutch.CompositionRoot\Properties\AssemblyInfo.cs" />
+    <None Include="Documentation\Templates\AutoClutch.Core\Documents\.bowerrc" />
+    <None Include="Documentation\Templates\AutoClutch.Core\Documents\.gitconfig" />
+    <None Include="Documentation\Templates\AutoClutch.Core\Documents\.npmrc" />
+    <None Include="Documentation\Templates\AutoClutch.Core\Documents\cntlm.ini" />
+    <None Include="Documentation\Templates\AutoClutch.Core\Documents\NerdLunch Requirements Document.docx" />
     <None Include="Documentation\Templates\AutoClutch.Core\Interfaces\IAuthorizeService.cs" />
     <None Include="Documentation\Templates\AutoClutch.Core\Interfaces\IConfigSettingsGetter.cs" />
     <None Include="Documentation\Templates\AutoClutch.Core\Interfaces\IContractDocumentService.cs" />
@@ -146,17 +147,15 @@
     <None Include="Documentation\Templates\AutoClutch.UnitTests\Services\ImportService_ImportShould.cs" />
     <None Include="Documentation\Templates\AutoClutch.UnitTests\Services\ImportService_IsValidXmlShould.cs" />
     <None Include="Documentation\Templates\AutoClutch.UnitTests\Services\WorkOrderService_GetNewWorkOrderNumberShould.cs" />
-    <Compile Include="Documentation\Templates\AutoClutch.Data\EfDataDbContext.cs" />
-    <Compile Include="Documentation\Templates\AutoClutch.Data\Properties\AssemblyInfo.cs" />
-    <Compile Include="Documentation\Templates\AutoClutch.Data\TrackingConfig.cs" />
-    <Compile Include="Interfaces\ILogService.cs" />
+    <None Include="Documentation\Templates\AutoClutch.Data\EfDataDbContext.cs" />
+    <None Include="Documentation\Templates\AutoClutch.Data\Properties\AssemblyInfo.cs" />
+    <None Include="Documentation\Templates\AutoClutch.Data\TrackingConfig.cs" />
     <Compile Include="Interfaces\IService.cs" />
     <Compile Include="Models\userActionLog.cs" />
     <Compile Include="Objects\EventType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\ISoftDeletable.cs" />
     <Compile Include="Services\Service.cs" />
-    <Compile Include="Services\UserActionLogService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Auto.Repo\Auto.Repo.csproj">
@@ -274,7 +273,9 @@
     <None Include="Documentation\Templates\AutoClutch.Site\Web.Release.config" />
     <None Include="Documentation\Templates\AutoClutch.UnitTests\App.config" />
     <None Include="Documentation\Templates\AutoClutch.UnitTests\packages.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
@@ -288,6 +289,8 @@
     <Content Include="Documentation\Templates\AutoClutch.CompositionRoot\__PreviewImage.png" />
     <Content Include="Documentation\Templates\AutoClutch.CompositionRoot\__TemplateIcon.png" />
     <Content Include="Documentation\Templates\AutoClutch.Core\AutoClutch.Core.csproj" />
+    <Content Include="Documentation\Templates\AutoClutch.Core\Documents\cntlm-0.92.3-setup.exe" />
+    <Content Include="Documentation\Templates\AutoClutch.Core\Documents\Dynamic Expressions.html" />
     <Content Include="Documentation\Templates\AutoClutch.Core\Documents\ELMAH-1.2-db-SQLServer.sql" />
     <Content Include="Documentation\Templates\AutoClutch.Core\MyTemplate.vstemplate">
       <SubType>Designer</SubType>
