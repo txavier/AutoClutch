@@ -16,3 +16,5 @@ run https://github.com/owen2/AutomaticPackageRestoreMigrationScript/blob/master/
 
 7) update-database
 
+Test
+
