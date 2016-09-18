@@ -73,8 +73,6 @@ namespace Auto.Controller.Objects
         {
             try
             {
-                throw new UnauthorizedAccessException("This is a test exception.");
-
                 var skip = (page - 1) * perPage;
 
                 // If sort is descending then change the '-' sign which represents the descending order
