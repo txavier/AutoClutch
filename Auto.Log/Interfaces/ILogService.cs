@@ -1,11 +1,10 @@
-﻿using AutoClutch.Auto.Core.Objects;
+﻿using AutoClutch.Core.Interfaces;
+using AutoClutch.Core.Objects;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace AutoClutch.Auto.Core.Interfaces
+namespace AutoClutch.Log.Interfaces
 {
     public interface ILogService : IService<userActionLog>
     {

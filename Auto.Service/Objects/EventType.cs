@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutoClutch.Auto.Core.Objects
+namespace AutoClutch.Core.Objects
 {
     public enum EventType
     {

@@ -1,11 +1,8 @@
 namespace Auto.Test.Data
 {
-    using AutoClutch.Auto.Core.Interfaces;
-    using System;
-    using System.Collections.Generic;
+    using AutoClutch.Core.Interfaces;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("facility")]
     public partial class facility : ISoftDeletable

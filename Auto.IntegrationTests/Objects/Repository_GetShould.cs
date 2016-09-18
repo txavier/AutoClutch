@@ -1,13 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AutoClutch.Auto.Repo.Objects;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Auto.Test.Data;
 
-namespace AutoClutch.Auto.Repo.Objects.Tests
+namespace AutoClutch.Repo.Objects.Tests
 {
     [TestClass()]
     public class Repository_GetShould

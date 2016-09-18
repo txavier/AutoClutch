@@ -1,13 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AutoClutch.Auto.Repo.Objects;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Auto.Test.Data;
 
-namespace AutoClutch.Auto.Repo.Objects.Tests
+namespace AutoClutch.Repo.Objects.Tests
 {
     [TestClass()]
     public class Repository_FindShould
@@ -49,9 +44,12 @@ namespace AutoClutch.Auto.Repo.Objects.Tests
 
                 facilityRepository.Add(facility3, "theox");
 
+                facilityRepository.LazyLoadingEnabled = false;
+
+                facilityRepository.ProxyCreationEnabled = true;
 
                 // Act.
-                var retrievedFacility = facilityRepository.Find(facility3.facilityId, lazyLoadingEnabled: false, proxyCreationEnabled: true);
+                var retrievedFacility = facilityRepository.Find(facility3.facilityId);
 
                 // Assert.
                 Assert.IsTrue(retrievedFacility != null);

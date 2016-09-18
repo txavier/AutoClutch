@@ -1,14 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AutoClutch.Auto.Service.Services;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Auto.Test.Data;
-using AutoClutch.Auto.Repo.Objects;
+using AutoClutch.Repo.Objects;
+using AutoClutch.Core.Services;
 
-namespace AutoClutch.Auto.Service.Services.IntegrationTests
+namespace AutoClutch.Service.Services.IntegrationTests
 {
     [TestClass()]
     public class Service_Get_Should
@@ -60,14 +56,28 @@ namespace AutoClutch.Auto.Service.Services.IntegrationTests
 
                 facilityService.Add(facility3, "theox");
 
+                facilityService.ProxyCreationEnabled = false;
+
+                facilityService.LazyLoadingEnabled = false;
+
+                var newFacilityService = new Service<facility>(new Repository<facility>(new AutoTestDataContextNonTrackerEnabled()));
+
+                newFacilityService.ProxyCreationEnabled = true;
+
+                newFacilityService.LazyLoadingEnabled = true;
+
+                var newFacilityService2 = new Service<facility>(new Repository<facility>(new AutoTestDataContextNonTrackerEnabled()));
+
+                newFacilityService2.ProxyCreationEnabled = false;
+
+                newFacilityService2.LazyLoadingEnabled = false;
 
                 // Act.
-                var retrievedFacility1 = new Service<facility>(new Repository<facility>(new AutoTestDataContextNonTrackerEnabled())).Get(filter: i => i.facilityType.Contains("Commercial"), proxyCreationEnabled: true, lazyLoadingEnabled: true);
+                var retrievedFacility1 = newFacilityService.Get(filter: i => i.facilityType.Contains("Commercial"));
 
-                var retrievedFacility = new Service<facility>(new Repository<facility>(new AutoTestDataContextNonTrackerEnabled())).Get(filter: i => i.facilityType.Contains("Commercial"), proxyCreationEnabled: false, lazyLoadingEnabled: false);
+                var retrievedFacility = newFacilityService2.Get(filter: i => i.facilityType.Contains("Commercial"));
 
-                var retrievedFacility2 = facilityService.Get(filter: i => i.facilityType.Contains("Commercial"), proxyCreationEnabled: false, lazyLoadingEnabled: false);
-
+                var retrievedFacility2 = facilityService.Get(filter: i => i.facilityType.Contains("Commercial"));
 
                 // Assert.
                 Assert.IsTrue(retrievedFacility != null);
@@ -143,10 +153,13 @@ namespace AutoClutch.Auto.Service.Services.IntegrationTests
                 facility3.facilityType = "Government";
 
                 facilityService.Add(facility3, "theox");
+                
+                facilityService.ProxyCreationEnabled = true;
 
+                facilityService.LazyLoadingEnabled = true;
 
                 // Act.
-                var retrievedFacility = facilityService.Get(filterString: "facilityType=\"Commercial\"", proxyCreationEnabled: true, lazyLoadingEnabled: true);
+                var retrievedFacility = facilityService.Get(filterString: "facilityType=\"Commercial\"");
 
                 // Assert.
                 Assert.IsTrue(retrievedFacility != null);

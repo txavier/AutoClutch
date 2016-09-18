@@ -1,31 +1,38 @@
-﻿using AutoClutch.Auto.Core.Interfaces;
+﻿using AutoClutch.Controller.Interfaces;
+using AutoClutch.Core.Interfaces;
+using AutoClutch.Core.Objects;
+using AutoClutch.Log.Interfaces;
+using AutoClutch.Repo.Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.ComponentModel;
-using AutoClutch.Auto.Core.Objects;
 
-namespace Auto.Controller.Objects
+namespace AutoClutch.Controller.Objects
 {
-    public class Controller<TEntity> : ApiController
+    public class BaseApiController<TEntity> : ApiController
         where TEntity : class
     {
         private IService<TEntity> _service;
 
         private ILogService<TEntity> _logService;
 
-        public Controller(IService<TEntity> service, ILogService<TEntity> logService = null)
+        private IAutoClutchAuthorizationService _autoClutchAuthorizationService;
+
+        public BaseApiController(IService<TEntity> service,
+            ILogService<TEntity> logService = null,
+            IAutoClutchAuthorizationService autoClutchAuthorizationService = null)
         {
             _service = service;
 
             _logService = logService;
+
+            _autoClutchAuthorizationService = autoClutchAuthorizationService;
         }
 
-        public Controller(IService<TEntity> service)
+        public BaseApiController(IService<TEntity> service)
         {
             _service = service;
         }
@@ -36,7 +43,7 @@ namespace Auto.Controller.Objects
         /// </summary>
         /// <param name="errors"></param>
         /// <returns></returns>
-        protected IHttpActionResult RetrieveErrorResult(IEnumerable<AutoClutch.Auto.Repo.Objects.Error> errors)
+        protected IHttpActionResult RetrieveErrorResult(IEnumerable<Error> errors)
         {
             if (errors != null && errors.Any())
             {
@@ -59,6 +66,7 @@ namespace Auto.Controller.Objects
 
         // http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#requirements
         // For sorting http://jasonwatmore.com/post/2014/07/16/Dynamic-LINQ-Using-strings-to-sort-by-properties-and-child-object-properties.aspx
+        // For sorting by child collections http://stackoverflow.com/questions/35496303/sorting-dynamic-linq-by-collection-property
         [HttpGet]
         public virtual IHttpActionResult Get(
             string sort = null,
@@ -73,6 +81,12 @@ namespace Auto.Controller.Objects
         {
             try
             {
+                if (_autoClutchAuthorizationService != null &&
+                    !_autoClutchAuthorizationService.IsAuthorized(User, ControllerContext.Request.Method.Method, ControllerContext.Request.RequestUri.AbsoluteUri))
+                {
+                    return Unauthorized();
+                }
+
                 var skip = (page - 1) * perPage;
 
                 // If sort is descending then change the '-' sign which represents the descending order
@@ -92,14 +106,16 @@ namespace Auto.Controller.Objects
                     return Ok(countResult);
                 }
 
+                _service.LazyLoadingEnabled = false;
+
+                _service.ProxyCreationEnabled = false;
+
                 var result = _service.Get(
                     skip: skip,
                     take: perPage,
                     includeProperties: expand,
                     filterString: q,
-                    orderByString: sort,
-                    lazyLoadingEnabled: false,
-                    proxyCreationEnabled: false);
+                    orderByString: sort);
 
                 //var result = fields == null ? _service.Queryable().Where(q ?? "1 = 1").OrderBy(sort).Skip(skip).Take(perPage)
                 //    : _service.Queryable().Where(q ?? "1 = 1").OrderBy(sort).Include("engineerContracts.engineer").Select("new(" + fields + ")").Skip(skip).Take(perPage);
@@ -135,12 +151,26 @@ namespace Auto.Controller.Objects
                             }
                         }
 
+                        // The injected authorization service may filter the requested fields here.
+                        if (_autoClutchAuthorizationService != null)
+                        {
+                            fields = _autoClutchAuthorizationService.GetFilteredFields(User, ControllerContext.Request.Method.Method, ControllerContext.Request.RequestUri.AbsoluteUri, fields.Split(",".ToCharArray()))
+                                .Aggregate((current, next) => current + "," + next);
+                        }
+
                         var selectedResult1 = result.Select("new(" + fields + ")", expandedObjects);
 
                         return Ok(selectedResult1);
                     }
                     else
                     {
+                        // The injected authorization service may filter the requested fields here.
+                        if (_autoClutchAuthorizationService != null)
+                        {
+                            fields = _autoClutchAuthorizationService.GetFilteredFields(User, ControllerContext.Request.Method.Method, ControllerContext.Request.RequestUri.AbsoluteUri, fields.Split(",".ToCharArray()))
+                                .Aggregate((current, next) => current + "," + next);
+                        }
+
                         var selectedResult2 = result.Select("new(" + fields + ")");
 
                         return Ok(selectedResult2);
@@ -171,7 +201,7 @@ namespace Auto.Controller.Objects
                         }
                     }
 
-                    var expandedObjectsString = expand == null ? string.Empty : "," + resultingObjects.Aggregate((current, next) => current + ", " + next);
+                    var expandedObjectsString = expand == null ? string.Empty : "," + resultingObjects.Aggregate((current, next) => current + "," + next);
 
                     // If there arent any items then return the empty set.
                     if (!result.Any())
@@ -183,11 +213,25 @@ namespace Auto.Controller.Objects
                     fields = result.First().GetType().GetProperties().Select(i => i.Name).Aggregate((current, next) => current + ", " + next) + expandedObjectsString;
 
                     // Get distinct fields so that there is no overlap.
-                    fields = fields.Split(",".ToCharArray()).Distinct().Aggregate((current, next) => current + ", " + next);
+                    fields = fields.Split(",".ToCharArray()).Distinct().Aggregate((current, next) => current + "," + next);
 
-                    var selectedResult3 = result.Select("new(" + fields + ")");
+                    try
+                    {
+                        // The injected authorization service may filter the requested fields here.
+                        if (_autoClutchAuthorizationService != null)
+                        {
+                            fields = _autoClutchAuthorizationService.GetFilteredFields(User, ControllerContext.Request.Method.Method, ControllerContext.Request.RequestUri.AbsoluteUri, fields.Split(",".ToCharArray()))
+                                .Aggregate((current, next) => current + "," + next);
+                        }
 
-                    return Ok(selectedResult3);
+                        var selectedResult3 = result.Select("new(" + fields + ")");
+
+                        return Ok(selectedResult3);
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        throw new ArgumentException("Argument exception caught.  The fileds value is fields: " + fields, ex);
+                    }
                 }
             }
             catch (Exception ex)
@@ -291,6 +335,12 @@ namespace Auto.Controller.Objects
         {
             try
             {
+                if (_autoClutchAuthorizationService != null &&
+                    !_autoClutchAuthorizationService.IsAuthorized(User, ControllerContext.Request.Method.Method, ControllerContext.Request.RequestUri.AbsoluteUri))
+                {
+                    return -1;
+                }
+
                 if (search != null)
                 {
                     q = GetDynamicQuery(search, searchFields, q, typeof(TEntity));
@@ -315,7 +365,11 @@ namespace Auto.Controller.Objects
         {
             try
             {
-                var result = await _service.FindAsync(id, lazyLoadingEnabled: false, proxyCreationEnabled: false);
+                _service.LazyLoadingEnabled = false;
+
+                _service.ProxyCreationEnabled = false;
+
+                var result = await _service.FindAsync(id);
 
                 if (result == null)
                 {
@@ -334,7 +388,10 @@ namespace Auto.Controller.Objects
             }
             catch (Exception ex)
             {
-                _logService.Info(ex);
+                if (_logService != null)
+                {
+                    _logService.Info(ex);
+                }
 
                 return InternalServerError(ex);
             }
@@ -346,6 +403,12 @@ namespace Auto.Controller.Objects
         {
             try
             {
+                if (_autoClutchAuthorizationService != null &&
+                    !_autoClutchAuthorizationService.IsAuthorized(User, ControllerContext.Request.Method.Method, ControllerContext.Request.RequestUri.AbsoluteUri))
+                {
+                    return Unauthorized();
+                }
+
                 if (!ModelState.IsValid)
                 {
                     return BadRequest(ModelState);
@@ -358,7 +421,13 @@ namespace Auto.Controller.Objects
 
                 var errors1 = _service.GetAnyAvailableValidationErrors();
 
-                await _service.UpdateAsync(entity, loggedInUserName: GetLoggedInUserName(), lazyLoadingEnabled: false, proxyCreationEnabled: false);
+                var loggedInUserName = _autoClutchAuthorizationService?.GetLoggedInUserName(User);
+
+                _service.LazyLoadingEnabled = false;
+
+                _service.ProxyCreationEnabled = false;
+
+                await _service.UpdateAsync(entity, loggedInUserName);
 
                 // Get any errors.
                 var errors = _service.Errors;
@@ -371,34 +440,32 @@ namespace Auto.Controller.Objects
                 // If a logging service has been injected then use it.
                 if (_logService != null)
                 {
-                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), EventType.Modified, loggedInUserName: GetLoggedInUserName(), useToString: true);
+                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), EventType.Modified, loggedInUserName: loggedInUserName, useToString: true);
                 }
 
                 //return StatusCode(HttpStatusCode.NoContent);
                 return Ok(entity);
             }
-            //catch (System.Data.Entity.Infrastructure.DbUpdateConcurrencyException)
-            //{
-            //    if (!_service.Exists(id))
-            //    {
-            //        return NotFound();
-            //    }
-            //    else
-            //    {
-            //        throw;
-            //    }
-            //}
+            catch (System.Data.Entity.Infrastructure.DbUpdateConcurrencyException)
+            {
+                if (!_service.Exists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
             catch (Exception ex)
             {
-                _logService.Info(ex);
+                if (_logService != null)
+                {
+                    _logService.Info(ex);
+                }
 
                 return InternalServerError(ex);
             }
-        }
-
-        private string GetLoggedInUserName()
-        {
-            return User.Identity.Name.Split("\\".ToCharArray()).Last();
         }
 
         // POST: api/plantUsers
@@ -407,12 +474,24 @@ namespace Auto.Controller.Objects
         {
             try
             {
+                if (_autoClutchAuthorizationService != null &&
+                    !_autoClutchAuthorizationService.IsAuthorized(User, ControllerContext.Request.Method.Method, ControllerContext.Request.RequestUri.AbsoluteUri))
+                {
+                    return Unauthorized();
+                }
+
                 if (!ModelState.IsValid)
                 {
                     return BadRequest(ModelState);
                 }
 
-                await _service.AddAsync(entity, loggedInUserName: GetLoggedInUserName(), lazyLoadingEnabled: false, proxyCreationEnabled: false);
+                var loggedInUserName = _autoClutchAuthorizationService?.GetLoggedInUserName(User);
+
+                _service.LazyLoadingEnabled = false;
+
+                _service.ProxyCreationEnabled = false;
+
+                await _service.AddAsync(entity, loggedInUserName: loggedInUserName);
 
                 // Get any errors.
                 var errors = _service.Errors;
@@ -425,7 +504,7 @@ namespace Auto.Controller.Objects
                 // If a logging service has been injected then use it.
                 if (_logService != null)
                 {
-                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), EventType.Added, loggedInUserName: GetLoggedInUserName(), useToString: true);
+                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), EventType.Added, loggedInUserName: loggedInUserName, useToString: true);
                 }
 
                 // Null is passed because the entity coming back from the service layer is 
@@ -436,7 +515,10 @@ namespace Auto.Controller.Objects
             }
             catch (Exception ex)
             {
-                _logService.Info(ex);
+                if (_logService != null)
+                {
+                    _logService.Info(ex);
+                }
 
                 return InternalServerError(ex);
             }
@@ -452,10 +534,16 @@ namespace Auto.Controller.Objects
         /// http://aspnetwebstack.codeplex.com/workitem/1480
         /// </remarks>
         [HttpDelete]
-        public virtual async Task<IHttpActionResult> Delete(int id, bool? softDelete)
+        public virtual async Task<IHttpActionResult> Delete(int id, bool? softDelete = null)
         {
             try
             {
+                if (_autoClutchAuthorizationService != null &&
+                    !_autoClutchAuthorizationService.IsAuthorized(User, ControllerContext.Request.Method.Method, ControllerContext.Request.RequestUri.AbsoluteUri))
+                {
+                    return Unauthorized();
+                }
+
                 var entity = await _service.FindAsync(id);
 
                 if (entity == null)
@@ -463,22 +551,27 @@ namespace Auto.Controller.Objects
                     return NotFound();
                 }
 
-                // The below line has been commented out because the softdelete is not working.
-                //var result = await _service.DeleteAsync(id, loggedInUserName: GetLoggedInUserName(), softDelete: (softDelete ?? false));
+                var loggedInUserName = _autoClutchAuthorizationService?.GetLoggedInUserName(User);
 
-                var result = await _service.DeleteAsync(id, loggedInUserName: GetLoggedInUserName());
+                // The below line has been commented out because the softdelete is not working.
+                //var result = await _service.DeleteAsync(id, loggedInUserName: loggedInUserName, softDelete: (softDelete ?? false));
+
+                var result = await _service.DeleteAsync(id, loggedInUserName: loggedInUserName);
 
                 // If a logging service has been injected then use it.
                 if (_logService != null)
                 {
-                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), (softDelete ?? false) ? EventType.SoftDeleted : EventType.Deleted, loggedInUserName: GetLoggedInUserName(), useToString: true);
+                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), (softDelete ?? false) ? EventType.SoftDeleted : EventType.Deleted, loggedInUserName: loggedInUserName, useToString: true);
                 }
 
                 return Ok(result);
             }
             catch (Exception ex)
             {
-                _logService.Info(ex);
+                if (_logService != null)
+                {
+                    _logService.Info(ex);
+                }
 
                 return InternalServerError(ex);
             }
