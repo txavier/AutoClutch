@@ -10,7 +10,7 @@ using System.Linq.Dynamic;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace AutoClutch.Controller.Objects
+namespace AutoClutch.Controller
 {
     public class BaseApiController<TEntity> : ApiController
         where TEntity : class
