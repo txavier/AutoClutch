@@ -24,7 +24,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.Controller", "Auto.Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.Log", "Auto.Log\Auto.Log.csproj", "{D312450B-3FEF-4913-BAEE-F485A868D57E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.ODataBaseController", "Auto.ODataBaseController\Auto.ODataBaseController.csproj", "{3F031A43-8604-4CB1-B17B-3FB78BD442F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.ODataApiController", "Auto.ODataBaseController\Auto.ODataApiController.csproj", "{3F031A43-8604-4CB1-B17B-3FB78BD442F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

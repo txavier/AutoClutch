@@ -12,19 +12,19 @@ using System.Web.OData;
 
 namespace Auto.Controller
 {
-    public class ODataBaseController<TEntity> : ODataController
+    public class ODataApiController<TEntity> : ODataController
         where TEntity : class
     {
         private IService<TEntity> _service;
 
         private ILogService<TEntity> _logService;
 
-        public ODataBaseController(IService<TEntity> service)
+        public ODataApiController(IService<TEntity> service)
         {
             _service = service;
         }
 
-        public ODataBaseController(IService<TEntity> service, ILogService<TEntity> logService = null)
+        public ODataApiController(IService<TEntity> service, ILogService<TEntity> logService = null)
         {
             _service = service;
 
