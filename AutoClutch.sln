@@ -24,7 +24,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.Controller", "Auto.Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.Log", "Auto.Log\Auto.Log.csproj", "{D312450B-3FEF-4913-BAEE-F485A868D57E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.ODataApiController", "Auto.ODataApiController\Auto.ODataApiController.csproj", "{61DF4521-09AD-4C72-9A7E-6D271A18BEC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.ODataApiController", "Auto.ODataBaseController\Auto.ODataApiController.csproj", "{3F031A43-8604-4CB1-B17B-3FB78BD442F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,10 +60,10 @@ Global
 		{D312450B-3FEF-4913-BAEE-F485A868D57E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D312450B-3FEF-4913-BAEE-F485A868D57E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D312450B-3FEF-4913-BAEE-F485A868D57E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{61DF4521-09AD-4C72-9A7E-6D271A18BEC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{61DF4521-09AD-4C72-9A7E-6D271A18BEC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{61DF4521-09AD-4C72-9A7E-6D271A18BEC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{61DF4521-09AD-4C72-9A7E-6D271A18BEC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F031A43-8604-4CB1-B17B-3FB78BD442F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F031A43-8604-4CB1-B17B-3FB78BD442F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F031A43-8604-4CB1-B17B-3FB78BD442F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F031A43-8604-4CB1-B17B-3FB78BD442F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
