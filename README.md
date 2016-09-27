@@ -157,7 +157,7 @@ Or, if your service has inherited IService<item>...
 
 
 #Entire Object Graph Updating
-In previous versions developers using AutoClutch would have to break apart their disconnected object graph and update each child separately.  This has been done away with in versions 2.0 and later.  Now you as the developer no longer has to worry about updating each child element.  In the example above, 
+In previous versions developers using AutoClutch.would have to break apart their disconnected object graph and update each child separately.  This has been done away with in versions 2.0 and later.  Now you as the developer no longer has to worry about updating each child element.  In the example above, 
 	_itemRepository.Update(item);
 	_itemService.Update(item);
 If the disconnected object "item" has a child element in it "itemChild" and "itemChild" has changed then the above command will update "itemChild" in the database.  In previous versions of this library you would have to call "_itemService.update(itemChild)" as a separate call, so this subsequent call is now no longer needed.

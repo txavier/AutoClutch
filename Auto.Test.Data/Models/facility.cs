@@ -1,4 +1,4 @@
-namespace Auto.Test.Data
+namespace AutoClutch.Test.Data
 {
     using AutoClutch.Core.Interfaces;
     using System.ComponentModel.DataAnnotations;

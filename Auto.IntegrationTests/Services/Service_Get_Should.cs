@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
-using Auto.Test.Data;
-using AutoClutch.Repo.Objects;
-using AutoClutch.Core.Services;
+using AutoClutch.Test.Data;
+using AutoClutch.Repo;
+using AutoClutch.Core;
 
 namespace AutoClutch.Service.Services.IntegrationTests
 {

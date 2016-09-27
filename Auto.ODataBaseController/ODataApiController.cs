@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 
-namespace Auto.Controller
+namespace AutoClutch.Controller
 {
     public class ODataApiController<TEntity> : ODataController
         where TEntity : class
@@ -46,7 +46,6 @@ namespace Auto.Controller
         //    IQueryable<TEntity> result = db.Products.Where(p => p.Id == key);
         //    return SingleResult.Create(result);
         //}
-
         [HttpGet]
         [EnableQuery]
         public virtual TEntity Get([FromODataUri] int key)

@@ -1,4 +1,4 @@
-namespace Auto.Test.Data.Migrations
+namespace AutoClutch.Test.Data.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

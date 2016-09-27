@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Auto.Test.Data
+namespace AutoClutch.Test.Data
 {
     public partial class user : IValidatableObject
     {

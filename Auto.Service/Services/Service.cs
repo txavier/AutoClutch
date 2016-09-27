@@ -7,7 +7,7 @@ using System.Linq;
 using System.Linq.Dynamic;
 using System.Threading.Tasks;
 
-namespace AutoClutch.Core.Services
+namespace AutoClutch.Core
 {
     public class Service<TEntity> : IService<TEntity> where TEntity : class, new()
     {

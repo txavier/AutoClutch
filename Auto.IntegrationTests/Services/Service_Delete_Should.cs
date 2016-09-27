@@ -1,10 +1,10 @@
-﻿using Auto.Test.Data;
-using AutoClutch.Core.Services;
-using AutoClutch.Repo.Objects;
+﻿using AutoClutch.Core;
+using AutoClutch.Repo;
+using AutoClutch.Test.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 
-namespace Auto.IntegrationTests.Services
+namespace AutoClutch.IntegrationTests.Services
 {
     [TestClass]
     public class Service_Delete_Should

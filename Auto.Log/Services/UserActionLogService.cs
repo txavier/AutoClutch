@@ -1,5 +1,5 @@
-﻿using AutoClutch.Core.Objects;
-using AutoClutch.Core.Services;
+﻿using AutoClutch.Core;
+using AutoClutch.Core.Objects;
 using AutoClutch.Log.Interfaces;
 using AutoClutch.Repo.Interfaces;
 using Elmah;

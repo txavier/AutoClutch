@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Auto.Test.Data;
+using AutoClutch.Test.Data;
 
 namespace AutoClutch.Repo.Objects.Tests
 {

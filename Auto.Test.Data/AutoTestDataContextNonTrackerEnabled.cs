@@ -1,4 +1,4 @@
-namespace Auto.Test.Data
+namespace AutoClutch.Test.Data
 {
     using System;
     using System.Data.Entity;

@@ -11,8 +11,9 @@ using System.Text.RegularExpressions;
 using System.Linq.Dynamic;
 using TrackerEnabledDbContext.Common.Models;
 using AutoClutch.Repo.Interfaces;
+using AutoClutch.Repo.Objects;
 
-namespace AutoClutch.Repo.Objects
+namespace AutoClutch.Repo
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
