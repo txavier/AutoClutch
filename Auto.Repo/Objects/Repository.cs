@@ -92,18 +92,52 @@ namespace AutoClutch.Repo
         /// </summary>
         /// <param name="entityId"></param>
         /// <returns></returns>
-        public virtual TEntity Find(object entityId)
+        public virtual TEntity Find(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true)
         {
-            var result = _dbSet.Find(entityId);
+            try
+            {
+                _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
 
-            return result;
+                _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+
+                _context.Configuration.AutoDetectChangesEnabled = autoDetectChangesEnabled;
+
+                var result = _dbSet.Find(entityId);
+
+                return result;
+            }
+            finally
+            {
+                _context.Configuration.LazyLoadingEnabled = true;
+
+                _context.Configuration.ProxyCreationEnabled = true;
+
+                _context.Configuration.AutoDetectChangesEnabled = true;
+            }
         }
 
-        public virtual async Task<TEntity> FindAsync(object entityId)
+        public virtual async Task<TEntity> FindAsync(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true)
         {
-            var result = await _dbSet.FindAsync(entityId);
+            try
+            {
+                _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
 
-            return result;
+                _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+
+                _context.Configuration.AutoDetectChangesEnabled = autoDetectChangesEnabled;
+
+                var result = await _dbSet.FindAsync(entityId);
+
+                return result;
+            }
+            finally
+            {
+                _context.Configuration.LazyLoadingEnabled = true;
+
+                _context.Configuration.ProxyCreationEnabled = true;
+
+                _context.Configuration.AutoDetectChangesEnabled = true;
+            }
         }
 
         private IQueryable<TEntity> GetAllAsQueryable()
@@ -111,11 +145,28 @@ namespace AutoClutch.Repo
             return _context.Set<TEntity>();
         }
 
-        public virtual IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll(bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true)
         {
-            var result = GetAllAsQueryable().ToList();
+            try
+            {
+                _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
 
-            return result;
+                _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+
+                _context.Configuration.AutoDetectChangesEnabled = autoDetectChangesEnabled;
+
+                var result = GetAllAsQueryable().ToList();
+
+                return result;
+            }
+            finally
+            {
+                _context.Configuration.LazyLoadingEnabled = true;
+
+                _context.Configuration.ProxyCreationEnabled = true;
+
+                _context.Configuration.AutoDetectChangesEnabled = true;
+            }
         }
 
         /// <summary>
@@ -147,8 +198,19 @@ namespace AutoClutch.Repo
             Func<IEnumerable<TEntity>, IQueryable<TEntity>> maxBy = null,
             int? skip = null,
             int? take = null,
-            string includeProperties = "")
+            string includeProperties = "",
+            bool lazyLoadingEnabled = true,
+            bool proxyCreationEnabled = true,
+            bool autoDetectChanges = true)
         {
+            try
+            {
+                _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
+
+                _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+
+                _context.Configuration.AutoDetectChangesEnabled = autoDetectChanges;
+
                 skip = skip ?? 0;
 
                 take = take ?? Int32.MaxValue;
@@ -174,6 +236,15 @@ namespace AutoClutch.Repo
                 var resultList = resultQueryable.ToList();
 
                 return resultList;
+            }
+            finally
+            {
+                //_context.Configuration.LazyLoadingEnabled = true;
+
+                //_context.Configuration.ProxyCreationEnabled = true;
+
+                //_context.Configuration.AutoDetectChangesEnabled = true;
+            }
         }
 
         private IQueryable<TEntity> GetQuery(
@@ -268,8 +339,19 @@ namespace AutoClutch.Repo
         public virtual async Task<TEntity> AddAsync(
             TEntity entity,
             string loggedInUserName = null,
+            bool lazyLoadingEnabled = true,
+            bool proxyCreationEnabled = true,
+            bool autoDetectChangesEnabled = true,
             bool dontSave = false)
         {
+            try
+            {
+                _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
+
+                _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+
+                _context.Configuration.AutoDetectChangesEnabled = autoDetectChangesEnabled;
+
                 _context.Entry(entity).State = EntityState.Added;
 
                 if (GetAnyAvailableValidationErrors().Any())
@@ -283,13 +365,34 @@ namespace AutoClutch.Repo
                 }
 
                 return entity;
+
+            }
+            finally
+            {
+                _context.Configuration.LazyLoadingEnabled = true;
+
+                _context.Configuration.ProxyCreationEnabled = true;
+
+                _context.Configuration.AutoDetectChangesEnabled = true;
+            }
         }
 
         public virtual IEnumerable<TEntity> AddRange(
             IEnumerable<TEntity> entities,
             string loggedInUserName = null,
+            bool lazyLoadingEnabled = true,
+            bool proxyCreationEnabled = true,
+            bool autoDetectChangesEnabled = true,
             bool dontSave = false)
         {
+            try
+            {
+                _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
+
+                _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+
+                _context.Configuration.AutoDetectChangesEnabled = autoDetectChangesEnabled;
+
                 entities = _dbSet.AddRange(entities);
 
                 if (GetAnyAvailableValidationErrors().Any())
@@ -303,6 +406,15 @@ namespace AutoClutch.Repo
                 }
 
                 return entities;
+            }
+            finally
+            {
+                _context.Configuration.LazyLoadingEnabled = true;
+
+                _context.Configuration.ProxyCreationEnabled = true;
+
+                _context.Configuration.AutoDetectChangesEnabled = true;
+            }
         }
 
         /// <summary>
@@ -314,8 +426,19 @@ namespace AutoClutch.Repo
         public virtual TEntity Add(
             TEntity entity,
             string loggedInUserName = null,
+            bool lazyLoadingEnabled = true,
+            bool proxyCreationEnabled = true,
+            bool autoDetectChangesEnabled = true,
             bool dontSave = false)
         {
+            try
+            {
+                _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
+
+                _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+
+                _context.Configuration.AutoDetectChangesEnabled = autoDetectChangesEnabled;
+
                 _context.Entry(entity).State = EntityState.Added;
 
                 if (GetAnyAvailableValidationErrors().Any())
@@ -337,14 +460,34 @@ namespace AutoClutch.Repo
                 {
                     return entity;
                 }
+            }
+            finally
+            {
+                _context.Configuration.LazyLoadingEnabled = true;
+
+                _context.Configuration.ProxyCreationEnabled = true;
+
+                _context.Configuration.AutoDetectChangesEnabled = true;
+            }
         }
 
         public virtual async Task<TEntity> UpdateAsync(
             TEntity entity,
             string loggedInUserName = null,
+            bool lazyLoadingEnabled = true,
+            bool proxyCreationEnabled = true,
+            bool autoDetectChangesEnabled = true,
             bool dontSave = false,
             string regexMatchPrimaryKeyIdPattern = null)
         {
+            try
+            {
+                _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
+
+                _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+
+                _context.Configuration.AutoDetectChangesEnabled = autoDetectChangesEnabled;
+
                 // Call the update method already implemented and at the end 
                 // await the save changes if dont save was passed as true.
                 Update(entity, dontSave: true, regexMatchPrimaryKeyIdPattern: regexMatchPrimaryKeyIdPattern);
@@ -360,6 +503,15 @@ namespace AutoClutch.Repo
                 }
 
                 return entity;
+            }
+            finally
+            {
+                _context.Configuration.LazyLoadingEnabled = true;
+
+                _context.Configuration.ProxyCreationEnabled = true;
+
+                _context.Configuration.AutoDetectChangesEnabled = true;
+            }
         }
 
         /// <summary>
@@ -407,9 +559,20 @@ namespace AutoClutch.Repo
         public virtual TEntity Update(
             TEntity entity,
             string loggedInUserName = null,
+            bool lazyLoadingEnabled = true,
+            bool proxyCreationEnabled = true,
+            bool autoDetectChangesEnabled = true,
             bool dontSave = false,
             string regexMatchPrimaryKeyIdPattern = null)
         {
+            try
+            {
+                _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
+
+                _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+
+                _context.Configuration.AutoDetectChangesEnabled = autoDetectChangesEnabled;
+
                 var id = GetEntityIdObject(entity);
 
                 TEntity baseEntity = Find(id);
@@ -456,6 +619,15 @@ namespace AutoClutch.Repo
                 }
 
                 return baseEntity;
+            }
+            finally
+            {
+                _context.Configuration.LazyLoadingEnabled = true;
+
+                _context.Configuration.ProxyCreationEnabled = true;
+
+                _context.Configuration.AutoDetectChangesEnabled = true;
+            }
         }
 
         /// <summary>
