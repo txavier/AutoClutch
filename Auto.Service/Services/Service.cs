@@ -33,6 +33,18 @@ namespace AutoClutch.Core
             set { _repository.AutoDetectChangesEnabled = value; }
         }
 
+        public bool EnsureTransactionsForFunctionsAndCommands
+        {
+            get { return _repository.EnsureTransactionsForFunctionsAndCommands; }
+            set { _repository.EnsureTransactionsForFunctionsAndCommands = value; }
+        }
+
+        public bool ValidateOnSaveEnabled
+        {
+            get { return _repository.ValidateOnSaveEnabled; }
+            set { _repository.ValidateOnSaveEnabled = value; }
+        }
+
         public Service(IRepository<TEntity> repository)
         {
             this._repository = repository;

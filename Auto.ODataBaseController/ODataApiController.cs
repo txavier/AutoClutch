@@ -1,5 +1,4 @@
 ﻿using AutoClutch.Core.Interfaces;
-using AutoClutch.Log.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
@@ -17,18 +16,9 @@ namespace AutoClutch.Controller
     {
         private IService<TEntity> _service;
 
-        private ILogService<TEntity> _logService;
-
         public ODataApiController(IService<TEntity> service)
         {
             _service = service;
-        }
-
-        public ODataApiController(IService<TEntity> service, ILogService<TEntity> logService = null)
-        {
-            _service = service;
-
-            _logService = logService;
         }
 
         [HttpGet]

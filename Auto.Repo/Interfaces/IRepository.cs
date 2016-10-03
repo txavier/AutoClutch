@@ -17,6 +17,8 @@ namespace AutoClutch.Repo.Interfaces
         IEnumerable<Error> Errors { get; set; }
         bool LazyLoadingEnabled { get; set; }
         bool ProxyCreationEnabled { get; set; }
+        bool EnsureTransactionsForFunctionsAndCommands { get; set; }
+        bool ValidateOnSaveEnabled { get; set; }
         string RegexMatchPrimaryKeyIdPattern { get; set; }
 
         TEntity Add(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false);
