@@ -53,7 +53,7 @@ namespace AutoClutch.Controller
                 return BadRequest(ModelState);
             }
 
-            var result = await _service.AddAsync(entity, User.Identity.Name.Split("\\".ToCharArray()).FirstOrDefault());
+            var result = await _service.AddAsync(entity, User.Identity?.Name.Split("\\".ToCharArray()).FirstOrDefault());
 
             return Created(result);
         }
@@ -77,7 +77,7 @@ namespace AutoClutch.Controller
 
             try
             {
-                await _service.UpdateAsync(entityFromDatabase, User.Identity.Name.Split("\\".ToCharArray()).FirstOrDefault());
+                await _service.UpdateAsync(entityFromDatabase, User.Identity?.Name.Split("\\".ToCharArray()).FirstOrDefault());
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -109,7 +109,7 @@ namespace AutoClutch.Controller
 
             try
             {
-                await _service.UpdateAsync(update, User.Identity.Name.Split("\\".ToCharArray()).FirstOrDefault());
+                await _service.UpdateAsync(update, User.Identity?.Name.Split("\\".ToCharArray()).FirstOrDefault());
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -141,7 +141,7 @@ namespace AutoClutch.Controller
                 return NotFound();
             }
 
-            await _service.DeleteAsync(key, User.Identity.Name.Split("\\".ToCharArray()).FirstOrDefault());
+            await _service.DeleteAsync(key, User.Identity?.Name.Split("\\".ToCharArray()).FirstOrDefault());
 
             return StatusCode(HttpStatusCode.NoContent);
         }
