@@ -5,6 +5,8 @@
         .module('app')
         .config(config);
 
+    config.$inject = ['$routeProvider', '$locationProvider'];
+
     function config($routeProvider, $locationProvider) {
         $routeProvider
             .when('/view-action-figure/:actionFigureId', {

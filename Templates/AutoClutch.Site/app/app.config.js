@@ -4,6 +4,8 @@
     angular
     .module('app')
     .config(config);
+    
+    config.$inject = ['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider'];
 
     function config($routeProvider, $locationProvider, cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = false;

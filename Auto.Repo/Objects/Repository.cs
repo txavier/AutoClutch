@@ -21,6 +21,12 @@ namespace AutoClutch.Repo
 
         private readonly DbSet<TEntity> _dbSet;
 
+        private bool _tempLazyLoadingEnabled;
+
+        private bool _tempProxyCreationEnabled;
+
+        private bool _tempAutoDetectChangesEnabled;
+
         public IEnumerable<Error> Errors { get; set; }
 
         public string RegexMatchPrimaryKeyIdPattern { get; set; }
@@ -41,6 +47,18 @@ namespace AutoClutch.Repo
         {
             get { return _context.Configuration.AutoDetectChangesEnabled; }
             set { _context.Configuration.AutoDetectChangesEnabled = value; }
+        }
+
+        public bool EnsureTransactionsForFunctionsAndCommands
+        {
+            get { return _context.Configuration.EnsureTransactionsForFunctionsAndCommands; }
+            set { _context.Configuration.EnsureTransactionsForFunctionsAndCommands = value; }
+        }
+
+        public bool ValidateOnSaveEnabled
+        {
+            get { return _context.Configuration.ValidateOnSaveEnabled; }
+            set { _context.Configuration.ValidateOnSaveEnabled = value; }
         }
 
         public Repository(DbContext context)
@@ -92,18 +110,36 @@ namespace AutoClutch.Repo
         /// </summary>
         /// <param name="entityId"></param>
         /// <returns></returns>
-        public virtual TEntity Find(object entityId)
+        public virtual TEntity Find(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true)
         {
-            var result = _dbSet.Find(entityId);
+            try
+            {
+                SetContextConfiguration(lazyLoadingEnabled, proxyCreationEnabled, autoDetectChangesEnabled);
 
-            return result;
+                var result = _dbSet.Find(entityId);
+
+                return result;
+            }
+            finally
+            {
+                UnsetContextConfiguration();
+            }
         }
 
-        public virtual async Task<TEntity> FindAsync(object entityId)
+        public virtual async Task<TEntity> FindAsync(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true)
         {
-            var result = await _dbSet.FindAsync(entityId);
+            try
+            {
+                SetContextConfiguration(lazyLoadingEnabled, proxyCreationEnabled, autoDetectChangesEnabled);
 
-            return result;
+                var result = await _dbSet.FindAsync(entityId);
+
+                return result;
+            }
+            finally
+            {
+                UnsetContextConfiguration();
+            }
         }
 
         private IQueryable<TEntity> GetAllAsQueryable()
@@ -111,11 +147,20 @@ namespace AutoClutch.Repo
             return _context.Set<TEntity>();
         }
 
-        public virtual IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll(bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true)
         {
-            var result = GetAllAsQueryable().ToList();
+            try
+            {
+                SetContextConfiguration(lazyLoadingEnabled, proxyCreationEnabled, autoDetectChangesEnabled);
 
-            return result;
+                var result = GetAllAsQueryable().ToList();
+
+                return result;
+            }
+            finally
+            {
+                UnsetContextConfiguration();
+            }
         }
 
         /// <summary>
@@ -147,33 +192,76 @@ namespace AutoClutch.Repo
             Func<IEnumerable<TEntity>, IQueryable<TEntity>> maxBy = null,
             int? skip = null,
             int? take = null,
-            string includeProperties = "")
+            string includeProperties = "",
+            bool lazyLoadingEnabled = true,
+            bool proxyCreationEnabled = true,
+            bool autoDetectChanges = true)
         {
-            skip = skip ?? 0;
-
-            take = take ?? Int32.MaxValue;
-
-            var resultQueryable = GetQuery(filter, filterString, distinctBy, orderBy, orderByString, maxBy, includeProperties);
-
-            if (!resultQueryable.Any())
+            try
             {
-                return new List<TEntity>();
-            }
+                SetContextConfiguration(lazyLoadingEnabled, proxyCreationEnabled, autoDetectChanges);
 
-            // Skip and take require an ordered enumerable.  So if no orderby was passed and
-            // a skip value is given, order by the primary key.
-            if (skip.HasValue && orderBy == null && orderByString == null)
+                skip = skip ?? 0;
+
+                take = take ?? Int32.MaxValue;
+
+                var resultQueryable = GetQuery(filter, filterString, distinctBy, orderBy, orderByString, maxBy, includeProperties);
+
+                if (!resultQueryable.Any())
+                {
+                    return new List<TEntity>();
+                }
+
+                // Skip and take require an ordered enumerable.  So if no orderby was passed and
+                // a skip value is given, order by the primary key.
+                if (skip.HasValue && orderBy == null && orderByString == null)
+                {
+                    var entityKeyName = GetEntityKeyName(resultQueryable.First());
+
+                    resultQueryable = resultQueryable.OrderBy(entityKeyName);
+                }
+
+                resultQueryable = resultQueryable.Skip(skip.Value).Take(take.Value);
+
+                var resultList = resultQueryable.ToList();
+
+                return resultList;
+            }
+            finally
             {
-                var entityKeyName = GetEntityKeyName(resultQueryable.First());
-
-                resultQueryable = resultQueryable.OrderBy(entityKeyName);
+                UnsetContextConfiguration();
             }
+        }
 
-            resultQueryable = resultQueryable.Skip(skip.Value).Take(take.Value);
+        private void UnsetContextConfiguration()
+        {
+            _context.Configuration.LazyLoadingEnabled = _tempLazyLoadingEnabled;
 
-            var resultList = resultQueryable.ToList();
+            _context.Configuration.ProxyCreationEnabled = _tempProxyCreationEnabled;
 
-            return resultList;
+            _context.Configuration.AutoDetectChangesEnabled = _tempAutoDetectChangesEnabled;
+        }
+
+        /// <summary>
+        /// When a method needs to set method level properties this method will be used to set them temporarily.
+        /// Then the UnsetContextConfiguration() method will be used to unset them in the finally section.
+        /// </summary>
+        /// <param name="lazyLoadingEnabled"></param>
+        /// <param name="proxyCreationEnabled"></param>
+        /// <param name="autoDetectChangesEnabled"></param>
+        private void SetContextConfiguration(bool lazyLoadingEnabled, bool proxyCreationEnabled, bool autoDetectChangesEnabled)
+        {
+            _tempLazyLoadingEnabled = _context.Configuration.LazyLoadingEnabled;
+
+            _tempProxyCreationEnabled = _context.Configuration.ProxyCreationEnabled;
+
+            _tempAutoDetectChangesEnabled = _context.Configuration.AutoDetectChangesEnabled;
+
+            _context.Configuration.LazyLoadingEnabled = lazyLoadingEnabled;
+
+            _context.Configuration.ProxyCreationEnabled = proxyCreationEnabled;
+
+            _context.Configuration.AutoDetectChangesEnabled = autoDetectChangesEnabled;
         }
 
         private IQueryable<TEntity> GetQuery(
@@ -268,41 +356,66 @@ namespace AutoClutch.Repo
         public virtual async Task<TEntity> AddAsync(
             TEntity entity,
             string loggedInUserName = null,
+            bool lazyLoadingEnabled = true,
+            bool proxyCreationEnabled = true,
+            bool autoDetectChangesEnabled = true,
             bool dontSave = false)
         {
-            _context.Entry(entity).State = EntityState.Added;
-
-            if (GetAnyAvailableValidationErrors().Any())
+            try
             {
-                return null;
-            }
+                SetContextConfiguration(lazyLoadingEnabled, proxyCreationEnabled, autoDetectChangesEnabled);
 
-            if (!dontSave)
+                _context.Entry(entity).State = EntityState.Added;
+
+                if (GetAnyAvailableValidationErrors().Any())
+                {
+                    return null;
+                }
+
+                if (!dontSave)
+                {
+                    await SaveChangesAsync(loggedInUserName);
+                }
+
+                return entity;
+
+            }
+            finally
             {
-                await SaveChangesAsync(loggedInUserName);
+                UnsetContextConfiguration();
             }
-
-            return entity;
         }
 
         public virtual IEnumerable<TEntity> AddRange(
             IEnumerable<TEntity> entities,
             string loggedInUserName = null,
+            bool lazyLoadingEnabled = true,
+            bool proxyCreationEnabled = true,
+            bool autoDetectChangesEnabled = true,
             bool dontSave = false)
         {
-            entities = _dbSet.AddRange(entities);
-
-            if (GetAnyAvailableValidationErrors().Any())
+            try
             {
-                return null;
-            }
+                SetContextConfiguration(lazyLoadingEnabled, proxyCreationEnabled, autoDetectChangesEnabled);
 
-            if (!dontSave)
+                entities = _dbSet.AddRange(entities);
+
+                if (GetAnyAvailableValidationErrors().Any())
+                {
+                    return null;
+                }
+
+                if (!dontSave)
+                {
+                    SaveChanges(loggedInUserName);
+                }
+
+                return entities;
+            }
+            finally
             {
-                SaveChanges(loggedInUserName);
+                UnsetContextConfiguration();
             }
-
-            return entities;
         }
 
         /// <summary>
@@ -314,56 +427,76 @@ namespace AutoClutch.Repo
         public virtual TEntity Add(
             TEntity entity,
             string loggedInUserName = null,
+            bool lazyLoadingEnabled = true,
+            bool proxyCreationEnabled = true,
+            bool autoDetectChangesEnabled = true,
             bool dontSave = false)
         {
-            //_dbSet.Add(entity);
-
-            _context.Entry(entity).State = EntityState.Added;
-
-            if (GetAnyAvailableValidationErrors().Any())
+            try
             {
-                return null;
+                SetContextConfiguration(lazyLoadingEnabled, proxyCreationEnabled, autoDetectChangesEnabled);
+
+                _context.Entry(entity).State = EntityState.Added;
+
+                if (GetAnyAvailableValidationErrors().Any())
+                {
+                    return null;
+                }
+
+                if (!dontSave)
+                {
+                    SaveChanges(loggedInUserName);
+
+                    var id = GetEntityIdObject(entity);
+
+                    TEntity baseEntity = Find(id);
+
+                    return baseEntity;
+                }
+                else
+                {
+                    return entity;
+                }
             }
-
-            if (!dontSave)
+            finally
             {
-                SaveChanges(loggedInUserName);
-
-                //var id = GetEntityIdObject(entity);
-
-                //TEntity baseEntity = Find(id);
-
-                //return baseEntity;
-
-                return entity;
-            }
-            else
-            {
-                return entity;
+                UnsetContextConfiguration();
             }
         }
 
         public virtual async Task<TEntity> UpdateAsync(
             TEntity entity,
             string loggedInUserName = null,
+            bool lazyLoadingEnabled = true,
+            bool proxyCreationEnabled = true,
+            bool autoDetectChangesEnabled = true,
             bool dontSave = false,
             string regexMatchPrimaryKeyIdPattern = null)
         {
-            // Call the update method already implemented and at the end 
-            // await the save changes if dont save was passed as true.
-            Update(entity, dontSave: true, regexMatchPrimaryKeyIdPattern: regexMatchPrimaryKeyIdPattern);
-
-            if (GetAnyAvailableValidationErrors().Any())
+            try
             {
-                return null;
-            }
+                SetContextConfiguration(lazyLoadingEnabled, proxyCreationEnabled, autoDetectChangesEnabled);
 
-            if (!dontSave)
+                // Call the update method already implemented and at the end 
+                // await the save changes if dont save was passed as true.
+                Update(entity, dontSave: true, regexMatchPrimaryKeyIdPattern: regexMatchPrimaryKeyIdPattern);
+
+                if (GetAnyAvailableValidationErrors().Any())
+                {
+                    return null;
+                }
+
+                if (!dontSave)
+                {
+                    await SaveChangesAsync(loggedInUserName);
+                }
+
+                return entity;
+            }
+            finally
             {
-                await SaveChangesAsync(loggedInUserName);
+                UnsetContextConfiguration();
             }
-
-            return entity;
         }
 
         /// <summary>
@@ -411,55 +544,67 @@ namespace AutoClutch.Repo
         public virtual TEntity Update(
             TEntity entity,
             string loggedInUserName = null,
+            bool lazyLoadingEnabled = true,
+            bool proxyCreationEnabled = true,
+            bool autoDetectChangesEnabled = true,
             bool dontSave = false,
             string regexMatchPrimaryKeyIdPattern = null)
         {
-            var id = GetEntityIdObject(entity);
-
-            TEntity baseEntity = Find(id);
-
-            _context.Entry(baseEntity).CurrentValues.SetValues(entity);
-
-            _context.Entry(baseEntity).State = EntityState.Modified;
-
-            // Get all of the entries that are in the state of added and check to see if 
-            // their primary key exists and set them to modified if this key is not 0.
-            // This prevents duplicate child elements from being added to the database.
-            var entries = _context.ChangeTracker.Entries().Where(i => i.State == EntityState.Added);
-
-            foreach (var entry in entries)
+            try
             {
-                // If the convention was used [Table Name]Id for the primary key then
-                // try to get this primary key and use it to set the state of the model
-                // to modified so that the database can update it if the model's 
-                // primary key is a number that is not 0.
-                string idPropertyName = null;
+                SetContextConfiguration(lazyLoadingEnabled, proxyCreationEnabled, autoDetectChangesEnabled);
 
-                idPropertyName = RetrieveChildModelId(regexMatchPrimaryKeyIdPattern, entry);
+                var id = GetEntityIdObject(entity);
 
-                // Only change the state if the id name of this model can be found.
-                if (idPropertyName != null && entry.CurrentValues.PropertyNames.Contains(idPropertyName))
+                TEntity baseEntity = Find(id);
+
+                _context.Entry(baseEntity).CurrentValues.SetValues(entity);
+
+                _context.Entry(baseEntity).State = EntityState.Modified;
+
+                // Get all of the entries that are in the state of added and check to see if 
+                // their primary key exists and set them to modified if this key is not 0.
+                // This prevents duplicate child elements from being added to the database.
+                var entries = _context.ChangeTracker.Entries().Where(i => i.State == EntityState.Added);
+
+                foreach (var entry in entries)
                 {
-                    var entryId = entry.Property(idPropertyName).CurrentValue;
+                    // If the convention was used [Table Name]Id for the primary key then
+                    // try to get this primary key and use it to set the state of the model
+                    // to modified so that the database can update it if the model's 
+                    // primary key is a number that is not 0.
+                    string idPropertyName = null;
 
-                    if (entryId != null && entryId.GetType().Name == "Int32" && (int)entryId != 0)
+                    idPropertyName = RetrieveChildModelId(regexMatchPrimaryKeyIdPattern, entry);
+
+                    // Only change the state if the id name of this model can be found.
+                    if (idPropertyName != null && entry.CurrentValues.PropertyNames.Contains(idPropertyName))
                     {
-                        entry.State = EntityState.Modified;
+                        var entryId = entry.Property(idPropertyName).CurrentValue;
+
+                        if (entryId != null && entryId.GetType().Name == "Int32" && (int)entryId != 0)
+                        {
+                            entry.State = EntityState.Modified;
+                        }
                     }
                 }
-            }
 
-            if (GetAnyAvailableValidationErrors().Any())
+                if (GetAnyAvailableValidationErrors().Any())
+                {
+                    return null;
+                }
+
+                if (!dontSave)
+                {
+                    SaveChanges(loggedInUserName);
+                }
+
+                return baseEntity;
+            }
+            finally
             {
-                return null;
+                UnsetContextConfiguration();
             }
-
-            if (!dontSave)
-            {
-                SaveChanges(loggedInUserName);
-            }
-
-            return baseEntity;
         }
 
         /// <summary>

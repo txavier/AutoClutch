@@ -1,24 +1,38 @@
-﻿using AutoClutch.Core.Interfaces;
+﻿using AutoClutch.Auto.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using System.Web.OData;
 
-namespace AutoClutch.Controller
+namespace $safeprojectname$.Controllers
 {
     public class ODataApiController<TEntity> : ODataController
         where TEntity : class
     {
         private IService<TEntity> _service;
 
+        private ILogService<TEntity> _logService;
+
         public ODataApiController(IService<TEntity> service)
         {
             _service = service;
+        }
+
+        public ODataApiController(IService<TEntity> service, ApplicationUserManager userManager)
+        {
+            _service = service;
+        }
+
+        public ODataApiController(IService<TEntity> service, ApplicationUserManager userManager, ILogService<TEntity> logService = null)
+        {
+            _service = service;
+
+            _logService = logService;
         }
 
         [HttpGet]
@@ -36,7 +50,7 @@ namespace AutoClutch.Controller
         //    IQueryable<TEntity> result = db.Products.Where(p => p.Id == key);
         //    return SingleResult.Create(result);
         //}
-        [HttpGet]
+
         [EnableQuery]
         public virtual TEntity Get([FromODataUri] int key)
         {
@@ -45,7 +59,7 @@ namespace AutoClutch.Controller
             return result;
         }
 
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public virtual async Task<IHttpActionResult> Post(TEntity entity)
         {
             if (!ModelState.IsValid)
@@ -53,7 +67,7 @@ namespace AutoClutch.Controller
                 return BadRequest(ModelState);
             }
 
-            var result = await _service.AddAsync(entity, User.Identity.Name?.Split("\\".ToCharArray()).FirstOrDefault());
+            var result = await _service.AddAsync(entity, User.Identity.Name.Split("\\".ToCharArray()).FirstOrDefault());
 
             return Created(result);
         }
@@ -77,7 +91,7 @@ namespace AutoClutch.Controller
 
             try
             {
-                await _service.UpdateAsync(entityFromDatabase, User.Identity.Name?.Split("\\".ToCharArray()).FirstOrDefault());
+                await _service.UpdateAsync(entityFromDatabase, User.Identity.Name.Split("\\".ToCharArray()).FirstOrDefault());
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -109,7 +123,7 @@ namespace AutoClutch.Controller
 
             try
             {
-                await _service.UpdateAsync(update, User.Identity.Name?.Split("\\".ToCharArray()).FirstOrDefault());
+                await _service.UpdateAsync(update, User.Identity.Name.Split("\\".ToCharArray()).FirstOrDefault());
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -141,7 +155,7 @@ namespace AutoClutch.Controller
                 return NotFound();
             }
 
-            await _service.DeleteAsync(key, User.Identity.Name?.Split("\\".ToCharArray()).FirstOrDefault());
+            await _service.DeleteAsync(key, User.Identity.Name.Split("\\".ToCharArray()).FirstOrDefault());
 
             return StatusCode(HttpStatusCode.NoContent);
         }
