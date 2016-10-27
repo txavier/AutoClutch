@@ -149,31 +149,31 @@ namespace AutoClutch.Repo
             int? take = null,
             string includeProperties = "")
         {
-                skip = skip ?? 0;
+            skip = skip ?? 0;
 
-                take = take ?? Int32.MaxValue;
+            take = take ?? Int32.MaxValue;
 
-                var resultQueryable = GetQuery(filter, filterString, distinctBy, orderBy, orderByString, maxBy, includeProperties);
+            var resultQueryable = GetQuery(filter, filterString, distinctBy, orderBy, orderByString, maxBy, includeProperties);
 
-                if (!resultQueryable.Any())
-                {
-                    return new List<TEntity>();
-                }
+            if (!resultQueryable.Any())
+            {
+                return new List<TEntity>();
+            }
 
-                // Skip and take require an ordered enumerable.  So if no orderby was passed and
-                // a skip value is given, order by the primary key.
-                if (skip.HasValue && orderBy == null && orderByString == null)
-                {
-                    var entityKeyName = GetEntityKeyName(resultQueryable.First());
+            // Skip and take require an ordered enumerable.  So if no orderby was passed and
+            // a skip value is given, order by the primary key.
+            if (skip.HasValue && orderBy == null && orderByString == null)
+            {
+                var entityKeyName = GetEntityKeyName(resultQueryable.First());
 
-                    resultQueryable = resultQueryable.OrderBy(entityKeyName);
-                }
+                resultQueryable = resultQueryable.OrderBy(entityKeyName);
+            }
 
-                resultQueryable = resultQueryable.Skip(skip.Value).Take(take.Value);
+            resultQueryable = resultQueryable.Skip(skip.Value).Take(take.Value);
 
-                var resultList = resultQueryable.ToList();
+            var resultList = resultQueryable.ToList();
 
-                return resultList;
+            return resultList;
         }
 
         private IQueryable<TEntity> GetQuery(
@@ -270,19 +270,19 @@ namespace AutoClutch.Repo
             string loggedInUserName = null,
             bool dontSave = false)
         {
-                _context.Entry(entity).State = EntityState.Added;
+            _context.Entry(entity).State = EntityState.Added;
 
-                if (GetAnyAvailableValidationErrors().Any())
-                {
-                    return null;
-                }
+            if (GetAnyAvailableValidationErrors().Any())
+            {
+                return null;
+            }
 
-                if (!dontSave)
-                {
-                    await SaveChangesAsync(loggedInUserName);
-                }
+            if (!dontSave)
+            {
+                await SaveChangesAsync(loggedInUserName);
+            }
 
-                return entity;
+            return entity;
         }
 
         public virtual IEnumerable<TEntity> AddRange(
@@ -290,19 +290,19 @@ namespace AutoClutch.Repo
             string loggedInUserName = null,
             bool dontSave = false)
         {
-                entities = _dbSet.AddRange(entities);
+            entities = _dbSet.AddRange(entities);
 
-                if (GetAnyAvailableValidationErrors().Any())
-                {
-                    return null;
-                }
+            if (GetAnyAvailableValidationErrors().Any())
+            {
+                return null;
+            }
 
-                if (!dontSave)
-                {
-                    SaveChanges(loggedInUserName);
-                }
+            if (!dontSave)
+            {
+                SaveChanges(loggedInUserName);
+            }
 
-                return entities;
+            return entities;
         }
 
         /// <summary>
@@ -316,27 +316,31 @@ namespace AutoClutch.Repo
             string loggedInUserName = null,
             bool dontSave = false)
         {
-                _context.Entry(entity).State = EntityState.Added;
+            //_dbSet.Add(entity);
 
-                if (GetAnyAvailableValidationErrors().Any())
-                {
-                    return null;
-                }
+            _context.Entry(entity).State = EntityState.Added;
 
-                if (!dontSave)
-                {
-                    SaveChanges(loggedInUserName);
+            if (GetAnyAvailableValidationErrors().Any())
+            {
+                return null;
+            }
 
-                    var id = GetEntityIdObject(entity);
+            if (!dontSave)
+            {
+                SaveChanges(loggedInUserName);
 
-                    TEntity baseEntity = Find(id);
+                //var id = GetEntityIdObject(entity);
 
-                    return baseEntity;
-                }
-                else
-                {
-                    return entity;
-                }
+                //TEntity baseEntity = Find(id);
+
+                //return baseEntity;
+
+                return entity;
+            }
+            else
+            {
+                return entity;
+            }
         }
 
         public virtual async Task<TEntity> UpdateAsync(
@@ -345,21 +349,21 @@ namespace AutoClutch.Repo
             bool dontSave = false,
             string regexMatchPrimaryKeyIdPattern = null)
         {
-                // Call the update method already implemented and at the end 
-                // await the save changes if dont save was passed as true.
-                Update(entity, dontSave: true, regexMatchPrimaryKeyIdPattern: regexMatchPrimaryKeyIdPattern);
+            // Call the update method already implemented and at the end 
+            // await the save changes if dont save was passed as true.
+            Update(entity, dontSave: true, regexMatchPrimaryKeyIdPattern: regexMatchPrimaryKeyIdPattern);
 
-                if (GetAnyAvailableValidationErrors().Any())
-                {
-                    return null;
-                }
+            if (GetAnyAvailableValidationErrors().Any())
+            {
+                return null;
+            }
 
-                if (!dontSave)
-                {
-                    await SaveChangesAsync(loggedInUserName);
-                }
+            if (!dontSave)
+            {
+                await SaveChangesAsync(loggedInUserName);
+            }
 
-                return entity;
+            return entity;
         }
 
         /// <summary>
@@ -410,52 +414,52 @@ namespace AutoClutch.Repo
             bool dontSave = false,
             string regexMatchPrimaryKeyIdPattern = null)
         {
-                var id = GetEntityIdObject(entity);
+            var id = GetEntityIdObject(entity);
 
-                TEntity baseEntity = Find(id);
+            TEntity baseEntity = Find(id);
 
-                _context.Entry(baseEntity).CurrentValues.SetValues(entity);
+            _context.Entry(baseEntity).CurrentValues.SetValues(entity);
 
-                _context.Entry(baseEntity).State = EntityState.Modified;
+            _context.Entry(baseEntity).State = EntityState.Modified;
 
-                // Get all of the entries that are in the state of added and check to see if 
-                // their primary key exists and set them to modified if this key is not 0.
-                // This prevents duplicate child elements from being added to the database.
-                var entries = _context.ChangeTracker.Entries().Where(i => i.State == EntityState.Added);
+            // Get all of the entries that are in the state of added and check to see if 
+            // their primary key exists and set them to modified if this key is not 0.
+            // This prevents duplicate child elements from being added to the database.
+            var entries = _context.ChangeTracker.Entries().Where(i => i.State == EntityState.Added);
 
-                foreach (var entry in entries)
+            foreach (var entry in entries)
+            {
+                // If the convention was used [Table Name]Id for the primary key then
+                // try to get this primary key and use it to set the state of the model
+                // to modified so that the database can update it if the model's 
+                // primary key is a number that is not 0.
+                string idPropertyName = null;
+
+                idPropertyName = RetrieveChildModelId(regexMatchPrimaryKeyIdPattern, entry);
+
+                // Only change the state if the id name of this model can be found.
+                if (idPropertyName != null && entry.CurrentValues.PropertyNames.Contains(idPropertyName))
                 {
-                    // If the convention was used [Table Name]Id for the primary key then
-                    // try to get this primary key and use it to set the state of the model
-                    // to modified so that the database can update it if the model's 
-                    // primary key is a number that is not 0.
-                    string idPropertyName = null;
+                    var entryId = entry.Property(idPropertyName).CurrentValue;
 
-                    idPropertyName = RetrieveChildModelId(regexMatchPrimaryKeyIdPattern, entry);
-
-                    // Only change the state if the id name of this model can be found.
-                    if (idPropertyName != null && entry.CurrentValues.PropertyNames.Contains(idPropertyName))
+                    if (entryId != null && entryId.GetType().Name == "Int32" && (int)entryId != 0)
                     {
-                        var entryId = entry.Property(idPropertyName).CurrentValue;
-
-                        if (entryId != null && entryId.GetType().Name == "Int32" && (int)entryId != 0)
-                        {
-                            entry.State = EntityState.Modified;
-                        }
+                        entry.State = EntityState.Modified;
                     }
                 }
+            }
 
-                if (GetAnyAvailableValidationErrors().Any())
-                {
-                    return null;
-                }
+            if (GetAnyAvailableValidationErrors().Any())
+            {
+                return null;
+            }
 
-                if (!dontSave)
-                {
-                    SaveChanges(loggedInUserName);
-                }
+            if (!dontSave)
+            {
+                SaveChanges(loggedInUserName);
+            }
 
-                return baseEntity;
+            return baseEntity;
         }
 
         /// <summary>

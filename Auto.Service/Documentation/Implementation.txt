@@ -13,3 +13,13 @@
  - Added Detect Changes method parameter.
 
 	http://blog.oneunicorn.com/2012/03/12/secrets-of-detectchanges-part-3-switching-off-automatic-detectchanges/
+
+ - OData Guidance
+	
+	https://github.com/tpkelly/generalizing-odata/blob/master/ProductService/ProductService/Controllers/GenericController.cs
+
+	https://www.asp.net/web-api/overview/odata-support-in-aspnet-web-api/supporting-odata-query-options
+
+	http://stackoverflow.com/questions/14484692/web-api-queryable-how-to-apply-automapper
+
+	http://odata.github.io/WebApi/#13-01-modelbound-attribute

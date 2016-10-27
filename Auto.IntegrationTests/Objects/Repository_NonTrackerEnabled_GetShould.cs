@@ -287,6 +287,60 @@ namespace AutoClutch.Repo.Objects.Tests
         }
 
         [TestMethod()]
+        public void GetSkipZeroTakeTwoGovernmentFacilityRecordsWithOutProxy2()
+        {
+            try
+            {
+                var context = new AutoTestDataContextNonTrackerEnabled();
+
+                // Arrange.
+                // Add a user.
+                var user = new user() { name = "user1" };
+
+                // Add a location with that userId.
+                var location = new location() { name = "location1", user = user };
+
+                var locationRepository = new Repository<location>(new AutoTestDataContext());
+
+                location = locationRepository.Add(location);
+
+                // Add a facility with that locationId.
+                var facility = new facility() { name = "facility1", facilityType = "Commercial", locationId = location.locationId };
+
+                var facilityRepository = new Repository<facility>(new AutoTestDataContextNonTrackerEnabled());
+
+                // Act.
+                facility = facilityRepository.Add(facility, "xingl");
+
+                // Assert.
+                Assert.IsTrue(facility.facilityId != 0);
+
+                Assert.IsTrue(facility.locationId != 0);
+            }
+            finally
+            {
+                // Clean up database.
+                var context = new AutoTestDataContextNonTrackerEnabled();
+
+                context.users.RemoveRange(context.users.ToList());
+
+                context.locations.RemoveRange(context.locations.ToList());
+
+                context.facilities.RemoveRange(context.facilities.ToList());
+
+                context.SaveChanges();
+
+                var context2 = new AutoTestDataContext();
+
+                context2.LogDetails.RemoveRange(context2.LogDetails.ToList());
+
+                context2.AuditLog.RemoveRange(context2.AuditLog.ToList());
+
+                context2.SaveChanges();
+            }
+        }
+
+        [TestMethod()]
         public void GetSkipZeroTakeTwoGovernmentFacilityRecordsWithOutProxy()
         {
             try
