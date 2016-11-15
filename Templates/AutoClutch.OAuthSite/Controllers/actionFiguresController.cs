@@ -10,10 +10,15 @@ using System.Web.Http;
 
 namespace $safeprojectname$.Controllers
 {
-    public class actionFiguresController : BaseApiController<actionFigure>
+    public class actionFiguresController : ODataApiController<actionFigure>
     {
         public actionFiguresController(IService<actionFigure> actionFigureService)
             : base(actionFigureService)
         { }
+
+        //public IHttpActionResult Get()
+        //{
+        //    return Ok(User.Identity.Name);
+        //}
     }
 }
