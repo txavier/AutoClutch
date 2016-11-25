@@ -11,7 +11,7 @@ namespace $safeprojectname$
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                "~/Scripts/jquery-{version}.js"));
+                "~/wwwroot/lib/jquery/dist/jquery.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                 "~/Scripts/jquery.unobtrusive*",
@@ -37,6 +37,7 @@ namespace $safeprojectname$
 
             bundles.Add(new ScriptBundle("~/bundles/angular-third-party").Include(
                       "~/wwwroot/lib/angular-loading-bar/build/loading-bar.min.js",
+                      "~/wwwroot/lib/angular-sessionstorage/angular-sessionstorage.js",
                       "~/wwwroot/lib/AngularJS-Toaster/toaster.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular-app").Include(
@@ -44,24 +45,28 @@ namespace $safeprojectname$
                       "~/app/app.config.js",
                       "~/app/services/data.service.js",
                       "~/app/services/error.service.js",
+                      "~/app/services/auth-interceptor.service.js",
                       "~/app/home/home.controller.js",
                       "~/app/action-figures/add-action-figure.controller.js",
+                      "~/app/action-figures/update-action-figure.controller.js",
                       "~/app/action-figures/view-action-figure.controller.js",
+                      "~/app/user/dashboard.controller.js",
                       "~/app/home/home.controller.js",
-                      "~/app/login/login.controller.js"));
+                      "~/app/login/login.controller.js"
+                      ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-            //""));
             "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                "~/Scripts/bootstrap.js",
-                "~/Scripts/respond.js"));
+                "~/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+                "~/wwwroot/lib/respond/dest/respond.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                 "~/Content/bootstrap.css",
+                 "~/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
+                 "~/wwwroot/lib/bootstrap/dist/css/bootstrap-theme.min.css",
                  "~/wwwroot/lib/AngularJS-Toaster/toaster.min.css",
                  "~/Content/Site.css"));
         }

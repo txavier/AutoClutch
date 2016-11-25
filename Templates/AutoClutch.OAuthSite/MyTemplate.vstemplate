@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
     <Name>AutoClutch.OAuthSite</Name>
-    <Description>OAuth Security web site using the AutoClutch stack.</Description>
+    <Description>&lt;No description available&gt;</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
@@ -21,11 +21,19 @@
         <Folder Name="action-figures" TargetFolderName="action-figures">
           <ProjectItem ReplaceParameters="true" TargetFileName="add-action-figure.controller.js">add-action-figure.controller.js</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="add-action-figure.html">add-action-figure.html</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="update-action-figure.controller.js">update-action-figure.controller.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="update-action-figure.html">update-action-figure.html</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="view-action-figure.controller.js">view-action-figure.controller.js</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="view-action-figure.html">view-action-figure.html</ProjectItem>
         </Folder>
         <ProjectItem ReplaceParameters="true" TargetFileName="app.config.js">app.config.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="app.module.js">app.module.js</ProjectItem>
+        <Folder Name="brand" TargetFolderName="brand" />
+        <Folder Name="buy" TargetFolderName="buy">
+          <ProjectItem ReplaceParameters="true" TargetFileName="cart.html">cart.html</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="items-i-want.html">items-i-want.html</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="purchases.html">purchases.html</ProjectItem>
+        </Folder>
         <Folder Name="home" TargetFolderName="home">
           <ProjectItem ReplaceParameters="true" TargetFileName="home.controller.js">home.controller.js</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="home.html">home.html</ProjectItem>
@@ -34,9 +42,24 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="login.controller.js">login.controller.js</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="login.html">login.html</ProjectItem>
         </Folder>
+        <Folder Name="sale" TargetFolderName="sale">
+          <ProjectItem ReplaceParameters="true" TargetFileName="billing.html">billing.html</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="inventory.html">inventory.html</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="list-item-for-sale.html">list-item-for-sale.html</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="orders.html">orders.html</ProjectItem>
+        </Folder>
         <Folder Name="services" TargetFolderName="services">
+          <ProjectItem ReplaceParameters="true" TargetFileName="auth-interceptor.service.js">auth-interceptor.service.js</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="data.service.js">data.service.js</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="error.service.js">error.service.js</ProjectItem>
+        </Folder>
+        <Folder Name="social" TargetFolderName="social">
+          <ProjectItem ReplaceParameters="true" TargetFileName="friends.html">friends.html</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="groups.html">groups.html</ProjectItem>
+        </Folder>
+        <Folder Name="user" TargetFolderName="user">
+          <ProjectItem ReplaceParameters="true" TargetFileName="dashboard.controller.js">dashboard.controller.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="dashboard.html">dashboard.html</ProjectItem>
         </Folder>
       </Folder>
       <Folder Name="App_Data" TargetFolderName="App_Data" />
@@ -129,8 +152,10 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="AccountController.cs">AccountController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="actionFiguresController.cs">actionFiguresController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="HomeController.cs">HomeController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="makeController.cs">makeController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ManageController.cs">ManageController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="MeController.cs">MeController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ODataApiController.cs">ODataApiController.cs</ProjectItem>
       </Folder>
       <Folder Name="DependencyResolution" TargetFolderName="DependencyResolution">
         <ProjectItem ReplaceParameters="true" TargetFileName="IoC.cs">IoC.cs</ProjectItem>
@@ -167,7 +192,8 @@
       <Folder Name="Properties" TargetFolderName="Properties">
         <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
         <Folder Name="PublishProfiles" TargetFolderName="PublishProfiles">
-          <ProjectItem ReplaceParameters="false" TargetFileName="victortango.xaviersoftware.com - Web Deploy.pubxml">victortango.xaviersoftware.com - Web Deploy.pubxml</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Production - goactionfig.com.pubxml">Production - goactionfig.com.pubxml</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Staging - victortango.xaviersoftware.com.pubxml">Staging - victortango.xaviersoftware.com.pubxml</ProjectItem>
         </Folder>
       </Folder>
       <Folder Name="Providers" TargetFolderName="Providers">

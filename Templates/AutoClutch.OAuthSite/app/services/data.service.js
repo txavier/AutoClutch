@@ -26,17 +26,6 @@
             getHistory: getHistory,
             getAuthorization: getAuthorization,
             getLatestUserActionLogs: getLatestUserActionLogs,
-            // End of semi-standard methods.
-            getPaymentTypeProjectRetainage: getPaymentTypeProjectRetainage,
-            getContractId: getContractId,
-            getDeductionsByContractNumber: getDeductionsByContractNumber,
-            getDeductionsByContractNumberCount: getDeductionsByContractNumberCount,
-            getInitialContract: getInitialContract,
-            getInitialRenewalContract: getInitialRenewalContract,
-            getInitialChangeOrder: getInitialChangeOrder,
-            addRenewalContract: addRenewalContract,
-            getEngineers: getEngineers,
-            getScopedPaymentTypes: getScopedPaymentTypes
         };
 
         return service;
@@ -186,103 +175,6 @@
             }
         }
 
-        function getDeductionsByContractNumber(contractNumber, searchCriteria) {
-            return $http.get('api/deductions/getDeductionsByContractNumber', {
-                params:
-                        {
-                            contractNumber: contractNumber,
-                            page: searchCriteria.currentPage,
-                            perPage: searchCriteria.itemsPerPage,
-                            sort: searchCriteria.orderBy,
-                            search: searchCriteria.searchText,
-                            searchFields: searchCriteria.searchTextFields,
-                            expand: searchCriteria.includeProperties,
-                            q: searchCriteria.q,
-                            fields: searchCriteria.fields
-                        }
-            })
-            .then(getDeductionsByContractNumberComplete, getDeductionsByContractNumberFailed);
-
-            function getDeductionsByContractNumberComplete(response) {
-                return response.data;
-            }
-
-            function getDeductionsByContractNumberFailed(error) {
-                errorService.handleError(error);
-
-                return error;
-            }
-        }
-
-        function getDeductionsByContractNumberCount(contractNumber, searchCriteria) {
-            return $http.get('api/deductions/getDeductionsByContractNumber/count', {
-                params:
-                        {
-                            contractNumber: contractNumber,
-                            search: searchCriteria.searchText,
-                            searchFields: searchCriteria.searchTextFields,
-                            q: searchCriteria.q
-                        },
-            })
-            .then(getDeductionsByContractNumberCountComplete, getDeductionsByContractNumberCountFailed);
-
-            function getDeductionsByContractNumberCountComplete(response) {
-                return response.data;
-            }
-
-            function getDeductionsByContractNumberCountFailed(error) {
-                errorService.handleError(error);
-
-                return error;
-            }
-        }
-
-
-        function getContractId(contractNumber) {
-            return $http.get('api/contracts/getContractId', { params: { contractNumber: contractNumber } })
-                        .then(getContractIdCompleted, getContractIdFailed);
-
-            function getContractIdCompleted(response) {
-                return response.data;
-            }
-
-            function getContractIdFailed(error) {
-                errorService.handleError(error, showToaster || true, 'contracts');
-
-                return error;
-            }
-        }
-
-        function getPaymentTypeProjectRetainage(paymentTypeName, projectRetainage) {
-            return $http.get('api/paymentTypes/getPaymentTypeProjectRetainage', { params: { paymentTypeName: paymentTypeName, projectRetainage: projectRetainage } })
-                        .then(getPaymentTypeProjectRetainageCompleted, getPaymentTypeProjectRetainageFailed);
-
-            function getPaymentTypeProjectRetainageCompleted(response) {
-                return response.data;
-            }
-
-            function getPaymentTypeProjectRetainageFailed(error) {
-                errorService.handleError(error);
-
-                return error;
-            }
-        }
-
-        function getInitialChangeOrder(contractId, changeOrderTypeId) {
-            return $http.get('api/changeOrders/getInitialChangeOrder', { params: { contractId: contractId, changeOrderTypeId: changeOrderTypeId } })
-                        .then(getInitialChangeOrderCompleted, getInitialChangeOrderFailed);
-
-            function getInitialChangeOrderCompleted(response) {
-                return response.data;
-            }
-
-            function getInitialChangeOrderFailed(error) {
-                errorService.handleError(error, showToaster || true, 'changeOrders', failureMessage);
-
-                return error;
-            }
-        }
-
         function getFileByteStream(address, fileId) {
             return $http.get('api/files', { params: { address: address || '', fileId: fileId }, responseType: 'arraybuffer', cache: true })
                         .then(getFileByteStreamCompleted)
@@ -375,22 +267,24 @@
         }
 
         function searchEntities(entityDataStore, searchCriteria, cache) {
-            return $http.get(apiUrl + entityDataStore, {
-                params:
-                        {
-                            page: searchCriteria.currentPage,
-                            perPage: searchCriteria.itemsPerPage,
-                            sort: searchCriteria.orderBy,
-                            search: searchCriteria.searchText,
-                            searchFields: searchCriteria.searchTextFields,
-                            expand: searchCriteria.includeProperties,
-                            q: searchCriteria.q,
-                            fields: searchCriteria.fields
-                        },
-                cache: cache == undefined ? false : cache
-            })
-            .then(searchComplete)
-            .catch(searchFailed);
+            return $http.get('odata/actionFigures').then(searchComplete, searchFailed);
+
+            //return $http.get(apiUrl + entityDataStore, {
+            //    params:
+            //            {
+            //                page: searchCriteria.currentPage,
+            //                perPage: searchCriteria.itemsPerPage,
+            //                sort: searchCriteria.orderBy,
+            //                search: searchCriteria.searchText,
+            //                searchFields: searchCriteria.searchTextFields,
+            //                expand: searchCriteria.includeProperties,
+            //                q: searchCriteria.q,
+            //                fields: searchCriteria.fields
+            //            },
+            //    cache: cache == undefined ? false : cache
+            //})
+            //.then(searchComplete)
+            //.catch(searchFailed);
 
             function searchComplete(response) {
                 return response.data;

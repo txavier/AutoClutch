@@ -35,7 +35,6 @@ namespace $safeprojectname$.Controllers
             _logService = logService;
         }
 
-        [HttpGet]
         [EnableQuery]
         public virtual IQueryable<TEntity> Get()
         {

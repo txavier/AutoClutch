@@ -3,19 +3,18 @@
         .module('app')
         .controller('AddActionFigureController', AddActionFigureController);
 
-    AddActionFigureController.$inject = ['$scope', '$routeParams', 'dataService'];
+    AddActionFigureController.$inject = ['$scope', '$routeParams', '$location', 'dataService'];
 
-    function AddActionFigureController($scope, $routeParams, dataService) {
+    function AddActionFigureController($scope, $routeParams, $location, dataService) {
         var vm = this;
 
         vm.defaultImageUrl = '../s.discogs.com/images/default-release-cd.png';
         vm.actionFigure = {};
+        vm.addEntity = addEntity;
 
         activate();
 
         function activate() {
-            vm.actionFigureId = $routeParams.actionFigureId;
-
             var actionFigureSearchCriteria = {
                 page: 1,
                 perPage: 30,
@@ -23,18 +22,14 @@
                 search: null,
                 searchFields: null,
                 expand: null,
-                q: 'actionFigureId == ' + vm.actionFigureId,
+                q: null,
                 fields: null
             };
-
-            getActionFigures(actionFigureSearchCriteria);
         }
 
-        function getActionFigures(searchCriteria) {
-            return dataService.searchEntities('actionFigures', searchCriteria).then(function (data) {
-                vm.actionFigures = data;
-
-                return vm.actionFigures;
+        function addEntity(actionFigure) {
+            return dataService.addEntity('actionFigures', actionFigure).then(function (data) {
+                $location.path('/home');
             });
         }
 

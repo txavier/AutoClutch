@@ -14,8 +14,6 @@
         activate();
 
         function activate() {
-            vm.actionFigureId = $routeParams.actionFigureId;
-
             var actionFigureSearchCriteria = {
                 page: 1,
                 perPage: 30,
@@ -23,7 +21,7 @@
                 search: null,
                 searchFields: null,
                 expand: null,
-                q: 'actionFigureId == ' + vm.actionFigureId,
+                q: null,
                 fields: null
             };
 
@@ -32,7 +30,7 @@
 
         function getActionFigures(searchCriteria) {
             return dataService.searchEntities('actionFigures', searchCriteria).then(function (data) {
-                vm.actionFigures = data;
+                vm.actionFigures = data.value;
 
                 return vm.actionFigures;
             });

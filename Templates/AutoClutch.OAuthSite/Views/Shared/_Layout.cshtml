@@ -35,6 +35,8 @@
     <link rel="stylesheet" type="text/css" href="//s.discogs.com/dst/fontawesome/font-awesome-ie7.css" />
     <![endif]-->
     <link rel="stylesheet" type="text/css" href="../s.discogs.com/dst/stylesheets/sections/get_starteda712.css?7b8ce" />
+    @Styles.Render("~/Content/css")
+    @*@Scripts.Render("~/bundles/modernizr")*@
     <link rel="icon" href="https://s.discogs.com/images/favicon.ico" />
     <link rel="icon" sizes="16x16" href="../s.discogs.com/images/favicon-16x16.png" />
     <link rel="icon" sizes="32x32" href="../s.discogs.com/images/favicon-32x32.png" />
@@ -152,7 +154,7 @@
                         class="activity_menu_columns_2"
                         role="navigation"
                         aria-label="Activity Menu">
-                        <li>
+                        @*<li>
                             <a class="button_green button" href="users/create.html">
                                 Register
                             </a>
@@ -161,9 +163,9 @@
                             <a href="login4d01.html?return_to=%2#/home" id="log_in_link" class="nav_group_control">
                                 Log In
                             </a>
-                        </li>
+                        </li>*@
                         <li>
-                            @Html.Partial("_LoginPartial")
+                            @Html.Partial("_LoginPartial", new { @class="button button_green" })
                         </li>
                     </ul>
                     <a href="#mobile_site_navigation_toggle" id="mobile_site_navigation_toggle" aria-label="Open Site Menu" class=""><i class="icon icon-bars"></i></a>
@@ -189,7 +191,7 @@
                 </div>
             </noscript>
         </div>
-        <div class="container body-content">
+        <div class="container-fluid body-content">
             @RenderBody()
             @RenderSection("SPAViews", required: false)
             @*<hr />
@@ -197,7 +199,7 @@
                 <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
             </footer>*@
         </div>
-        <div class="container body-content" data-ng-view>
+        <div class="container-fluid body-content" data-ng-view>
         </div>
         <div id="push_footer"></div>
     </div>
