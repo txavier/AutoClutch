@@ -6,7 +6,9 @@
             'ngRoute',
             'toaster',
             'ngAnimate',
-            'ngSessionStorage'
+            'ngSessionStorage',
+            'textAngular',
+            'ng-file-model'
         ]);
 
 })();

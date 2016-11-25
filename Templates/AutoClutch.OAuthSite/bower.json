@@ -6,11 +6,13 @@
     "jquery-validation-unobtrusive": "*",
     "modernizr": "*",
     "respond": "*",
-    "angular": "*",
+    "angular": "~1.5",
     "angular-route": "*",
     "angular-animate": "*",
     "AngularJS-Toaster": "*",
-    "angular-sessionstorage": "*"
+    "angular-sessionstorage": "*",
+    "textAngular": "~1.5.12",
+    "ng-file-model": "*"
   },
   "resolutions": {
     "angular": "1.5.8"

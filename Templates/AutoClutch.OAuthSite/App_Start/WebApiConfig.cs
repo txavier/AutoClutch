@@ -7,7 +7,7 @@ using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 using System.Web.OData.Builder;
 using System.Web.OData.Extensions;
-using $safeprojectname$.Core.Models;
+using WebX.Core.Models;
 using System.Web.Http.Dispatcher;
 
 namespace $safeprojectname$
@@ -38,12 +38,28 @@ namespace $safeprojectname$
 
             // http://odata.github.io/WebApi/#13-01-modelbound-attribute
             // http://stackoverflow.com/questions/39515218/odata-error-the-query-specified-in-the-uri-is-not-valid-the-property-cannot-be
-            //config.Count().Filter().OrderBy().Expand().Select().MaxTop(null); //new line
+            config.Count().Filter().OrderBy().Expand().Select().MaxTop(null); //new line
 
-            builder.EntitySet<actionFigure>("actionFigures");
-            //builder.EntityType<actionFigure>().Filter("imageUrl");
-            builder.EntityType<actionFigure>().Filter("name");
-            builder.EntityType<actionFigure>().Select("name");
+            builder.EntitySet<blogEntry>("blogEntries");
+            builder.StructuralTypes.First(x => x.ClrType.FullName.Contains("blogEntry"))
+                .AddProperty((typeof(blogEntry)).GetProperty("blogBodySummaryHtml"));
+
+            builder.StructuralTypes.First(x => x.ClrType.FullName.Contains("blogEntry"))
+                .AddProperty((typeof(blogEntry)).GetProperty("monthAbbreviation"));
+
+            builder.StructuralTypes.First(x => x.ClrType.FullName.Contains("blogEntry"))
+                .AddProperty((typeof(blogEntry)).GetProperty("day"));
+
+            builder.StructuralTypes.First(x => x.ClrType.FullName.Contains("blogEntry"))
+                .AddProperty((typeof(blogEntry)).GetProperty("year"));
+
+            builder.EntitySet<author>("authors");
+
+            builder.EntitySet<user>("users");
+            builder.Namespace = "usersService";
+            builder.EntityType<user>().Collection
+                .Function("GetLoggedInUser")
+                .Returns<user>();
 
             config.MapODataServiceRoute(
                 routeName: "ODataRoute",

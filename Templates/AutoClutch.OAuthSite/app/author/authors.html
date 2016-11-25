@@ -1,0 +1,60 @@
+﻿<!-- BREADCRUMBS -->
+<div class="page-header">
+    <div class="container">
+        <h1 class="page-title pull-left">Authors</h1>
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active"><a href="#">Authors</a></li>
+            <!--<li class="active">Blog Full Thumbnail</li>-->
+        </ol>
+    </div>
+</div>
+<!-- END BREADCRUMBS -->
+<!-- PAGE CONTENT -->
+<div class="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <a class="btn btn-primary" href="#/add-author">Add author</a>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="panel panel-default" data-ng-repeat="author in vm.authors">
+                <div class="panel-heading">
+                    <h2 class="panel-title section-heading no-margin">Author</h2>
+                </div>
+                <div class="panel-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">First Name</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" data-ng-model="author.authorFirstName" disabled="disabled" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Last Name</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" data-ng-model="author.authorLastName" disabled="disabled" placeholder="Last Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Username</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" data-ng-model="author.authorUsername" disabled="disabled" placeholder="Username">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">About the author</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" placeholder="About the author" disabled="disabled" data-ng-model="author.aboutTheAuthorHtml">
+                            </div>
+                        </div>
+                        <a class="btn btn-primary pull-right" href="#/update-author/{{ author.authorId }}">Edit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END PAGE CONTENT -->

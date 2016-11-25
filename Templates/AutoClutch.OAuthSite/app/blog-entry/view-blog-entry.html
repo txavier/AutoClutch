@@ -1,0 +1,60 @@
+﻿<div class="page-header">
+    <div class="container">
+        <h1 class="page-title pull-left">BLOG SINGLE FULL</h1>
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Blog</a></li>
+            <li class="active">Blog Single Full</li>
+        </ol>
+    </div>
+</div>
+<div class="page-content">
+    <div class="container">
+        <!-- BLOG SINGLE -->
+        <div class="blog single full-thumbnail">
+            <!-- blog post -->
+            <article class="entry-post">
+                <header class="entry-header">
+                    <h2 class="entry-title">
+                        <a href="blog-single.html">{{ vm.blogEntry.title }}</a>
+                    </h2>
+                    <div class="meta-line clearfix">
+                        <div class="meta-author-category pull-left">
+                            <span class="post-author">by <a href="#">{{ vm.blogEntry.author.authorFirstName }} {{ vm.blogEntry.author.authorLastname}}</a></span>
+                        </div>
+                    </div>
+                </header>
+                <div class="entry-content clearfix">
+                    <figure class="featured-image">
+                        <div class="post-date-info clearfix"><span class="post-month">DEC</span><span class="post-date">11</span><span class="post-year">2014</span></div>
+                        <img data-ng-src="{{ vm.blogEntry.imageBase64String }}" class="img-responsive" alt="featured-image">
+                    </figure>
+                    <div class="excerpt">
+                        <div ng-bind-html="vm.blogEntry.safeBlogBodyHtml"></div>
+                    </div>
+                </div>
+            </article>
+            <!--<a href="#/update-blog-entry/{{ vm.blogEntry.blogEntryId }}" class="btn btn-primary">Edit Blog Entry</a>-->
+            <!-- end blog post -->
+            <!-- end blog post -->
+            <hr>
+            <!-- author info -->
+            <section data-ng-if="vm.blogEntry.author.aboutTheAuthorHtml" class="author-info">
+                <h3 class="section-heading">About The Author</h3>
+                <div class="media">
+                    <a href="#" class="media-left">
+                        <img src="assets/img/user2.png" class="img-circle" alt="Avatar">
+                    </a>
+                    <div class="media-body">
+                        <a href="#" class="author-name">{{ vm.blogEntry.author.authorFirstName }}</a>
+                        <p>{{ vm.blogEntry.author.aboutTheAuthorHtml }}</p>
+                    </div>
+                </div>
+            </section>
+            <!-- end author info -->
+            <hr data-ng-if="vm.blogEntry.author.aboutTheAuthorHtml">
+            <!-- Facebook comments? -->
+        </div>
+        <!-- END BLOG SINGLE -->
+    </div>
+</div>

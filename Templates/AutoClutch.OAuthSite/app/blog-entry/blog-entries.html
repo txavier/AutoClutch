@@ -1,0 +1,65 @@
+﻿<!-- BREADCRUMBS -->
+<div class="page-header">
+    <div class="container">
+        <h1 class="page-title pull-left">BLOG</h1>
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active"><a href="#">Blogs</a></li>
+            <!--<li class="active">Blog Full Thumbnail</li>-->
+        </ol>
+    </div>
+</div>
+<!-- END BREADCRUMBS -->
+<!-- PAGE CONTENT -->
+<div class="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- BLOG ENTRIES -->
+                <div class="blog full-thumbnail margin-bottom-30px">
+                    <div data-ng-repeat="blogEntry in vm.blogEntries">
+                        <!-- blog post -->
+                        <article class="entry-post">
+                            <header class="entry-header">
+                                <h2 class="entry-title">
+                                    <a href="blog-single.html">{{ blogEntry.title }}</a>
+                                </h2>
+                                <div class="meta-line clearfix">
+                                    <div class="meta-author-category pull-left">
+                                        <span class="post-author">by <a href="#">{{ blogEntry.author.authorFirstName + ' ' + vm.blogEntry.author.authorLastname }}</a></span>
+                                        <!--<span class="post-category">In: <a data-ng-repeat="blogCategory in blogEntry.blogCategories" href="#">{{ blogCategory.name }}</a></span>-->
+                                    </div>
+                                    <div class="meta-tag-comment pull-right">
+                                        <span class="post-tags"><i class="fa fa-tag"></i> <a datang-repeat="blogTag in blogEntry.blogTags" href="#">{{ blogTag.name }}</a></span>
+                                    </div>
+                                </div>
+                            </header>
+                            <div class="entry-content clearfix">
+                                <figure class="featured-image">
+                                    <a href="blog-single.html">
+                                        <div class="post-date-info clearfix"><span class="post-month">{{ blogEntry.monthAbbreviation }}</span><span class="post-date">{{ blogEntry.day }}</span><span class="post-year">{{ blogEntry.year }}</span></div>
+                                        <img data-ng-src="{{ blogEntry.imageBase64String }}" class="img-responsive" alt="featured-image" />
+                                    </a>
+                                </figure>
+                                <div class="excerpt">
+                                    <div ng-bind-html="blogEntry.safeBlogBodySummaryHtml"></div>
+                                    <p class="read-more">
+                                        <a href="#/view-blog-entry/{{ blogEntry.blogEntryId }}" class="btn btn-primary">Read More <i class="fa fa-long-arrow-right"></i></a>
+                                    </p>
+                                    <p data-ng-if="blogEntry.isAuthorizedEditor" class="read-more">
+                                        <a href="#/update-blog-entry/{{ blogEntry.blogEntryId }}" class="btn btn-primary">Edit <i class="fa fa-long-arrow-right"></i></a>
+                                    </p>
+
+                                </div>
+                            </div>
+                        </article>
+                        <!-- end blog post -->
+                        <hr />
+                    </div>
+                </div>
+                <!-- END BLOG ENTRIES -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END PAGE CONTENT -->

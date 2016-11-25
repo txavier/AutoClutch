@@ -1,0 +1,38 @@
+﻿<div class="page-header">
+    <div class="container">
+        <h1 class="page-title pull-left">BLOG SINGLE FULL</h1>
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Blog</a></li>
+            <li class="active">Blog Single Full</li>
+        </ol>
+    </div>
+</div>
+<div class="page-content">
+    <div class="container">
+        <!-- BLOG SINGLE -->
+        <div class="blog single full-thumbnail">
+            <!-- blog post -->
+            <article class="entry-post">
+                <header class="entry-header">
+                    <h2 class="entry-title">
+                        <a href="blog-single.html">{{ vm.blogEntry.title }}</a>
+                    </h2>                    
+                </header>
+                <div class="entry-content clearfix">
+                    <figure class="featured-image">
+                        <img data-ng-src="{{ vm.blogEntry.imageBase64String }}" class="img-responsive" alt="featured-image">
+                        <br />
+                        <input type="file" ng-file-model="vm.blogEntry.fileModel" />
+                    </figure>
+                    <div class="excerpt">
+                        <div text-angular="text-angular" name="htmlcontent" data-ng-model="vm.blogEntry.blogBodyHtml" ></div>
+                    </div>
+                    <br />
+                    <a data-ng-click="vm.addEntity(vm.blogEntry)" class="btn btn-primary">Save <i class="fa fa-save"></i></a>
+                </div>
+            </article>
+        </div>
+        <!-- END BLOG SINGLE -->
+    </div>
+</div>
