@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Documentation\AutoClutch ReadMe.txt" />
+    <Content Include="Documentation\Dynamic Expressions.html" />
     <Content Include="Documentation\Implementation.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
