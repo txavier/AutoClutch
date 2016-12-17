@@ -91,7 +91,7 @@ namespace AutoClutch.Controller
 
                 // If sort is descending then change the '-' sign which represents the descending order
                 // to the word 'descending' which is used by AutoService.
-                sort = (!string.IsNullOrWhiteSpace(sort) && sort.Contains('-')) ? sort.TrimStart("-".ToCharArray()) + " descending" : sort;
+                sort = ConvertMinusToDescendingKeyword(sort);
 
                 if (search != null)
                 {
@@ -242,6 +242,23 @@ namespace AutoClutch.Controller
             }
         }
 
+        /// <summary>
+        /// If sort is descending then change the '-' sign which represents the descending order to the word 'descending' which is used by AutoService.
+        /// </summary>
+        /// <param name="sort"></param>
+        /// <returns></returns>
+        private static string ConvertMinusToDescendingKeyword(string sort)
+        {
+            sort = (sort != null && sort.Contains(",")) ? (sort?.Split(",".ToCharArray())
+                                .Aggregate((current, next) =>
+                                (current.Contains("-") ? current.Replace("-", string.Empty) + " desc" : current)
+                                + ", "
+                                + (next.Contains("-") ? next.Replace("-", string.Empty) + " desc" : next)))
+                                :
+                                ((!string.IsNullOrWhiteSpace(sort) && sort.Contains('-')) ? sort.TrimStart("-".ToCharArray()) + " descending" : sort);
+            return sort;
+
+        }
         /// <summary>
         /// contractNumber.Contains("20151427556") and section.sectionId=1
         /// "ContractNumber=\"Test-Contract2\" AND ((contractNumber.Contains(\"1236-BIO\") OR contractDescription.Contains(\"1236-BIO\") OR (contractNumber.Contains(\"201-hey\") OR contractDescription.Contains(\"201-hey\"))", result);
