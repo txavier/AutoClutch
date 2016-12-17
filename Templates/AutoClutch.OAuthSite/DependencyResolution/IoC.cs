@@ -1,4 +1,4 @@
-﻿using $safeprojectname$.CompositionRoot;
+﻿using WebX.CompositionRoot;
 using StructureMap;
 using System;
 using System.Collections.Generic;

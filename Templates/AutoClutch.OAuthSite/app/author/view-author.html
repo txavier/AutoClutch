@@ -1,0 +1,180 @@
+﻿<div class="page-header">
+    <div class="container">
+        <h1 class="page-title pull-left">BLOG SINGLE FULL</h1>
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Blog</a></li>
+            <li class="active">Blog Single Full</li>
+        </ol>
+    </div>
+</div>
+<div class="page-content">
+    <div class="container">
+        <!-- BLOG SINGLE -->
+        <div class="blog single full-thumbnail">
+            <!-- blog post -->
+            <article class="entry-post">
+                <header class="entry-header">
+                    <h2 class="entry-title">
+                        <a href="blog-single.html">{{ vm.blogEntry.title }}</a>
+                    </h2>
+                    <div class="meta-line clearfix">
+                        <div class="meta-author-category pull-left">
+                            <span class="post-author">by <a href="#">{{ vm.blogEntry.author.authorFirstName }} {{ vm.blogEntry.author.authorLastname}}</a></span>
+                            <span class="post-category">In: <a href="#">Business</a>, <a href="#">Creative</a>, <a href="#">Media</a></span>
+                        </div>
+                        <div class="meta-tag-comment pull-right">
+                            <span class="post-tags"><i class="fa fa-tag"></i> <a href="#">story</a>, <a href="#">inspiration</a>, <a href="#">creative</a></span>
+                            <span class="post-comment"><i class="fa fa-comments"></i> <a href="#">3 Comments</a></span>
+                        </div>
+                    </div>
+                </header>
+                <div class="entry-content clearfix">
+                    <figure class="featured-image">
+                        <div class="post-date-info clearfix"><span class="post-month">DEC</span><span class="post-date">11</span><span class="post-year">2014</span></div>
+                        <img data-ng-src="{{ vm.blogEntry.imageBase64String }}" class="img-responsive" alt="featured-image">
+                    </figure>
+                    <div class="excerpt">
+                        <div ng-bind-html="vm.blogEntry.safeBlogBodyHtml"></div>
+                    </div>
+                </div>
+            </article>
+            <a href="#/update-blog-entry/{{ vm.blogEntry.blogEntryId }}" class="btn btn-primary">Edit Blog Entry</a>
+            <!-- end blog post -->
+            <hr>
+            <!-- social sharing -->
+            <div class="social-sharing clearfix">
+                <h3 class="section-heading pull-left">Share This Story: </h3>
+                <ul class="list-inline sharing-tools">
+                    <li><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#" class="googleplus-bg"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#" class="rss-bg"><i class="fa fa-rss"></i></a></li>
+                </ul>
+            </div>
+            <!-- end social sharing -->
+            <hr>
+            <!-- author info -->
+            <section class="author-info">
+                <h3 class="section-heading">About The Author</h3>
+                <div class="media">
+                    <a href="#" class="media-left">
+                        <img src="assets/img/user2.png" class="img-circle" alt="Avatar">
+                    </a>
+                    <div class="media-body">
+                        <a href="#" class="author-name">Antonius</a>
+                        <p>Synergistically incentivize innovative information after intermandated leadership. Conveniently <a href="#">transition high standards</a> in e-tailers vis-a-vis ethical convergence. Conveniently transform client-focused quality vectors after inexpensive benefits. Dynamically predominate backward-compatible process. Appropriately incentivize cross-media expertise for transparent users. Energistically supply ubiquitous scenarios rather than client-based resources. Interactively seize user friendly opportunities whereas reliable infrastructures. Completely extend extensible ideas before alternative customer service.</p>
+                    </div>
+                </div>
+            </section>
+            <!-- end author info -->
+            <hr>
+            <!-- related post -->
+            <section>
+                <h3 class="section-heading">Related Articles</h3>
+                <ul class="list-unstyled related-post-list row">
+                    <li class="col-md-4">
+                        <a href="#">
+                            <img src="assets/img/blog/people-med.jpg" class="img-responsive" alt="Related Post">
+                        </a>
+                        <a href="#" class="post-title">Monotonectally Pursue Extensive Process iImprovements</a>
+                    </li>
+                    <li class="col-md-4">
+                        <a href="#">
+                            <img src="assets/img/blog/buildings-med.jpg" class="img-responsive" alt="Related Post">
+                        </a>
+                        <a href="#" class="post-title">Progressively Maximize Multidisciplinary Innovation Before Proactive E-markets</a>
+                    </li>
+                    <li class="col-md-4">
+                        <a href="#">
+                            <img src="assets/img/blog/balloon-med.jpg" class="img-responsive" alt="Related Post">
+                        </a>
+                        <a href="#" class="post-title">Phosfluorescently conceptualize team</a>
+                    </li>
+                </ul>
+            </section>
+            <!-- end related post -->
+            <hr>
+            <!-- comments -->
+            <article class="comments">
+                <h3 class="section-heading">Comments (3)</h3>
+                <ul class="media-list">
+                    <li class="media">
+                        <a href="#" class="media-left">
+                            <img src="assets/img/user1.png" class="avatar" alt="avatar">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading comment-author"><a href="#">John Doe</a></h4><span class="timestamp text-muted">Dec 11, 2014 12:30 PM</span>
+                            <p>Conveniently administrate prospective e-tailers via global initiatives. Appropriately transition market-driven internal or "organic" sources and turnkey synergy. Appropriately aggregate extensible technologies with high-payoff functionalities. Intrinsicly deliver emerging initiatives via cross functional niches. Interactively embrace enterprise human capital before an expanded array of growth strategies. Rapidiously network.</p>
+                            <p><a href="#"><i class="fa fa-reply"></i> Reply</a></p>
+                            <hr>
+                            <div class="media comment-by-author">
+                                <a href="#" class="media-left">
+                                    <img src="assets/img/user2.png" class="avatar" alt="avatar">
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading comment-author"><a href="#">Antonius</a></h4><span class="timestamp text-muted">Dec 12, 2014 18:40 PM</span>
+                                    <p>Energistically empower seamless systems rather than granular web-readiness. Conveniently foster accurate total linkage vis-a-vis timely interfaces. Synergistically repurpose visionary.</p>
+                                    <p><a href="#"><i class="fa fa-reply"></i> Reply</a></p>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="media child">
+                            <a href="#" class="media-left">
+                                <span class="avatar anonymous"><i class="fa fa-user"></i></span>
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading comment-author"><a href="#">Anonymous</a></h4><span class="timestamp text-muted">8 hours ago</span>
+                                <p>Compellingly incentivize pandemic products for holistic total linkage. Holisticly facilitate bleeding-edge "outside the box" thinking rather than an expanded array of schemas. Phosfluorescently harness empowered infomediaries via strategic growth strategies. Collaboratively innovate proactive products rather than intuitive relationships. Professionally redefine cooperative technology rather than.</p>
+                                <p><a href="#"><i class="fa fa-reply"></i> Reply</a></p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+            <!-- end comments -->
+            <hr>
+            <!-- comment form -->
+            <section class="comment-form margin-bottom">
+                <h3 class="section-heading">Leave A Comment</h3>
+                <p class="heading">Required fields are marked *. Your email will not be published or shared.</p>
+                <form class="form-horizontal comment-form" role="form">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="comment-name" class="control-label sr-only">Name</label>
+                                <input type="text" class="form-control" id="comment-name" placeholder="* Name">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="comment-email" class="control-label sr-only">Email</label>
+                                <input type="email" class="form-control" id="comment-email" placeholder="* Email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment-website" class="control-label sr-only">Website</label>
+                        <div class="col-sm-12">
+                            <input type="url" class="form-control" id="comment-website" placeholder="Website">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment-text" class="control-label sr-only">Comments</label>
+                        <div class="col-sm-12">
+                            <textarea class="form-control" name="comment-text" id="comment-text" rows="5" cols="30" placeholder="* Your comments"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+            <!-- end comment form -->
+        </div>
+        <!-- END BLOG SINGLE -->
+    </div>
+</div>

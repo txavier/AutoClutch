@@ -1,4 +1,5 @@
-﻿using AutoClutch.Auto.Core.Interfaces;
+﻿using AutoClutch.Auto.Log.Interfaces;
+using AutoClutch.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;

@@ -1,4 +1,6 @@
 ﻿(function () {
+    'use strict';
+
     angular
         .module('app')
         .controller('HomeController', HomeController);
@@ -25,7 +27,7 @@
                 fields: null
             };
 
-            getActionFigures(actionFigureSearchCriteria);
+            //getActionFigures(actionFigureSearchCriteria);
         }
 
         function getActionFigures(searchCriteria) {

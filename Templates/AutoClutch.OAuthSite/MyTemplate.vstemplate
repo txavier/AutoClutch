@@ -15,24 +15,30 @@
     <PreviewImage>__PreviewImage.png</PreviewImage>
   </TemplateData>
   <TemplateContent>
-    <Project TargetFileName="FoxtrotAlpha.csproj" File="FoxtrotAlpha.csproj" ReplaceParameters="true">
+    <Project TargetFileName="WebX.Site.csproj" File="WebX.Site.csproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="false" TargetFileName=".bowerrc">.bowerrc</ProjectItem>
       <Folder Name="app" TargetFolderName="app">
-        <Folder Name="action-figures" TargetFolderName="action-figures">
-          <ProjectItem ReplaceParameters="true" TargetFileName="add-action-figure.controller.js">add-action-figure.controller.js</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="add-action-figure.html">add-action-figure.html</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="update-action-figure.controller.js">update-action-figure.controller.js</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="update-action-figure.html">update-action-figure.html</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="view-action-figure.controller.js">view-action-figure.controller.js</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="view-action-figure.html">view-action-figure.html</ProjectItem>
-        </Folder>
         <ProjectItem ReplaceParameters="true" TargetFileName="app.config.js">app.config.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="app.module.js">app.module.js</ProjectItem>
-        <Folder Name="brand" TargetFolderName="brand" />
-        <Folder Name="buy" TargetFolderName="buy">
-          <ProjectItem ReplaceParameters="true" TargetFileName="cart.html">cart.html</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="items-i-want.html">items-i-want.html</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="purchases.html">purchases.html</ProjectItem>
+        <Folder Name="author" TargetFolderName="author">
+          <ProjectItem ReplaceParameters="true" TargetFileName="add-author.controller.js">add-author.controller.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="add-author.html">add-author.html</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="authors.controller.js">authors.controller.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="authors.html">authors.html</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="update-author.controller.js">update-author.controller.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="update-author.html">update-author.html</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="view-author.controller.js">view-author.controller.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="view-author.html">view-author.html</ProjectItem>
+        </Folder>
+        <Folder Name="blog-entry" TargetFolderName="blog-entry">
+          <ProjectItem ReplaceParameters="true" TargetFileName="add-blog-entry.controller.js">add-blog-entry.controller.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="add-blog-entry.html">add-blog-entry.html</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="blog-entries.controller.js">blog-entries.controller.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="blog-entries.html">blog-entries.html</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="update-blog-entry.controller.js">update-blog-entry.controller.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="update-blog-entry.html">update-blog-entry.html</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="view-blog-entry.controller.js">view-blog-entry.controller.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="view-blog-entry.html">view-blog-entry.html</ProjectItem>
         </Folder>
         <Folder Name="home" TargetFolderName="home">
           <ProjectItem ReplaceParameters="true" TargetFileName="home.controller.js">home.controller.js</ProjectItem>
@@ -42,20 +48,10 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="login.controller.js">login.controller.js</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="login.html">login.html</ProjectItem>
         </Folder>
-        <Folder Name="sale" TargetFolderName="sale">
-          <ProjectItem ReplaceParameters="true" TargetFileName="billing.html">billing.html</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="inventory.html">inventory.html</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="list-item-for-sale.html">list-item-for-sale.html</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="orders.html">orders.html</ProjectItem>
-        </Folder>
         <Folder Name="services" TargetFolderName="services">
           <ProjectItem ReplaceParameters="true" TargetFileName="auth-interceptor.service.js">auth-interceptor.service.js</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="data.service.js">data.service.js</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="error.service.js">error.service.js</ProjectItem>
-        </Folder>
-        <Folder Name="social" TargetFolderName="social">
-          <ProjectItem ReplaceParameters="true" TargetFileName="friends.html">friends.html</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="groups.html">groups.html</ProjectItem>
         </Folder>
         <Folder Name="user" TargetFolderName="user">
           <ProjectItem ReplaceParameters="true" TargetFileName="dashboard.controller.js">dashboard.controller.js</ProjectItem>
@@ -142,6 +138,238 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="XmlDocumentationProvider.cs">XmlDocumentationProvider.cs</ProjectItem>
         </Folder>
       </Folder>
+      <Folder Name="assets" TargetFolderName="assets">
+        <Folder Name="css" TargetFolderName="css">
+          <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.css">bootstrap.css</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.css.map">bootstrap.css.map</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.min.css">bootstrap.min.css</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="font-awesome.css">font-awesome.css</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="font-awesome.min.css">font-awesome.min.css</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ie.css">ie.css</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="main-one-page.css">main-one-page.css</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="main.css">main.css</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="my-custom-styles.css">my-custom-styles.css</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="shop-main.css">shop-main.css</ProjectItem>
+          <Folder Name="skins" TargetFolderName="skins">
+            <ProjectItem ReplaceParameters="true" TargetFileName="brown.css">brown.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="deepskyblue.css">deepskyblue.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="goldenrod.css">goldenrod.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="indianred.css">indianred.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="lightgreen.css">lightgreen.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="orange.css">orange.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="seagreen.css">seagreen.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="slategray.css">slategray.css</ProjectItem>
+          </Folder>
+        </Folder>
+        <Folder Name="fonts" TargetFolderName="fonts">
+          <ProjectItem ReplaceParameters="false" TargetFileName="fontawesome-webfont.eot">fontawesome-webfont.eot</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="fontawesome-webfont.svg">fontawesome-webfont.svg</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="fontawesome-webfont.ttf">fontawesome-webfont.ttf</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="fontawesome-webfont.woff">fontawesome-webfont.woff</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="fontawesome-webfont.woff2">fontawesome-webfont.woff2</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.eot">glyphicons-halflings-regular.eot</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.svg">glyphicons-halflings-regular.svg</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.ttf">glyphicons-halflings-regular.ttf</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.woff">glyphicons-halflings-regular.woff</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.woff2">glyphicons-halflings-regular.woff2</ProjectItem>
+        </Folder>
+        <Folder Name="ico" TargetFolderName="ico">
+          <ProjectItem ReplaceParameters="false" TargetFileName="favicon.png">favicon.png</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="repute114x114.png">repute114x114.png</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="repute144x144.png">repute144x144.png</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="repute57x57.png">repute57x57.png</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="repute72x72.png">repute72x72.png</ProjectItem>
+        </Folder>
+        <Folder Name="img" TargetFolderName="img">
+          <ProjectItem ReplaceParameters="false" TargetFileName="badge.png">badge.png</ProjectItem>
+          <Folder Name="blog" TargetFolderName="blog">
+            <ProjectItem ReplaceParameters="false" TargetFileName="balloon-med.jpg">balloon-med.jpg</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="balloon.jpg">balloon.jpg</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="buildings-med.jpg">buildings-med.jpg</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="buildings.jpg">buildings.jpg</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="people-med.jpg">people-med.jpg</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="people.jpg">people.jpg</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="false" TargetFileName="business-people.png">business-people.png</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="bx_loader.gif">bx_loader.gif</ProjectItem>
+          <Folder Name="clients" TargetFolderName="clients">
+            <ProjectItem ReplaceParameters="false" TargetFileName="logo1.png">logo1.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="logo2.png">logo2.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="logo3.png">logo3.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="logo4.png">logo4.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="logo5.png">logo5.png</ProjectItem>
+          </Folder>
+          <Folder Name="flags" TargetFolderName="flags">
+            <ProjectItem ReplaceParameters="false" TargetFileName="China.png">China.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="Germany.png">Germany.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="Japan.png">Japan.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="United-Kingdom.png">United-Kingdom.png</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="false" TargetFileName="free.png">free.png</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="fullscreen-bg.jpg">fullscreen-bg.jpg</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="fullscreen-bg2.jpg">fullscreen-bg2.jpg</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="gray_jean.png">gray_jean.png</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="hero-unit-bg.png">hero-unit-bg.png</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="hero-unit-obj.png">hero-unit-obj.png</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="hero-unit-obj2.png">hero-unit-obj2.png</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="hero-unit-obj3.png">hero-unit-obj3.png</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="intro-img.png">intro-img.png</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="location-pin.png">location-pin.png</ProjectItem>
+          <Folder Name="logo" TargetFolderName="logo">
+            <ProjectItem ReplaceParameters="false" TargetFileName="repute-logo-light-brown.png">repute-logo-light-brown.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="repute-logo-light-deepskyblue.png">repute-logo-light-deepskyblue.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="repute-logo-light-goldenrod.png">repute-logo-light-goldenrod.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="repute-logo-light-indianred.png">repute-logo-light-indianred.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="repute-logo-light-lightgreen.png">repute-logo-light-lightgreen.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="repute-logo-light-orange.png">repute-logo-light-orange.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="repute-logo-light-seagreen.png">repute-logo-light-seagreen.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="repute-logo-light-slategray.png">repute-logo-light-slategray.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="repute-logo-light.png">repute-logo-light.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="repute-logo-nav-brown.png">repute-logo-nav-brown.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="repute-logo-nav-deepskyblue.png">repute-logo-nav-deepskyblue.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="repute-logo-nav-goldenrod.png">repute-logo-nav-goldenrod.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="repute-logo-nav-indianred.png">repute-logo-nav-indianred.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="repute-logo-nav-light.png">repute-logo-nav-light.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="repute-logo-nav-lightgreen.png">repute-logo-nav-lightgreen.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="repute-logo-nav-orange.png">repute-logo-nav-orange.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="repute-logo-nav-seagreen.png">repute-logo-nav-seagreen.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="repute-logo-nav-slategray.png">repute-logo-nav-slategray.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="repute-logo-nav.png">repute-logo-nav.png</ProjectItem>
+          </Folder>
+          <Folder Name="news" TargetFolderName="news">
+            <ProjectItem ReplaceParameters="false" TargetFileName="featured-news.png">featured-news.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="news1.png">news1.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="news2.png">news2.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="news3.png">news3.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="news4.png">news4.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="news5.png">news5.png</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="false" TargetFileName="page-header-bg.png">page-header-bg.png</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="pattern-geometry.png">pattern-geometry.png</ProjectItem>
+          <Folder Name="portfolio" TargetFolderName="portfolio">
+            <Folder Name="800x500" TargetFolderName="800x500">
+              <ProjectItem ReplaceParameters="false" TargetFileName="work1.png">work1.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="work2.png">work2.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="work3.png">work3.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="work4.png">work4.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="work5.png">work5.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="work6.png">work6.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="work7.png">work7.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="work8.png">work8.png</ProjectItem>
+            </Folder>
+            <Folder Name="800x800" TargetFolderName="800x800">
+              <ProjectItem ReplaceParameters="false" TargetFileName="work1.png">work1.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="work2.png">work2.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="work3.png">work3.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="work4.png">work4.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="work5.png">work5.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="work6.png">work6.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="work7.png">work7.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="work8.png">work8.png</ProjectItem>
+            </Folder>
+            <Folder Name="single" TargetFolderName="single">
+              <ProjectItem ReplaceParameters="false" TargetFileName="bicycle.jpg">bicycle.jpg</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="blurred_lines.jpg">blurred_lines.jpg</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="edge.jpg">edge.jpg</ProjectItem>
+            </Folder>
+          </Folder>
+          <Folder Name="sliders" TargetFolderName="sliders">
+            <ProjectItem ReplaceParameters="false" TargetFileName="full-slide-color.jpg">full-slide-color.jpg</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="full-slide-color2.jpg">full-slide-color2.jpg</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="full-slide-color3.jpg">full-slide-color3.jpg</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="full-slide.jpg">full-slide.jpg</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="full-slide2.jpg">full-slide2.jpg</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="full-slide3.jpg">full-slide3.jpg</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="slider1-h500.png">slider1-h500.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="slider2-h500.png">slider2-h500.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="slider3-h500.png">slider3-h500.png</ProjectItem>
+          </Folder>
+          <Folder Name="team" TargetFolderName="team">
+            <ProjectItem ReplaceParameters="false" TargetFileName="person1.png">person1.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="person2.png">person2.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="person3.png">person3.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="person4.png">person4.png</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="false" TargetFileName="testimonial-bg.png">testimonial-bg.png</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="user1.png">user1.png</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="user2.png">user2.png</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="user3.png">user3.png</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="user4.png">user4.png</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="user5.png">user5.png</ProjectItem>
+        </Folder>
+        <Folder Name="js" TargetFolderName="js">
+          <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.js">bootstrap.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.min.js">bootstrap.min.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="jquery-2.1.1.min.js">jquery-2.1.1.min.js</ProjectItem>
+          <Folder Name="plugins" TargetFolderName="plugins">
+            <Folder Name="autohidingnavbar" TargetFolderName="autohidingnavbar">
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.bootstrap-autohidingnavbar.js">jquery.bootstrap-autohidingnavbar.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.bootstrap-autohidingnavbar.min.js">jquery.bootstrap-autohidingnavbar.min.js</ProjectItem>
+            </Folder>
+            <Folder Name="bootstrap-datepicker" TargetFolderName="bootstrap-datepicker">
+              <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-datepicker.js">bootstrap-datepicker.js</ProjectItem>
+            </Folder>
+            <Folder Name="bootstrap-multiselect" TargetFolderName="bootstrap-multiselect">
+              <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-multiselect.js">bootstrap-multiselect.js</ProjectItem>
+            </Folder>
+            <Folder Name="daterangepicker" TargetFolderName="daterangepicker">
+              <ProjectItem ReplaceParameters="true" TargetFileName="daterangepicker.js">daterangepicker.js</ProjectItem>
+            </Folder>
+            <Folder Name="easing" TargetFolderName="easing">
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.easing.js">jquery.easing.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.easing.min.js">jquery.easing.min.js</ProjectItem>
+            </Folder>
+            <Folder Name="fitvids" TargetFolderName="fitvids">
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.fitvids.js">jquery.fitvids.js</ProjectItem>
+            </Folder>
+            <Folder Name="google-map" TargetFolderName="google-map">
+              <ProjectItem ReplaceParameters="true" TargetFileName="google-map.js">google-map.js</ProjectItem>
+            </Folder>
+            <Folder Name="isotope" TargetFolderName="isotope">
+              <ProjectItem ReplaceParameters="true" TargetFileName="isotope.pkgd.js">isotope.pkgd.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="isotope.pkgd.min.js">isotope.pkgd.min.js</ProjectItem>
+            </Folder>
+            <Folder Name="jquery-cycle" TargetFolderName="jquery-cycle">
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.cycle.all.js">jquery.cycle.all.js</ProjectItem>
+            </Folder>
+            <Folder Name="jquery-easypiechart" TargetFolderName="jquery-easypiechart">
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.easypiechart.js">jquery.easypiechart.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.easypiechart.min.js">jquery.easypiechart.min.js</ProjectItem>
+            </Folder>
+            <Folder Name="jquery-maskedinput" TargetFolderName="jquery-maskedinput">
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.masked-input.js">jquery.masked-input.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.masked-input.min.js">jquery.masked-input.min.js</ProjectItem>
+            </Folder>
+            <Folder Name="maximage" TargetFolderName="maximage">
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.maximage.js">jquery.maximage.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.maximage.min.js">jquery.maximage.min.js</ProjectItem>
+            </Folder>
+            <Folder Name="moment" TargetFolderName="moment">
+              <ProjectItem ReplaceParameters="true" TargetFileName="moment.js">moment.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="moment.min.js">moment.min.js</ProjectItem>
+            </Folder>
+            <Folder Name="parsley-validation" TargetFolderName="parsley-validation">
+              <ProjectItem ReplaceParameters="true" TargetFileName="parsley.js">parsley.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="parsley.min.js">parsley.min.js</ProjectItem>
+            </Folder>
+            <Folder Name="scrollto" TargetFolderName="scrollto">
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.localscroll-1.2.7-min.js">jquery.localscroll-1.2.7-min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.localscroll-1.2.7.js">jquery.localscroll-1.2.7.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.scrollTo-1.4.3.1-min.js">jquery.scrollTo-1.4.3.1-min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.scrollTo-1.4.3.1.js">jquery.scrollTo-1.4.3.1.js</ProjectItem>
+            </Folder>
+            <Folder Name="slick" TargetFolderName="slick">
+              <ProjectItem ReplaceParameters="true" TargetFileName="slick.js">slick.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="slick.min.js">slick.min.js</ProjectItem>
+            </Folder>
+            <Folder Name="stellar" TargetFolderName="stellar">
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.stellar.js">jquery.stellar.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.stellar.min.js">jquery.stellar.min.js</ProjectItem>
+            </Folder>
+          </Folder>
+          <ProjectItem ReplaceParameters="true" TargetFileName="repute-scripts.js">repute-scripts.js</ProjectItem>
+        </Folder>
+      </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
       <Folder Name="Content" TargetFolderName="Content">
         <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.css">bootstrap.css</ProjectItem>
@@ -150,12 +378,12 @@
       </Folder>
       <Folder Name="Controllers" TargetFolderName="Controllers">
         <ProjectItem ReplaceParameters="true" TargetFileName="AccountController.cs">AccountController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="actionFiguresController.cs">actionFiguresController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="blogEntriesController.cs">blogEntriesController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="HomeController.cs">HomeController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="makeController.cs">makeController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ManageController.cs">ManageController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="MeController.cs">MeController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ODataApiController.cs">ODataApiController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="usersController.cs">usersController.cs</ProjectItem>
       </Folder>
       <Folder Name="DependencyResolution" TargetFolderName="DependencyResolution">
         <ProjectItem ReplaceParameters="true" TargetFileName="IoC.cs">IoC.cs</ProjectItem>
@@ -175,9 +403,10 @@
       <ProjectItem ReplaceParameters="true" TargetFileName="Global.asax">Global.asax</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Global.asax.cs">Global.asax.cs</ProjectItem>
       <Folder Name="Migrations" TargetFolderName="Migrations">
-        <ProjectItem ReplaceParameters="true" TargetFileName="201609061950480_InitialSecurityMigration.cs">201609061950480_InitialSecurityMigration.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="201609061950480_InitialSecurityMigration.Designer.cs">201609061950480_InitialSecurityMigration.Designer.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="201609061950480_InitialSecurityMigration.resx">201609061950480_InitialSecurityMigration.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="201609061950480_InitialSecurityMigration.cs_bak">201609061950480_InitialSecurityMigration.cs_bak</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="201611181346287_InitialSecurityMigration.cs">201611181346287_InitialSecurityMigration.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="201611181346287_InitialSecurityMigration.Designer.cs">201611181346287_InitialSecurityMigration.Designer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="201611181346287_InitialSecurityMigration.resx">201611181346287_InitialSecurityMigration.resx</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="Configuration.cs">Configuration.cs</ProjectItem>
       </Folder>
       <Folder Name="Models" TargetFolderName="Models">
@@ -191,10 +420,7 @@
       <ProjectItem ReplaceParameters="true" TargetFileName="Project_Readme.html">Project_Readme.html</ProjectItem>
       <Folder Name="Properties" TargetFolderName="Properties">
         <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
-        <Folder Name="PublishProfiles" TargetFolderName="PublishProfiles">
-          <ProjectItem ReplaceParameters="false" TargetFileName="Production - goactionfig.com.pubxml">Production - goactionfig.com.pubxml</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="Staging - victortango.xaviersoftware.com.pubxml">Staging - victortango.xaviersoftware.com.pubxml</ProjectItem>
-        </Folder>
+        <Folder Name="PublishProfiles" TargetFolderName="PublishProfiles" />
       </Folder>
       <Folder Name="Providers" TargetFolderName="Providers">
         <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationOAuthProvider.cs">ApplicationOAuthProvider.cs</ProjectItem>
@@ -361,6 +587,1214 @@
       <ProjectItem ReplaceParameters="true" TargetFileName="Web.config">Web.config</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Web.Debug.config">Web.Debug.config</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Web.Release.config">Web.Release.config</ProjectItem>
+      <Folder Name="wwwroot" TargetFolderName="wwwroot">
+        <Folder Name="lib" TargetFolderName="lib">
+          <Folder Name="angular" TargetFolderName="angular">
+            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="angular-csp.css">angular-csp.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="angular.js">angular.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="angular.min.js">angular.min.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="angular.min.js.gzip">angular.min.js.gzip</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="angular.min.js.map">angular.min.js.map</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="index.js">index.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="LICENSE.md">LICENSE.md</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="package.json">package.json</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
+          </Folder>
+          <Folder Name="angular-animate" TargetFolderName="angular-animate">
+            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="angular-animate.js">angular-animate.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="angular-animate.min.js">angular-animate.min.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="angular-animate.min.js.map">angular-animate.min.js.map</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="index.js">index.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="LICENSE.md">LICENSE.md</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="package.json">package.json</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
+          </Folder>
+          <Folder Name="angular-route" TargetFolderName="angular-route">
+            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="angular-route.js">angular-route.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="angular-route.min.js">angular-route.min.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="angular-route.min.js.map">angular-route.min.js.map</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="index.js">index.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="LICENSE.md">LICENSE.md</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="package.json">package.json</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
+          </Folder>
+          <Folder Name="angular-sessionstorage" TargetFolderName="angular-sessionstorage">
+            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="angular-sessionstorage.js">angular-sessionstorage.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="CHANGELOG.md">CHANGELOG.md</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="index.js">index.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="LICENSE">LICENSE</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="package.json">package.json</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
+          </Folder>
+          <Folder Name="AngularJS-Toaster" TargetFolderName="AngularJS-Toaster">
+            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="index.js">index.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="karma.conf.js">karma.conf.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="karma.coverage.js">karma.coverage.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="LICENSE">LICENSE</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="package.json">package.json</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
+            <Folder Name="test" TargetFolderName="test">
+              <ProjectItem ReplaceParameters="true" TargetFileName="directiveTemplateSpec.js">directiveTemplateSpec.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="toasterContainerControllerSpec.js">toasterContainerControllerSpec.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="toasterContainerSpec.js">toasterContainerSpec.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="toasterEventRegistrySpec.js">toasterEventRegistrySpec.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="toasterServiceSpec.js">toasterServiceSpec.js</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="true" TargetFileName="toaster.css">toaster.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="toaster.js">toaster.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="toaster.min.css">toaster.min.css</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="toaster.min.js">toaster.min.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="toaster.scss">toaster.scss</ProjectItem>
+          </Folder>
+          <Folder Name="bootstrap" TargetFolderName="bootstrap">
+            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="CHANGELOG.md">CHANGELOG.md</ProjectItem>
+            <Folder Name="dist" TargetFolderName="dist">
+              <Folder Name="css" TargetFolderName="css">
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-theme.css">bootstrap-theme.css</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-theme.css.map">bootstrap-theme.css.map</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-theme.min.css">bootstrap-theme.min.css</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-theme.min.css.map">bootstrap-theme.min.css.map</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.css">bootstrap.css</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.css.map">bootstrap.css.map</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.min.css">bootstrap.min.css</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.min.css.map">bootstrap.min.css.map</ProjectItem>
+              </Folder>
+              <Folder Name="fonts" TargetFolderName="fonts">
+                <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.eot">glyphicons-halflings-regular.eot</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.svg">glyphicons-halflings-regular.svg</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.ttf">glyphicons-halflings-regular.ttf</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.woff">glyphicons-halflings-regular.woff</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.woff2">glyphicons-halflings-regular.woff2</ProjectItem>
+              </Folder>
+              <Folder Name="js" TargetFolderName="js">
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.js">bootstrap.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.min.js">bootstrap.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="npm.js">npm.js</ProjectItem>
+              </Folder>
+            </Folder>
+            <Folder Name="fonts" TargetFolderName="fonts">
+              <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.eot">glyphicons-halflings-regular.eot</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.svg">glyphicons-halflings-regular.svg</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.ttf">glyphicons-halflings-regular.ttf</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.woff">glyphicons-halflings-regular.woff</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.woff2">glyphicons-halflings-regular.woff2</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="false" TargetFileName="Gemfile">Gemfile</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="Gemfile.lock">Gemfile.lock</ProjectItem>
+            <Folder Name="grunt" TargetFolderName="grunt">
+              <ProjectItem ReplaceParameters="false" TargetFileName=".jshintrc">.jshintrc</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="bs-commonjs-generator.js">bs-commonjs-generator.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="bs-glyphicons-data-generator.js">bs-glyphicons-data-generator.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="bs-lessdoc-parser.js">bs-lessdoc-parser.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="bs-raw-files-generator.js">bs-raw-files-generator.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="change-version.js">change-version.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="configBridge.json">configBridge.json</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="npm-shrinkwrap.json">npm-shrinkwrap.json</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="sauce_browsers.yml">sauce_browsers.yml</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="true" TargetFileName="Gruntfile.js">Gruntfile.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="ISSUE_TEMPLATE.md">ISSUE_TEMPLATE.md</ProjectItem>
+            <Folder Name="js" TargetFolderName="js">
+              <ProjectItem ReplaceParameters="false" TargetFileName=".jscsrc">.jscsrc</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName=".jshintrc">.jshintrc</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="affix.js">affix.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="alert.js">alert.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="button.js">button.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="carousel.js">carousel.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="collapse.js">collapse.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="dropdown.js">dropdown.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="modal.js">modal.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="popover.js">popover.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="scrollspy.js">scrollspy.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="tab.js">tab.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="tooltip.js">tooltip.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="transition.js">transition.js</ProjectItem>
+            </Folder>
+            <Folder Name="less" TargetFolderName="less">
+              <ProjectItem ReplaceParameters="true" TargetFileName=".csscomb.json">.csscomb.json</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName=".csslintrc">.csslintrc</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="alerts.less">alerts.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="badges.less">badges.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="bootstrap.less">bootstrap.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="breadcrumbs.less">breadcrumbs.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="button-groups.less">button-groups.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="buttons.less">buttons.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="carousel.less">carousel.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="close.less">close.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="code.less">code.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="component-animations.less">component-animations.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="dropdowns.less">dropdowns.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="forms.less">forms.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons.less">glyphicons.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="grid.less">grid.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="input-groups.less">input-groups.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="jumbotron.less">jumbotron.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="labels.less">labels.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="list-group.less">list-group.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="media.less">media.less</ProjectItem>
+              <Folder Name="mixins" TargetFolderName="mixins">
+                <ProjectItem ReplaceParameters="false" TargetFileName="alerts.less">alerts.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="background-variant.less">background-variant.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="border-radius.less">border-radius.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="buttons.less">buttons.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="center-block.less">center-block.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="clearfix.less">clearfix.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="forms.less">forms.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="gradients.less">gradients.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="grid-framework.less">grid-framework.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="grid.less">grid.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="hide-text.less">hide-text.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="image.less">image.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="labels.less">labels.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="list-group.less">list-group.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="nav-divider.less">nav-divider.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="nav-vertical-align.less">nav-vertical-align.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="opacity.less">opacity.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="pagination.less">pagination.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="panels.less">panels.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="progress-bar.less">progress-bar.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="reset-filter.less">reset-filter.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="reset-text.less">reset-text.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="resize.less">resize.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="responsive-visibility.less">responsive-visibility.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="size.less">size.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="tab-focus.less">tab-focus.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="table-row.less">table-row.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="text-emphasis.less">text-emphasis.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="text-overflow.less">text-overflow.less</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="vendor-prefixes.less">vendor-prefixes.less</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="false" TargetFileName="mixins.less">mixins.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="modals.less">modals.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="navbar.less">navbar.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="navs.less">navs.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="normalize.less">normalize.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="pager.less">pager.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="pagination.less">pagination.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="panels.less">panels.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="popovers.less">popovers.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="print.less">print.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="progress-bars.less">progress-bars.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="responsive-embed.less">responsive-embed.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="responsive-utilities.less">responsive-utilities.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="scaffolding.less">scaffolding.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="tables.less">tables.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="theme.less">theme.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="thumbnails.less">thumbnails.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="tooltip.less">tooltip.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="type.less">type.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="utilities.less">utilities.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="variables.less">variables.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="wells.less">wells.less</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="false" TargetFileName="LICENSE">LICENSE</ProjectItem>
+            <Folder Name="nuget" TargetFolderName="nuget">
+              <ProjectItem ReplaceParameters="false" TargetFileName="bootstrap.less.nuspec">bootstrap.less.nuspec</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="bootstrap.nuspec">bootstrap.nuspec</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="MyGet.ps1">MyGet.ps1</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="true" TargetFileName="package.js">package.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="package.json">package.json</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
+          </Folder>
+          <Folder Name="font-awesome" TargetFolderName="font-awesome">
+            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName=".gitignore">.gitignore</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName=".npmignore">.npmignore</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
+            <Folder Name="css" TargetFolderName="css">
+              <ProjectItem ReplaceParameters="true" TargetFileName="font-awesome.css">font-awesome.css</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="font-awesome.css.map">font-awesome.css.map</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="font-awesome.min.css">font-awesome.min.css</ProjectItem>
+            </Folder>
+            <Folder Name="fonts" TargetFolderName="fonts">
+              <ProjectItem ReplaceParameters="false" TargetFileName="fontawesome-webfont.eot">fontawesome-webfont.eot</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="fontawesome-webfont.svg">fontawesome-webfont.svg</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="fontawesome-webfont.ttf">fontawesome-webfont.ttf</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="fontawesome-webfont.woff">fontawesome-webfont.woff</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="fontawesome-webfont.woff2">fontawesome-webfont.woff2</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="FontAwesome.otf">FontAwesome.otf</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="true" TargetFileName="HELP-US-OUT.txt">HELP-US-OUT.txt</ProjectItem>
+            <Folder Name="less" TargetFolderName="less">
+              <ProjectItem ReplaceParameters="false" TargetFileName="animated.less">animated.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="bordered-pulled.less">bordered-pulled.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="core.less">core.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="fixed-width.less">fixed-width.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="font-awesome.less">font-awesome.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="icons.less">icons.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="larger.less">larger.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="list.less">list.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="mixins.less">mixins.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="path.less">path.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="rotated-flipped.less">rotated-flipped.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="screen-reader.less">screen-reader.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="stacked.less">stacked.less</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="variables.less">variables.less</ProjectItem>
+            </Folder>
+            <Folder Name="scss" TargetFolderName="scss">
+              <ProjectItem ReplaceParameters="false" TargetFileName="_animated.scss">_animated.scss</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="_bordered-pulled.scss">_bordered-pulled.scss</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="_core.scss">_core.scss</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="_fixed-width.scss">_fixed-width.scss</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="_icons.scss">_icons.scss</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="_larger.scss">_larger.scss</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="_list.scss">_list.scss</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="_mixins.scss">_mixins.scss</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="_path.scss">_path.scss</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="_rotated-flipped.scss">_rotated-flipped.scss</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="_screen-reader.scss">_screen-reader.scss</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="_stacked.scss">_stacked.scss</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="_variables.scss">_variables.scss</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="font-awesome.scss">font-awesome.scss</ProjectItem>
+            </Folder>
+          </Folder>
+          <Folder Name="jquery" TargetFolderName="jquery">
+            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="AUTHORS.txt">AUTHORS.txt</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
+            <Folder Name="dist" TargetFolderName="dist">
+              <ProjectItem ReplaceParameters="true" TargetFileName="core.js">core.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.js">jquery.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.min.js">jquery.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.min.map">jquery.min.map</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.slim.js">jquery.slim.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.slim.min.js">jquery.slim.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.slim.min.map">jquery.slim.min.map</ProjectItem>
+            </Folder>
+            <Folder Name="external" TargetFolderName="external">
+              <Folder Name="sizzle" TargetFolderName="sizzle">
+                <Folder Name="dist" TargetFolderName="dist">
+                  <ProjectItem ReplaceParameters="true" TargetFileName="sizzle.js">sizzle.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="sizzle.min.js">sizzle.min.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="sizzle.min.map">sizzle.min.map</ProjectItem>
+                </Folder>
+                <ProjectItem ReplaceParameters="true" TargetFileName="LICENSE.txt">LICENSE.txt</ProjectItem>
+              </Folder>
+            </Folder>
+            <ProjectItem ReplaceParameters="true" TargetFileName="LICENSE.txt">LICENSE.txt</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
+            <Folder Name="src" TargetFolderName="src">
+              <ProjectItem ReplaceParameters="true" TargetFileName=".eslintrc.json">.eslintrc.json</ProjectItem>
+              <Folder Name="ajax" TargetFolderName="ajax">
+                <ProjectItem ReplaceParameters="true" TargetFileName="jsonp.js">jsonp.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="load.js">load.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="parseXML.js">parseXML.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="script.js">script.js</ProjectItem>
+                <Folder Name="var" TargetFolderName="var">
+                  <ProjectItem ReplaceParameters="true" TargetFileName="location.js">location.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="nonce.js">nonce.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="rquery.js">rquery.js</ProjectItem>
+                </Folder>
+                <ProjectItem ReplaceParameters="true" TargetFileName="xhr.js">xhr.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="ajax.js">ajax.js</ProjectItem>
+              <Folder Name="attributes" TargetFolderName="attributes">
+                <ProjectItem ReplaceParameters="true" TargetFileName="attr.js">attr.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="classes.js">classes.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="prop.js">prop.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="support.js">support.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="val.js">val.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="attributes.js">attributes.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="callbacks.js">callbacks.js</ProjectItem>
+              <Folder Name="core" TargetFolderName="core">
+                <ProjectItem ReplaceParameters="true" TargetFileName="access.js">access.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="DOMEval.js">DOMEval.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="init.js">init.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="parseHTML.js">parseHTML.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="ready-no-deferred.js">ready-no-deferred.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="ready.js">ready.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="readyException.js">readyException.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="stripAndCollapse.js">stripAndCollapse.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="support.js">support.js</ProjectItem>
+                <Folder Name="var" TargetFolderName="var">
+                  <ProjectItem ReplaceParameters="true" TargetFileName="rsingleTag.js">rsingleTag.js</ProjectItem>
+                </Folder>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="core.js">core.js</ProjectItem>
+              <Folder Name="css" TargetFolderName="css">
+                <ProjectItem ReplaceParameters="true" TargetFileName="addGetHookIf.js">addGetHookIf.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="adjustCSS.js">adjustCSS.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="curCSS.js">curCSS.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="hiddenVisibleSelectors.js">hiddenVisibleSelectors.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="showHide.js">showHide.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="support.js">support.js</ProjectItem>
+                <Folder Name="var" TargetFolderName="var">
+                  <ProjectItem ReplaceParameters="true" TargetFileName="cssExpand.js">cssExpand.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="getStyles.js">getStyles.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="isHiddenWithinTree.js">isHiddenWithinTree.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="rmargin.js">rmargin.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="rnumnonpx.js">rnumnonpx.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="swap.js">swap.js</ProjectItem>
+                </Folder>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="css.js">css.js</ProjectItem>
+              <Folder Name="data" TargetFolderName="data">
+                <ProjectItem ReplaceParameters="true" TargetFileName="Data.js">Data.js</ProjectItem>
+                <Folder Name="var" TargetFolderName="var">
+                  <ProjectItem ReplaceParameters="true" TargetFileName="acceptData.js">acceptData.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="dataPriv.js">dataPriv.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="dataUser.js">dataUser.js</ProjectItem>
+                </Folder>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="data.js">data.js</ProjectItem>
+              <Folder Name="deferred" TargetFolderName="deferred">
+                <ProjectItem ReplaceParameters="true" TargetFileName="exceptionHook.js">exceptionHook.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="deferred.js">deferred.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="deprecated.js">deprecated.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="dimensions.js">dimensions.js</ProjectItem>
+              <Folder Name="effects" TargetFolderName="effects">
+                <ProjectItem ReplaceParameters="true" TargetFileName="animatedSelector.js">animatedSelector.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="Tween.js">Tween.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="effects.js">effects.js</ProjectItem>
+              <Folder Name="event" TargetFolderName="event">
+                <ProjectItem ReplaceParameters="true" TargetFileName="ajax.js">ajax.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="alias.js">alias.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="focusin.js">focusin.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="support.js">support.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="trigger.js">trigger.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="event.js">event.js</ProjectItem>
+              <Folder Name="exports" TargetFolderName="exports">
+                <ProjectItem ReplaceParameters="true" TargetFileName="amd.js">amd.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="global.js">global.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.js">jquery.js</ProjectItem>
+              <Folder Name="manipulation" TargetFolderName="manipulation">
+                <ProjectItem ReplaceParameters="true" TargetFileName="_evalUrl.js">_evalUrl.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="buildFragment.js">buildFragment.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="getAll.js">getAll.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="setGlobalEval.js">setGlobalEval.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="support.js">support.js</ProjectItem>
+                <Folder Name="var" TargetFolderName="var">
+                  <ProjectItem ReplaceParameters="true" TargetFileName="rcheckableType.js">rcheckableType.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="rscriptType.js">rscriptType.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="rtagName.js">rtagName.js</ProjectItem>
+                </Folder>
+                <ProjectItem ReplaceParameters="true" TargetFileName="wrapMap.js">wrapMap.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="manipulation.js">manipulation.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="offset.js">offset.js</ProjectItem>
+              <Folder Name="queue" TargetFolderName="queue">
+                <ProjectItem ReplaceParameters="true" TargetFileName="delay.js">delay.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="queue.js">queue.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="selector-native.js">selector-native.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="selector-sizzle.js">selector-sizzle.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="selector.js">selector.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="serialize.js">serialize.js</ProjectItem>
+              <Folder Name="traversing" TargetFolderName="traversing">
+                <ProjectItem ReplaceParameters="true" TargetFileName="findFilter.js">findFilter.js</ProjectItem>
+                <Folder Name="var" TargetFolderName="var">
+                  <ProjectItem ReplaceParameters="true" TargetFileName="dir.js">dir.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="rneedsContext.js">rneedsContext.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="siblings.js">siblings.js</ProjectItem>
+                </Folder>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="traversing.js">traversing.js</ProjectItem>
+              <Folder Name="var" TargetFolderName="var">
+                <ProjectItem ReplaceParameters="true" TargetFileName="arr.js">arr.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="class2type.js">class2type.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="concat.js">concat.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="document.js">document.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="documentElement.js">documentElement.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="fnToString.js">fnToString.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="getProto.js">getProto.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="hasOwn.js">hasOwn.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="indexOf.js">indexOf.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="ObjectFunctionString.js">ObjectFunctionString.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="pnum.js">pnum.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="push.js">push.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="rcssNum.js">rcssNum.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="rnothtmlwhite.js">rnothtmlwhite.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="slice.js">slice.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="support.js">support.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="toString.js">toString.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="wrap.js">wrap.js</ProjectItem>
+            </Folder>
+          </Folder>
+          <Folder Name="jquery-validation" TargetFolderName="jquery-validation">
+            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
+            <Folder Name="build" TargetFolderName="build">
+              <ProjectItem ReplaceParameters="true" TargetFileName="release.js">release.js</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="false" TargetFileName="changelog.md">changelog.md</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="CONTRIBUTING.md">CONTRIBUTING.md</ProjectItem>
+            <Folder Name="dist" TargetFolderName="dist">
+              <ProjectItem ReplaceParameters="true" TargetFileName="additional-methods.js">additional-methods.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="additional-methods.min.js">additional-methods.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.validate.js">jquery.validate.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.validate.min.js">jquery.validate.min.js</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="true" TargetFileName="Gruntfile.js">Gruntfile.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="LICENSE.md">LICENSE.md</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="package.json">package.json</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
+            <Folder Name="src" TargetFolderName="src">
+              <Folder Name="additional" TargetFolderName="additional">
+                <ProjectItem ReplaceParameters="true" TargetFileName="accept.js">accept.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="additional.js">additional.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="alphanumeric.js">alphanumeric.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bankaccountNL.js">bankaccountNL.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bankorgiroaccountNL.js">bankorgiroaccountNL.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bic.js">bic.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="cifES.js">cifES.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="cpfBR.js">cpfBR.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="creditcard.js">creditcard.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="creditcardtypes.js">creditcardtypes.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="currency.js">currency.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="dateFA.js">dateFA.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="dateITA.js">dateITA.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="dateNL.js">dateNL.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="extension.js">extension.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="giroaccountNL.js">giroaccountNL.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="iban.js">iban.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="integer.js">integer.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="ipv4.js">ipv4.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="ipv6.js">ipv6.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="lettersonly.js">lettersonly.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="letterswithbasicpunc.js">letterswithbasicpunc.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="mobileNL.js">mobileNL.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="mobileUK.js">mobileUK.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="nieES.js">nieES.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="nifES.js">nifES.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="notEqualTo.js">notEqualTo.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="nowhitespace.js">nowhitespace.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="pattern.js">pattern.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="phoneNL.js">phoneNL.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="phonesUK.js">phonesUK.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="phoneUK.js">phoneUK.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="phoneUS.js">phoneUS.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="postalcodeBR.js">postalcodeBR.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="postalCodeCA.js">postalCodeCA.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="postalcodeIT.js">postalcodeIT.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="postalcodeNL.js">postalcodeNL.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="postcodeUK.js">postcodeUK.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="require_from_group.js">require_from_group.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="skip_or_fill_minimum.js">skip_or_fill_minimum.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="statesUS.js">statesUS.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="strippedminlength.js">strippedminlength.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="time.js">time.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="time12h.js">time12h.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="url2.js">url2.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="vinUS.js">vinUS.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="zipcodeUS.js">zipcodeUS.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="ziprange.js">ziprange.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="ajax.js">ajax.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="core.js">core.js</ProjectItem>
+              <Folder Name="localization" TargetFolderName="localization">
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_ar.js">messages_ar.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="messages_az">messages_az</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_bg.js">messages_bg.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_bn_BD.js">messages_bn_BD.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_ca.js">messages_ca.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_cs.js">messages_cs.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_da.js">messages_da.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_de.js">messages_de.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_el.js">messages_el.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_es.js">messages_es.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_es_AR.js">messages_es_AR.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_es_PE.js">messages_es_PE.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_et.js">messages_et.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_eu.js">messages_eu.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_fa.js">messages_fa.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_fi.js">messages_fi.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_fr.js">messages_fr.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_ge.js">messages_ge.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_gl.js">messages_gl.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_he.js">messages_he.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_hr.js">messages_hr.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_hu.js">messages_hu.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_hy_AM.js">messages_hy_AM.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_id.js">messages_id.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_is.js">messages_is.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_it.js">messages_it.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_ja.js">messages_ja.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_ka.js">messages_ka.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_kk.js">messages_kk.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_ko.js">messages_ko.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_lt.js">messages_lt.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_lv.js">messages_lv.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_mk.js">messages_mk.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_my.js">messages_my.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_nl.js">messages_nl.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_no.js">messages_no.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_pl.js">messages_pl.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_pt_BR.js">messages_pt_BR.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_pt_PT.js">messages_pt_PT.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_ro.js">messages_ro.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_ru.js">messages_ru.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_si.js">messages_si.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_sk.js">messages_sk.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_sl.js">messages_sl.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_sr.js">messages_sr.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_sr_lat.js">messages_sr_lat.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_sv.js">messages_sv.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_th.js">messages_th.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_tj.js">messages_tj.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_tr.js">messages_tr.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_uk.js">messages_uk.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_vi.js">messages_vi.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_zh.js">messages_zh.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="messages_zh_TW.js">messages_zh_TW.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="methods_de.js">methods_de.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="methods_es_CL.js">methods_es_CL.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="methods_fi.js">methods_fi.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="methods_nl.js">methods_nl.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="methods_pt.js">methods_pt.js</ProjectItem>
+              </Folder>
+            </Folder>
+            <ProjectItem ReplaceParameters="true" TargetFileName="validation.jquery.json">validation.jquery.json</ProjectItem>
+          </Folder>
+          <Folder Name="jquery-validation-unobtrusive" TargetFolderName="jquery-validation-unobtrusive">
+            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.validate.unobtrusive.js">jquery.validate.unobtrusive.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.validate.unobtrusive.min.js">jquery.validate.unobtrusive.min.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="LICENSE.txt">LICENSE.txt</ProjectItem>
+          </Folder>
+          <Folder Name="modernizr" TargetFolderName="modernizr">
+            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName=".coveralls.yml">.coveralls.yml</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName=".editorconfig">.editorconfig</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName=".gitattributes">.gitattributes</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName=".gitignore">.gitignore</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName=".jscsrc">.jscsrc</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName=".jshintignore">.jshintignore</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName=".jshintrc">.jshintrc</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName=".npmignore">.npmignore</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName=".travis.yml">.travis.yml</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="appveyor.yml">appveyor.yml</ProjectItem>
+            <Folder Name="bin" TargetFolderName="bin">
+              <ProjectItem ReplaceParameters="false" TargetFileName="modernizr">modernizr</ProjectItem>
+            </Folder>
+            <Folder Name="feature-detects" TargetFolderName="feature-detects">
+              <Folder Name="a" TargetFolderName="a">
+                <ProjectItem ReplaceParameters="true" TargetFileName="download.js">download.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="ambientlight.js">ambientlight.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="applicationcache.js">applicationcache.js</ProjectItem>
+              <Folder Name="audio" TargetFolderName="audio">
+                <ProjectItem ReplaceParameters="true" TargetFileName="loop.js">loop.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="preload.js">preload.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="webaudio.js">webaudio.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="audio.js">audio.js</ProjectItem>
+              <Folder Name="battery" TargetFolderName="battery">
+                <ProjectItem ReplaceParameters="true" TargetFileName="lowbattery.js">lowbattery.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="battery.js">battery.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="blob.js">blob.js</ProjectItem>
+              <Folder Name="canvas" TargetFolderName="canvas">
+                <ProjectItem ReplaceParameters="true" TargetFileName="blending.js">blending.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="todataurl.js">todataurl.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="winding.js">winding.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="canvas.js">canvas.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="canvastext.js">canvastext.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="contenteditable.js">contenteditable.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="contextmenu.js">contextmenu.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="cookies.js">cookies.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="cors.js">cors.js</ProjectItem>
+              <Folder Name="crypto" TargetFolderName="crypto">
+                <ProjectItem ReplaceParameters="true" TargetFileName="getrandomvalues.js">getrandomvalues.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="crypto.js">crypto.js</ProjectItem>
+              <Folder Name="css" TargetFolderName="css">
+                <ProjectItem ReplaceParameters="true" TargetFileName="all.js">all.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="animations.js">animations.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="appearance.js">appearance.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="backdropfilter.js">backdropfilter.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="backgroundblendmode.js">backgroundblendmode.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="backgroundcliptext.js">backgroundcliptext.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="backgroundposition-shorthand.js">backgroundposition-shorthand.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="backgroundposition-xy.js">backgroundposition-xy.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="backgroundrepeat.js">backgroundrepeat.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="backgroundsize.js">backgroundsize.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="backgroundsizecover.js">backgroundsizecover.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="borderimage.js">borderimage.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="borderradius.js">borderradius.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="boxshadow.js">boxshadow.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="boxsizing.js">boxsizing.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="calc.js">calc.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="checked.js">checked.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="chunit.js">chunit.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="columns.js">columns.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="cubicbezierrange.js">cubicbezierrange.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="displayrunin.js">displayrunin.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="displaytable.js">displaytable.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="ellipsis.js">ellipsis.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="escape.js">escape.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="exunit.js">exunit.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="filters.js">filters.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="flexbox.js">flexbox.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="flexboxlegacy.js">flexboxlegacy.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="flexboxtweener.js">flexboxtweener.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="flexwrap.js">flexwrap.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="fontface.js">fontface.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="generatedcontent.js">generatedcontent.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="gradients.js">gradients.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="hairline.js">hairline.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="hsla.js">hsla.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="hyphens.js">hyphens.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="invalid.js">invalid.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="lastchild.js">lastchild.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="mask.js">mask.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="mediaqueries.js">mediaqueries.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="multiplebgs.js">multiplebgs.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="nthchild.js">nthchild.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="objectfit.js">objectfit.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="opacity.js">opacity.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="overflow-scrolling.js">overflow-scrolling.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="pointerevents.js">pointerevents.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="positionsticky.js">positionsticky.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="pseudoanimations.js">pseudoanimations.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="pseudotransitions.js">pseudotransitions.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="reflections.js">reflections.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="regions.js">regions.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="remunit.js">remunit.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="resize.js">resize.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="rgba.js">rgba.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="scrollbars.js">scrollbars.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="scrollsnappoints.js">scrollsnappoints.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="shapes.js">shapes.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="siblinggeneral.js">siblinggeneral.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="subpixelfont.js">subpixelfont.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="supports.js">supports.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="target.js">target.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="textalignlast.js">textalignlast.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="textshadow.js">textshadow.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="transforms.js">transforms.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="transforms3d.js">transforms3d.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="transformstylepreserve3d.js">transformstylepreserve3d.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="transitions.js">transitions.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="userselect.js">userselect.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="valid.js">valid.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="vhunit.js">vhunit.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="vmaxunit.js">vmaxunit.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="vminunit.js">vminunit.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="vwunit.js">vwunit.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="will-change.js">will-change.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="wrapflow.js">wrapflow.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="custom-protocol-handler.js">custom-protocol-handler.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="customevent.js">customevent.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="dart.js">dart.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="dataview-api.js">dataview-api.js</ProjectItem>
+              <Folder Name="dom" TargetFolderName="dom">
+                <ProjectItem ReplaceParameters="true" TargetFileName="classlist.js">classlist.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="createElement-attrs.js">createElement-attrs.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="dataset.js">dataset.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="documentfragment.js">documentfragment.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="hidden.js">hidden.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="microdata.js">microdata.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="mutationObserver.js">mutationObserver.js</ProjectItem>
+              </Folder>
+              <Folder Name="elem" TargetFolderName="elem">
+                <ProjectItem ReplaceParameters="true" TargetFileName="bdi.js">bdi.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="datalist.js">datalist.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="details.js">details.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="output.js">output.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="picture.js">picture.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="progress-meter.js">progress-meter.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="ruby.js">ruby.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="template.js">template.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="time.js">time.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="track.js">track.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="unknown.js">unknown.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="emoji.js">emoji.js</ProjectItem>
+              <Folder Name="es5" TargetFolderName="es5">
+                <ProjectItem ReplaceParameters="true" TargetFileName="array.js">array.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="date.js">date.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="function.js">function.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="object.js">object.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="specification.js">specification.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="strictmode.js">strictmode.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="string.js">string.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="syntax.js">syntax.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="undefined.js">undefined.js</ProjectItem>
+              </Folder>
+              <Folder Name="es6" TargetFolderName="es6">
+                <ProjectItem ReplaceParameters="true" TargetFileName="array.js">array.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="collections.js">collections.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="contains.js">contains.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="generators.js">generators.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="math.js">math.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="number.js">number.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="object.js">object.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="promises.js">promises.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="string.js">string.js</ProjectItem>
+              </Folder>
+              <Folder Name="event" TargetFolderName="event">
+                <ProjectItem ReplaceParameters="true" TargetFileName="deviceorientation-motion.js">deviceorientation-motion.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="oninput.js">oninput.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="eventlistener.js">eventlistener.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="exif-orientation.js">exif-orientation.js</ProjectItem>
+              <Folder Name="file" TargetFolderName="file">
+                <ProjectItem ReplaceParameters="true" TargetFileName="api.js">api.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="filesystem.js">filesystem.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="flash.js">flash.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="forcetouch.js">forcetouch.js</ProjectItem>
+              <Folder Name="forms" TargetFolderName="forms">
+                <ProjectItem ReplaceParameters="true" TargetFileName="capture.js">capture.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="fileinput.js">fileinput.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="fileinputdirectory.js">fileinputdirectory.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="formattribute.js">formattribute.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="inputnumber-l10n.js">inputnumber-l10n.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="placeholder.js">placeholder.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="requestautocomplete.js">requestautocomplete.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="validation.js">validation.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="fullscreen-api.js">fullscreen-api.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="gamepad.js">gamepad.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="geolocation.js">geolocation.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="hashchange.js">hashchange.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="hiddenscroll.js">hiddenscroll.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="history.js">history.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="htmlimports.js">htmlimports.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="ie8compat.js">ie8compat.js</ProjectItem>
+              <Folder Name="iframe" TargetFolderName="iframe">
+                <ProjectItem ReplaceParameters="true" TargetFileName="sandbox.js">sandbox.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="seamless.js">seamless.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="srcdoc.js">srcdoc.js</ProjectItem>
+              </Folder>
+              <Folder Name="img" TargetFolderName="img">
+                <ProjectItem ReplaceParameters="true" TargetFileName="apng.js">apng.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="crossorigin.js">crossorigin.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="jpeg2000.js">jpeg2000.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="jpegxr.js">jpegxr.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="sizes.js">sizes.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="srcset.js">srcset.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="webp-alpha.js">webp-alpha.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="webp-animation.js">webp-animation.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="webp-lossless.js">webp-lossless.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="webp.js">webp.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="indexeddb.js">indexeddb.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="indexeddbblob.js">indexeddbblob.js</ProjectItem>
+              <Folder Name="input" TargetFolderName="input">
+                <ProjectItem ReplaceParameters="true" TargetFileName="formaction.js">formaction.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="formenctype.js">formenctype.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="formmethod.js">formmethod.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="formtarget.js">formtarget.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="input.js">input.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="inputsearchevent.js">inputsearchevent.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="inputtypes.js">inputtypes.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="intl.js">intl.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="json.js">json.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="ligatures.js">ligatures.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="lists-reversed.js">lists-reversed.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="mathml.js">mathml.js</ProjectItem>
+              <Folder Name="network" TargetFolderName="network">
+                <ProjectItem ReplaceParameters="true" TargetFileName="beacon.js">beacon.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="connection.js">connection.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="eventsource.js">eventsource.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="fetch.js">fetch.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="xhr-responsetype-arraybuffer.js">xhr-responsetype-arraybuffer.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="xhr-responsetype-blob.js">xhr-responsetype-blob.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="xhr-responsetype-document.js">xhr-responsetype-document.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="xhr-responsetype-json.js">xhr-responsetype-json.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="xhr-responsetype-text.js">xhr-responsetype-text.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="xhr-responsetype.js">xhr-responsetype.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="xhr2.js">xhr2.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="notification.js">notification.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="pagevisibility-api.js">pagevisibility-api.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="performance.js">performance.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="pointerevents.js">pointerevents.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="pointerlock-api.js">pointerlock-api.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="postmessage.js">postmessage.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="proximity.js">proximity.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="queryselector.js">queryselector.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="quota-management-api.js">quota-management-api.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="requestanimationframe.js">requestanimationframe.js</ProjectItem>
+              <Folder Name="script" TargetFolderName="script">
+                <ProjectItem ReplaceParameters="true" TargetFileName="async.js">async.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="defer.js">defer.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="serviceworker.js">serviceworker.js</ProjectItem>
+              <Folder Name="speech" TargetFolderName="speech">
+                <ProjectItem ReplaceParameters="true" TargetFileName="speech-recognition.js">speech-recognition.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="speech-synthesis.js">speech-synthesis.js</ProjectItem>
+              </Folder>
+              <Folder Name="storage" TargetFolderName="storage">
+                <ProjectItem ReplaceParameters="true" TargetFileName="localstorage.js">localstorage.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="sessionstorage.js">sessionstorage.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="websqldatabase.js">websqldatabase.js</ProjectItem>
+              </Folder>
+              <Folder Name="style" TargetFolderName="style">
+                <ProjectItem ReplaceParameters="true" TargetFileName="scoped.js">scoped.js</ProjectItem>
+              </Folder>
+              <Folder Name="svg" TargetFolderName="svg">
+                <ProjectItem ReplaceParameters="true" TargetFileName="asimg.js">asimg.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="clippaths.js">clippaths.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="filters.js">filters.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="foreignobject.js">foreignobject.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="inline.js">inline.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="smil.js">smil.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="svg.js">svg.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="templatestrings.js">templatestrings.js</ProjectItem>
+              <Folder Name="textarea" TargetFolderName="textarea">
+                <ProjectItem ReplaceParameters="true" TargetFileName="maxlength.js">maxlength.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="touchevents.js">touchevents.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="typed-arrays.js">typed-arrays.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="unicode-range.js">unicode-range.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="unicode.js">unicode.js</ProjectItem>
+              <Folder Name="url" TargetFolderName="url">
+                <ProjectItem ReplaceParameters="true" TargetFileName="bloburls.js">bloburls.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="data-uri.js">data-uri.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="parser.js">parser.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="userdata.js">userdata.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="vibration.js">vibration.js</ProjectItem>
+              <Folder Name="video" TargetFolderName="video">
+                <ProjectItem ReplaceParameters="true" TargetFileName="autoplay.js">autoplay.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="loop.js">loop.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="preload.js">preload.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="video.js">video.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="vml.js">vml.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="web-intents.js">web-intents.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="webanimations.js">webanimations.js</ProjectItem>
+              <Folder Name="webgl" TargetFolderName="webgl">
+                <ProjectItem ReplaceParameters="true" TargetFileName="extensions.js">extensions.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="webgl.js">webgl.js</ProjectItem>
+              <Folder Name="webrtc" TargetFolderName="webrtc">
+                <ProjectItem ReplaceParameters="true" TargetFileName="datachannel.js">datachannel.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="getusermedia.js">getusermedia.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="peerconnection.js">peerconnection.js</ProjectItem>
+              </Folder>
+              <Folder Name="websockets" TargetFolderName="websockets">
+                <ProjectItem ReplaceParameters="true" TargetFileName="binary.js">binary.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="websockets.js">websockets.js</ProjectItem>
+              <Folder Name="window" TargetFolderName="window">
+                <ProjectItem ReplaceParameters="true" TargetFileName="atob-btoa.js">atob-btoa.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="framed.js">framed.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="matchmedia.js">matchmedia.js</ProjectItem>
+              </Folder>
+              <Folder Name="workers" TargetFolderName="workers">
+                <ProjectItem ReplaceParameters="true" TargetFileName="blobworkers.js">blobworkers.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="dataworkers.js">dataworkers.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="sharedworkers.js">sharedworkers.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="transferables.js">transferables.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="webworkers.js">webworkers.js</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="xdomainrequest.js">xdomainrequest.js</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="true" TargetFileName="Gruntfile.js">Gruntfile.js</ProjectItem>
+            <Folder Name="lib" TargetFolderName="lib">
+              <ProjectItem ReplaceParameters="false" TargetFileName=".jshintrc">.jshintrc</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="build-query.js">build-query.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="build.js">build.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="cli.js">cli.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="config-all.json">config-all.json</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="generate-banner.js">generate-banner.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="metadata.js">metadata.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="options.js">options.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="polyfills.json">polyfills.json</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="false" TargetFileName="LICENSE">LICENSE</ProjectItem>
+            <Folder Name="media" TargetFolderName="media">
+              <ProjectItem ReplaceParameters="true" TargetFileName=".gitattributes">.gitattributes</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="Modernizr-2-Logo-vertical-big.png">Modernizr-2-Logo-vertical-big.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="Modernizr-2-Logo-vertical-medium.png">Modernizr-2-Logo-vertical-medium.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="Modernizr-2-Logo-vertical-small.png">Modernizr-2-Logo-vertical-small.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="Modernizr 2 Logo vertical big.ai">Modernizr 2 Logo vertical big.ai</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="Modernizr 2 Logo vertical medium.ai">Modernizr 2 Logo vertical medium.ai</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="Modernizr 2 Logo vertical small.ai">Modernizr 2 Logo vertical small.ai</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="Modernizr 2 Logo.ai">Modernizr 2 Logo.ai</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="Modernizr 2 Logo.eps">Modernizr 2 Logo.eps</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="Modernizr 2 Logo.pdf">Modernizr 2 Logo.pdf</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="Modernizr 2 Logo.png">Modernizr 2 Logo.png</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="Modernizr 2 Logo.svg">Modernizr 2 Logo.svg</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="true" TargetFileName="package.json">package.json</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="readme.md">readme.md</ProjectItem>
+            <Folder Name="src" TargetFolderName="src">
+              <ProjectItem ReplaceParameters="true" TargetFileName="addTest.js">addTest.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="atRule.js">atRule.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="classes.js">classes.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="contains.js">contains.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="createElement.js">createElement.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="cssomPrefixes.js">cssomPrefixes.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="cssToDOM.js">cssToDOM.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="docElement.js">docElement.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="domPrefixes.js">domPrefixes.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="domToCSS.js">domToCSS.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="fnBind.js">fnBind.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="generate.js">generate.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="getBody.js">getBody.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="hasEvent.js">hasEvent.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="hasOwnProp.js">hasOwnProp.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="html5printshiv.js">html5printshiv.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="html5shiv.js">html5shiv.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="injectElementWithStyles.js">injectElementWithStyles.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="inputElem.js">inputElem.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="is.js">is.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="isSVG.js">isSVG.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="load.js">load.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="modElem.js">modElem.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="Modernizr.js">Modernizr.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="ModernizrProto.js">ModernizrProto.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="mq.js">mq.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="mStyle.js">mStyle.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="nativeTestProps.js">nativeTestProps.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="omPrefixes.js">omPrefixes.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="prefixed.js">prefixed.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="prefixedCSS.js">prefixedCSS.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="prefixedCSSValue.js">prefixedCSSValue.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="prefixes.js">prefixes.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="roundedEquals.js">roundedEquals.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="setClasses.js">setClasses.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="slice.js">slice.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="testAllProps.js">testAllProps.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="testDOMProps.js">testDOMProps.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="testProp.js">testProp.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="testProps.js">testProps.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="testPropsAll.js">testPropsAll.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="testRunner.js">testRunner.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="tests.js">tests.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="testStyles.js">testStyles.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="testXhrType.js">testXhrType.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="toStringFn.js">toStringFn.js</ProjectItem>
+            </Folder>
+            <Folder Name="test" TargetFolderName="test">
+              <ProjectItem ReplaceParameters="false" TargetFileName=".jshintrc">.jshintrc</ProjectItem>
+              <Folder Name="browser" TargetFolderName="browser">
+                <ProjectItem ReplaceParameters="false" TargetFileName="iframe.jade">iframe.jade</ProjectItem>
+                <Folder Name="integration" TargetFolderName="integration">
+                  <ProjectItem ReplaceParameters="true" TargetFileName="bools.js">bools.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="caniuse.js">caniuse.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="classes.js">classes.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="global.js">global.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="iframe.js">iframe.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="prefixed-atRule.js">prefixed-atRule.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="prefixed-autobind.js">prefixed-autobind.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="prefixed.js">prefixed.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="prefixedCSS.js">prefixedCSS.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="svg.js">svg.js</ProjectItem>
+                </Folder>
+                <ProjectItem ReplaceParameters="true" TargetFileName="integration.css">integration.css</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="integration.jade">integration.jade</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="sauce-browsers.json">sauce-browsers.json</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="setup.js">setup.js</ProjectItem>
+                <Folder Name="src" TargetFolderName="src">
+                  <ProjectItem ReplaceParameters="true" TargetFileName="addTest.js">addTest.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="atRule.js">atRule.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="classes.js">classes.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="contains.js">contains.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="createElement.js">createElement.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="cssomPrefixes.js">cssomPrefixes.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="cssToDOM.js">cssToDOM.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="docElement.js">docElement.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="domPrefixes.js">domPrefixes.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="domToCSS.js">domToCSS.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="fnBind.js">fnBind.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="generate.js">generate.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="getBody.js">getBody.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="hasEvent.js">hasEvent.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="hasOwnProp.js">hasOwnProp.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="html5printshiv.js">html5printshiv.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="html5shiv.js">html5shiv.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="injectElementWithStyles.js">injectElementWithStyles.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="inputElem.js">inputElem.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="is.js">is.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="load.js">load.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="modElem.js">modElem.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="Modernizr.js">Modernizr.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="ModernizrProto.js">ModernizrProto.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="mq.js">mq.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="mStyle.js">mStyle.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="nativeTestProps.js">nativeTestProps.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="omPrefixes.js">omPrefixes.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="prefixed.js">prefixed.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="prefixedCSS.js">prefixedCSS.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="prefixedCSSValue.js">prefixedCSSValue.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="prefixes.js">prefixes.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="roundedEquals.js">roundedEquals.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="setClasses.js">setClasses.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="slice.js">slice.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="testAllProps.js">testAllProps.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="testDOMProps.js">testDOMProps.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="testProp.js">testProp.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="testProps.js">testProps.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="testPropsAll.js">testPropsAll.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="testRunner.js">testRunner.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="tests.js">tests.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="testStyles.js">testStyles.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="testXhrType.js">testXhrType.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="toStringFn.js">toStringFn.js</ProjectItem>
+                </Folder>
+                <ProjectItem ReplaceParameters="true" TargetFileName="svgUnit.js">svgUnit.js</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="unit.jade">unit.jade</ProjectItem>
+              </Folder>
+              <ProjectItem ReplaceParameters="true" TargetFileName="cleanup.js">cleanup.js</ProjectItem>
+              <Folder Name="img" TargetFolderName="img">
+                <ProjectItem ReplaceParameters="false" TargetFileName="integration.svg">integration.svg</ProjectItem>
+                <ProjectItem ReplaceParameters="false" TargetFileName="unit.svg">unit.svg</ProjectItem>
+              </Folder>
+              <Folder Name="js" TargetFolderName="js">
+                <Folder Name="lib" TargetFolderName="lib">
+                  <ProjectItem ReplaceParameters="true" TargetFileName="sinon.js">sinon.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="uaparser.js">uaparser.js</ProjectItem>
+                </Folder>
+              </Folder>
+              <Folder Name="mocks" TargetFolderName="mocks">
+                <Folder Name="lib" TargetFolderName="lib">
+                  <ProjectItem ReplaceParameters="true" TargetFileName="build-query.js">build-query.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="metadata.js">metadata.js</ProjectItem>
+                </Folder>
+              </Folder>
+              <Folder Name="node" TargetFolderName="node">
+                <Folder Name="lib" TargetFolderName="lib">
+                  <ProjectItem ReplaceParameters="true" TargetFileName="build.js">build.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="cli.js">cli.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="metadata.js">metadata.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="options.js">options.js</ProjectItem>
+                </Folder>
+              </Folder>
+              <Folder Name="universal" TargetFolderName="universal">
+                <Folder Name="lib" TargetFolderName="lib">
+                  <ProjectItem ReplaceParameters="true" TargetFileName="build-query.js">build-query.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="generate-banner.js">generate-banner.js</ProjectItem>
+                </Folder>
+              </Folder>
+            </Folder>
+          </Folder>
+          <Folder Name="ng-file-model" TargetFolderName="ng-file-model">
+            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="LICENSE">LICENSE</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="ng-file-model.js">ng-file-model.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="package.json">package.json</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
+            <Folder Name="sample" TargetFolderName="sample">
+              <ProjectItem ReplaceParameters="true" TargetFileName="index.html">index.html</ProjectItem>
+              <Folder Name="lib" TargetFolderName="lib">
+                <Folder Name="angular" TargetFolderName="angular">
+                  <ProjectItem ReplaceParameters="true" TargetFileName="angular-csp.css">angular-csp.css</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="angular.js">angular.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="angular.min.js">angular.min.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="false" TargetFileName="angular.min.js.gzip">angular.min.js.gzip</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="angular.min.js.map">angular.min.js.map</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="index.js">index.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="package.json">package.json</ProjectItem>
+                  <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
+                </Folder>
+                <Folder Name="ng-file-model" TargetFolderName="ng-file-model">
+                  <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
+                  <ProjectItem ReplaceParameters="false" TargetFileName="LICENSE">LICENSE</ProjectItem>
+                  <ProjectItem ReplaceParameters="true" TargetFileName="ng-file-model.js">ng-file-model.js</ProjectItem>
+                  <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
+                  <Folder Name="sample" TargetFolderName="sample">
+                    <ProjectItem ReplaceParameters="true" TargetFileName="index.html">index.html</ProjectItem>
+                  </Folder>
+                </Folder>
+              </Folder>
+            </Folder>
+          </Folder>
+          <Folder Name="rangy" TargetFolderName="rangy">
+            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="LICENSE">LICENSE</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="rangy-classapplier.js">rangy-classapplier.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="rangy-classapplier.min.js">rangy-classapplier.min.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="rangy-core.js">rangy-core.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="rangy-core.min.js">rangy-core.min.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="rangy-highlighter.js">rangy-highlighter.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="rangy-highlighter.min.js">rangy-highlighter.min.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="rangy-selectionsaverestore.js">rangy-selectionsaverestore.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="rangy-selectionsaverestore.min.js">rangy-selectionsaverestore.min.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="rangy-serializer.js">rangy-serializer.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="rangy-serializer.min.js">rangy-serializer.min.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="rangy-textrange.js">rangy-textrange.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="rangy-textrange.min.js">rangy-textrange.min.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
+          </Folder>
+          <Folder Name="respond" TargetFolderName="respond">
+            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
+            <Folder Name="cross-domain" TargetFolderName="cross-domain">
+              <ProjectItem ReplaceParameters="true" TargetFileName="example.html">example.html</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="respond-proxy.html">respond-proxy.html</ProjectItem>
+              <ProjectItem ReplaceParameters="false" TargetFileName="respond.proxy.gif">respond.proxy.gif</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="respond.proxy.js">respond.proxy.js</ProjectItem>
+            </Folder>
+            <Folder Name="dest" TargetFolderName="dest">
+              <ProjectItem ReplaceParameters="true" TargetFileName="respond.matchmedia.addListener.min.js">respond.matchmedia.addListener.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="respond.matchmedia.addListener.src.js">respond.matchmedia.addListener.src.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="respond.min.js">respond.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="respond.src.js">respond.src.js</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="true" TargetFileName="Gruntfile.js">Gruntfile.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="LICENSE-MIT">LICENSE-MIT</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="package.json">package.json</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
+            <Folder Name="src" TargetFolderName="src">
+              <ProjectItem ReplaceParameters="true" TargetFileName="matchmedia.addListener.js">matchmedia.addListener.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="matchmedia.polyfill.js">matchmedia.polyfill.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="respond.js">respond.js</ProjectItem>
+            </Folder>
+          </Folder>
+          <Folder Name="textAngular" TargetFolderName="textAngular">
+            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="changelog.md">changelog.md</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="CONTRIBUTING.md">CONTRIBUTING.md</ProjectItem>
+            <Folder Name="dist" TargetFolderName="dist">
+              <ProjectItem ReplaceParameters="true" TargetFileName="textAngular-rangy.min.js">textAngular-rangy.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="textAngular-sanitize.js">textAngular-sanitize.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="textAngular-sanitize.min.js">textAngular-sanitize.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="textAngular.css">textAngular.css</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="textAngular.js">textAngular.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="textAngular.min.js">textAngular.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="textAngular.umd.js">textAngular.umd.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="textAngularSetup.js">textAngularSetup.js</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="true" TargetFileName="karma-jqlite.conf.js">karma-jqlite.conf.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="karma-jquery.conf.js">karma-jquery.conf.js</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
+            <Folder Name="src" TargetFolderName="src">
+              <ProjectItem ReplaceParameters="true" TargetFileName="DOM.js">DOM.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="factories.js">factories.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="globals.js">globals.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="main.js">main.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="taBind.js">taBind.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="textAngular-sanitize.js">textAngular-sanitize.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="textAngular.css">textAngular.css</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="textAngularSetup.js">textAngularSetup.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="validators.js">validators.js</ProjectItem>
+            </Folder>
+          </Folder>
+        </Folder>
+      </Folder>
     </Project>
   </TemplateContent>
 </VSTemplate>

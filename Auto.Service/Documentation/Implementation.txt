@@ -24,6 +24,12 @@
 
 	http://odata.github.io/WebApi/#13-01-modelbound-attribute
 
+<<<<<<< HEAD
+	https://www.asp.net/web-api/overview/odata-support-in-aspnet-web-api/odata-v4/create-an-odata-v4-endpoint
+
+	- OData Specification - http://www.odata.org/getting-started/basic-tutorial/, 
+	http://stackoverflow.com/questions/39515218/odata-error-the-query-specified-in-the-uri-is-not-valid-the-property-cannot-be
+=======
  - Icon 
 	
 	https://www.google.com/search?q=clutch+icon&safe=active&espv=2&biw=1704&bih=1311&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjOyK-G5-jMAhUFcz4KHYIAC_wQ_AUIBigB#imgrc=zbwsLnio7vB2yM%3A
@@ -35,3 +41,4 @@
  - Migrating to the new Package Restore
 	
 	https://docs.nuget.org/ndocs/consume-packages/package-restore#migrating-to-automatic-restore
+>>>>>>> origin/master

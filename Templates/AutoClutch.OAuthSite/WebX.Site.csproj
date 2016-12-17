@@ -1,0 +1,1700 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{$guid1$}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>$safeprojectname$</RootNamespace>
+    <AssemblyName>$safeprojectname$</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <IncludeIisSettings>false</IncludeIisSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Auto.Controller, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoClutch.AutoController.4.0\lib\net45\Auto.Controller.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Auto.Log, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoClutch.AutoLog.4.0\lib\net452\Auto.Log.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Auto.Repo, Version=4.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoClutch.AutoRepo.4.4\lib\net452\Auto.Repo.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Auto.Service, Version=4.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoClutch.AutoService.4.4\lib\net452\Auto.Service.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.MappingAPI, Version=6.1.0.9, Culture=neutral, PublicKeyToken=7ee2e825d201459e, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.MappingAPI.6.1.0.9\lib\net45\EntityFramework.MappingAPI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.1.0.0\lib\netstandard1.1\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.OData.Core, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.OData.Core.7.0.0\lib\portable-net45+win8+wpa81\Microsoft.OData.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.OData.Edm, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.OData.Edm.7.0.0\lib\portable-net45+win8+wpa81\Microsoft.OData.Edm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Spatial, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Spatial.7.0.0\lib\portable-net45+win8+wpa81\Microsoft.Spatial.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=4.0.1.318, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.4.0.1.318\lib\net40\StructureMap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap.Net4, Version=4.0.1.318, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.4.0.1.318\lib\net40\StructureMap.Net4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.5840.25917, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.6\lib\net40\System.Linq.Dynamic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.OData, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.OData.6.0.0\lib\net45\System.Web.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="TrackerEnabledDbContext, Version=3.6.1.0, Culture=neutral, PublicKeyToken=4f92af0b908c4a0a, processorArchitecture=MSIL">
+      <HintPath>..\packages\TrackerEnabledDbContext.3.6.1\lib\net45\TrackerEnabledDbContext.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TrackerEnabledDbContext.Common, Version=3.6.1.0, Culture=neutral, PublicKeyToken=4f92af0b908c4a0a, processorArchitecture=MSIL">
+      <HintPath>..\packages\TrackerEnabledDbContext.Common.3.6.1\lib\net45\TrackerEnabledDbContext.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TrackerEnabledDbContext.Identity, Version=3.5.2.0, Culture=neutral, PublicKeyToken=4f92af0b908c4a0a, processorArchitecture=MSIL">
+      <HintPath>..\packages\TrackerEnabledDbContext.Identity.3.5.2\lib\net45\TrackerEnabledDbContext.Identity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
+    <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
+    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\CollectionModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumValueDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\IModelDocumentationProvider.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\KeyValuePairModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescriptionGenerator.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameAttribute.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameHelper.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterAnnotation.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\SimpleTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ImageSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\InvalidSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
+    <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\usersController.cs" />
+    <Compile Include="Controllers\blogEntriesController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MeController.cs" />
+    <Compile Include="Controllers\ODataApiController.cs" />
+    <Compile Include="DependencyResolution\IoC.cs" />
+    <Compile Include="DependencyResolution\StructureMapWebApiControllerActivator.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <None Include="Migrations\201609061950480_InitialSecurityMigration.cs_bak" />
+    <Compile Include="Migrations\201611181346287_InitialSecurityMigration.cs" />
+    <Compile Include="Migrations\201611181346287_InitialSecurityMigration.Designer.cs">
+      <DependentUpon>201611181346287_InitialSecurityMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MeViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Startup.cs" />
+    <Content Include="wwwroot\lib\angular-animate\.bower.json" />
+    <Content Include="wwwroot\lib\angular-animate\angular-animate.min.js.map" />
+    <Content Include="wwwroot\lib\angular-animate\bower.json" />
+    <Content Include="wwwroot\lib\angular-animate\LICENSE.md" />
+    <Content Include="wwwroot\lib\angular-animate\package.json" />
+    <Content Include="wwwroot\lib\angular-animate\README.md" />
+    <Content Include="wwwroot\lib\angular-route\.bower.json" />
+    <Content Include="wwwroot\lib\angular-route\angular-route.min.js.map" />
+    <Content Include="wwwroot\lib\angular-route\bower.json" />
+    <Content Include="wwwroot\lib\angular-route\LICENSE.md" />
+    <Content Include="wwwroot\lib\angular-route\package.json" />
+    <Content Include="wwwroot\lib\angular-route\README.md" />
+    <Content Include="wwwroot\lib\angular-sessionstorage\.bower.json" />
+    <Content Include="wwwroot\lib\angular-sessionstorage\bower.json" />
+    <Content Include="wwwroot\lib\angular-sessionstorage\CHANGELOG.md" />
+    <Content Include="wwwroot\lib\angular-sessionstorage\LICENSE" />
+    <Content Include="wwwroot\lib\angular-sessionstorage\package.json" />
+    <Content Include="wwwroot\lib\angular-sessionstorage\README.md" />
+    <Content Include="wwwroot\lib\AngularJS-Toaster\.bower.json" />
+    <Content Include="wwwroot\lib\AngularJS-Toaster\bower.json" />
+    <Content Include="wwwroot\lib\AngularJS-Toaster\LICENSE" />
+    <Content Include="wwwroot\lib\AngularJS-Toaster\package.json" />
+    <Content Include="wwwroot\lib\AngularJS-Toaster\README.md" />
+    <Content Include="wwwroot\lib\AngularJS-Toaster\toaster.scss" />
+    <Content Include="wwwroot\lib\angular\.bower.json" />
+    <Content Include="wwwroot\lib\angular\angular.min.js.gzip" />
+    <Content Include="wwwroot\lib\angular\angular.min.js.map" />
+    <Content Include="wwwroot\lib\angular\bower.json" />
+    <Content Include="wwwroot\lib\angular\LICENSE.md" />
+    <Content Include="wwwroot\lib\angular\package.json" />
+    <Content Include="wwwroot\lib\angular\README.md" />
+    <Content Include="wwwroot\lib\bootstrap\.bower.json" />
+    <Content Include="wwwroot\lib\bootstrap\bower.json" />
+    <Content Include="wwwroot\lib\bootstrap\CHANGELOG.md" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <Content Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="wwwroot\lib\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="wwwroot\lib\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="wwwroot\lib\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="wwwroot\lib\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="wwwroot\lib\bootstrap\Gemfile" />
+    <Content Include="wwwroot\lib\bootstrap\Gemfile.lock" />
+    <Content Include="wwwroot\lib\bootstrap\grunt\.jshintrc" />
+    <Content Include="wwwroot\lib\bootstrap\grunt\configBridge.json" />
+    <Content Include="wwwroot\lib\bootstrap\grunt\npm-shrinkwrap.json" />
+    <Content Include="wwwroot\lib\bootstrap\grunt\sauce_browsers.yml" />
+    <Content Include="wwwroot\lib\bootstrap\ISSUE_TEMPLATE.md" />
+    <Content Include="wwwroot\lib\bootstrap\js\.jscsrc" />
+    <Content Include="wwwroot\lib\bootstrap\js\.jshintrc" />
+    <Content Include="wwwroot\lib\bootstrap\less\.csscomb.json" />
+    <Content Include="wwwroot\lib\bootstrap\less\.csslintrc" />
+    <Content Include="wwwroot\lib\bootstrap\less\alerts.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\badges.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\bootstrap.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\breadcrumbs.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\button-groups.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\buttons.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\carousel.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\close.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\code.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\component-animations.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\dropdowns.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\forms.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\glyphicons.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\grid.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\input-groups.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\jumbotron.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\labels.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\list-group.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\media.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\alerts.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\background-variant.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\border-radius.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\buttons.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\center-block.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\clearfix.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\forms.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\gradients.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\grid-framework.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\grid.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\hide-text.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\image.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\labels.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\list-group.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\nav-divider.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\nav-vertical-align.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\opacity.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\pagination.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\panels.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\progress-bar.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\reset-filter.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\reset-text.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\resize.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\responsive-visibility.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\size.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\tab-focus.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\table-row.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\text-emphasis.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\text-overflow.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\mixins\vendor-prefixes.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\modals.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\navbar.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\navs.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\normalize.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\pager.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\pagination.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\panels.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\popovers.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\print.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\progress-bars.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\responsive-embed.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\responsive-utilities.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\scaffolding.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\tables.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\theme.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\thumbnails.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\tooltip.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\type.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\utilities.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\variables.less" />
+    <Content Include="wwwroot\lib\bootstrap\less\wells.less" />
+    <Content Include="wwwroot\lib\bootstrap\LICENSE" />
+    <Content Include="wwwroot\lib\bootstrap\nuget\bootstrap.less.nuspec" />
+    <Content Include="wwwroot\lib\bootstrap\nuget\bootstrap.nuspec" />
+    <Content Include="wwwroot\lib\bootstrap\nuget\MyGet.ps1" />
+    <Content Include="wwwroot\lib\bootstrap\package.json" />
+    <Content Include="wwwroot\lib\bootstrap\README.md" />
+    <Content Include="wwwroot\lib\font-awesome\.bower.json" />
+    <Content Include="wwwroot\lib\font-awesome\.npmignore" />
+    <Content Include="wwwroot\lib\font-awesome\bower.json" />
+    <Content Include="wwwroot\lib\font-awesome\css\font-awesome.css.map" />
+    <Content Include="wwwroot\lib\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="wwwroot\lib\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="wwwroot\lib\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="wwwroot\lib\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="wwwroot\lib\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="wwwroot\lib\font-awesome\less\animated.less" />
+    <Content Include="wwwroot\lib\font-awesome\less\bordered-pulled.less" />
+    <Content Include="wwwroot\lib\font-awesome\less\core.less" />
+    <Content Include="wwwroot\lib\font-awesome\less\fixed-width.less" />
+    <Content Include="wwwroot\lib\font-awesome\less\font-awesome.less" />
+    <Content Include="wwwroot\lib\font-awesome\less\icons.less" />
+    <Content Include="wwwroot\lib\font-awesome\less\larger.less" />
+    <Content Include="wwwroot\lib\font-awesome\less\list.less" />
+    <Content Include="wwwroot\lib\font-awesome\less\mixins.less" />
+    <Content Include="wwwroot\lib\font-awesome\less\path.less" />
+    <Content Include="wwwroot\lib\font-awesome\less\rotated-flipped.less" />
+    <Content Include="wwwroot\lib\font-awesome\less\screen-reader.less" />
+    <Content Include="wwwroot\lib\font-awesome\less\stacked.less" />
+    <Content Include="wwwroot\lib\font-awesome\less\variables.less" />
+    <Content Include="wwwroot\lib\font-awesome\scss\font-awesome.scss" />
+    <Content Include="wwwroot\lib\font-awesome\scss\_animated.scss" />
+    <Content Include="wwwroot\lib\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="wwwroot\lib\font-awesome\scss\_core.scss" />
+    <Content Include="wwwroot\lib\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="wwwroot\lib\font-awesome\scss\_icons.scss" />
+    <Content Include="wwwroot\lib\font-awesome\scss\_larger.scss" />
+    <Content Include="wwwroot\lib\font-awesome\scss\_list.scss" />
+    <Content Include="wwwroot\lib\font-awesome\scss\_mixins.scss" />
+    <Content Include="wwwroot\lib\font-awesome\scss\_path.scss" />
+    <Content Include="wwwroot\lib\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="wwwroot\lib\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="wwwroot\lib\font-awesome\scss\_stacked.scss" />
+    <Content Include="wwwroot\lib\font-awesome\scss\_variables.scss" />
+    <Content Include="wwwroot\lib\jquery-validation-unobtrusive\.bower.json" />
+    <Content Include="wwwroot\lib\jquery-validation-unobtrusive\bower.json" />
+    <Content Include="wwwroot\lib\jquery-validation\.bower.json" />
+    <Content Include="wwwroot\lib\jquery-validation\bower.json" />
+    <Content Include="wwwroot\lib\jquery-validation\changelog.md" />
+    <Content Include="wwwroot\lib\jquery-validation\CONTRIBUTING.md" />
+    <Content Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <Content Include="wwwroot\lib\jquery-validation\package.json" />
+    <Content Include="wwwroot\lib\jquery-validation\README.md" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_az" />
+    <Content Include="wwwroot\lib\jquery-validation\validation.jquery.json" />
+    <Content Include="wwwroot\lib\jquery\.bower.json" />
+    <Content Include="wwwroot\lib\jquery\bower.json" />
+    <Content Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+    <Content Include="wwwroot\lib\jquery\dist\jquery.slim.min.map" />
+    <Content Include="wwwroot\lib\jquery\external\sizzle\dist\sizzle.min.map" />
+    <Content Include="wwwroot\lib\jquery\README.md" />
+    <Content Include="wwwroot\lib\jquery\src\.eslintrc.json" />
+    <Content Include="wwwroot\lib\modernizr\.bower.json" />
+    <Content Include="wwwroot\lib\modernizr\.coveralls.yml" />
+    <Content Include="wwwroot\lib\modernizr\.editorconfig" />
+    <Content Include="wwwroot\lib\modernizr\.jscsrc" />
+    <Content Include="wwwroot\lib\modernizr\.jshintignore" />
+    <Content Include="wwwroot\lib\modernizr\.jshintrc" />
+    <Content Include="wwwroot\lib\modernizr\.npmignore" />
+    <Content Include="wwwroot\lib\modernizr\.travis.yml" />
+    <Content Include="wwwroot\lib\modernizr\appveyor.yml" />
+    <Content Include="wwwroot\lib\modernizr\bin\modernizr" />
+    <Content Include="wwwroot\lib\modernizr\lib\.jshintrc" />
+    <Content Include="wwwroot\lib\modernizr\lib\config-all.json" />
+    <Content Include="wwwroot\lib\modernizr\lib\polyfills.json" />
+    <Content Include="wwwroot\lib\modernizr\LICENSE" />
+    <Content Include="wwwroot\lib\modernizr\media\Modernizr 2 Logo vertical big.ai" />
+    <Content Include="wwwroot\lib\modernizr\media\Modernizr 2 Logo vertical medium.ai" />
+    <Content Include="wwwroot\lib\modernizr\media\Modernizr 2 Logo vertical small.ai" />
+    <Content Include="wwwroot\lib\modernizr\media\Modernizr 2 Logo.ai" />
+    <Content Include="wwwroot\lib\modernizr\media\Modernizr 2 Logo.eps" />
+    <Content Include="wwwroot\lib\modernizr\media\Modernizr 2 Logo.pdf" />
+    <Content Include="wwwroot\lib\modernizr\package.json" />
+    <Content Include="wwwroot\lib\modernizr\readme.md" />
+    <Content Include="wwwroot\lib\modernizr\test\.jshintrc" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\iframe.jade" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\integration.jade" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\sauce-browsers.json" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\unit.jade" />
+    <Content Include="wwwroot\lib\ng-file-model\.bower.json" />
+    <Content Include="wwwroot\lib\ng-file-model\bower.json" />
+    <Content Include="wwwroot\lib\ng-file-model\LICENSE" />
+    <Content Include="wwwroot\lib\ng-file-model\package.json" />
+    <Content Include="wwwroot\lib\ng-file-model\README.md" />
+    <Content Include="wwwroot\lib\ng-file-model\sample\lib\angular\angular.min.js.gzip" />
+    <Content Include="wwwroot\lib\ng-file-model\sample\lib\angular\angular.min.js.map" />
+    <Content Include="wwwroot\lib\ng-file-model\sample\lib\angular\bower.json" />
+    <Content Include="wwwroot\lib\ng-file-model\sample\lib\angular\package.json" />
+    <Content Include="wwwroot\lib\ng-file-model\sample\lib\angular\README.md" />
+    <Content Include="wwwroot\lib\ng-file-model\sample\lib\ng-file-model\bower.json" />
+    <Content Include="wwwroot\lib\ng-file-model\sample\lib\ng-file-model\LICENSE" />
+    <Content Include="wwwroot\lib\ng-file-model\sample\lib\ng-file-model\README.md" />
+    <Content Include="wwwroot\lib\rangy\.bower.json" />
+    <Content Include="wwwroot\lib\rangy\bower.json" />
+    <Content Include="wwwroot\lib\rangy\LICENSE" />
+    <Content Include="wwwroot\lib\rangy\README.md" />
+    <Content Include="wwwroot\lib\respond\.bower.json" />
+    <Content Include="wwwroot\lib\respond\bower.json" />
+    <Content Include="wwwroot\lib\respond\LICENSE-MIT" />
+    <Content Include="wwwroot\lib\respond\package.json" />
+    <Content Include="wwwroot\lib\respond\README.md" />
+    <Content Include="wwwroot\lib\textAngular\.bower.json" />
+    <Content Include="wwwroot\lib\textAngular\bower.json" />
+    <Content Include="wwwroot\lib\textAngular\changelog.md" />
+    <Content Include="wwwroot\lib\textAngular\CONTRIBUTING.md" />
+    <Content Include="wwwroot\lib\textAngular\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\app.config.js" />
+    <Content Include="app\app.module.js" />
+    <Content Include="app\author\add-author.controller.js" />
+    <Content Include="app\author\add-author.html" />
+    <Content Include="app\author\authors.controller.js" />
+    <Content Include="app\author\authors.html" />
+    <Content Include="app\author\update-author.controller.js" />
+    <Content Include="app\author\update-author.html" />
+    <Content Include="app\author\view-author.controller.js" />
+    <Content Include="app\author\view-author.html" />
+    <Content Include="app\blog-entry\add-blog-entry.controller.js" />
+    <Content Include="app\blog-entry\add-blog-entry.html" />
+    <Content Include="app\blog-entry\blog-entries.controller.js" />
+    <Content Include="app\blog-entry\blog-entries.html" />
+    <Content Include="app\blog-entry\update-blog-entry.controller.js" />
+    <Content Include="app\blog-entry\update-blog-entry.html" />
+    <Content Include="app\blog-entry\view-blog-entry.controller.js" />
+    <Content Include="app\blog-entry\view-blog-entry.html" />
+    <Content Include="app\home\home.controller.js" />
+    <Content Include="app\home\home.html" />
+    <Content Include="app\login\login.controller.js" />
+    <Content Include="app\login\login.html" />
+    <Content Include="app\services\auth-interceptor.service.js" />
+    <Content Include="app\services\data.service.js" />
+    <Content Include="app\services\error.service.js" />
+    <Content Include="app\user\dashboard.controller.js" />
+    <Content Include="app\user\dashboard.html" />
+    <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="assets\css\bootstrap.css" />
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\font-awesome.css" />
+    <Content Include="assets\css\font-awesome.min.css" />
+    <Content Include="assets\css\ie.css" />
+    <Content Include="assets\css\main-one-page.css" />
+    <Content Include="assets\css\main.css" />
+    <Content Include="assets\css\my-custom-styles.css" />
+    <Content Include="assets\css\shop-main.css" />
+    <Content Include="assets\css\skins\brown.css" />
+    <Content Include="assets\css\skins\deepskyblue.css" />
+    <Content Include="assets\css\skins\goldenrod.css" />
+    <Content Include="assets\css\skins\indianred.css" />
+    <Content Include="assets\css\skins\lightgreen.css" />
+    <Content Include="assets\css\skins\orange.css" />
+    <Content Include="assets\css\skins\seagreen.css" />
+    <Content Include="assets\css\skins\slategray.css" />
+    <Content Include="assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\ico\favicon.png" />
+    <Content Include="assets\ico\repute114x114.png" />
+    <Content Include="assets\ico\repute144x144.png" />
+    <Content Include="assets\ico\repute57x57.png" />
+    <Content Include="assets\ico\repute72x72.png" />
+    <Content Include="assets\img\badge.png" />
+    <Content Include="assets\img\blog\balloon-med.jpg" />
+    <Content Include="assets\img\blog\balloon.jpg" />
+    <Content Include="assets\img\blog\buildings-med.jpg" />
+    <Content Include="assets\img\blog\buildings.jpg" />
+    <Content Include="assets\img\blog\people-med.jpg" />
+    <Content Include="assets\img\blog\people.jpg" />
+    <Content Include="assets\img\business-people.png" />
+    <Content Include="assets\img\bx_loader.gif" />
+    <Content Include="assets\img\clients\logo1.png" />
+    <Content Include="assets\img\clients\logo2.png" />
+    <Content Include="assets\img\clients\logo3.png" />
+    <Content Include="assets\img\clients\logo4.png" />
+    <Content Include="assets\img\clients\logo5.png" />
+    <Content Include="assets\img\flags\China.png" />
+    <Content Include="assets\img\flags\Germany.png" />
+    <Content Include="assets\img\flags\Japan.png" />
+    <Content Include="assets\img\flags\United-Kingdom.png" />
+    <Content Include="assets\img\free.png" />
+    <Content Include="assets\img\fullscreen-bg.jpg" />
+    <Content Include="assets\img\fullscreen-bg2.jpg" />
+    <Content Include="assets\img\gray_jean.png" />
+    <Content Include="assets\img\hero-unit-bg.png" />
+    <Content Include="assets\img\hero-unit-obj.png" />
+    <Content Include="assets\img\hero-unit-obj2.png" />
+    <Content Include="assets\img\hero-unit-obj3.png" />
+    <Content Include="assets\img\intro-img.png" />
+    <Content Include="assets\img\location-pin.png" />
+    <Content Include="assets\img\logo\repute-logo-light-brown.png" />
+    <Content Include="assets\img\logo\repute-logo-light-deepskyblue.png" />
+    <Content Include="assets\img\logo\repute-logo-light-goldenrod.png" />
+    <Content Include="assets\img\logo\repute-logo-light-indianred.png" />
+    <Content Include="assets\img\logo\repute-logo-light-lightgreen.png" />
+    <Content Include="assets\img\logo\repute-logo-light-orange.png" />
+    <Content Include="assets\img\logo\repute-logo-light-seagreen.png" />
+    <Content Include="assets\img\logo\repute-logo-light-slategray.png" />
+    <Content Include="assets\img\logo\repute-logo-light.png" />
+    <Content Include="assets\img\logo\repute-logo-nav-brown.png" />
+    <Content Include="assets\img\logo\repute-logo-nav-deepskyblue.png" />
+    <Content Include="assets\img\logo\repute-logo-nav-goldenrod.png" />
+    <Content Include="assets\img\logo\repute-logo-nav-indianred.png" />
+    <Content Include="assets\img\logo\repute-logo-nav-light.png" />
+    <Content Include="assets\img\logo\repute-logo-nav-lightgreen.png" />
+    <Content Include="assets\img\logo\repute-logo-nav-orange.png" />
+    <Content Include="assets\img\logo\repute-logo-nav-seagreen.png" />
+    <Content Include="assets\img\logo\repute-logo-nav-slategray.png" />
+    <Content Include="assets\img\logo\repute-logo-nav.png" />
+    <Content Include="assets\img\news\featured-news.png" />
+    <Content Include="assets\img\news\news1.png" />
+    <Content Include="assets\img\news\news2.png" />
+    <Content Include="assets\img\news\news3.png" />
+    <Content Include="assets\img\news\news4.png" />
+    <Content Include="assets\img\news\news5.png" />
+    <Content Include="assets\img\page-header-bg.png" />
+    <Content Include="assets\img\pattern-geometry.png" />
+    <Content Include="assets\img\portfolio\800x500\work1.png" />
+    <Content Include="assets\img\portfolio\800x500\work2.png" />
+    <Content Include="assets\img\portfolio\800x500\work3.png" />
+    <Content Include="assets\img\portfolio\800x500\work4.png" />
+    <Content Include="assets\img\portfolio\800x500\work5.png" />
+    <Content Include="assets\img\portfolio\800x500\work6.png" />
+    <Content Include="assets\img\portfolio\800x500\work7.png" />
+    <Content Include="assets\img\portfolio\800x500\work8.png" />
+    <Content Include="assets\img\portfolio\800x800\work1.png" />
+    <Content Include="assets\img\portfolio\800x800\work2.png" />
+    <Content Include="assets\img\portfolio\800x800\work3.png" />
+    <Content Include="assets\img\portfolio\800x800\work4.png" />
+    <Content Include="assets\img\portfolio\800x800\work5.png" />
+    <Content Include="assets\img\portfolio\800x800\work6.png" />
+    <Content Include="assets\img\portfolio\800x800\work7.png" />
+    <Content Include="assets\img\portfolio\800x800\work8.png" />
+    <Content Include="assets\img\portfolio\single\bicycle.jpg" />
+    <Content Include="assets\img\portfolio\single\blurred_lines.jpg" />
+    <Content Include="assets\img\portfolio\single\edge.jpg" />
+    <Content Include="assets\img\sliders\full-slide-color.jpg" />
+    <Content Include="assets\img\sliders\full-slide-color2.jpg" />
+    <Content Include="assets\img\sliders\full-slide-color3.jpg" />
+    <Content Include="assets\img\sliders\full-slide.jpg" />
+    <Content Include="assets\img\sliders\full-slide2.jpg" />
+    <Content Include="assets\img\sliders\full-slide3.jpg" />
+    <Content Include="assets\img\sliders\slider1-h500.png" />
+    <Content Include="assets\img\sliders\slider2-h500.png" />
+    <Content Include="assets\img\sliders\slider3-h500.png" />
+    <Content Include="assets\img\team\person1.png" />
+    <Content Include="assets\img\team\person2.png" />
+    <Content Include="assets\img\team\person3.png" />
+    <Content Include="assets\img\team\person4.png" />
+    <Content Include="assets\img\testimonial-bg.png" />
+    <Content Include="assets\img\user1.png" />
+    <Content Include="assets\img\user2.png" />
+    <Content Include="assets\img\user3.png" />
+    <Content Include="assets\img\user4.png" />
+    <Content Include="assets\img\user5.png" />
+    <Content Include="assets\js\bootstrap.js" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\jquery-2.1.1.min.js" />
+    <Content Include="assets\js\plugins\autohidingnavbar\jquery.bootstrap-autohidingnavbar.js" />
+    <Content Include="assets\js\plugins\autohidingnavbar\jquery.bootstrap-autohidingnavbar.min.js" />
+    <Content Include="assets\js\plugins\bootstrap-datepicker\bootstrap-datepicker.js" />
+    <Content Include="assets\js\plugins\bootstrap-multiselect\bootstrap-multiselect.js" />
+    <Content Include="assets\js\plugins\daterangepicker\daterangepicker.js" />
+    <Content Include="assets\js\plugins\easing\jquery.easing.js" />
+    <Content Include="assets\js\plugins\easing\jquery.easing.min.js" />
+    <Content Include="assets\js\plugins\fitvids\jquery.fitvids.js" />
+    <Content Include="assets\js\plugins\google-map\google-map.js" />
+    <Content Include="assets\js\plugins\isotope\isotope.pkgd.js" />
+    <Content Include="assets\js\plugins\isotope\isotope.pkgd.min.js" />
+    <Content Include="assets\js\plugins\jquery-cycle\jquery.cycle.all.js" />
+    <Content Include="assets\js\plugins\jquery-easypiechart\jquery.easypiechart.js" />
+    <Content Include="assets\js\plugins\jquery-easypiechart\jquery.easypiechart.min.js" />
+    <Content Include="assets\js\plugins\jquery-maskedinput\jquery.masked-input.js" />
+    <Content Include="assets\js\plugins\jquery-maskedinput\jquery.masked-input.min.js" />
+    <Content Include="assets\js\plugins\maximage\jquery.maximage.js" />
+    <Content Include="assets\js\plugins\maximage\jquery.maximage.min.js" />
+    <Content Include="assets\js\plugins\moment\moment.js" />
+    <Content Include="assets\js\plugins\moment\moment.min.js" />
+    <Content Include="assets\js\plugins\parsley-validation\parsley.js" />
+    <Content Include="assets\js\plugins\parsley-validation\parsley.min.js" />
+    <Content Include="assets\js\plugins\scrollto\jquery.localscroll-1.2.7-min.js" />
+    <Content Include="assets\js\plugins\scrollto\jquery.localscroll-1.2.7.js" />
+    <Content Include="assets\js\plugins\scrollto\jquery.scrollTo-1.4.3.1-min.js" />
+    <Content Include="assets\js\plugins\scrollto\jquery.scrollTo-1.4.3.1.js" />
+    <Content Include="assets\js\plugins\slick\slick.js" />
+    <Content Include="assets\js\plugins\slick\slick.min.js" />
+    <Content Include="assets\js\plugins\stellar\jquery.stellar.js" />
+    <Content Include="assets\js\plugins\stellar\jquery.stellar.min.js" />
+    <Content Include="assets\js\repute-scripts.js" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Documents\Permissions Needed.PNG" />
+    <Content Include="Documents\Project Information.txt" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="s.discogs.com\dst\javascripts\sections\artistd1da.js" />
+    <Content Include="s.discogs.com\dst\javascripts\sections\feedback40d0.html" />
+    <Content Include="s.discogs.com\dst\javascripts\sections\get_startede6f7.js" />
+    <Content Include="s.discogs.com\dst\javascripts\sections\labele27f.html" />
+    <Content Include="s.discogs.com\dst\javascripts\sections\listsb68f.html" />
+    <Content Include="s.discogs.com\dst\javascripts\sections\marketplace781c.html" />
+    <Content Include="s.discogs.com\dst\javascripts\sections\marketplace_list671e.js" />
+    <Content Include="s.discogs.com\dst\javascripts\sections\marketplace_seller_listc029.js" />
+    <Content Include="s.discogs.com\dst\javascripts\sections\quicklistfc5b.js" />
+    <Content Include="s.discogs.com\dst\javascripts\sections\recommendationsa3bf.js" />
+    <Content Include="s.discogs.com\dst\javascripts\sections\release6b46.js" />
+    <Content Include="s.discogs.com\dst\javascripts\sections\reviews7db4.html" />
+    <Content Include="s.discogs.com\dst\javascripts\sections\user49ae.js" />
+    <Content Include="s.discogs.com\dst\stylesheets\components\image_gallery3597.css" />
+    <Content Include="s.discogs.com\dst\stylesheets\discogs89b1.css" />
+    <Content Include="s.discogs.com\dst\stylesheets\libraries\chartist\chartistd797.html" />
+    <Content Include="s.discogs.com\dst\stylesheets\sections\about209e.html" />
+    <Content Include="s.discogs.com\dst\stylesheets\sections\appcbe0.html" />
+    <Content Include="s.discogs.com\dst\stylesheets\sections\artist804c.css" />
+    <Content Include="s.discogs.com\dst\stylesheets\sections\eventsefda.html" />
+    <Content Include="s.discogs.com\dst\stylesheets\sections\forum4b7d.css" />
+    <Content Include="s.discogs.com\dst\stylesheets\sections\genre03fe.html" />
+    <Content Include="s.discogs.com\dst\stylesheets\sections\get_starteda712.css" />
+    <Content Include="s.discogs.com\dst\stylesheets\sections\groupf961.css" />
+    <Content Include="s.discogs.com\dst\stylesheets\sections\help_docs9efb.css" />
+    <Content Include="s.discogs.com\dst\stylesheets\sections\lists65b6.html" />
+    <Content Include="s.discogs.com\dst\stylesheets\sections\marketplaced40e.css" />
+    <Content Include="s.discogs.com\dst\stylesheets\sections\marketplace_menus3542.css" />
+    <Content Include="s.discogs.com\dst\stylesheets\sections\quicklister4e0b.css" />
+    <Content Include="s.discogs.com\dst\stylesheets\sections\releaselistacb9.html" />
+    <Content Include="s.discogs.com\dst\stylesheets\sections\support9b2a.html" />
+    <Content Include="s.discogs.com\file-store\BAN15824.jpg" />
+    <Content Include="s.discogs.com\file-store\GG10669.jpg" />
+    <Content Include="s.discogs.com\file-store\HAS24943.jpg" />
+    <Content Include="s.discogs.com\file-store\HAS24944.jpg" />
+    <Content Include="s.discogs.com\file-store\HAS24946.jpg" />
+    <Content Include="s.discogs.com\file-store\MED10914.jpg" />
+    <Content Include="s.discogs.com\file-store\TAK11955.jpg" />
+    <Content Include="s.discogs.com\file-store\TAK12222.jpg" />
+    <Content Include="s.discogs.com\file-store\TAK12274.jpg" />
+    <Content Include="s.discogs.com\images\advertise\160x600.html" />
+    <Content Include="s.discogs.com\images\advertise\300x250.html" />
+    <Content Include="s.discogs.com\images\advertise\320x50.html" />
+    <Content Include="s.discogs.com\images\advertise\728x90.html" />
+    <Content Include="s.discogs.com\images\advertise\970x90.html" />
+    <Content Include="s.discogs.com\images\advertise\media-kit-thumbnail.html" />
+    <Content Include="s.discogs.com\images\ajax-loader-big.gif" />
+    <Content Include="s.discogs.com\images\apple-touch-icon-precomposed.png" />
+    <Content Include="s.discogs.com\images\border.png" />
+    <Content Include="s.discogs.com\images\default-artist.png" />
+    <Content Include="s.discogs.com\images\default-label.html" />
+    <Content Include="s.discogs.com\images\default-release-cassette.png" />
+    <Content Include="s.discogs.com\images\default-release-cd.png" />
+    <Content Include="s.discogs.com\images\default-release-file.png" />
+    <Content Include="s.discogs.com\images\default-release.png" />
+    <Content Include="s.discogs.com\images\discogs%404009caf.png" />
+    <Content Include="s.discogs.com\images\discogs%40400a87f.html" />
+    <Content Include="s.discogs.com\images\discogs-whitee4da.png" />
+    <Content Include="s.discogs.com\images\favicon-16x16.png" />
+    <Content Include="s.discogs.com\images\favicon-32x32.png" />
+    <Content Include="s.discogs.com\images\favicon-96x96.png" />
+    <Content Include="s.discogs.com\images\get_started\album-covers9caf.jpg" />
+    <Content Include="s.discogs.com\images\get_started\album-coversf5b0.jpg" />
+    <Content Include="s.discogs.com\images\google-plus-icon9caf.png" />
+    <Content Include="s.discogs.com\images\header-user-profile.html" />
+    <Content Include="s.discogs.com\images\help_docs_bg9caf.html" />
+    <Content Include="s.discogs.com\images\spacer9caf.gif" />
+    <Content Include="s.discogs.com\images\sprite39caf.png" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\HelpPage\Views\Web.config" />
+    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="package.json" />
+    <Content Include=".bowerrc" />
+    <Content Include="bower.json" />
+    <Content Include="assets\css\bootstrap.css.map" />
+    <Content Include="assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="wwwroot\lib\angular-animate\angular-animate.js" />
+    <Content Include="wwwroot\lib\angular-animate\angular-animate.min.js" />
+    <Content Include="wwwroot\lib\angular-animate\index.js" />
+    <Content Include="wwwroot\lib\angular-route\angular-route.js" />
+    <Content Include="wwwroot\lib\angular-route\angular-route.min.js" />
+    <Content Include="wwwroot\lib\angular-route\index.js" />
+    <Content Include="wwwroot\lib\angular-sessionstorage\angular-sessionstorage.js" />
+    <Content Include="wwwroot\lib\angular-sessionstorage\index.js" />
+    <Content Include="wwwroot\lib\AngularJS-Toaster\index.js" />
+    <Content Include="wwwroot\lib\AngularJS-Toaster\karma.conf.js" />
+    <Content Include="wwwroot\lib\AngularJS-Toaster\karma.coverage.js" />
+    <Content Include="wwwroot\lib\AngularJS-Toaster\test\directiveTemplateSpec.js" />
+    <Content Include="wwwroot\lib\AngularJS-Toaster\test\toasterContainerControllerSpec.js" />
+    <Content Include="wwwroot\lib\AngularJS-Toaster\test\toasterContainerSpec.js" />
+    <Content Include="wwwroot\lib\AngularJS-Toaster\test\toasterEventRegistrySpec.js" />
+    <Content Include="wwwroot\lib\AngularJS-Toaster\test\toasterServiceSpec.js" />
+    <Content Include="wwwroot\lib\AngularJS-Toaster\toaster.css" />
+    <Content Include="wwwroot\lib\AngularJS-Toaster\toaster.js" />
+    <Content Include="wwwroot\lib\AngularJS-Toaster\toaster.min.css" />
+    <Content Include="wwwroot\lib\AngularJS-Toaster\toaster.min.js" />
+    <Content Include="wwwroot\lib\angular\angular-csp.css" />
+    <Content Include="wwwroot\lib\angular\angular.js" />
+    <Content Include="wwwroot\lib\angular\angular.min.js" />
+    <Content Include="wwwroot\lib\angular\index.js" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="wwwroot\lib\bootstrap\dist\js\npm.js" />
+    <Content Include="wwwroot\lib\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="wwwroot\lib\bootstrap\Gruntfile.js" />
+    <Content Include="wwwroot\lib\bootstrap\grunt\bs-commonjs-generator.js" />
+    <Content Include="wwwroot\lib\bootstrap\grunt\bs-glyphicons-data-generator.js" />
+    <Content Include="wwwroot\lib\bootstrap\grunt\bs-lessdoc-parser.js" />
+    <Content Include="wwwroot\lib\bootstrap\grunt\bs-raw-files-generator.js" />
+    <Content Include="wwwroot\lib\bootstrap\grunt\change-version.js" />
+    <Content Include="wwwroot\lib\bootstrap\js\affix.js" />
+    <Content Include="wwwroot\lib\bootstrap\js\alert.js" />
+    <Content Include="wwwroot\lib\bootstrap\js\button.js" />
+    <Content Include="wwwroot\lib\bootstrap\js\carousel.js" />
+    <Content Include="wwwroot\lib\bootstrap\js\collapse.js" />
+    <Content Include="wwwroot\lib\bootstrap\js\dropdown.js" />
+    <Content Include="wwwroot\lib\bootstrap\js\modal.js" />
+    <Content Include="wwwroot\lib\bootstrap\js\popover.js" />
+    <Content Include="wwwroot\lib\bootstrap\js\scrollspy.js" />
+    <Content Include="wwwroot\lib\bootstrap\js\tab.js" />
+    <Content Include="wwwroot\lib\bootstrap\js\tooltip.js" />
+    <Content Include="wwwroot\lib\bootstrap\js\transition.js" />
+    <Content Include="wwwroot\lib\bootstrap\package.js" />
+    <Content Include="wwwroot\lib\font-awesome\.gitignore" />
+    <Content Include="wwwroot\lib\font-awesome\css\font-awesome.css" />
+    <Content Include="wwwroot\lib\font-awesome\css\font-awesome.min.css" />
+    <Content Include="wwwroot\lib\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="wwwroot\lib\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <Content Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <Content Include="wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt" />
+    <Content Include="wwwroot\lib\jquery-validation\build\release.js" />
+    <Content Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <Content Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <Content Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <Content Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <Content Include="wwwroot\lib\jquery-validation\Gruntfile.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\accept.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\additional.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\alphanumeric.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\bankaccountNL.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\bankorgiroaccountNL.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\bic.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\cifES.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\cpfBR.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\creditcard.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\creditcardtypes.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\currency.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\dateFA.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\dateITA.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\dateNL.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\extension.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\giroaccountNL.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\iban.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\integer.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\ipv4.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\ipv6.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\lettersonly.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\letterswithbasicpunc.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\mobileNL.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\mobileUK.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\nieES.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\nifES.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\notEqualTo.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\nowhitespace.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\pattern.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\phoneNL.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\phonesUK.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\phoneUK.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\phoneUS.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\postalcodeBR.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\postalCodeCA.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\postalcodeIT.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\postalcodeNL.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\postcodeUK.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\require_from_group.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\skip_or_fill_minimum.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\statesUS.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\strippedminlength.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\time.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\time12h.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\url2.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\vinUS.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\zipcodeUS.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\additional\ziprange.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\ajax.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\core.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_ar.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_bg.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_bn_BD.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_ca.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_cs.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_da.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_de.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_el.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_es.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_es_AR.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_es_PE.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_et.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_eu.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_fa.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_fi.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_fr.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_ge.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_gl.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_he.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_hr.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_hu.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_hy_AM.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_id.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_is.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_it.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_ja.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_ka.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_kk.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_ko.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_lt.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_lv.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_mk.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_my.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_nl.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_no.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_pl.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_pt_BR.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_pt_PT.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_ro.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_ru.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_si.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_sk.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_sl.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_sr.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_sr_lat.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_sv.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_th.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_tj.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_tr.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_uk.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_vi.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_zh.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\messages_zh_TW.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\methods_de.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\methods_es_CL.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\methods_fi.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\methods_nl.js" />
+    <Content Include="wwwroot\lib\jquery-validation\src\localization\methods_pt.js" />
+    <Content Include="wwwroot\lib\jquery\AUTHORS.txt" />
+    <Content Include="wwwroot\lib\jquery\dist\core.js" />
+    <Content Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <Content Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <Content Include="wwwroot\lib\jquery\dist\jquery.slim.js" />
+    <Content Include="wwwroot\lib\jquery\dist\jquery.slim.min.js" />
+    <Content Include="wwwroot\lib\jquery\external\sizzle\dist\sizzle.js" />
+    <Content Include="wwwroot\lib\jquery\external\sizzle\dist\sizzle.min.js" />
+    <Content Include="wwwroot\lib\jquery\external\sizzle\LICENSE.txt" />
+    <Content Include="wwwroot\lib\jquery\LICENSE.txt" />
+    <Content Include="wwwroot\lib\jquery\src\ajax.js" />
+    <Content Include="wwwroot\lib\jquery\src\ajax\jsonp.js" />
+    <Content Include="wwwroot\lib\jquery\src\ajax\load.js" />
+    <Content Include="wwwroot\lib\jquery\src\ajax\parseXML.js" />
+    <Content Include="wwwroot\lib\jquery\src\ajax\script.js" />
+    <Content Include="wwwroot\lib\jquery\src\ajax\var\location.js" />
+    <Content Include="wwwroot\lib\jquery\src\ajax\var\nonce.js" />
+    <Content Include="wwwroot\lib\jquery\src\ajax\var\rquery.js" />
+    <Content Include="wwwroot\lib\jquery\src\ajax\xhr.js" />
+    <Content Include="wwwroot\lib\jquery\src\attributes.js" />
+    <Content Include="wwwroot\lib\jquery\src\attributes\attr.js" />
+    <Content Include="wwwroot\lib\jquery\src\attributes\classes.js" />
+    <Content Include="wwwroot\lib\jquery\src\attributes\prop.js" />
+    <Content Include="wwwroot\lib\jquery\src\attributes\support.js" />
+    <Content Include="wwwroot\lib\jquery\src\attributes\val.js" />
+    <Content Include="wwwroot\lib\jquery\src\callbacks.js" />
+    <Content Include="wwwroot\lib\jquery\src\core.js" />
+    <Content Include="wwwroot\lib\jquery\src\core\access.js" />
+    <Content Include="wwwroot\lib\jquery\src\core\DOMEval.js" />
+    <Content Include="wwwroot\lib\jquery\src\core\init.js" />
+    <Content Include="wwwroot\lib\jquery\src\core\parseHTML.js" />
+    <Content Include="wwwroot\lib\jquery\src\core\ready-no-deferred.js" />
+    <Content Include="wwwroot\lib\jquery\src\core\ready.js" />
+    <Content Include="wwwroot\lib\jquery\src\core\readyException.js" />
+    <Content Include="wwwroot\lib\jquery\src\core\stripAndCollapse.js" />
+    <Content Include="wwwroot\lib\jquery\src\core\support.js" />
+    <Content Include="wwwroot\lib\jquery\src\core\var\rsingleTag.js" />
+    <Content Include="wwwroot\lib\jquery\src\css.js" />
+    <Content Include="wwwroot\lib\jquery\src\css\addGetHookIf.js" />
+    <Content Include="wwwroot\lib\jquery\src\css\adjustCSS.js" />
+    <Content Include="wwwroot\lib\jquery\src\css\curCSS.js" />
+    <Content Include="wwwroot\lib\jquery\src\css\hiddenVisibleSelectors.js" />
+    <Content Include="wwwroot\lib\jquery\src\css\showHide.js" />
+    <Content Include="wwwroot\lib\jquery\src\css\support.js" />
+    <Content Include="wwwroot\lib\jquery\src\css\var\cssExpand.js" />
+    <Content Include="wwwroot\lib\jquery\src\css\var\getStyles.js" />
+    <Content Include="wwwroot\lib\jquery\src\css\var\isHiddenWithinTree.js" />
+    <Content Include="wwwroot\lib\jquery\src\css\var\rmargin.js" />
+    <Content Include="wwwroot\lib\jquery\src\css\var\rnumnonpx.js" />
+    <Content Include="wwwroot\lib\jquery\src\css\var\swap.js" />
+    <Content Include="wwwroot\lib\jquery\src\data.js" />
+    <Content Include="wwwroot\lib\jquery\src\data\Data.js" />
+    <Content Include="wwwroot\lib\jquery\src\data\var\acceptData.js" />
+    <Content Include="wwwroot\lib\jquery\src\data\var\dataPriv.js" />
+    <Content Include="wwwroot\lib\jquery\src\data\var\dataUser.js" />
+    <Content Include="wwwroot\lib\jquery\src\deferred.js" />
+    <Content Include="wwwroot\lib\jquery\src\deferred\exceptionHook.js" />
+    <Content Include="wwwroot\lib\jquery\src\deprecated.js" />
+    <Content Include="wwwroot\lib\jquery\src\dimensions.js" />
+    <Content Include="wwwroot\lib\jquery\src\effects.js" />
+    <Content Include="wwwroot\lib\jquery\src\effects\animatedSelector.js" />
+    <Content Include="wwwroot\lib\jquery\src\effects\Tween.js" />
+    <Content Include="wwwroot\lib\jquery\src\event.js" />
+    <Content Include="wwwroot\lib\jquery\src\event\ajax.js" />
+    <Content Include="wwwroot\lib\jquery\src\event\alias.js" />
+    <Content Include="wwwroot\lib\jquery\src\event\focusin.js" />
+    <Content Include="wwwroot\lib\jquery\src\event\support.js" />
+    <Content Include="wwwroot\lib\jquery\src\event\trigger.js" />
+    <Content Include="wwwroot\lib\jquery\src\exports\amd.js" />
+    <Content Include="wwwroot\lib\jquery\src\exports\global.js" />
+    <Content Include="wwwroot\lib\jquery\src\jquery.js" />
+    <Content Include="wwwroot\lib\jquery\src\manipulation.js" />
+    <Content Include="wwwroot\lib\jquery\src\manipulation\buildFragment.js" />
+    <Content Include="wwwroot\lib\jquery\src\manipulation\getAll.js" />
+    <Content Include="wwwroot\lib\jquery\src\manipulation\setGlobalEval.js" />
+    <Content Include="wwwroot\lib\jquery\src\manipulation\support.js" />
+    <Content Include="wwwroot\lib\jquery\src\manipulation\var\rcheckableType.js" />
+    <Content Include="wwwroot\lib\jquery\src\manipulation\var\rscriptType.js" />
+    <Content Include="wwwroot\lib\jquery\src\manipulation\var\rtagName.js" />
+    <Content Include="wwwroot\lib\jquery\src\manipulation\wrapMap.js" />
+    <Content Include="wwwroot\lib\jquery\src\manipulation\_evalUrl.js" />
+    <Content Include="wwwroot\lib\jquery\src\offset.js" />
+    <Content Include="wwwroot\lib\jquery\src\queue.js" />
+    <Content Include="wwwroot\lib\jquery\src\queue\delay.js" />
+    <Content Include="wwwroot\lib\jquery\src\selector-native.js" />
+    <Content Include="wwwroot\lib\jquery\src\selector-sizzle.js" />
+    <Content Include="wwwroot\lib\jquery\src\selector.js" />
+    <Content Include="wwwroot\lib\jquery\src\serialize.js" />
+    <Content Include="wwwroot\lib\jquery\src\traversing.js" />
+    <Content Include="wwwroot\lib\jquery\src\traversing\findFilter.js" />
+    <Content Include="wwwroot\lib\jquery\src\traversing\var\dir.js" />
+    <Content Include="wwwroot\lib\jquery\src\traversing\var\rneedsContext.js" />
+    <Content Include="wwwroot\lib\jquery\src\traversing\var\siblings.js" />
+    <Content Include="wwwroot\lib\jquery\src\var\arr.js" />
+    <Content Include="wwwroot\lib\jquery\src\var\class2type.js" />
+    <Content Include="wwwroot\lib\jquery\src\var\concat.js" />
+    <Content Include="wwwroot\lib\jquery\src\var\document.js" />
+    <Content Include="wwwroot\lib\jquery\src\var\documentElement.js" />
+    <Content Include="wwwroot\lib\jquery\src\var\fnToString.js" />
+    <Content Include="wwwroot\lib\jquery\src\var\getProto.js" />
+    <Content Include="wwwroot\lib\jquery\src\var\hasOwn.js" />
+    <Content Include="wwwroot\lib\jquery\src\var\indexOf.js" />
+    <Content Include="wwwroot\lib\jquery\src\var\ObjectFunctionString.js" />
+    <Content Include="wwwroot\lib\jquery\src\var\pnum.js" />
+    <Content Include="wwwroot\lib\jquery\src\var\push.js" />
+    <Content Include="wwwroot\lib\jquery\src\var\rcssNum.js" />
+    <Content Include="wwwroot\lib\jquery\src\var\rnothtmlwhite.js" />
+    <Content Include="wwwroot\lib\jquery\src\var\slice.js" />
+    <Content Include="wwwroot\lib\jquery\src\var\support.js" />
+    <Content Include="wwwroot\lib\jquery\src\var\toString.js" />
+    <Content Include="wwwroot\lib\jquery\src\wrap.js" />
+    <Content Include="wwwroot\lib\modernizr\.gitattributes" />
+    <Content Include="wwwroot\lib\modernizr\.gitignore" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\ambientlight.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\applicationcache.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\audio.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\audio\loop.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\audio\preload.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\audio\webaudio.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\a\download.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\battery.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\battery\lowbattery.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\blob.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\canvas.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\canvastext.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\canvas\blending.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\canvas\todataurl.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\canvas\winding.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\contenteditable.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\contextmenu.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\cookies.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\cors.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\crypto.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\crypto\getrandomvalues.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\all.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\animations.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\appearance.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\backdropfilter.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\backgroundblendmode.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\backgroundcliptext.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\backgroundposition-shorthand.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\backgroundposition-xy.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\backgroundrepeat.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\backgroundsize.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\backgroundsizecover.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\borderimage.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\borderradius.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\boxshadow.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\boxsizing.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\calc.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\checked.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\chunit.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\columns.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\cubicbezierrange.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\displayrunin.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\displaytable.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\ellipsis.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\escape.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\exunit.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\filters.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\flexbox.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\flexboxlegacy.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\flexboxtweener.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\flexwrap.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\fontface.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\generatedcontent.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\gradients.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\hairline.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\hsla.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\hyphens.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\invalid.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\lastchild.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\mask.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\mediaqueries.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\multiplebgs.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\nthchild.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\objectfit.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\opacity.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\overflow-scrolling.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\pointerevents.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\positionsticky.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\pseudoanimations.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\pseudotransitions.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\reflections.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\regions.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\remunit.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\resize.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\rgba.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\scrollbars.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\scrollsnappoints.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\shapes.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\siblinggeneral.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\subpixelfont.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\supports.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\target.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\textalignlast.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\textshadow.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\transforms.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\transforms3d.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\transformstylepreserve3d.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\transitions.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\userselect.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\valid.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\vhunit.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\vmaxunit.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\vminunit.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\vwunit.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\will-change.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\css\wrapflow.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\custom-protocol-handler.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\customevent.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\dart.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\dataview-api.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\dom\classlist.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\dom\createElement-attrs.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\dom\dataset.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\dom\documentfragment.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\dom\hidden.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\dom\microdata.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\dom\mutationObserver.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\elem\bdi.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\elem\datalist.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\elem\details.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\elem\output.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\elem\picture.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\elem\progress-meter.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\elem\ruby.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\elem\template.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\elem\time.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\elem\track.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\elem\unknown.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\emoji.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\es5\array.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\es5\date.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\es5\function.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\es5\object.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\es5\specification.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\es5\strictmode.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\es5\string.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\es5\syntax.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\es5\undefined.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\es6\array.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\es6\collections.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\es6\contains.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\es6\generators.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\es6\math.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\es6\number.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\es6\object.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\es6\promises.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\es6\string.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\eventlistener.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\event\deviceorientation-motion.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\event\oninput.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\exif-orientation.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\file\api.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\file\filesystem.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\flash.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\forcetouch.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\forms\capture.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\forms\fileinput.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\forms\fileinputdirectory.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\forms\formattribute.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\forms\inputnumber-l10n.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\forms\placeholder.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\forms\requestautocomplete.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\forms\validation.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\fullscreen-api.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\gamepad.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\geolocation.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\hashchange.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\hiddenscroll.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\history.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\htmlimports.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\ie8compat.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\iframe\sandbox.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\iframe\seamless.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\iframe\srcdoc.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\img\apng.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\img\crossorigin.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\img\jpeg2000.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\img\jpegxr.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\img\sizes.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\img\srcset.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\img\webp-alpha.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\img\webp-animation.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\img\webp-lossless.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\img\webp.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\indexeddb.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\indexeddbblob.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\input.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\inputsearchevent.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\inputtypes.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\input\formaction.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\input\formenctype.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\input\formmethod.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\input\formtarget.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\intl.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\json.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\ligatures.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\lists-reversed.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\mathml.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\network\beacon.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\network\connection.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\network\eventsource.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\network\fetch.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\network\xhr-responsetype-arraybuffer.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\network\xhr-responsetype-blob.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\network\xhr-responsetype-document.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\network\xhr-responsetype-json.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\network\xhr-responsetype-text.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\network\xhr-responsetype.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\network\xhr2.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\notification.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\pagevisibility-api.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\performance.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\pointerevents.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\pointerlock-api.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\postmessage.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\proximity.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\queryselector.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\quota-management-api.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\requestanimationframe.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\script\async.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\script\defer.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\serviceworker.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\speech\speech-recognition.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\speech\speech-synthesis.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\storage\localstorage.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\storage\sessionstorage.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\storage\websqldatabase.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\style\scoped.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\svg.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\svg\asimg.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\svg\clippaths.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\svg\filters.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\svg\foreignobject.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\svg\inline.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\svg\smil.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\templatestrings.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\textarea\maxlength.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\touchevents.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\typed-arrays.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\unicode-range.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\unicode.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\url\bloburls.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\url\data-uri.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\url\parser.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\userdata.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\vibration.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\video.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\video\autoplay.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\video\loop.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\video\preload.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\vml.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\web-intents.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\webanimations.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\webgl.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\webgl\extensions.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\webrtc\datachannel.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\webrtc\getusermedia.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\webrtc\peerconnection.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\websockets.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\websockets\binary.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\window\atob-btoa.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\window\framed.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\window\matchmedia.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\workers\blobworkers.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\workers\dataworkers.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\workers\sharedworkers.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\workers\transferables.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\workers\webworkers.js" />
+    <Content Include="wwwroot\lib\modernizr\feature-detects\xdomainrequest.js" />
+    <Content Include="wwwroot\lib\modernizr\Gruntfile.js" />
+    <Content Include="wwwroot\lib\modernizr\lib\build-query.js" />
+    <Content Include="wwwroot\lib\modernizr\lib\build.js" />
+    <Content Include="wwwroot\lib\modernizr\lib\cli.js" />
+    <Content Include="wwwroot\lib\modernizr\lib\generate-banner.js" />
+    <Content Include="wwwroot\lib\modernizr\lib\metadata.js" />
+    <Content Include="wwwroot\lib\modernizr\lib\options.js" />
+    <Content Include="wwwroot\lib\modernizr\media\.gitattributes" />
+    <Content Include="wwwroot\lib\modernizr\media\Modernizr 2 Logo.png" />
+    <Content Include="wwwroot\lib\modernizr\media\Modernizr 2 Logo.svg" />
+    <Content Include="wwwroot\lib\modernizr\media\Modernizr-2-Logo-vertical-big.png" />
+    <Content Include="wwwroot\lib\modernizr\media\Modernizr-2-Logo-vertical-medium.png" />
+    <Content Include="wwwroot\lib\modernizr\media\Modernizr-2-Logo-vertical-small.png" />
+    <Content Include="wwwroot\lib\modernizr\src\addTest.js" />
+    <Content Include="wwwroot\lib\modernizr\src\atRule.js" />
+    <Content Include="wwwroot\lib\modernizr\src\classes.js" />
+    <Content Include="wwwroot\lib\modernizr\src\contains.js" />
+    <Content Include="wwwroot\lib\modernizr\src\createElement.js" />
+    <Content Include="wwwroot\lib\modernizr\src\cssomPrefixes.js" />
+    <Content Include="wwwroot\lib\modernizr\src\cssToDOM.js" />
+    <Content Include="wwwroot\lib\modernizr\src\docElement.js" />
+    <Content Include="wwwroot\lib\modernizr\src\domPrefixes.js" />
+    <Content Include="wwwroot\lib\modernizr\src\domToCSS.js" />
+    <Content Include="wwwroot\lib\modernizr\src\fnBind.js" />
+    <Content Include="wwwroot\lib\modernizr\src\generate.js" />
+    <Content Include="wwwroot\lib\modernizr\src\getBody.js" />
+    <Content Include="wwwroot\lib\modernizr\src\hasEvent.js" />
+    <Content Include="wwwroot\lib\modernizr\src\hasOwnProp.js" />
+    <Content Include="wwwroot\lib\modernizr\src\html5printshiv.js" />
+    <Content Include="wwwroot\lib\modernizr\src\html5shiv.js" />
+    <Content Include="wwwroot\lib\modernizr\src\injectElementWithStyles.js" />
+    <Content Include="wwwroot\lib\modernizr\src\inputElem.js" />
+    <Content Include="wwwroot\lib\modernizr\src\is.js" />
+    <Content Include="wwwroot\lib\modernizr\src\isSVG.js" />
+    <Content Include="wwwroot\lib\modernizr\src\load.js" />
+    <Content Include="wwwroot\lib\modernizr\src\modElem.js" />
+    <Content Include="wwwroot\lib\modernizr\src\Modernizr.js" />
+    <Content Include="wwwroot\lib\modernizr\src\ModernizrProto.js" />
+    <Content Include="wwwroot\lib\modernizr\src\mq.js" />
+    <Content Include="wwwroot\lib\modernizr\src\mStyle.js" />
+    <Content Include="wwwroot\lib\modernizr\src\nativeTestProps.js" />
+    <Content Include="wwwroot\lib\modernizr\src\omPrefixes.js" />
+    <Content Include="wwwroot\lib\modernizr\src\prefixed.js" />
+    <Content Include="wwwroot\lib\modernizr\src\prefixedCSS.js" />
+    <Content Include="wwwroot\lib\modernizr\src\prefixedCSSValue.js" />
+    <Content Include="wwwroot\lib\modernizr\src\prefixes.js" />
+    <Content Include="wwwroot\lib\modernizr\src\roundedEquals.js" />
+    <Content Include="wwwroot\lib\modernizr\src\setClasses.js" />
+    <Content Include="wwwroot\lib\modernizr\src\slice.js" />
+    <Content Include="wwwroot\lib\modernizr\src\testAllProps.js" />
+    <Content Include="wwwroot\lib\modernizr\src\testDOMProps.js" />
+    <Content Include="wwwroot\lib\modernizr\src\testProp.js" />
+    <Content Include="wwwroot\lib\modernizr\src\testProps.js" />
+    <Content Include="wwwroot\lib\modernizr\src\testPropsAll.js" />
+    <Content Include="wwwroot\lib\modernizr\src\testRunner.js" />
+    <Content Include="wwwroot\lib\modernizr\src\tests.js" />
+    <Content Include="wwwroot\lib\modernizr\src\testStyles.js" />
+    <Content Include="wwwroot\lib\modernizr\src\testXhrType.js" />
+    <Content Include="wwwroot\lib\modernizr\src\toStringFn.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\integration.css" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\integration\bools.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\integration\caniuse.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\integration\classes.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\integration\global.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\integration\iframe.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\integration\prefixed-atRule.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\integration\prefixed-autobind.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\integration\prefixed.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\integration\prefixedCSS.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\integration\svg.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\setup.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\addTest.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\atRule.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\classes.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\contains.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\createElement.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\cssomPrefixes.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\cssToDOM.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\docElement.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\domPrefixes.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\domToCSS.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\fnBind.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\generate.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\getBody.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\hasEvent.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\hasOwnProp.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\html5printshiv.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\html5shiv.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\injectElementWithStyles.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\inputElem.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\is.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\load.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\modElem.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\Modernizr.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\ModernizrProto.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\mq.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\mStyle.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\nativeTestProps.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\omPrefixes.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\prefixed.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\prefixedCSS.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\prefixedCSSValue.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\prefixes.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\roundedEquals.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\setClasses.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\slice.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\testAllProps.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\testDOMProps.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\testProp.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\testProps.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\testPropsAll.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\testRunner.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\tests.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\testStyles.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\testXhrType.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\src\toStringFn.js" />
+    <Content Include="wwwroot\lib\modernizr\test\browser\svgUnit.js" />
+    <Content Include="wwwroot\lib\modernizr\test\cleanup.js" />
+    <Content Include="wwwroot\lib\modernizr\test\img\integration.svg" />
+    <Content Include="wwwroot\lib\modernizr\test\img\unit.svg" />
+    <Content Include="wwwroot\lib\modernizr\test\js\lib\sinon.js" />
+    <Content Include="wwwroot\lib\modernizr\test\js\lib\uaparser.js" />
+    <Content Include="wwwroot\lib\modernizr\test\mocks\lib\build-query.js" />
+    <Content Include="wwwroot\lib\modernizr\test\mocks\lib\metadata.js" />
+    <Content Include="wwwroot\lib\modernizr\test\node\lib\build.js" />
+    <Content Include="wwwroot\lib\modernizr\test\node\lib\cli.js" />
+    <Content Include="wwwroot\lib\modernizr\test\node\lib\metadata.js" />
+    <Content Include="wwwroot\lib\modernizr\test\node\lib\options.js" />
+    <Content Include="wwwroot\lib\modernizr\test\universal\lib\build-query.js" />
+    <Content Include="wwwroot\lib\modernizr\test\universal\lib\generate-banner.js" />
+    <Content Include="wwwroot\lib\ng-file-model\ng-file-model.js" />
+    <Content Include="wwwroot\lib\ng-file-model\sample\index.html" />
+    <Content Include="wwwroot\lib\ng-file-model\sample\lib\angular\angular-csp.css" />
+    <Content Include="wwwroot\lib\ng-file-model\sample\lib\angular\angular.js" />
+    <Content Include="wwwroot\lib\ng-file-model\sample\lib\angular\angular.min.js" />
+    <Content Include="wwwroot\lib\ng-file-model\sample\lib\angular\index.js" />
+    <Content Include="wwwroot\lib\ng-file-model\sample\lib\ng-file-model\ng-file-model.js" />
+    <Content Include="wwwroot\lib\ng-file-model\sample\lib\ng-file-model\sample\index.html" />
+    <Content Include="wwwroot\lib\rangy\rangy-classapplier.js" />
+    <Content Include="wwwroot\lib\rangy\rangy-classapplier.min.js" />
+    <Content Include="wwwroot\lib\rangy\rangy-core.js" />
+    <Content Include="wwwroot\lib\rangy\rangy-core.min.js" />
+    <Content Include="wwwroot\lib\rangy\rangy-highlighter.js" />
+    <Content Include="wwwroot\lib\rangy\rangy-highlighter.min.js" />
+    <Content Include="wwwroot\lib\rangy\rangy-selectionsaverestore.js" />
+    <Content Include="wwwroot\lib\rangy\rangy-selectionsaverestore.min.js" />
+    <Content Include="wwwroot\lib\rangy\rangy-serializer.js" />
+    <Content Include="wwwroot\lib\rangy\rangy-serializer.min.js" />
+    <Content Include="wwwroot\lib\rangy\rangy-textrange.js" />
+    <Content Include="wwwroot\lib\rangy\rangy-textrange.min.js" />
+    <Content Include="wwwroot\lib\respond\cross-domain\example.html" />
+    <Content Include="wwwroot\lib\respond\cross-domain\respond-proxy.html" />
+    <Content Include="wwwroot\lib\respond\cross-domain\respond.proxy.gif" />
+    <Content Include="wwwroot\lib\respond\cross-domain\respond.proxy.js" />
+    <Content Include="wwwroot\lib\respond\dest\respond.matchmedia.addListener.min.js" />
+    <Content Include="wwwroot\lib\respond\dest\respond.matchmedia.addListener.src.js" />
+    <Content Include="wwwroot\lib\respond\dest\respond.min.js" />
+    <Content Include="wwwroot\lib\respond\dest\respond.src.js" />
+    <Content Include="wwwroot\lib\respond\Gruntfile.js" />
+    <Content Include="wwwroot\lib\respond\src\matchmedia.addListener.js" />
+    <Content Include="wwwroot\lib\respond\src\matchmedia.polyfill.js" />
+    <Content Include="wwwroot\lib\respond\src\respond.js" />
+    <Content Include="wwwroot\lib\textAngular\dist\textAngular-rangy.min.js" />
+    <Content Include="wwwroot\lib\textAngular\dist\textAngular-sanitize.js" />
+    <Content Include="wwwroot\lib\textAngular\dist\textAngular-sanitize.min.js" />
+    <Content Include="wwwroot\lib\textAngular\dist\textAngular.css" />
+    <Content Include="wwwroot\lib\textAngular\dist\textAngular.js" />
+    <Content Include="wwwroot\lib\textAngular\dist\textAngular.min.js" />
+    <Content Include="wwwroot\lib\textAngular\dist\textAngular.umd.js" />
+    <Content Include="wwwroot\lib\textAngular\dist\textAngularSetup.js" />
+    <Content Include="wwwroot\lib\textAngular\karma-jqlite.conf.js" />
+    <Content Include="wwwroot\lib\textAngular\karma-jquery.conf.js" />
+    <Content Include="wwwroot\lib\textAngular\src\DOM.js" />
+    <Content Include="wwwroot\lib\textAngular\src\factories.js" />
+    <Content Include="wwwroot\lib\textAngular\src\globals.js" />
+    <Content Include="wwwroot\lib\textAngular\src\main.js" />
+    <Content Include="wwwroot\lib\textAngular\src\taBind.js" />
+    <Content Include="wwwroot\lib\textAngular\src\textAngular-sanitize.js" />
+    <Content Include="wwwroot\lib\textAngular\src\textAngular.css" />
+    <Content Include="wwwroot\lib\textAngular\src\textAngularSetup.js" />
+    <Content Include="wwwroot\lib\textAngular\src\validators.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\knockout-2.3.0.debug.js" />
+    <Content Include="Scripts\knockout-2.3.0.js" />
+    <Content Include="Scripts\knockout.validation.debug.js" />
+    <Content Include="Scripts\knockout.validation.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\sammy-0.7.4.js" />
+    <Content Include="Scripts\sammy-0.7.4.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Scripts\app\_run.js" />
+    <Content Include="Scripts\app\app.datamodel.js" />
+    <Content Include="Scripts\app\app.viewmodel.js" />
+    <Content Include="Scripts\app\common.js" />
+    <Content Include="Scripts\app\home.viewmodel.js" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Home\_Home.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebX.CompositionRoot\WebX.CompositionRoot.csproj">
+      <Project>{797D6C6D-0F6D-4FE6-A407-74E6CC8B967D}</Project>
+      <Name>WebX.CompositionRoot</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebX.Core\WebX.Core.csproj">
+      <Project>{3B826046-AC3C-4F1F-9A74-7A7CF8C47A19}</Project>
+      <Name>WebX.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611181346287_InitialSecurityMigration.resx">
+      <DependentUpon>201611181346287_InitialSecurityMigration.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52616</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52616/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
