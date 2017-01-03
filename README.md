@@ -168,9 +168,9 @@ Please note that in order to take advantage of the entire object graph update fe
 
 One of planned changes, is to include the naming convention for a primary key "Id", "[Table Name]id", or any other Regex match in an array of matches.  If you want to make use of these features right away create a issue and I will try to prioritize this for you.  Or better yet, create a pull request!
 
-#Using the Get method and passing a fluent Func to it.
-	var items = _itemRepository.Get(filter: i => i.itemId == firstItemAttribute.itemId).ToList();
+#Using the Queryable method.
+	var cars = _carRepository.Queryable().Where(i => i.carId == carId).ToList();
 
 Or, if your service has inherited IService<item>...
 
-	var items = _itemService.Get(filter: i => i.itemId == firstItemAttribute.itemId).ToList();
+	var cars = _carService.Queryable().Where(i => i.carId == carId).ToList();
