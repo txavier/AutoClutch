@@ -49,6 +49,10 @@
     <Compile Include="Services\UserActionLogService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Auto.Core\Auto.Core.csproj">
+      <Project>{51FF91E5-B50A-4CE7-BF28-9DA29D8745AF}</Project>
+      <Name>Auto.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Auto.Repo\Auto.Repo.csproj">
       <Project>{DBF36A7C-7697-41A0-86C6-80A0623026AE}</Project>
       <Name>Auto.Repo</Name>

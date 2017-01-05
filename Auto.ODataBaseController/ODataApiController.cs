@@ -1,4 +1,5 @@
 ﻿using AutoClutch.Core.Interfaces;
+using AutoClutch.Core.Objects;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
+using System.Web.OData.Extensions;
 
 namespace AutoClutch.Controller
 {
@@ -15,6 +17,15 @@ namespace AutoClutch.Controller
         where TEntity : class
     {
         private IService<TEntity> _service;
+
+        private ILogService<TEntity> _logService;
+
+        public ODataApiController(IService<TEntity> service, ILogService<TEntity> logService)
+        {
+            _service = service;
+
+            _logService = logService;
+        }
 
         public ODataApiController(IService<TEntity> service)
         {
@@ -48,81 +59,152 @@ namespace AutoClutch.Controller
         [HttpPost]
         public virtual async Task<IHttpActionResult> Post(TEntity entity)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                var result = await _service.AddAsync(entity, User.Identity.Name?.Split("\\".ToCharArray()).FirstOrDefault());
+
+                if (_service.Errors.Any())
+                {
+                    return RetrieveErrorResult(_service.Errors);
+                }
+
+                return Created(result);
             }
+            catch (Exception ex)
+            {
+                _logService?.Info(ex);
 
-            var result = await _service.AddAsync(entity, User.Identity.Name?.Split("\\".ToCharArray()).FirstOrDefault());
-
-            return Created(result);
+                return InternalServerError(ex);
+            }
         }
 
         [HttpPatch]
         public virtual async Task<IHttpActionResult> Patch([FromODataUri] int key, Delta<TEntity> entity)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var entityFromDatabase = await _service.FindAsync(key);
-
-            if (entityFromDatabase == null)
-            {
-                return NotFound();
-            }
-
-            entity.Patch(entityFromDatabase);
-
             try
             {
-                await _service.UpdateAsync(entityFromDatabase, User.Identity.Name?.Split("\\".ToCharArray()).FirstOrDefault());
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!EntityExists(key))
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                var entityFromDatabase = await _service.FindAsync(key);
+
+                if (entityFromDatabase == null)
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
-            }
 
-            return Updated(entityFromDatabase);
+                entity.Patch(entityFromDatabase);
+
+                try
+                {
+                    await _service.UpdateAsync(entityFromDatabase, User.Identity.Name?.Split("\\".ToCharArray()).FirstOrDefault());
+
+                    if (_service.Errors.Any())
+                    {
+                        return RetrieveErrorResult(_service.Errors);
+                    }
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!EntityExists(key))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                return Updated(entityFromDatabase);
+            }
+            catch (Exception ex)
+            {
+                _logService?.Info(ex);
+
+                return InternalServerError(ex);
+            }
         }
 
         [HttpPut]
         public virtual async Task<IHttpActionResult> Put([FromODataUri] int key, TEntity update)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (key != (int)_service.GetEntityIdObject(update))
-            {
-                return BadRequest();
-            }
-
             try
             {
-                await _service.UpdateAsync(update, User.Identity.Name?.Split("\\".ToCharArray()).FirstOrDefault());
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                if (key != (int)_service.GetEntityIdObject(update))
+                {
+                    return BadRequest();
+                }
+
+                try
+                {
+                    await _service.UpdateAsync(update, User.Identity.Name?.Split("\\".ToCharArray()).FirstOrDefault());
+
+                    if (_service.Errors.Any())
+                    {
+                        return RetrieveErrorResult(_service.Errors);
+                    }
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!EntityExists(key))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                return Updated(update);
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
-                if (!EntityExists(key))
+                _logService?.Info(ex);
+
+                return InternalServerError(ex);
+            }
+        }
+
+        public async Task<IHttpActionResult> Delete([FromODataUri] int key)
+        {
+            try
+            {
+                var entity = await _service.FindAsync(key);
+
+                if (entity == null)
                 {
                     return NotFound();
                 }
-                else
+
+                await _service.DeleteAsync(key, User.Identity.Name?.Split("\\".ToCharArray()).FirstOrDefault());
+
+                if (_service.Errors.Any())
                 {
-                    throw;
+                    return RetrieveErrorResult(_service.Errors);
                 }
+
+                return StatusCode(HttpStatusCode.NoContent);
             }
-            return Updated(update);
+            catch (Exception ex)
+            {
+                _logService?.Info(ex);
+
+                return InternalServerError(ex);
+            }
         }
 
         private bool EntityExists(int key)
@@ -132,18 +214,31 @@ namespace AutoClutch.Controller
             return result;
         }
 
-        public async Task<IHttpActionResult> Delete([FromODataUri] int key)
+        [Route("RetrieveErrorResult")]
+        /// <summary>
+        /// http://www.codeproject.com/Articles/825274/ASP-NET-Web-Api-Unwrapping-HTTP-Error-Results-and
+        /// </summary>
+        /// <param name="errors"></param>
+        /// <returns></returns>
+        protected IHttpActionResult RetrieveErrorResult(IEnumerable<Error> errors)
         {
-            var entity = await _service.FindAsync(key);
-
-            if (entity == null)
+            if (errors != null && errors.Any())
             {
-                return NotFound();
+                foreach (var error in errors.Select(i => i.Description).Distinct())
+                {
+                    ModelState.AddModelError("", error);
+                }
+
+                if (ModelState.IsValid)
+                {
+                    // No ModelState errors are available to send, 
+                    // so just return an empty BadRequest.
+                    return BadRequest();
+                }
+
+                return BadRequest(ModelState);
             }
-
-            await _service.DeleteAsync(key, User.Identity.Name?.Split("\\".ToCharArray()).FirstOrDefault());
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return null;
         }
 
         protected override void Dispose(bool disposing)

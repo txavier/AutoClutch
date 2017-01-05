@@ -93,6 +93,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Auto.Core\Auto.Core.csproj">
+      <Project>{51ff91e5-b50a-4ce7-bf28-9da29d8745af}</Project>
+      <Name>Auto.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Auto.Service\Auto.Service.csproj">
       <Project>{E4224CC6-BDFC-467E-A26B-4DFC17DC478F}</Project>
       <Name>Auto.Service</Name>

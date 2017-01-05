@@ -74,6 +74,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Auto.Core\Auto.Core.csproj">
+      <Project>{51FF91E5-B50A-4CE7-BF28-9DA29D8745AF}</Project>
+      <Name>Auto.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Auto.Log\Auto.Log.csproj">
       <Project>{D312450B-3FEF-4913-BAEE-F485A868D57E}</Project>
       <Name>Auto.Log</Name>

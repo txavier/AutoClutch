@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.Log", "Auto.Log\Auto.L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.ODataApiController", "Auto.ODataBaseController\Auto.ODataApiController.csproj", "{3F031A43-8604-4CB1-B17B-3FB78BD442F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.Core", "Auto.Core\Auto.Core.csproj", "{51FF91E5-B50A-4CE7-BF28-9DA29D8745AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +66,10 @@ Global
 		{3F031A43-8604-4CB1-B17B-3FB78BD442F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F031A43-8604-4CB1-B17B-3FB78BD442F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F031A43-8604-4CB1-B17B-3FB78BD442F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51FF91E5-B50A-4CE7-BF28-9DA29D8745AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51FF91E5-B50A-4CE7-BF28-9DA29D8745AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51FF91E5-B50A-4CE7-BF28-9DA29D8745AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51FF91E5-B50A-4CE7-BF28-9DA29D8745AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

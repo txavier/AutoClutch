@@ -83,6 +83,10 @@
     <Compile Include="Services\Service_Get_Should.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Auto.Core\Auto.Core.csproj">
+      <Project>{51ff91e5-b50a-4ce7-bf28-9da29d8745af}</Project>
+      <Name>Auto.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Auto.Repo\Auto.Repo.csproj">
       <Project>{DBF36A7C-7697-41A0-86C6-80A0623026AE}</Project>
       <Name>Auto.Repo</Name>

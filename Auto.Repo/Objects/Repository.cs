@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 using System.Linq.Dynamic;
 using TrackerEnabledDbContext.Common.Models;
 using AutoClutch.Repo.Interfaces;
-using AutoClutch.Repo.Objects;
+using AutoClutch.Core.Objects;
 
 namespace AutoClutch.Repo
 {

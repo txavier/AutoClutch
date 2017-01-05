@@ -1,4 +1,6 @@
 ﻿using AutoClutch.Core;
+using AutoClutch.Core.Interfaces;
+using AutoClutch.Core.Models;
 using AutoClutch.Core.Objects;
 using AutoClutch.Log.Interfaces;
 using AutoClutch.Repo.Interfaces;
@@ -10,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AutoClutch.Log.Services
 {
-    public class UserActionLogService : Service<userActionLog>, ILogService
+    public class UserActionLogService : Service<userActionLog>, ILogService, IService<userActionLog>
     {
         public UserActionLogService(IRepository<userActionLog> userActionLogRepository)
             : base(userActionLogRepository)

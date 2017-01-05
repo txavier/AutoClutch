@@ -1,8 +1,6 @@
 ﻿using AutoClutch.Controller.Interfaces;
 using AutoClutch.Core.Interfaces;
 using AutoClutch.Core.Objects;
-using AutoClutch.Log.Interfaces;
-using AutoClutch.Repo.Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
