@@ -15,20 +15,34 @@
     <PreviewImage>__PreviewImage.png</PreviewImage>
   </TemplateData>
   <TemplateContent>
-    <Project TargetFileName="AutoClutch.Infrastructure.csproj" File="AutoClutch.Infrastructure.csproj" ReplaceParameters="true">
+    <Project TargetFileName="WebX.Infrastructure.csproj" File="WebX.Infrastructure.csproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="true" TargetFileName="App.config">App.config</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="App.Debug.config">App.Debug.config</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="App.Release.config">App.Release.config</ProjectItem>
       <Folder Name="Data" TargetFolderName="Data">
-        <ProjectItem ReplaceParameters="true" TargetFileName="EfQueryContractTotalsPerSection.cs">EfQueryContractTotalsPerSection.cs</ProjectItem>
-      </Folder>
-      <Folder Name="Facades" TargetFolderName="Facades">
-        <ProjectItem ReplaceParameters="true" TargetFileName="DocumentManagementServiceFacade.cs">DocumentManagementServiceFacade.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="EfDataDbContext.cs">EfDataDbContext.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="TrackingConfig.cs">TrackingConfig.cs</ProjectItem>
       </Folder>
       <Folder Name="Getters" TargetFolderName="Getters">
         <ProjectItem ReplaceParameters="true" TargetFileName="EnvironmentConfigSettingsGetter.cs">EnvironmentConfigSettingsGetter.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ImportFilesGetter.cs">ImportFilesGetter.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="SqlServerReportGetter.cs">SqlServerReportGetter.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Migrations" TargetFolderName="Migrations">
+        <ProjectItem ReplaceParameters="true" TargetFileName="201610210353571_initialMigration.cs">201610210353571_initialMigration.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="201610210353571_initialMigration.Designer.cs">201610210353571_initialMigration.Designer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="201610210353571_initialMigration.resx">201610210353571_initialMigration.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="201610222020406_AddBlogModels.cs">201610222020406_AddBlogModels.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="201610222020406_AddBlogModels.Designer.cs">201610222020406_AddBlogModels.Designer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="201610222020406_AddBlogModels.resx">201610222020406_AddBlogModels.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="201610230427274_ChangedTableNames.cs">201610230427274_ChangedTableNames.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="201610230427274_ChangedTableNames.Designer.cs">201610230427274_ChangedTableNames.Designer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="201610230427274_ChangedTableNames.resx">201610230427274_ChangedTableNames.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="201610251856245_RemoveSummaryFromBlogEntry.cs">201610251856245_RemoveSummaryFromBlogEntry.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="201610251856245_RemoveSummaryFromBlogEntry.Designer.cs">201610251856245_RemoveSummaryFromBlogEntry.Designer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="201610251856245_RemoveSummaryFromBlogEntry.resx">201610251856245_RemoveSummaryFromBlogEntry.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="201701061508340_AddUserActionLogs.cs">201701061508340_AddUserActionLogs.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="201701061508340_AddUserActionLogs.Designer.cs">201701061508340_AddUserActionLogs.Designer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="201701061508340_AddUserActionLogs.resx">201701061508340_AddUserActionLogs.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Configuration.cs">Configuration.cs</ProjectItem>
       </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
       <Folder Name="Properties" TargetFolderName="Properties">
@@ -37,27 +51,6 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="Settings.Designer.cs">Settings.Designer.cs</ProjectItem>
       </Folder>
       <Folder Name="Service References" TargetFolderName="Service References" />
-      <Folder Name="Web References" TargetFolderName="Web References">
-        <Folder Name="DocumentManagementService" TargetFolderName="DocumentManagementService">
-          <ProjectItem ReplaceParameters="true" TargetFileName="Reference.map">Reference.map</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="DocumentObject.datasource">DocumentObject.datasource</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="DocumentObjectDetail.datasource">DocumentObjectDetail.datasource</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="FileObject.datasource">FileObject.datasource</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="Reference.cs">Reference.cs</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="Service1.disco">Service1.disco</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="Service1.wsdl">Service1.wsdl</ProjectItem>
-        </Folder>
-        <Folder Name="ReportExecutionService" TargetFolderName="ReportExecutionService">
-          <ProjectItem ReplaceParameters="true" TargetFileName="Reference.map">Reference.map</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="DocumentMapNode.datasource">DocumentMapNode.datasource</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="ExecutionInfo.datasource">ExecutionInfo.datasource</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="ExecutionInfo2.datasource">ExecutionInfo2.datasource</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="Extension.datasource">Extension.datasource</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="Reference.cs">Reference.cs</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="Warning.datasource">Warning.datasource</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="reportexecution2005.wsdl">reportexecution2005.wsdl</ProjectItem>
-        </Folder>
-      </Folder>
     </Project>
   </TemplateContent>
 </VSTemplate>

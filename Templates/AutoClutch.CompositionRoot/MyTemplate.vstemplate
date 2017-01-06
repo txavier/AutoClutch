@@ -15,12 +15,8 @@
     <PreviewImage>__PreviewImage.png</PreviewImage>
   </TemplateData>
   <TemplateContent>
-    <Project TargetFileName="AutoClutch.CompositionRoot.csproj" File="AutoClutch.CompositionRoot.csproj" ReplaceParameters="true">
+    <Project TargetFileName="WebX.CompositionRoot.csproj" File="WebX.CompositionRoot.csproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="true" TargetFileName="App.config">App.config</ProjectItem>
-      <Folder Name="bin" TargetFolderName="bin">
-        <Folder Name="Debug" TargetFolderName="Debug">
-        </Folder>
-      </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="DefaultRegistry.cs">DefaultRegistry.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
       <Folder Name="Properties" TargetFolderName="Properties">

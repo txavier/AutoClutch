@@ -1,4 +1,4 @@
-﻿using AutoClutch.Auto.Service.Interfaces;
+﻿using AutoClutch.Core.Interfaces;
 using $safeprojectname$.Interfaces;
 using $safeprojectname$.Models;
 using System;
@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoClutch.Core.Interfaces;
 
 namespace $safeprojectname$.Services
 {
@@ -14,9 +15,9 @@ namespace $safeprojectname$.Services
     /// </summary>
     public class AuthorizeService : IAuthorizeService
     {
-        private IService<engineer> _engineerService;
+        private IService<user> _engineerService;
 
-        public AuthorizeService(IService<engineer> engineerService)
+        public AuthorizeService(IService<user> engineerService)
         {
             _engineerService = engineerService;
         }

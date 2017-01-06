@@ -1,17 +1,17 @@
-﻿using AutoClutch.Auto.Repo.Interfaces;
-using AutoClutch.Auto.Repo.Objects;
-using AutoClutch.Auto.Service.Interfaces;
-using AutoClutch.Auto.Service.Services;
+﻿using AutoClutch.Repo.Interfaces;
 using StructureMap.Configuration.DSL;
 using StructureMap;
 using StructureMap.Graph;
-using StructureMap.Web;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoClutch.Core;
+using AutoClutch.Core.Interfaces;
+using AutoClutch.Repo;
+using AutoClutch.Log.Services;
 
 namespace $safeprojectname$
 {
@@ -34,7 +34,7 @@ namespace $safeprojectname$
 
             For<IEnvironmentConfigSettingsGetter>().Use<EnvironmentConfigSettingsGetter>();
 
-            For(typeof(ILogService<>)).Use(typeof(UserActionLogService<>));
+            For(typeof(AutoClutch.Core.Interfaces.ILogService<>)).Use(typeof(UserActionLogService<>));
         }
     }
 }

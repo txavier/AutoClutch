@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebX.Core.Interfaces;
 
 namespace $safeprojectname$.Getters
 {
