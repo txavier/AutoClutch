@@ -1,4 +1,4 @@
-namespace WebX.Data
+namespace $safeprojectname$
 {
     using System;
     using System.Data.Entity;

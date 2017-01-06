@@ -7,7 +7,6 @@ using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 using System.Web.OData.Builder;
 using System.Web.OData.Extensions;
-using WebX.Core.Models;
 using System.Web.Http.Dispatcher;
 
 namespace $safeprojectname$

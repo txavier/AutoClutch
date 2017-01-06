@@ -1,5 +1,4 @@
-﻿using WebX.Core.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -22,10 +21,6 @@ namespace $safeprojectname$.Controllers
 
         public IHttpActionResult GetLoggedInUser()
         {
-            //var user = _userService.Queryable().FirstOrDefault(i => i.userName == User.Identity.Name);
-
-            //return Ok(user);
-
             return Ok(User?.Identity?.Name ?? "");
         }
     }
