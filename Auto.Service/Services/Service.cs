@@ -15,6 +15,10 @@ namespace AutoClutch.Core
 
         public IEnumerable<Error> Errors { get; set; }
 
+        private bool disposedValue = false; // To detect redundant calls
+
+        private IValidation<TEntity> _validation;
+
         public bool ProxyCreationEnabled
         {
             get { return _repository.ProxyCreationEnabled; }
@@ -48,6 +52,15 @@ namespace AutoClutch.Core
         public Service(IRepository<TEntity> repository)
         {
             this._repository = repository;
+
+            Errors = new List<Error>();
+        }
+
+        public Service(IRepository<TEntity> repository, IValidation<TEntity> validation)
+        {
+            this._repository = repository;
+
+            this._validation = validation;
 
             Errors = new List<Error>();
         }
@@ -311,15 +324,55 @@ namespace AutoClutch.Core
             return result;
         }
 
+        /// <summary>
+        /// If the return value is false then check the 'Errors' property.
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool IsValid()
+        {
+            var valid = (_validation?.IsValid() ?? true);
+
+            if(!valid)
+            {
+                ((List<Error>)Errors).AddRange(_validation.Errors);
+            }
+
+            return valid;
+        }
+
+        /// <summary>
+        /// If the return value is -1 then check the 'Errors' property.
+        /// </summary>
+        /// <param name="loggedInUserName"></param>
+        /// <returns></returns>
         public virtual int SaveChanges(string loggedInUserName = null)
         {
+            if (!(_validation?.IsValid() ?? true))
+            {
+                ((List<Error>)Errors).AddRange(_validation.Errors);
+
+                return -1;
+            }
+
             var result = _repository.SaveChanges(loggedInUserName);
 
             return result;
         }
 
+        /// <summary>
+        /// If the return value is -1 then check the 'Errors' property.
+        /// </summary>
+        /// <param name="loggedInUserName"></param>
+        /// <returns></returns>
         public virtual async Task<int> SaveChangesAsync(string loggedInUserName = null)
         {
+            if (!(_validation?.IsValid() ?? true))
+            {
+                ((List<Error>)Errors).AddRange(_validation.Errors);
+
+                return -1;
+            }
+
             var result = await _repository.SaveChangesAsync(loggedInUserName);
 
             return result;
@@ -463,7 +516,6 @@ namespace AutoClutch.Core
         }
 
         #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
 
         protected virtual void Dispose(bool disposing)
         {
