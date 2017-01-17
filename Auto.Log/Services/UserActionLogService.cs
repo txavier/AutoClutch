@@ -27,6 +27,8 @@ namespace AutoClutch.Log.Services
 
         public userActionLog Info(string typeName, string typeFullName, int recordId, EventType eventType, string message, string entityName, string loggedInUserName)
         {
+            loggedInUserName = loggedInUserName?.Split("\\".ToCharArray())?.LastOrDefault();
+
             userActionLog userActionLog = GetUserActionLog(typeName, typeFullName, recordId, eventType, message, entityName, loggedInUserName);
 
             var result = Add(userActionLog, "CTMSystemAgent");
@@ -36,6 +38,8 @@ namespace AutoClutch.Log.Services
 
         public async Task<userActionLog> InfoAsync(string typeName, string typeFullName, int recordId, EventType eventType, string message, string entityName, string loggedInUserName, string toString = null)
         {
+            loggedInUserName = loggedInUserName?.Split("\\".ToCharArray())?.LastOrDefault();
+
             userActionLog userActionLog = GetUserActionLog(typeName, typeFullName, recordId, eventType, message, entityName, loggedInUserName, toString);
 
             var result = await AddAsync(userActionLog, "CTMSystemAgent");
@@ -67,6 +71,8 @@ namespace AutoClutch.Log.Services
 
         private static string GetMessage(string typeName, int recordId, EventType eventType, string message = null, string entityName = null, string loggedInUserName = null, string toString = null)
         {
+            loggedInUserName = loggedInUserName?.Split("\\".ToCharArray())?.LastOrDefault();
+
             var result = message ??
                     (toString ?? (UppercaseFirst(typeName) + " " + (entityName ?? recordId.ToString()))) + " has been " + LowercaseFirst(eventType.ToString()) + " by " + loggedInUserName + ".";
 
@@ -132,6 +138,8 @@ namespace AutoClutch.Log.Services
 
         public async Task<userActionLog> InfoAsync(TEntity entity, int recordId, EventType eventType, string message = null, string entityName = null, string loggedInUserName = null, bool useToString = false)
         {
+            loggedInUserName = loggedInUserName?.Split("\\".ToCharArray())?.LastOrDefault();
+
             var typeFullName = entity.GetType().FullName;
 
             var typeName = entity.GetType().Name;
@@ -145,6 +153,8 @@ namespace AutoClutch.Log.Services
 
         public userActionLog Info(TEntity entity, int recordId, EventType eventType, string message = null, string entityName = null, string loggedInUserName = null)
         {
+            loggedInUserName = loggedInUserName?.Split("\\".ToCharArray())?.LastOrDefault();
+
             var typeFullName = entity.GetType().FullName;
 
             var typeName = entity.GetType().Name;

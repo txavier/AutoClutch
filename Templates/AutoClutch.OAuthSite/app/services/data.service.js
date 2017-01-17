@@ -26,6 +26,7 @@
             searchEntitiesCountApi: searchEntitiesCountApi,
             // End of standard methods.
             getLoggedInUser: getLoggedInUser,
+            getMe: getMe,
             getFileByteStream: getFileByteStream,
             validate: validate,
             getHistory: getHistory,
@@ -329,18 +330,31 @@
 
         function getLoggedInUser() {
             return $http.get('odata/users/usersService.GetLoggedInUser', { cache: true })
-                        .then(getLoggedInUserCompleted)
-                        .catch(getLoggedInUserFailed);
+                        .then(getLoggedInUserCompleted, getLoggedInUserFailed);
 
             function getLoggedInUserCompleted(response) {
                 return response.data;
             }
 
             function getLoggedInUserFailed(error) {
-                $log.error('XHR failed for sendPickupSessionsEmailMessage. '
-                  + (error.data ? error.data.message + ': ' : '') + (error.data ? error.data.message + ': ' + (error.data.messageDetail || error.data.ExceptionMessage || error.data.Message) : ''));
+                errorService.handleError(error);
 
-                return error;
+                return $q.reject(error);
+            }
+        }
+
+        function getMe() {
+            return $http.get('api/Me', { cache: true })
+                        .then(getMeCompleted, getMeFailed);
+
+            function getMeCompleted(response) {
+                return response.data;
+            }
+
+            function getMeFailed(error) {
+                errorService.handleError(error);
+
+                return $q.reject(error);
             }
         }
 

@@ -50,20 +50,28 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Auto.Controller, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoClutch.AutoController.4.0\lib\net45\Auto.Controller.dll</HintPath>
+    <Reference Include="Auto.Controller, Version=4.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoClutch.AutoController.4.4\lib\net452\Auto.Controller.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Auto.Log, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoClutch.AutoLog.4.0\lib\net452\Auto.Log.dll</HintPath>
+    <Reference Include="Auto.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoClutch.AutoCore.4.5\lib\net452\Auto.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Auto.Log, Version=4.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoClutch.AutoLog.4.5\lib\net452\Auto.Log.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Auto.ODataBaseController, Version=4.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoClutch.ODataApiController.4.5.1\lib\net452\Auto.ODataBaseController.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Auto.Repo, Version=4.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoClutch.AutoRepo.4.4\lib\net452\Auto.Repo.dll</HintPath>
+      <HintPath>..\packages\AutoClutch.AutoRepo.4.5\lib\net452\Auto.Repo.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Auto.Service, Version=4.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoClutch.AutoService.4.4\lib\net452\Auto.Service.dll</HintPath>
+      <HintPath>..\packages\AutoClutch.AutoService.4.5\lib\net452\Auto.Service.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
@@ -292,7 +300,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeController.cs" />
-    <Compile Include="Controllers\ODataApiController.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="DependencyResolution\StructureMapWebApiControllerActivator.cs" />
     <Compile Include="Global.asax.cs">
@@ -312,6 +319,7 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Content Include="app\layout\layout.controller.js" />
     <Content Include="wwwroot\lib\angular-animate\.bower.json" />
     <Content Include="wwwroot\lib\angular-animate\angular-animate.min.js.map" />
     <Content Include="wwwroot\lib\angular-animate\bower.json" />
@@ -1573,6 +1581,7 @@
     <Content Include="wwwroot\lib\textAngular\src\textAngular.css" />
     <Content Include="wwwroot\lib\textAngular\src\textAngularSetup.js" />
     <Content Include="wwwroot\lib\textAngular\src\validators.js" />
+    <None Include="Properties\PublishProfiles\deltanovember.xaviersoftware.com - Web Deploy %283%29.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1631,7 +1640,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1667,22 +1675,6 @@
     <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
   </Target>
   <ProjectExtensions>
-    <VisualStudio>
-      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
-        <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>52616</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:52616/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
-        </WebProjectProperties>
-      </FlavorProperties>
-    </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

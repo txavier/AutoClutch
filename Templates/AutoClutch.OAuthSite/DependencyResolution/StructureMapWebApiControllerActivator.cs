@@ -20,6 +20,13 @@ namespace $safeprojectname$.DependencyResolution
 
         public IHttpController Create(HttpRequestMessage request, HttpControllerDescriptor controllerDescriptor, Type controllerType)
         {
+            // Allow the default and select .net controllers to use the default dependency
+            // injection.
+            if(controllerDescriptor.ControllerName == "Me")
+            {
+                return new Controllers.MeController() as IHttpController;
+            }       
+
             var nested = _container.GetNestedContainer();
             var instance = nested.GetInstance(controllerType) as IHttpController;
             request.RegisterForDispose(nested);

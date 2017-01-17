@@ -73,6 +73,12 @@ namespace AutoClutch.Controller
                     return RetrieveErrorResult(_service.Errors);
                 }
 
+                // If a logging service has been injected then use it.
+                if (_logService != null)
+                {
+                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), EventType.Added, loggedInUserName: User?.Identity?.Name, useToString: true);
+                }
+
                 return Created(result);
             }
             catch (Exception ex)
@@ -156,6 +162,12 @@ namespace AutoClutch.Controller
                     {
                         return RetrieveErrorResult(_service.Errors);
                     }
+
+                    // If a logging service has been injected then use it.
+                    if (_logService != null)
+                    {
+                        await _logService.InfoAsync(update, (int)_service.GetEntityIdObject(update), EventType.Modified, loggedInUserName: User?.Identity?.Name, useToString: true);
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -195,6 +207,12 @@ namespace AutoClutch.Controller
                 if (_service.Errors.Any())
                 {
                     return RetrieveErrorResult(_service.Errors);
+                }
+
+                // If a logging service has been injected then use it.
+                if (_logService != null)
+                {
+                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), EventType.Deleted, loggedInUserName: User?.Identity?.Name, useToString: true);
                 }
 
                 return StatusCode(HttpStatusCode.NoContent);

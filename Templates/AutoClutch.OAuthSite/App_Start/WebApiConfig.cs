@@ -7,7 +7,6 @@ using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 using System.Web.OData.Builder;
 using System.Web.OData.Extensions;
-using WebX.Core.Models;
 using System.Web.Http.Dispatcher;
 
 namespace $safeprojectname$
@@ -41,6 +40,8 @@ namespace $safeprojectname$
             config.Count().Filter().OrderBy().Expand().Select().MaxTop(null); //new line
 
             builder.EntitySet<blogEntry>("blogEntries");
+            // http://stackoverflow.com/questions/36344979/odata-include-custom-properties-added-to-entity-framework-models-via-partial-c
+            // http://stackoverflow.com/questions/27277306/odata-read-only-property
             builder.StructuralTypes.First(x => x.ClrType.FullName.Contains("blogEntry"))
                 .AddProperty((typeof(blogEntry)).GetProperty("blogBodySummaryHtml"));
 
@@ -56,10 +57,11 @@ namespace $safeprojectname$
             builder.EntitySet<author>("authors");
 
             builder.EntitySet<user>("users");
-            builder.Namespace = "usersService";
+
             builder.EntityType<user>().Collection
                 .Function("GetLoggedInUser")
-                .Returns<user>();
+                .Returns<string>()
+                .Namespace="usersService";
 
             config.MapODataServiceRoute(
                 routeName: "ODataRoute",

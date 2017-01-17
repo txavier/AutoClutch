@@ -1,5 +1,5 @@
-﻿using AutoClutch.Auto.Repo.Interfaces;
-using AutoClutch.Auto.Service.Services;
+﻿using AutoClutch.Repo.Interfaces;
+using AutoClutch.Core;
 using $safeprojectname$.Interfaces;
 using $safeprojectname$.ViewModels;
 using System;

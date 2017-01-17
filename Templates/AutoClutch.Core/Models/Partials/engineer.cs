@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace $safeprojectname$.Models
 {
     [MetadataType(typeof(engineerMetaData))]
-    public partial class engineer
+    public partial class user
     {
         internal bool? engineerRole;
 
