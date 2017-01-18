@@ -26,24 +26,6 @@
       <Folder Name="Getters" TargetFolderName="Getters">
         <ProjectItem ReplaceParameters="true" TargetFileName="EnvironmentConfigSettingsGetter.cs">EnvironmentConfigSettingsGetter.cs</ProjectItem>
       </Folder>
-      <Folder Name="Migrations" TargetFolderName="Migrations">
-        <ProjectItem ReplaceParameters="true" TargetFileName="201610210353571_initialMigration.cs">201610210353571_initialMigration.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="201610210353571_initialMigration.Designer.cs">201610210353571_initialMigration.Designer.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="201610210353571_initialMigration.resx">201610210353571_initialMigration.resx</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="201610222020406_AddBlogModels.cs">201610222020406_AddBlogModels.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="201610222020406_AddBlogModels.Designer.cs">201610222020406_AddBlogModels.Designer.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="201610222020406_AddBlogModels.resx">201610222020406_AddBlogModels.resx</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="201610230427274_ChangedTableNames.cs">201610230427274_ChangedTableNames.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="201610230427274_ChangedTableNames.Designer.cs">201610230427274_ChangedTableNames.Designer.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="201610230427274_ChangedTableNames.resx">201610230427274_ChangedTableNames.resx</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="201610251856245_RemoveSummaryFromBlogEntry.cs">201610251856245_RemoveSummaryFromBlogEntry.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="201610251856245_RemoveSummaryFromBlogEntry.Designer.cs">201610251856245_RemoveSummaryFromBlogEntry.Designer.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="201610251856245_RemoveSummaryFromBlogEntry.resx">201610251856245_RemoveSummaryFromBlogEntry.resx</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="201701061508340_AddUserActionLogs.cs">201701061508340_AddUserActionLogs.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="201701061508340_AddUserActionLogs.Designer.cs">201701061508340_AddUserActionLogs.Designer.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="201701061508340_AddUserActionLogs.resx">201701061508340_AddUserActionLogs.resx</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="Configuration.cs">Configuration.cs</ProjectItem>
-      </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
       <Folder Name="Properties" TargetFolderName="Properties">
         <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>

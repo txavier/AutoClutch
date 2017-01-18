@@ -753,74 +753,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="s.discogs.com\dst\javascripts\sections\artistd1da.js" />
-    <Content Include="s.discogs.com\dst\javascripts\sections\feedback40d0.html" />
-    <Content Include="s.discogs.com\dst\javascripts\sections\get_startede6f7.js" />
-    <Content Include="s.discogs.com\dst\javascripts\sections\labele27f.html" />
-    <Content Include="s.discogs.com\dst\javascripts\sections\listsb68f.html" />
-    <Content Include="s.discogs.com\dst\javascripts\sections\marketplace781c.html" />
-    <Content Include="s.discogs.com\dst\javascripts\sections\marketplace_list671e.js" />
-    <Content Include="s.discogs.com\dst\javascripts\sections\marketplace_seller_listc029.js" />
-    <Content Include="s.discogs.com\dst\javascripts\sections\quicklistfc5b.js" />
-    <Content Include="s.discogs.com\dst\javascripts\sections\recommendationsa3bf.js" />
-    <Content Include="s.discogs.com\dst\javascripts\sections\release6b46.js" />
-    <Content Include="s.discogs.com\dst\javascripts\sections\reviews7db4.html" />
-    <Content Include="s.discogs.com\dst\javascripts\sections\user49ae.js" />
-    <Content Include="s.discogs.com\dst\stylesheets\components\image_gallery3597.css" />
-    <Content Include="s.discogs.com\dst\stylesheets\discogs89b1.css" />
-    <Content Include="s.discogs.com\dst\stylesheets\libraries\chartist\chartistd797.html" />
-    <Content Include="s.discogs.com\dst\stylesheets\sections\about209e.html" />
-    <Content Include="s.discogs.com\dst\stylesheets\sections\appcbe0.html" />
-    <Content Include="s.discogs.com\dst\stylesheets\sections\artist804c.css" />
-    <Content Include="s.discogs.com\dst\stylesheets\sections\eventsefda.html" />
-    <Content Include="s.discogs.com\dst\stylesheets\sections\forum4b7d.css" />
-    <Content Include="s.discogs.com\dst\stylesheets\sections\genre03fe.html" />
-    <Content Include="s.discogs.com\dst\stylesheets\sections\get_starteda712.css" />
-    <Content Include="s.discogs.com\dst\stylesheets\sections\groupf961.css" />
-    <Content Include="s.discogs.com\dst\stylesheets\sections\help_docs9efb.css" />
-    <Content Include="s.discogs.com\dst\stylesheets\sections\lists65b6.html" />
-    <Content Include="s.discogs.com\dst\stylesheets\sections\marketplaced40e.css" />
-    <Content Include="s.discogs.com\dst\stylesheets\sections\marketplace_menus3542.css" />
-    <Content Include="s.discogs.com\dst\stylesheets\sections\quicklister4e0b.css" />
-    <Content Include="s.discogs.com\dst\stylesheets\sections\releaselistacb9.html" />
-    <Content Include="s.discogs.com\dst\stylesheets\sections\support9b2a.html" />
-    <Content Include="s.discogs.com\file-store\BAN15824.jpg" />
-    <Content Include="s.discogs.com\file-store\GG10669.jpg" />
-    <Content Include="s.discogs.com\file-store\HAS24943.jpg" />
-    <Content Include="s.discogs.com\file-store\HAS24944.jpg" />
-    <Content Include="s.discogs.com\file-store\HAS24946.jpg" />
-    <Content Include="s.discogs.com\file-store\MED10914.jpg" />
-    <Content Include="s.discogs.com\file-store\TAK11955.jpg" />
-    <Content Include="s.discogs.com\file-store\TAK12222.jpg" />
-    <Content Include="s.discogs.com\file-store\TAK12274.jpg" />
-    <Content Include="s.discogs.com\images\advertise\160x600.html" />
-    <Content Include="s.discogs.com\images\advertise\300x250.html" />
-    <Content Include="s.discogs.com\images\advertise\320x50.html" />
-    <Content Include="s.discogs.com\images\advertise\728x90.html" />
-    <Content Include="s.discogs.com\images\advertise\970x90.html" />
-    <Content Include="s.discogs.com\images\advertise\media-kit-thumbnail.html" />
-    <Content Include="s.discogs.com\images\ajax-loader-big.gif" />
-    <Content Include="s.discogs.com\images\apple-touch-icon-precomposed.png" />
-    <Content Include="s.discogs.com\images\border.png" />
-    <Content Include="s.discogs.com\images\default-artist.png" />
-    <Content Include="s.discogs.com\images\default-label.html" />
-    <Content Include="s.discogs.com\images\default-release-cassette.png" />
-    <Content Include="s.discogs.com\images\default-release-cd.png" />
-    <Content Include="s.discogs.com\images\default-release-file.png" />
-    <Content Include="s.discogs.com\images\default-release.png" />
-    <Content Include="s.discogs.com\images\discogs%404009caf.png" />
-    <Content Include="s.discogs.com\images\discogs%40400a87f.html" />
-    <Content Include="s.discogs.com\images\discogs-whitee4da.png" />
-    <Content Include="s.discogs.com\images\favicon-16x16.png" />
-    <Content Include="s.discogs.com\images\favicon-32x32.png" />
-    <Content Include="s.discogs.com\images\favicon-96x96.png" />
-    <Content Include="s.discogs.com\images\get_started\album-covers9caf.jpg" />
-    <Content Include="s.discogs.com\images\get_started\album-coversf5b0.jpg" />
-    <Content Include="s.discogs.com\images\google-plus-icon9caf.png" />
-    <Content Include="s.discogs.com\images\header-user-profile.html" />
-    <Content Include="s.discogs.com\images\help_docs_bg9caf.html" />
-    <Content Include="s.discogs.com\images\spacer9caf.gif" />
-    <Content Include="s.discogs.com\images\sprite39caf.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -1581,7 +1513,6 @@
     <Content Include="wwwroot\lib\textAngular\src\textAngular.css" />
     <Content Include="wwwroot\lib\textAngular\src\textAngularSetup.js" />
     <Content Include="wwwroot\lib\textAngular\src\validators.js" />
-    <None Include="Properties\PublishProfiles\deltanovember.xaviersoftware.com - Web Deploy %283%29.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1650,13 +1581,13 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebX.CompositionRoot\WebX.CompositionRoot.csproj">
+    <ProjectReference Include="..\$projectname$.CompositionRoot\$projectname$.CompositionRoot.csproj">
       <Project>{797D6C6D-0F6D-4FE6-A407-74E6CC8B967D}</Project>
-      <Name>WebX.CompositionRoot</Name>
+      <Name>$projectname$.CompositionRoot</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebX.Core\WebX.Core.csproj">
+    <ProjectReference Include="..\$projectname$.Core\$projectname$.Core.csproj">
       <Project>{3B826046-AC3C-4F1F-9A74-7A7CF8C47A19}</Project>
-      <Name>WebX.Core</Name>
+      <Name>$projectname$.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

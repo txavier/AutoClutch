@@ -422,109 +422,12 @@
       <ProjectItem ReplaceParameters="true" TargetFileName="Project_Readme.html">Project_Readme.html</ProjectItem>
       <Folder Name="Properties" TargetFolderName="Properties">
         <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
-        <Folder Name="PublishProfiles" TargetFolderName="PublishProfiles">
-          <ProjectItem ReplaceParameters="false" TargetFileName="deltanovember.xaviersoftware.com - Web Deploy (3).pubxml">deltanovember.xaviersoftware.com - Web Deploy (3).pubxml</ProjectItem>
-        </Folder>
       </Folder>
       <Folder Name="Providers" TargetFolderName="Providers">
         <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationOAuthProvider.cs">ApplicationOAuthProvider.cs</ProjectItem>
       </Folder>
       <Folder Name="Results" TargetFolderName="Results">
         <ProjectItem ReplaceParameters="true" TargetFileName="ChallengeResult.cs">ChallengeResult.cs</ProjectItem>
-      </Folder>
-      <Folder Name="s.discogs.com" TargetFolderName="s.discogs.com">
-        <Folder Name="dst" TargetFolderName="dst">
-          <Folder Name="javascripts" TargetFolderName="javascripts">
-            <Folder Name="sections" TargetFolderName="sections">
-              <ProjectItem ReplaceParameters="true" TargetFileName="artistd1da.js">artistd1da.js</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="feedback40d0.html">feedback40d0.html</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="get_startede6f7.js">get_startede6f7.js</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="labele27f.html">labele27f.html</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="listsb68f.html">listsb68f.html</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="marketplace_list671e.js">marketplace_list671e.js</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="marketplace_seller_listc029.js">marketplace_seller_listc029.js</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="marketplace781c.html">marketplace781c.html</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="quicklistfc5b.js">quicklistfc5b.js</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="recommendationsa3bf.js">recommendationsa3bf.js</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="release6b46.js">release6b46.js</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="reviews7db4.html">reviews7db4.html</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="user49ae.js">user49ae.js</ProjectItem>
-            </Folder>
-          </Folder>
-          <Folder Name="stylesheets" TargetFolderName="stylesheets">
-            <Folder Name="components" TargetFolderName="components">
-              <ProjectItem ReplaceParameters="true" TargetFileName="image_gallery3597.css">image_gallery3597.css</ProjectItem>
-            </Folder>
-            <ProjectItem ReplaceParameters="true" TargetFileName="discogs89b1.css">discogs89b1.css</ProjectItem>
-            <Folder Name="libraries" TargetFolderName="libraries">
-              <Folder Name="chartist" TargetFolderName="chartist">
-                <ProjectItem ReplaceParameters="true" TargetFileName="chartistd797.html">chartistd797.html</ProjectItem>
-              </Folder>
-            </Folder>
-            <Folder Name="sections" TargetFolderName="sections">
-              <ProjectItem ReplaceParameters="true" TargetFileName="about209e.html">about209e.html</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="appcbe0.html">appcbe0.html</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="artist804c.css">artist804c.css</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="eventsefda.html">eventsefda.html</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="forum4b7d.css">forum4b7d.css</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="genre03fe.html">genre03fe.html</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="get_starteda712.css">get_starteda712.css</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="groupf961.css">groupf961.css</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="help_docs9efb.css">help_docs9efb.css</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="lists65b6.html">lists65b6.html</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="marketplace_menus3542.css">marketplace_menus3542.css</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="marketplaced40e.css">marketplaced40e.css</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="quicklister4e0b.css">quicklister4e0b.css</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="releaselistacb9.html">releaselistacb9.html</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="support9b2a.html">support9b2a.html</ProjectItem>
-            </Folder>
-          </Folder>
-        </Folder>
-        <Folder Name="file-store" TargetFolderName="file-store">
-          <ProjectItem ReplaceParameters="false" TargetFileName="BAN15824.jpg">BAN15824.jpg</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="GG10669.jpg">GG10669.jpg</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="HAS24943.jpg">HAS24943.jpg</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="HAS24944.jpg">HAS24944.jpg</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="HAS24946.jpg">HAS24946.jpg</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="MED10914.jpg">MED10914.jpg</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="TAK11955.jpg">TAK11955.jpg</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="TAK12222.jpg">TAK12222.jpg</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="TAK12274.jpg">TAK12274.jpg</ProjectItem>
-        </Folder>
-        <Folder Name="images" TargetFolderName="images">
-          <Folder Name="advertise" TargetFolderName="advertise">
-            <ProjectItem ReplaceParameters="true" TargetFileName="160x600.html">160x600.html</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="300x250.html">300x250.html</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="320x50.html">320x50.html</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="728x90.html">728x90.html</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="970x90.html">970x90.html</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="media-kit-thumbnail.html">media-kit-thumbnail.html</ProjectItem>
-          </Folder>
-          <ProjectItem ReplaceParameters="false" TargetFileName="ajax-loader-big.gif">ajax-loader-big.gif</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="apple-touch-icon-precomposed.png">apple-touch-icon-precomposed.png</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="border.png">border.png</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="default-artist.png">default-artist.png</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="default-label.html">default-label.html</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="default-release-cassette.png">default-release-cassette.png</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="default-release-cd.png">default-release-cd.png</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="default-release-file.png">default-release-file.png</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="default-release.png">default-release.png</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="discogs-whitee4da.png">discogs-whitee4da.png</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="discogs@4009caf.png">discogs@4009caf.png</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="discogs@400a87f.html">discogs@400a87f.html</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="favicon-16x16.png">favicon-16x16.png</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="favicon-32x32.png">favicon-32x32.png</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="favicon-96x96.png">favicon-96x96.png</ProjectItem>
-          <Folder Name="get_started" TargetFolderName="get_started">
-            <ProjectItem ReplaceParameters="false" TargetFileName="album-covers9caf.jpg">album-covers9caf.jpg</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="album-coversf5b0.jpg">album-coversf5b0.jpg</ProjectItem>
-          </Folder>
-          <ProjectItem ReplaceParameters="false" TargetFileName="google-plus-icon9caf.png">google-plus-icon9caf.png</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="header-user-profile.html">header-user-profile.html</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="help_docs_bg9caf.html">help_docs_bg9caf.html</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="spacer9caf.gif">spacer9caf.gif</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="sprite39caf.png">sprite39caf.png</ProjectItem>
-        </Folder>
       </Folder>
       <Folder Name="Scripts" TargetFolderName="Scripts">
         <ProjectItem ReplaceParameters="true" TargetFileName="_references.js">_references.js</ProjectItem>

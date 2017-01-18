@@ -17,10 +17,6 @@
   <TemplateContent>
     <Project TargetFileName="WebX.Core.csproj" File="WebX.Core.csproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="true" TargetFileName="App.config">App.config</ProjectItem>
-      <Folder Name="Documents" TargetFolderName="Documents">
-        <ProjectItem ReplaceParameters="false" TargetFileName="products%2FWB0KSK5R9.zip">products%2FWB0KSK5R9.zip</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="Requirements.txt">Requirements.txt</ProjectItem>
-      </Folder>
       <Folder Name="Interfaces" TargetFolderName="Interfaces">
         <ProjectItem ReplaceParameters="true" TargetFileName="IAuthorizeService.cs">IAuthorizeService.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IEnvironmentConfigSettingsGetter.cs">IEnvironmentConfigSettingsGetter.cs</ProjectItem>
