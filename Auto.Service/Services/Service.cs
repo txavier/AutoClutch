@@ -113,6 +113,13 @@ namespace AutoClutch.Core
 
         public virtual TEntity Add(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
         {
+            if (!(_validation?.IsValid(entity) ?? true))
+            {
+                ((List<Error>)Errors).AddRange(_validation.Errors);
+
+                return null;
+            }
+
             var result = _repository.Add(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
             Errors = Errors.Concat(_repository.Errors).Distinct();
@@ -122,6 +129,13 @@ namespace AutoClutch.Core
 
         public virtual async Task<TEntity> AddAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
         {
+            if (!(_validation?.IsValid(entity) ?? true))
+            {
+                ((List<Error>)Errors).AddRange(_validation.Errors);
+
+                return null;
+            }
+
             var result = await _repository.AddAsync(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
             Errors = Errors.Concat(_repository.Errors).Distinct();
@@ -138,7 +152,23 @@ namespace AutoClutch.Core
         /// <remarks>Please note at this time auditing is not enabled for AddRange methods.</remarks>
         public virtual IEnumerable<TEntity> AddRange(IEnumerable<TEntity> entities, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
         {
-            var result = _repository.AddRange(entities, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
+            var validEntities = new List<TEntity>();
+
+            foreach (var entity in entities)
+            {
+                if (!(_validation?.IsValid(entity) ?? true))
+                {
+                    ((List<Error>)Errors).AddRange(_validation.Errors);
+
+                    return null;
+                }
+                else
+                {
+                    validEntities.Add(entity);
+                }
+            }
+
+            var result = _repository.AddRange(validEntities, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
             Errors = Errors.Concat(_repository.Errors).Distinct();
 
@@ -147,6 +177,13 @@ namespace AutoClutch.Core
 
         public virtual TEntity Update(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
         {
+            if (!(_validation?.IsValid(entity) ?? true))
+            {
+                ((List<Error>)Errors).AddRange(_validation.Errors);
+
+                return null;
+            }
+
             var result = _repository.Update(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
             Errors = Errors.Concat(_repository.Errors).Distinct();
@@ -156,6 +193,13 @@ namespace AutoClutch.Core
 
         public virtual async Task<TEntity> UpdateAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
         {
+            if (!(_validation?.IsValid(entity) ?? true))
+            {
+                ((List<Error>)Errors).AddRange(_validation.Errors);
+
+                return null;
+            }
+
             var result = await _repository.UpdateAsync(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
             Errors = Errors.Concat(_repository.Errors).Distinct();
@@ -173,6 +217,13 @@ namespace AutoClutch.Core
         /// <returns></returns>
         public virtual TEntity AddOrUpdate(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
         {
+            if (!(_validation?.IsValid(entity) ?? true))
+            {
+                ((List<Error>)Errors).AddRange(_validation.Errors);
+
+                return null;
+            }
+
             var idObject = _repository.GetEntityIdObject(entity);
 
             if ((int)idObject == 0)
@@ -328,9 +379,9 @@ namespace AutoClutch.Core
         /// If the return value is false then check the 'Errors' property.
         /// </summary>
         /// <returns></returns>
-        public virtual bool IsValid()
+        public virtual bool IsValid(TEntity entity)
         {
-            var valid = (_validation?.IsValid() ?? true);
+            var valid = (_validation?.IsValid(entity) ?? true);
 
             if(!valid)
             {
@@ -340,39 +391,15 @@ namespace AutoClutch.Core
             return valid;
         }
 
-        /// <summary>
-        /// If the return value is -1 then check the 'Errors' property.
-        /// </summary>
-        /// <param name="loggedInUserName"></param>
-        /// <returns></returns>
         public virtual int SaveChanges(string loggedInUserName = null)
         {
-            if (!(_validation?.IsValid() ?? true))
-            {
-                ((List<Error>)Errors).AddRange(_validation.Errors);
-
-                return -1;
-            }
-
             var result = _repository.SaveChanges(loggedInUserName);
 
             return result;
         }
 
-        /// <summary>
-        /// If the return value is -1 then check the 'Errors' property.
-        /// </summary>
-        /// <param name="loggedInUserName"></param>
-        /// <returns></returns>
         public virtual async Task<int> SaveChangesAsync(string loggedInUserName = null)
         {
-            if (!(_validation?.IsValid() ?? true))
-            {
-                ((List<Error>)Errors).AddRange(_validation.Errors);
-
-                return -1;
-            }
-
             var result = await _repository.SaveChangesAsync(loggedInUserName);
 
             return result;

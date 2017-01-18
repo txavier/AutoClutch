@@ -3,10 +3,10 @@ using AutoClutch.Core.Objects;
 
 namespace AutoClutch.Core
 {
-    public interface IValidation<TEntity> where TEntity : class, new()
+    public interface IValidation<TEntity> where TEntity : class
     {
         IEnumerable<Error> Errors { get; set; }
 
-        bool IsValid();
+        bool IsValid(TEntity entity);
     }
 }
