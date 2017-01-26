@@ -33,7 +33,7 @@ namespace AutoClutch.Core.Interfaces
         IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, string filterString = null, Func<IQueryable<TEntity>, IQueryable<TEntity>> distinctBy = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string orderByString = null, Func<IEnumerable<TEntity>, IQueryable<TEntity>> maxBy = null, int? skip = default(int?), int? take = default(int?), string includeProperties = "", bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool? includeSoftDeleted = default(bool?));
         IEnumerable<TEntity> GetAll(bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool? includeSoftDeleted = default(bool?));
         IEnumerable<Error> GetAnyAvailableValidationErrors();
-        bool IsValid(TEntity entity);
+        bool IsValid(TEntity entity, string loggedInUserName = null);
         int GetCount(Expression<Func<TEntity, bool>> filter = null, string filterString = null, Func<IQueryable<TEntity>, IQueryable<TEntity>> distinctBy = null, Func<IEnumerable<TEntity>, IQueryable<TEntity>> maxBy = null, bool? includeSoftDeleted = default(bool?));
         object GetEntityIdObject(TEntity entity, bool? includeSoftDeleted = default(bool?));
         string GetEntityKeyName(TEntity entity);

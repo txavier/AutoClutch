@@ -17,7 +17,7 @@ namespace AutoClutch.Core
 
         private bool disposedValue = false; // To detect redundant calls
 
-        private IValidation<TEntity> _validation;
+        public IValidation<TEntity> Validation { get; set; }
 
         public bool ProxyCreationEnabled
         {
@@ -52,15 +52,6 @@ namespace AutoClutch.Core
         public Service(IRepository<TEntity> repository)
         {
             this._repository = repository;
-
-            Errors = new List<Error>();
-        }
-
-        public Service(IRepository<TEntity> repository, IValidation<TEntity> validation)
-        {
-            this._repository = repository;
-
-            this._validation = validation;
 
             Errors = new List<Error>();
         }
@@ -113,32 +104,36 @@ namespace AutoClutch.Core
 
         public virtual TEntity Add(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
         {
-            if (!(_validation?.IsValid(entity) ?? true))
+            if (!IsValid(entity, loggedInUserName))
             {
-                ((List<Error>)Errors).AddRange(_validation.Errors);
-
                 return null;
             }
 
             var result = _repository.Add(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
-            Errors = Errors.Concat(_repository.Errors).Distinct();
+            ConcatRepositoryErrors();
 
             return result;
         }
 
+        private void ConcatRepositoryErrors()
+        {
+            if (Errors.Count() < 5)
+            {
+                Errors = Errors.Concat(_repository.Errors);
+            }
+        }
+
         public virtual async Task<TEntity> AddAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
         {
-            if (!(_validation?.IsValid(entity) ?? true))
+            if (!IsValid(entity, loggedInUserName))
             {
-                ((List<Error>)Errors).AddRange(_validation.Errors);
-
                 return null;
             }
 
             var result = await _repository.AddAsync(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
-            Errors = Errors.Concat(_repository.Errors).Distinct();
+            ConcatRepositoryErrors();
 
             return result;
         }
@@ -156,10 +151,8 @@ namespace AutoClutch.Core
 
             foreach (var entity in entities)
             {
-                if (!(_validation?.IsValid(entity) ?? true))
+                if (!IsValid(entity, loggedInUserName))
                 {
-                    ((List<Error>)Errors).AddRange(_validation.Errors);
-
                     return null;
                 }
                 else
@@ -170,39 +163,39 @@ namespace AutoClutch.Core
 
             var result = _repository.AddRange(validEntities, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
-            Errors = Errors.Concat(_repository.Errors).Distinct();
+            ConcatRepositoryErrors();
 
             return result;
         }
 
         public virtual TEntity Update(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
         {
-            if (!(_validation?.IsValid(entity) ?? true))
+            if (!IsValid(entity, loggedInUserName))
             {
-                ((List<Error>)Errors).AddRange(_validation.Errors);
+                ((List<Error>)Errors).AddRange(Validation.Errors);
 
                 return null;
             }
 
             var result = _repository.Update(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
-            Errors = Errors.Concat(_repository.Errors).Distinct();
+            ConcatRepositoryErrors();
 
             return result;
         }
 
         public virtual async Task<TEntity> UpdateAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
         {
-            if (!(_validation?.IsValid(entity) ?? true))
+            if (!IsValid(entity, loggedInUserName))
             {
-                ((List<Error>)Errors).AddRange(_validation.Errors);
+                ((List<Error>)Errors).AddRange(Validation.Errors);
 
                 return null;
             }
 
             var result = await _repository.UpdateAsync(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
-            Errors = Errors.Concat(_repository.Errors).Distinct();
+            ConcatRepositoryErrors();
 
             return result;
         }
@@ -217,10 +210,8 @@ namespace AutoClutch.Core
         /// <returns></returns>
         public virtual TEntity AddOrUpdate(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false)
         {
-            if (!(_validation?.IsValid(entity) ?? true))
+            if (!IsValid(entity, loggedInUserName))
             {
-                ((List<Error>)Errors).AddRange(_validation.Errors);
-
                 return null;
             }
 
@@ -230,7 +221,7 @@ namespace AutoClutch.Core
             {
                 var newEntity = _repository.Add(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
-                Errors = Errors.Concat(_repository.Errors).Distinct();
+                ConcatRepositoryErrors();
 
                 return newEntity;
             }
@@ -238,7 +229,7 @@ namespace AutoClutch.Core
             {
                 var updatedEntity = _repository.Update(entity, loggedInUserName, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled, dontSave: dontSave);
 
-                Errors = Errors.Concat(_repository.Errors).Distinct();
+                ConcatRepositoryErrors();
 
                 return updatedEntity;
             }
@@ -262,7 +253,7 @@ namespace AutoClutch.Core
 
             var result = _repository.Delete(id, loggedInUserName, dontSave: dontSave);
 
-            Errors = Errors.Concat(_repository.Errors).Distinct();
+            ConcatRepositoryErrors();
 
             return result;
         }
@@ -285,7 +276,7 @@ namespace AutoClutch.Core
 
             var result = await _repository.DeleteAsync(id, loggedInUserName, dontSave: dontSave);
 
-            Errors = Errors.Concat(_repository.Errors).Distinct();
+            ConcatRepositoryErrors();
 
             return result;
         }
@@ -379,13 +370,20 @@ namespace AutoClutch.Core
         /// If the return value is false then check the 'Errors' property.
         /// </summary>
         /// <returns></returns>
-        public virtual bool IsValid(TEntity entity)
+        public virtual bool IsValid(TEntity entity, string loggedInUserName = null)
         {
-            var valid = (_validation?.IsValid(entity) ?? true);
-
-            if(!valid)
+            // If ValidateOnSaveEnabled is set to false then we are going to 
+            // skip validation.
+            if(!ValidateOnSaveEnabled)
             {
-                ((List<Error>)Errors).AddRange(_validation.Errors);
+                return true;
+            }
+
+            var valid = (Validation?.IsValid(entity, loggedInUserName, this) ?? true);
+
+            if(!valid && (Validation != null))
+            {
+                ((List<Error>)Errors).AddRange(Validation.Errors);
             }
 
             return valid;
@@ -522,9 +520,9 @@ namespace AutoClutch.Core
 
         public IEnumerable<Error> GetAnyAvailableValidationErrors()
         {
-            var validationErrors = _repository.GetAnyAvailableValidationErrors();
+            ((List<Error>)Errors).AddRange(_repository.GetAnyAvailableValidationErrors());
 
-            return validationErrors;
+            return Errors;
         }
 
         public virtual IQueryable<TEntity> Queryable(bool? includeSoftDeleted = null)

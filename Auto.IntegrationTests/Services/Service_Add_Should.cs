@@ -6,6 +6,7 @@ using AutoClutch.Core;
 using AutoClutch.Core.Objects;
 using System;
 using System.Collections.Generic;
+using AutoClutch.Core.Interfaces;
 
 namespace AutoClutch.Service.Services.IntegrationTests
 {
@@ -22,7 +23,7 @@ namespace AutoClutch.Service.Services.IntegrationTests
             Errors = new List<Error>();
         }
 
-        public bool IsValid(TEntity entity)
+        public bool IsValid(TEntity entity, string loggedInUserName = null, IService<TEntity> service = null)
         {
             ((List<Error>)Errors).Add(new Error { Description = "Validation event", Property = "Property" });
 
@@ -56,7 +57,9 @@ namespace AutoClutch.Service.Services.IntegrationTests
 
                 var validation = new CustomValidation<facility>();
 
-                var facilityService = new Service<facility>(facilityRepository, validation);
+                var facilityService = new Service<facility>(facilityRepository);
+
+                facilityService.Validation = validation;
 
                 // Act.
                 facilityService.Add(facility, "xingl");
