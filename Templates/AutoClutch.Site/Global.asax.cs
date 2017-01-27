@@ -43,22 +43,6 @@ namespace $safeprojectname$
 
             // Allows setter injection in IValidatableObject viewModels.
             DataAnnotationsModelValidatorProvider.RegisterDefaultValidatableObjectAdapterFactory((metadata, context) => new StructureMapValidatableObjectAdapterFactory(metadata, context, container));
-
-            // Touch the report server so reports wont take long.
-            //ThreadStart job = new ThreadStart(TouchReportServerJob);
-
-            //Thread thread = new Thread(job);
-
-            //thread.Start();
-        }
-
-        private static void TouchReportServerJob()
-        {
-            var reportService = container.GetInstance<Core.Interfaces.IReportService>();
-
-            var parameters = new List<KeyValuePair<string, string>> { new KeyValuePair<string, string>("Engineer", "6") };
-
-            reportService.GetReport("lfkbwtlabdev01", "/CTMS/Reports/ContractReport", "pdf", parameters);
         }
 
         protected void Application_End()
