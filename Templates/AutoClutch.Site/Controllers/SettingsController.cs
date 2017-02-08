@@ -46,24 +46,6 @@ namespace $safeprojectname$.Controllers
             return Ok(result);
         }
 
-        [Route("search")]
-        [HttpGet]
-        public IHttpActionResult Search([FromUri]SearchCriteria searchCriteria)
-        {
-            var result = _settingService.Search(searchCriteria, lazyLoadingEnabled: false, proxyCreationEnabled: false);
-
-            return Ok(result);
-        }
-
-        [Route("search/count")]
-        [HttpGet]
-        public IHttpActionResult SearchCount([FromUri]SearchCriteria searchCriteria)
-        {
-            var result = _settingService.SearchCount(searchCriteria);
-
-            return Ok(result);
-        }
-
         public IHttpActionResult Post(setting setting)
         {
             _settingService.AddOrUpdate(setting, loggedInUserName: User.Identity.Name.Split('\\').LastOrDefault(), dontSave: false);

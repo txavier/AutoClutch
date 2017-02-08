@@ -163,11 +163,9 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="AuthorizationController.cs">AuthorizationController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="BaseApiController.cs">BaseApiController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="DashboardController.cs">DashboardController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="EngineersController.cs">EngineersController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="FilesController.cs">FilesController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="UsersController.cs">UsersController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="HistoriesController.cs">HistoriesController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="HomeController.cs">HomeController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ReportsController.cs">ReportsController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="SettingsController.cs">SettingsController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="UserActionLogsController.cs">UserActionLogsController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ValuesController.cs">ValuesController.cs</ProjectItem>

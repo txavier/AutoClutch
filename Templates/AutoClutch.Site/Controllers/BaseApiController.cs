@@ -1,4 +1,4 @@
-﻿using AutoClutch.Auto.Service.Interfaces;
+﻿using AutoClutch.Core.Interfaces;
 using $safeprojectname$.Core.Objects;
 using $safeprojectname$.DependencyResolution;
 using Elmah;
@@ -44,7 +44,7 @@ namespace $safeprojectname$.Controllers
         /// </summary>
         /// <param name="errors"></param>
         /// <returns></returns>
-        protected IHttpActionResult RetrieveErrorResult(IEnumerable<AutoClutch.Auto.Repo.Objects.Error> errors)
+        protected IHttpActionResult RetrieveErrorResult(IEnumerable<AutoClutch.Core.Objects.Error> errors)
         {
             if (errors != null && errors.Any())
             {
@@ -379,7 +379,7 @@ namespace $safeprojectname$.Controllers
                 // If a logging service has been injected then use it.
                 if (_logService != null)
                 {
-                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), EventType.Modified, loggedInUserName: GetLoggedInUserName(), useToString: true);
+                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), AutoClutch.Core.Objects.EventType.Modified, loggedInUserName: GetLoggedInUserName(), useToString: true);
                 }
 
                 //return StatusCode(HttpStatusCode.NoContent);
@@ -433,7 +433,7 @@ namespace $safeprojectname$.Controllers
                 // If a logging service has been injected then use it.
                 if (_logService != null)
                 {
-                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), EventType.Added, loggedInUserName: GetLoggedInUserName(), useToString: true);
+                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), AutoClutch.Core.Objects.EventType.Added, loggedInUserName: GetLoggedInUserName(), useToString: true);
                 }
 
                 // Null is passed because the entity coming back from the service layer is 
@@ -479,7 +479,7 @@ namespace $safeprojectname$.Controllers
                 // If a logging service has been injected then use it.
                 if (_logService != null)
                 {
-                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), (softDelete ?? false) ? EventType.SoftDeleted : EventType.Deleted, loggedInUserName: GetLoggedInUserName(), useToString: true);
+                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), (softDelete ?? false) ? AutoClutch.Core.Objects.EventType.SoftDeleted : AutoClutch.Core.Objects.EventType.Deleted, loggedInUserName: GetLoggedInUserName(), useToString: true);
                 }
 
                 return Ok(result);

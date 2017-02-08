@@ -1,5 +1,4 @@
-﻿using AutoClutch.Auto.Service.Interfaces;
-using $safeprojectname$.Core.Interfaces;
+﻿using $safeprojectname$.Core.Interfaces;
 using $safeprojectname$.Core.Models;
 using $safeprojectname$.DependencyResolution;
 using System;
@@ -14,31 +13,14 @@ namespace $safeprojectname$.Controllers
     [RoutePrefix("api/dashboard")]
     public class DashboardController : ApiController
     {
-        private readonly IMetricService _metricService;
-
-        public DashboardController(IMetricService metricService)
+        public DashboardController()
         {
-            _metricService = metricService;
         }
 
         [HttpGet]
-        public IHttpActionResult Get(string name, int? loggedInUserId = null)
+        public IHttpActionResult Get()
         {
-            switch (name)
-            {
-                case "contractTotalsPerSection":
-                    {
-                        var result = _metricService.QueryContractTotalsPerSection();
-
-                        return Ok(result);
-                    }
-                default:
-                    {
-                        break;
-                    }
-            }
-
-            return NotFound();
+            return Ok();
         }
 
     }

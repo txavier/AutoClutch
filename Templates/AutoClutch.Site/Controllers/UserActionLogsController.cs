@@ -1,4 +1,4 @@
-﻿using AutoClutch.Auto.Service.Interfaces;
+﻿using AutoClutch.Core.Interfaces;
 using $safeprojectname$.Core.Interfaces;
 using $safeprojectname$.Core.Models;
 using $safeprojectname$.Core.Services;
@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoClutch.Core.Models;
 
 namespace $safeprojectname$.Controllers
 {
@@ -18,7 +19,7 @@ namespace $safeprojectname$.Controllers
         private readonly ILogService<userActionLog> _userActionLogService;
 
         public UserActionLogsController(ILogService<userActionLog> userActionLogService)
-            : base(userActionLogService)
+            : base((IService<userActionLog>)userActionLogService)
         {
             _userActionLogService = userActionLogService;
         }
@@ -27,10 +28,6 @@ namespace $safeprojectname$.Controllers
         [HttpGet]
         public IHttpActionResult GetLatestUserActionLogs(int take)
         {
-            _userActionLogService.LazyLoadingEnabled = false;
-
-            _userActionLogService.ProxyCreationEnabled = false;
-
             var result = _userActionLogService.GetLatestUserActionLogs(take);
 
             return Ok(result);

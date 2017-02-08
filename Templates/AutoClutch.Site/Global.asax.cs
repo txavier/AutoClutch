@@ -1,6 +1,4 @@
-﻿using AutoClutch.Auto.Service.Interfaces;
-using $safeprojectname$.CompositionRoot;
-using $safeprojectname$.DependencyResolution;
+﻿using $safeprojectname$.DependencyResolution;
 using StructureMap;
 using System;
 using System.Collections.Generic;
