@@ -485,16 +485,6 @@
     <Content Include="shared-directives\box-button\box-button.directive.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MyTestProjectB.CompositionRoot\MyTestProjectB.CompositionRoot.csproj">
-      <Project>{797d6c6d-0f6d-4fe6-a407-74e6cc8b967d}</Project>
-      <Name>MyProjectTestA.CompositionRoot</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MyTestProjectB.Core\MyTestProjectB.Core.csproj">
-      <Project>{3b826046-ac3c-4f1f-9a74-7a7cf8c47a19}</Project>
-      <Name>ContractTrackingManagement.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
