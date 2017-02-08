@@ -300,8 +300,6 @@
     <Content Include="app\histories\history.html" />
     <Content Include="app\home\home.controller.js" />
     <Content Include="app\reports\report.directive.js" />
-    <Content Include="app\reports\reports.controller.js" />
-    <Content Include="app\reports\reports.html" />
     <Content Include="app\services\authentication.service.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
