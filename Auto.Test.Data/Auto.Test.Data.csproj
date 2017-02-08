@@ -100,6 +100,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Auto.Core\Auto.Core.csproj">
+      <Project>{51FF91E5-B50A-4CE7-BF28-9DA29D8745AF}</Project>
+      <Name>Auto.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Auto.Service\Auto.Service.csproj">
       <Project>{e4224cc6-bdfc-467e-a26b-4dfc17dc478f}</Project>
       <Name>Auto.Service</Name>

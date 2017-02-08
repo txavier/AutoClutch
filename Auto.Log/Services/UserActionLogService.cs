@@ -2,7 +2,6 @@
 using AutoClutch.Core.Interfaces;
 using AutoClutch.Core.Models;
 using AutoClutch.Core.Objects;
-using AutoClutch.Log.Interfaces;
 using AutoClutch.Repo.Interfaces;
 using Elmah;
 using System;

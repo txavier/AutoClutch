@@ -1,6 +1,6 @@
 namespace AutoClutch.Test.Data
 {
-    using AutoClutch.Core.Interfaces;
+    using Core.Interfaces;
     using System.Data.Entity;
     using TrackerEnabledDbContext.Common.Extensions;
 

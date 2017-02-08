@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Interfaces\ILogService.cs" />
     <Compile Include="Interfaces\IService.cs" />
+    <Compile Include="Interfaces\ISoftDeletable.cs" />
     <Compile Include="Interfaces\IValidation.cs" />
     <Compile Include="Models\userActionLog.cs" />
     <Compile Include="Objects\Error.cs" />
