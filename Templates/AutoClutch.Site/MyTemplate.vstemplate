@@ -42,8 +42,6 @@
         <Folder Name="reports" TargetFolderName="reports">
           <ProjectItem ReplaceParameters="true" TargetFileName="report.directive.js">report.directive.js</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="report.html">report.html</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="reports.controller.js">reports.controller.js</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="reports.html">reports.html</ProjectItem>
         </Folder>
         <Folder Name="services" TargetFolderName="services">
           <ProjectItem ReplaceParameters="true" TargetFileName="authentication.service.js">authentication.service.js</ProjectItem>
