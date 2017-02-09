@@ -269,7 +269,6 @@
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\UserActionLogsController.cs" />
-    <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\AuthorizationController.cs" />
     <Compile Include="Controllers\HistoriesController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
