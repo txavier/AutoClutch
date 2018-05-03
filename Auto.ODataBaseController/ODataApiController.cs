@@ -156,7 +156,7 @@ namespace AutoClutch.Controller
 
                 try
                 {
-                    await _service.UpdateAsync(update, User.Identity.Name?.Split("\\".ToCharArray()).FirstOrDefault());
+                    update = await _service.UpdateAsync(update, User.Identity.Name?.Split("\\".ToCharArray()).FirstOrDefault());
 
                     if (_service.Errors.Any())
                     {
