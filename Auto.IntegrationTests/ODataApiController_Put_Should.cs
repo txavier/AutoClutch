@@ -48,9 +48,9 @@ namespace AutoClutch.Controller.Tests
                 // Assert.
                 Assert.IsTrue(result != null);
 
-                var posRes = result as OkNegotiatedContentResult<object>;
+                var posRes = ((System.Web.OData.Results.UpdatedODataResult<AutoClutch.Test.Data.facility>)result).Entity;
 
-                Assert.AreNotEqual("facility1x", posRes.Content);
+                Assert.AreEqual("facility1x", posRes.name);
             }
             finally
             {

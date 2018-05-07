@@ -77,6 +77,10 @@
     <Compile Include="Migrations\201604181852485_UpdateTrackerEnabledDb.Designer.cs">
       <DependentUpon>201604181852485_UpdateTrackerEnabledDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805071923081_initial.cs" />
+    <Compile Include="Migrations\201805071923081_initial.Designer.cs">
+      <DependentUpon>201805071923081_initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\facility.cs" />
     <Compile Include="Models\location.cs" />
@@ -97,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604181852485_UpdateTrackerEnabledDb.resx">
       <DependentUpon>201604181852485_UpdateTrackerEnabledDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805071923081_initial.resx">
+      <DependentUpon>201805071923081_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
