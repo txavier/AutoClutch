@@ -1,0 +1,65 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Search</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        <input class="form-control" type="text" data-ng-model="vm.searchText" placeholder="Search" ng-model-options='{ debounce: 1000 }' data-ng-change="vm.search()"/>
+    </div>
+    <div class="col-lg-2">
+        <select class="form-control" name="entityDataStoreSelect" id="entityDataStoreSelect" data-ng-model="vm.entityDataStore" data-ng-change="vm.changeFields(vm.entityDataStore);vm.search()">
+            <option data-ng-repeat="option in vm.entityDataStores" value="{{option.id}}">
+                {{ option.name }}
+            </option>
+        </select>
+    </div>
+    <div class="col-lg-1">
+        <input class="btn btn-default" type="button" data-ng-click="vm.search()" value="Go" />
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-info">
+            <strong>Query Builder Output</strong><br>
+            <span ng-bind-html="vm.output"></span>
+        </div>
+        <query-builder group="vm.filter.group" fields="vm.fields"></query-builder>
+    </div>
+</div>
+<div class="row col-lg-12">
+    <label class="control-label">{{ vm.totalItems }} Total Results</label>
+</div>
+<div class="row col-lg-12">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Result
+                </th>
+                <th>
+                    Type
+                </th>
+            </tr>
+        </thead>
+        <tr ng-repeat="entity in vm.entities">
+            <td>
+                <a href="#{{ vm.getUrl(vm.entityDataStore, entity); }}">
+                    {{ entity[vm.getDisplayProperty(vm.entityDataStore)]; }}
+                </a>
+            </td>
+            <td>
+                {{ vm.entityDataStore }}
+            </td>
+        </tr>
+    </table>
+    <div class="form-group">
+        <ul uib-pagination total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.currentPage" ng-change="vm.pageChanged()" max-size="7" boundary-links="true"
+                    rotate="false"></ul>
+    </div>
+</div>
+<div class="row col-lg-12">
+    <back-button inner-class="btn btn-default pull-right"></back-button>
+</div>

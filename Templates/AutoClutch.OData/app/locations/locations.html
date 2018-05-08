@@ -1,0 +1,91 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Locations</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row col-lg-12">
+    <a class="btn btn-default" href="#/location">Add Location</a>
+</div>
+<div class="row col-lg-12">
+    <label class="control-label">{{ vm.totalItems }} Total Locations</label>
+</div>
+<div class="row col-lg-12">
+    <table class="table table-striped">
+        <tr>
+            <th>
+                <a data-ng-click="vm.setSortOrder('facility')">Facility</a>
+            </th>
+            <th>
+                <a data-ng-click="vm.setSortOrder('phoneNumber')">Phone Number</a>
+            </th>
+            <th>
+                <a data-ng-click="vm.setSortOrder('emailAddress')">Email Address</a>
+            </th>
+            <th>
+                <a data-ng-click="vm.setSortOrder('code')">Code</a>
+            </th>
+            <th>
+                <a data-ng-click="vm.setSortOrder('address')">Address</a>
+            </th>
+            <th>
+                <a data-ng-click="vm.setSortOrder('contactPerson')">Contact Person</a>
+            </th>
+            <th>
+                <a data-ng-click="vm.setSortOrder('isPlant')">Is Plant</a>
+            </th>
+            <th>
+                <a data-ng-click="vm.setSortOrder('isCfs')">Is CFS</a>
+            </th>
+            <th>
+                <a data-ng-click="vm.setSortOrder('isCfn')">Is CFN</a>
+            </th>
+           
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <tr ng-repeat="location in vm.entities">
+            <td>
+                {{ location.facility }}
+            </td>
+            <td>
+                {{ location.phoneNumber | tel }}
+            </td>
+            <td>
+                {{ location.emailAddress }}
+            </td>
+            <td>
+                {{ location.code }}
+            </td>
+            <td>
+                {{ location.address }}
+            </td>
+            <td>
+                {{ location.contactPerson }}
+            </td>
+            <td>
+                {{ location.isPlant }}
+            </td>
+            <td>
+                {{ location.isCfs }}
+            </td>
+            <td>
+                {{ location.isCfn }}
+            </td>
+            <td>
+                <a class="btn btn-default" href="#/location/{{ location.locationId }}">
+                    Edit
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-default" data-ng-click="vm.deleteEntity(location.locationId)">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    </table>
+    <div class="form-group">
+        <ul uib-pagination total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.currentPage" ng-change="vm.pageChanged()" max-size="7" boundary-links="true"
+            rotate="false"></ul>
+    </div>
+</div>

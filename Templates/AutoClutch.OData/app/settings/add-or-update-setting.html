@@ -1,0 +1,37 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Setting</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="well">
+        <form class="form-group" style="padding:14px;" name ="vm.myForm" confirm-on-exit>
+            <div class="row" data-ng-show="!vm.setting.settingId || vm.setting.settingId == 0">
+                <div class=" col-lg-4">
+                    <input type="text" class="form-control" data-ng-model="vm.setting.settingKey" placeholder="Setting name" autofocus />
+                </div>
+            </div>
+            <div class="row" data-ng-hide="!vm.setting.settingId || vm.setting.settingId == 0">
+                <div class="col-lg-4">
+                    <label>{{ vm.setting.settingKey }}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <input type="text" class="form-control" data-ng-model="vm.setting.settingValue" placeholder="Setting value" autofocus />
+                </div>
+            </div>
+        </form>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="pull-right" style="padding-right: 12px;">
+                        <back-button inner-class="btn btn-default"></back-button>
+                        <input type="submit" value="Save" class="btn btn-default pull-right" ng-click="vm.myForm.$setPristine(); vm.addOrUpdate(vm.setting)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

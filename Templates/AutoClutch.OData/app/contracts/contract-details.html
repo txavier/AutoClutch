@@ -1,0 +1,193 @@
+﻿<div class="row" style="padding-top:12px;">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <xs-auto-input data-ng-if="vm.model.contractNumber" 
+                               ng-model="vm.model.contractNumber" 
+                               title="Contract Number" 
+                               inner-class="form-control" 
+                               data-ng-change="vm.updateContract(vm.model.contractId, vm.model)"
+                               access="admin, sectionChief, engineer" 
+                               access-permission-type="AtLeastOne"></xs-auto-input>
+            </div>
+        </div>        
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <xs-auto-input data-ng-if="vm.model.contractDescription" 
+                               ng-model="vm.model.contractDescription" 
+                               title="Contract Description" 
+                               inner-class="form-control" 
+                               data-ng-change="vm.updateContract(vm.model.contractId, vm.model)"
+                               access="admin, sectionChief, engineer" 
+                               access-permission-type="AtLeastOne"></xs-auto-input>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="padding-bottom: 14px;" >
+    <div class="col-lg-2" data-ng-if="vm.model.specification || vm.model.specificationFileId">
+        <a href="#/{{ vm.model.section.name }}/contracts/{{ vm.model.contractNumber }}/specification" class="btn btn-default" >Specification</a>
+    </div>
+    <div class="col-lg-2">
+        <a ng-href="{{ vm.disableAll == true ? '' : '#/' + vm.model.section.name + '/contracts/' + vm.model.contractNumber + '/add-specification' }}" 
+           class="btn btn-default" data-ng-disabled="vm.disableAll" access="admin, sectionChief" access-permission-type="AtLeastOne" access-hidden="true">
+            Add/Replace Specification
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <uib-accordion close-others="true">
+            <div uib-accordion-group class="panel-default" heading="Static Header, initially expanded" is-open="vm.isOpen" is-disabled="false">
+                <uib-accordion-heading>
+                    Contract Details <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.status.isFirstOpen, 'glyphicon-chevron-right': !vm.status.isFirstOpen}"></i>
+                </uib-accordion-heading>
+                <div class="row mtbox">
+                    <box-button title="BWT Contact" 
+                                data-ng-disabled="vm.disableAll || vm.accessRoleDisable" 
+                                array-of-objects="vm.engineers" 
+                                array-display-key="name" 
+                                array-value-key="engineerId"
+                                editable="false" 
+                                live-search="true" 
+                                data-ng-change="vm.setObject(vm.model, 'engineer', 'engineerId', vm.engineers, vm.model.engineerId); vm.updateContract(vm.model.contractId, vm.model)" 
+                                data-ng-model="vm.model.engineerId" 
+                                access="admin, sectionChief" 
+                                access-permission-type="AtLeastOne">
+                    </box-button>
+                    <box-button title="BWT Contact Phone Number" data-ng-disabled="true" data-ng-model="vm.model.engineer.phoneNumber" 
+                                data-bb-type="tel"></box-button>
+                    <box-button title="BWT Contact Email" data-ng-disabled="true" data-ng-model="vm.model.engineer.emailAddress "></box-button>
+                    <box-button title="" data-ng-disabled="true" data-ng-model="vm.model.test"></box-button>
+                    <box-button title="" data-ng-disabled="true" data-ng-model="vm.model.test"></box-button>
+                    <box-button title="" data-ng-disabled="true" data-ng-model="vm.model.test"></box-button>
+                    <box-button title="Contractor" 
+                                data-ng-disabled="vm.disableAll || vm.accessRoleDisable" 
+                                array-of-objects="vm.contractors" 
+                                array-display-key="name"  
+                                array-value-key="contractorId"
+                                live-search="true" 
+                                data-ng-change="vm.setObject(vm.model, 'contractor', 'contractorId', vm.contractors, vm.model.contractorId); vm.updateContract(vm.model.contractId, vm.model); vm.updateContractor(vm.model.contractId, vm.model)" 
+                                data-ng-model="vm.model.contractorId" 
+                                access="admin, sectionChief" 
+                                access-permission-type="AtLeastOne">
+                    </box-button>
+                    <!--<box-button title="Contractor's Contact Person {{ vm.model.contractorContactPersonId }}" 
+                                data-ng-disabled="vm.disableAll || vm.accessRoleDisable" 
+                                array-of-objects="vm.contractorContactPersons" 
+                                array-display-key="nameDisplay" 
+                                array-value-key="contractorContactPersonId"
+                                live-search="false"
+                                data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" 
+                                data-ng-model="vm.model.contractorContactPersonId" 
+                                access="admin, sectionChief" 
+                                access-permission-type="AtLeastOne">
+                    </box-button>-->
+                    <box-button title="Contractor's Contact Person" data-ng-disabled="true" data-ng-model="vm.model.contractor.contactPerson" access="admin, sectionChief" access-permission-type="AtLeastOne"></box-button>
+                    <box-button title="Contractor's Phone Number" data-ng-disabled="true" data-ng-model="vm.model.contractor.phoneNumber" data-bb-type="tel"></box-button>
+                    <box-button title="Contractor Email" data-ng-disabled="true" data-ng-model="vm.model.contractor.emailAddress"></box-button>
+                    <box-button title="" data-ng-disabled="true" data-ng-model="vm.model.test"></box-button>
+                    <box-button title="" data-ng-disabled="true" data-ng-model="vm.model.test"></box-button>
+                    <box-button title="Project Labor Agreement" 
+                                data-ng-disabled="vm.disableAll || vm.accessRoleDisable || vm.model.contractTypeId === 1 || vm.model.contractTypeId === 4" 
+                                blocked-out="vm.model.contractTypeId === 1 || vm.model.contractTypeId === 4" 
+                                array-of-objects="[{ value:'Yes', name: 'Yes'}, { value: 'No', name:'No'}]"
+                                array-display-key="name" 
+                                array-value-key="value"
+                                data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" 
+                                data-ng-model="vm.model.projectLaborAgreement"
+                                access="admin, sectionChief" 
+                                access-permission-type="AtLeastOne">
+                    </box-button>
+                    <box-button title="M/WBE Requirement" data-ng-disabled="vm.disableAll || vm.accessRoleDisable || vm.model.contractTypeId === 1" data-bb-type="percentage" blocked-out="vm.model.contractTypeId === 1" data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" data-ng-model="vm.model.mOrWBERequirementDisplay"
+                                access="admin, sectionChief" access-permission-type="AtLeastOne"></box-button>
+                    <box-button title="Project Retainage" data-ng-disabled="vm.disableAll || vm.accessRoleDisable || vm.model.contractTypeId === 1 || vm.model.contractTypeId === 4" blocked-out="vm.model.contractTypeId === 1 || vm.model.contractTypeId === 4" data-bb-type="percentage" data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" data-ng-model="vm.model.projectRetainageDisplay"
+                                access="admin, sectionChief" access-permission-type="AtLeastOne"></box-button>
+                    <box-button title="Contract Duration (Yrs)" data-ng-disabled="vm.disableAll || vm.accessRoleDisable" data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" data-ng-model="vm.model.contractDuration"
+                                access="admin, sectionChief" access-permission-type="AtLeastOne"></box-button>
+                    <box-button title="Renewal Option (Yrs)" data-ng-disabled="vm.disableAll || vm.accessRoleDisable || vm.model.contractTypeId === 1 || (vm.model.originalContractId !== null) || vm.model.contractTypeId === 4" blocked-out="vm.model.contractTypeId == 1 || (vm.model.originalContractId !== null) || vm.model.contractTypeId === 4" data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" data-ng-model="vm.model.renewalOption" 
+                                access="admin, sectionChief" access-permission-type="AtLeastOne"></box-button>
+                    <box-button title="Contract Category" data-ng-disabled="true" data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" data-ng-model="vm.model.contractCategory.name"></box-button>
+                    
+                    <box-button title="Contract Status" 
+                                data-ng-disabled="(vm.disableAll || vm.accessRoleDisable) && !(vm.loggedInUser.sectionChiefRole || false)" 
+                                array-of-objects="vm.contractStatuses" 
+                                array-display-key="name" 
+                                array-value-key="contractStatusId"
+                                editable="false" 
+                                live-search="false" 
+                                data-ng-change="vm.setObject(vm.model, 'contractStatus', 'contractStatusId', vm.contractStatuses, vm.model.contractStatusId); vm.updateContract(vm.model.contractId, vm.model)" 
+                                data-ng-model="vm.model.contractStatusId"
+                                access="admin, sectionChief" 
+                                access-permission-type="AtLeastOne"></box-button>
+                    <box-button title="Registration No" data-ng-disabled="vm.disableAll || vm.accessRoleDisable" data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" data-ng-model="vm.model.registrationNumber" access="admin, sectionChief" access-permission-type="AtLeastOne"></box-button>
+                    <box-button title="Contract PIN" data-ng-disabled="vm.disableAll || vm.accessRoleDisable" data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" data-ng-model="vm.model.contractPin" access="admin, sectionChief" access-permission-type="AtLeastOne"></box-button>
+                    <box-button title="Engineer's Estimate" data-ng-disabled="vm.disableAll || vm.model.contractTypeId === 4" blocked-out="vm.model.contractTypeId === 4" data-bb-type="currency" data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" data-ng-model="vm.model.engineerEstimate" access="admin, sectionChief, areaEngineer, engineer" access-permission-type="AtLeastOne"></box-button>
+                    <box-button title="Contract Expiration Date" data-ng-disabled="vm.disableAll || vm.accessRoleDisable" calendar="true" data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" data-ng-model="vm.model.contractExpirationDateDisplay"
+                                access="admin, sectionChief" access-permission-type="AtLeastOne"></box-button>
+                    <box-button title="Extension Expiration Date" data-ng-disabled="true" blocked-out="vm.model.contractTypeId === 4" data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" calendar="true" data-ng-model="vm.model.extensionEndDateDisplay"></box-button>
+                    <box-button title="Contract Type" data-ng-disabled="true" data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" data-ng-model="vm.model.contractType.name"></box-button>
+                    <box-button data-ng-disabled="vm.disableAll || vm.accessRoleDisable || vm.model.contractTypeId === 1 || vm.model.contractTypeId === 4" blocked-out="vm.model.contractTypeId === 1 || vm.model.contractTypeId === 4" data-ng-if="!vm.model.replacementContractNumberDisplay" title="Replacement Contract Number" data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" data-ng-model="vm.model.replacementContractNumberDisplay"></box-button>
+
+                    <a data-ng-class="{'box1-blocked-out': vm.model.contractTypeId == 1 }" data-ng-if="vm.model.replacementContractNumberDisplay" href="#/{{ vm.model.section.name }}/contracts/{{ vm.model.replacementContractNumberDisplay }}" class="hover">
+                        <box-button title="Replacement Contract Number" data-ng-disabled="vm.disableAll || vm.accessRoleDisable || vm.model.contractTypeId === 1 || vm.model.contractTypeId === 4" blocked-out="vm.model.contractTypeId === 1 || vm.model.contractTypeId === 4" data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" data-ng-model="vm.model.replacementContractNumberDisplay" access="admin, sectionChief"
+                                    access-permission-type="AtLeastOne"></box-button>
+                    </a>
+
+                    <box-button title="{{ vm.model.contract11.length > 0 ? 'Parent Contract Number:' : (vm.model.renewalContractNumber ? 'Renewal Contract Number:' : 'Click to Add a Renewal') }}"
+                                blocked-out="vm.model.contractTypeId === 1 || vm.model.contractTypeId ===4" 
+                                data-ng-disabled="((vm.model.renewalOption == null || vm.model.renewalOption === 0) && !vm.model.originalContractNumber ? true : false) || vm.disableAll || vm.accessRoleDisable || vm.model.contractTypeId === 4" 
+                                data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" 
+                                data-ng-model="vm.contractNumberLink" 
+                                data-ng-click="vm.renewalClick()"
+                                access="admin, sectionChief" 
+                                access-permission-type="AtLeastOne"></box-button>
+                    <box-button title="New Spec Due Date" data-ng-disabled="true" blocked-out="vm.model.contractTypeId === 4" calendar="true" data-bb-type="date" data-ng-model="vm.model.calculatedNewSpecDueDate"></box-button>
+                    <box-button title="Budget Code" 
+                                data-ng-disabled="vm.disableAll || vm.accessRoleDisable" 
+                                array-of-objects="vm.budgetCodes"
+                                array-display-key="budgetCodeDescription" 
+                                live-search="true" 
+                                array-value-key="budgetCodeId"
+                                data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" 
+                                data-ng-model="vm.model.budgetCodeId" 
+                                access="admin, sectionChief" 
+                                access-permission-type="AtLeastOne">
+                    </box-button>
+                    <box-button title="Object Code"
+                                data-ng-disabled="vm.disableAll || vm.accessRoleDisable"
+                                array-of-objects="vm.objectCodes"
+                                array-display-key="objectCodeDescription"
+                                array-display-num="objectCodeNumber"
+                                live-search="true"
+                                array-value-key="objectCodeId"
+                                data-ng-change="vm.updateContract(vm.model.contractId, vm.model)"
+                                data-ng-model="vm.model.objectCodeId"
+                                access="admin, sectionChief"
+                                access-permission-type="AtLeastOne">
+                    </box-button>
+                    <box-button title="Original Contract Value" data-bb-type="currency" data-ng-disabled="vm.disableAll || vm.accessRoleDisable" data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" data-ng-model="vm.model.originalContractValue" 
+                                access="admin, sectionChief" access-permission-type="AtLeastOne"></box-button>
+                    <box-button title="Current Contract Value" data-bb-type="currency" data-ng-disabled="true" data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" data-ng-model="vm.model.currentContractValueDisplay"></box-button>
+                    <box-button title="{{ vm.paidToDateTitle }}" data-bb-type="currency" data-ng-disabled="true" data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" data-ng-model="vm.model.paidToDateDisplay"></box-button>
+                    <box-button title="Contract Balance" data-bb-type="currency" data-ng-disabled="true" data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" data-ng-model="vm.model.contractBalanceDisplay"></box-button>
+                    <box-button title="" data-ng-disabled="true" data-ng-model="vm.model.test"></box-button>
+                    <box-button title="" data-ng-disabled="true" data-ng-model="vm.model.test"></box-button>
+                    
+                    <box-button title="Original Parts and Material Value" 
+                                data-ng-disabled="vm.disableAll || vm.accessRoleDisable || vm.model.contractTypeId === 1 || vm.model.contractTypeId === 4" 
+                                blocked-out="vm.model.contractTypeId === 1 || vm.model.contractTypeId === 4" 
+                                data-bb-type="currency" 
+                                data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" 
+                                data-ng-model="vm.model.originalPartsMaterialValue"
+                                access="admin, sectionChief" access-permission-type="AtLeastOne"></box-button>
+                    <box-button title="Current Parts and Material Value" blocked-out="vm.model.contractTypeId === 1 || vm.model.contractTypeId === 4" data-bb-type="currency" data-ng-disabled="true" data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" data-ng-model="vm.model.currentPartsMaterialValueDisplay"></box-button>
+                    <box-button title="Parts and Material Value Paid To Date" blocked-out="vm.model.contractTypeId == 1 || vm.model.contractTypeId === 4" data-bb-type="currency" data-ng-disabled="true" data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" data-ng-model="vm.model.partsMaterialPaidToDateDisplay"></box-button>
+                    <box-button title="Parts and Material Value Balance" blocked-out="vm.model.contractTypeId == 1 || vm.model.contractTypeId === 4" data-bb-type="currency" data-ng-disabled="true" data-ng-change="vm.updateContract(vm.model.contractId, vm.model)" data-ng-model="vm.model.partsMaterialBalanceDisplay"></box-button>
+                    <box-button title="" data-ng-disabled="true" data-ng-model="vm.model.test"></box-button>
+                    <box-button title="" data-ng-disabled="true" data-ng-model="vm.model.test"></box-button>
+                </div>
+            </div>
+        </uib-accordion>
+    </div>
+</div>

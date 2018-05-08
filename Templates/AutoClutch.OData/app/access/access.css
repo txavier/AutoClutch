@@ -1,0 +1,13 @@
+﻿/*http://stackoverflow.com/questions/2091168/disable-a-link-using-css*/
+.not-active {
+    pointer-events: none;
+    cursor: default;
+}
+
+/* This was used in the case that we actually want to make an element inside
+    of a element enabled, even if the parent element has been set as inaccessible.
+*/
+.enabled-override {
+    pointer-events:all;
+    cursor: default;
+}

@@ -1,0 +1,209 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Work Order</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <dep-contract-details data-ng-if="vm.contract" data-ng-model="vm.contract" is-open="vm.status.isFirstOpen"></dep-contract-details>
+    </div>
+</div>
+<div class="row" data-ng-if="true">
+    <div class="col-lg-12">
+        <a href="#/{{ vm.sectionName }}/contracts/{{ vm.contractNumber }}/work-orders/{{ vm.workOrder.workOrderNumber }}/work-order-histories"
+           class="btn btn-default">Work Order History</a>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-lg-12">
+        <uib-accordion close-others="vm.oneAtATime">
+            <div uib-accordion-group class="panel-default" is-open="vm.status.workOrderDetailsOpen" data-ng-if="vm.workOrder">
+                <uib-accordion-heading>
+                    Work Order Details <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.status.workOrderDetailsOpen, 'glyphicon-chevron-right': !vm.status.workOrderDetailsOpen}"></i>
+                </uib-accordion-heading>
+                <div class="row mtbox">
+                    <box-button data-ng-disabled="true" title="Engineer's Work Order Number" data-ng-model="vm.workOrder.workOrderNumber" access="admin, sectionChief" access-permission-type="AtLeastOne"></box-button>
+                    <box-button data-ng-disabled="!vm.cmmsWorkOrderNumberEditable" title="CMMS Number" data-ng-model="vm.workOrder.cmmsWorkOrderNumber" data-copy-to-clipboard="!vm.cmmsWorkOrderNumberEditable"></box-button>
+                    <box-button data-ng-disabled="true" title="Facility" data-ng-model="vm.workOrder.location.facility" access="admin, sectionChief" access-permission-type="AtLeastOne"></box-button>
+                    <box-button data-ng-disabled="true" title="Facility Contact Person" data-ng-model="vm.workOrder.location.contactPerson" access="admin, sectionChief" access-permission-type="AtLeastOne"></box-button>
+                    <box-button data-ng-disabled="true" title="Contact Email" data-ng-model="vm.workOrder.location.emailAddress"></box-button>
+                    <box-button data-ng-disabled="true" title="Contact Phone Number" data-ng-model="vm.workOrder.location.phoneNumber" data-bb-type="tel"></box-button>
+                    <box-button data-ng-disabled="true" title="Service Type" data-ng-model="vm.workOrder.serviceType.name"></box-button>
+                    <box-button data-ng-disabled="true" title="Repair Type" data-ng-model="vm.workOrder.repairType.name"></box-button>
+                    <box-button data-ng-disabled="vm.disableIfEngineerAndCanceledOrClosed" 
+                                title="Status" 
+                                data-ng-change="vm.setObject(vm.workOrder, 'workOrderStatus', 'workOrderStatusId', vm.workOrderStatuses, vm.workOrder.workOrderStatusId); vm.updateEntity('workOrders', vm.workOrder.workOrderId, vm.workOrder)" 
+                                array-of-objects="vm.workOrderStatuses" 
+                                array-display-key="name" 
+                                array-value-key="workOrderStatusId"
+                                editable="false" 
+                                live-search="false" 
+                                data-ng-model="vm.workOrder.workOrderStatusId" 
+                                access="admin, sectionChief, engineer" 
+                                access-permission-type="AtLeastOne"></box-button>
+                    <box-button data-ng-disabled="true" title="Total Days" data-ng-model="vm.workOrder.totalDaysDisplay"></box-button>
+                    <box-button data-ng-disabled="true" title="Issued Date" calendar="true" data-ng-model="vm.workOrder.issuedDate"></box-button>
+                    <box-button title="" data-ng-disabled="true" data-ng-model="vm.workOrder.test"></box-button>
+                    <box-button data-ng-disabled="vm.disableAll" title="Evaluation Date" calendar="true" data-bb-type="date" data-ng-model="vm.workOrder.contractorEvaluationDate"></box-button>
+                    <box-button data-ng-disabled="vm.disableAll" title="Proposal Date" calendar="true" data-bb-type="date" data-ng-model="vm.workOrder.contractorProposalDate"></box-button>
+                    <box-button data-ng-disabled="vm.disableAll" title="Parts Ordered Date" calendar="true" data-bb-type="date" data-ng-model="vm.workOrder.partsOrderedDate"></box-button>
+                    <box-button data-ng-disabled="vm.disableAll" title="Parts Delivered Date" calendar="true" data-bb-type="date" data-ng-model="vm.workOrder.actualPartsDeliveryDate"></box-button>
+                    <box-button data-ng-disabled="vm.disableAll" title="Return To Facility Date" calendar="true" data-bb-type="date" data-ng-model="vm.workOrder.returnedToFacilityDate"></box-button>
+                    <box-button data-ng-disabled="vm.disableAll" title="Close Out Date" calendar="true" data-bb-type="date" data-ng-model="vm.workOrder.closedDate"></box-button>
+                    <box-button data-ng-disabled="true" title="Proposal Cost" data-bb-type="currency" data-ng-model="vm.workOrder.costProposalValueDisplay" access="admin, sectionChief" access-permission-type="AtLeastOne"></box-button>
+                    <box-button data-ng-disabled="true" title="Actual Cost" data-bb-type="currency" data-ng-model="vm.workOrder.actualRepairCostDisplay" access="admin, sectionChief" access-permission-type="AtLeastOne"></box-button>
+                    <box-button data-ng-disabled="vm.disableAll" title="Payment Number" array-of-objects="vm.payments" array-display-key="paymentNumber" 
+                                array-value-key="paymentId" editable="false" live-search="false" data-ng-model="vm.workOrder.paymentId"></box-button>
+                </div>
+            </div>
+            <div uib-accordion-group class="panel-default" is-open="vm.status.workOrderOpen" data-ng-if="vm.workOrder">
+                <uib-accordion-heading>
+                    Update Work Order <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.status.workOrderOpen, 'glyphicon-chevron-right': !vm.status.workOrderOpen}"></i>
+                </uib-accordion-heading>
+                <form name="vm.myForm" role="form" confirm-on-exit>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <xs-auto-input data-ng-disabled="vm.disableAll" 
+                                           data-ng-model="vm.workOrder.repairDescription" 
+                                           title="Repair Description" 
+                                           style="padding-bottom: 14px;" 
+                                           inner-class="form-control" 
+                                           name="repair description"
+                                           required></xs-auto-input>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>
+                                            Contractors Work Order Number
+                                        </label>
+                                        <input type="text" class="form-control" data-ng-disabled="vm.disableAll" data-ng-model="vm.workOrder.contractorWorkOrderNumber" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            CMMS Asset ID
+                                        </label>
+                                        <input type="text" class="form-control" data-ng-disabled="vm.disableAll" data-ng-model="vm.workOrder.cmmsAssetID" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Asset Serial Number</label>
+                                        <input type="text" class="form-control" data-ng-disabled="vm.disableAll" data-ng-model="vm.workOrder.assetSerialNumber" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Contractor Response Date</label>
+                                        <xs-auto-input data-ng-disabled="vm.disableAll" data-ng-model="vm.workOrder.contractorResponseDate" inner-class="form-control" calendar="true"></xs-auto-input>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>DEP Inspection Date</label>
+                                        <xs-auto-input data-ng-disabled="vm.disableAll" data-ng-model="vm.workOrder.depInspectionDate" inner-class="form-control" calendar="true"></xs-auto-input>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>DEP Approval Date</label>
+                                        <xs-auto-input data-ng-disabled="vm.disableAll" data-ng-model="vm.workOrder.depApprovalDate" inner-class="form-control" calendar="true"></xs-auto-input>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Parts Delivery Estimate Date</label>
+                                        <xs-auto-input data-ng-disabled="vm.disableAll" data-ng-model="vm.workOrder.partsDeliveryEstimateDate" inner-class="form-control" calendar="true"></xs-auto-input>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Estimated Completion Date</label>
+                                        <xs-auto-input data-ng-disabled="vm.disableAll" data-ng-model="vm.workOrder.estimatedCompletionDate" inner-class="form-control" calendar="true"></xs-auto-input>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Repair/Service/PM Completion Date</label>
+                                        <xs-auto-input data-ng-disabled="vm.disableAll" data-ng-model="vm.workOrder.repairCompletionDate" inner-class="form-control" calendar="true"></xs-auto-input>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>DEP Eye Witness Date</label>
+                                        <xs-auto-input data-ng-disabled="vm.disableAll" data-ng-model="vm.workOrder.depEyeWitnessDate" inner-class="form-control" calendar="true"></xs-auto-input>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Proposal (Non-Material)</label>
+                                        <input type="text" class="form-control" data-ng-disabled="vm.disableAll" data-ng-model="vm.workOrder.costProposalNonPM" data-blur-currency />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Proposal (Parts and Material)</label>
+                                        <input type="text" class="form-control" data-ng-disabled="vm.disableAll" data-ng-model="vm.workOrder.costProposalPM" data-blur-currency />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Actual (Non-Material)</label>
+                                        <input type="text" class="form-control" data-ng-disabled="vm.disableAll" data-ng-model="vm.workOrder.actualRepairCostNonPM" data-blur-currency />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Actual (Parts and Material)</label>
+                                        <input type="text" class="form-control" data-ng-disabled="vm.disableAll" data-ng-model="vm.workOrder.actualRepairCostPM" data-blur-currency />
+                                    </div>
+                                    <div class="form-group" data-ng-if="vm.workOrder.workOrderStatus.name == 'Canceled'">
+                                        <label>Cancelled Comment</label>
+                                        <textarea class="form-control" rows="5" data-ng-disabled="vm.disableAll" data-ng-model="vm.workOrder.cancelComments" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6" style="padding-right: 12px;">
+                                    <div class="form-group">
+                                        <label>Cause of Failure</label>
+                                        <textarea class="form-control" rows="5" data-ng-disabled="vm.disableAll" data-ng-model="vm.workOrder.causeOfFailure" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Corrective Measure Taken</label>
+                                        <textarea class="form-control" rows="5" data-ng-disabled="vm.disableAll" data-ng-model="vm.workOrder.correctiveMeasureTaken" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Weekly Status Update</label>
+                                        <textarea class="form-control" rows="5" data-ng-disabled="vm.disableAll" data-ng-model="vm.workOrder.weeklyStatusUpdate" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Comments</label>
+                                        <textarea class="form-control" rows="5" data-ng-disabled="vm.disableAll" data-ng-model="vm.workOrder.comments" />
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            Email
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label>To</label>
+                                                <input type="text" class="form-control" data-ng-disabled="vm.disableAll" data-ng-model="vm.workOrderEmail.to" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>CC</label>
+                                                <input type="text" class="form-control" data-ng-disabled="vm.disableAll" data-ng-model="vm.workOrderEmail.cc" />
+                                            </div>
+                                          
+                                            <div class="form-group">
+                                                <label>Body</label>
+                                                <textarea class="form-control" rows="5" data-ng-model="vm.workOrderEmail.body"
+                                                          data-ng-disabled="vm.disableAll && !vm.sendEmailUpdate" />
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="checkbox" data-ng-disabled="vm.disableAll" data-ng-model="vm.sendEmailUpdate" />&nbsp;Send Update Email
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="pull-right" style="padding-right: 12px;">
+                                        <a class="btn btn-default" href="#/{{ vm.sectionName }}/contracts/{{ vm.contractNumber }}/work-orders?currentPage={{vm.currentPage}}&set={{vm.set}}">Back</a>
+                                        <input type="submit" value="Save" class="btn btn-default pull-right" 
+                                               ng-click="vm.myForm.$setPristine(); vm.updateEntity('workOrders', vm.workOrder.workOrderId, vm.workOrder);vm.saveClicked = true;" 
+                                               data-ng-disabled="vm.disableAll" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </uib-accordion>
+    </div>
+</div>

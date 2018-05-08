@@ -1,0 +1,89 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Deduction</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                    <form name="vm.myForm" role="form" confirm-on-exit>
+                        <div class="col-lg-11">
+                            <div class="form-group">
+                                <label>
+                                    Contract Number
+                                </label>
+                                <input type="text" class="form-control" data-ng-model="vm.contract.contractNumber" data-ng-disabled="true" />
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    Payment Number
+                                </label>
+                                <xs-auto-input data-ng-model="vm.deduction.paymentId" 
+                                               array-of-objects="vm.payments" 
+                                               array-display-key="paymentNumber" 
+                                               array-value-key="paymentId"
+                                               editable="false" 
+                                               inner-class="form-control" 
+                                               live-search="false" 
+                                               data-ng-change="vm.setObject(vm.deduction, 'payment', 'paymentId', vm.payments, vm.deduction.paymentId); vm.paymentChanged()"></xs-auto-input>
+                            </div>
+                            <div class="form-group" data-ng-show="vm.showFuturePaymentNumber">
+                                <label>
+                                    Future Payment Number
+                                </label>
+                                <input type="text" class="form-control" enabled="false" data-ng-model="vm.deduction.payment.valueForPaymentNumber" 
+                                       name="payment number" data-ng-required="vm.showFuturePaymentNumber" required disabled="disabled"/>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    Date Issued
+                                </label>
+                                <xs-auto-input data-ng-model="vm.deduction.date" calendar="true" name="date issued" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>Deduction Type</label>
+                                <xs-auto-input data-ng-model="vm.deduction.deductionTypeId" array-of-objects="vm.deductionTypes" array-display-key="name" 
+                                               array-value-key="deductionTypeId" editable="false" inner-class="form-control" live-search="false" name ="deduction type" required>
+                                </xs-auto-input>
+                            </div>
+                            <div class="form-group">
+                                <label>Amount</label>
+                                <input type="text" class="form-control" enabled="false" data-ng-model="vm.deduction.amount" data-blur-currency name="amount"/>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    Memo
+                                    <a ng-if="vm.deduction.memo || vm.deduction.fileId" class="" href="#/{{ vm.contract.section.name }}/contracts/{{ vm.contract.contractNumber }}/deductions/{{ vm.deduction.deductionId }}">(View Current File)</a>
+                                </label>
+                                <div ng-model="vm.deduction.tempDropFile"
+                                     ngf-drop="vm.upload(vm.deduction.tempDropFile)"
+                                     ngf-select class="drop-box"
+                                     ngf-drag-over-class="'dragover'"
+                                     ngf-multiple="true"
+                                     ngf-allow-dir="true"
+                                     ngf-max-size="10GB"
+                                     ngf-max-total-size="10GB"
+                                     accept="image/*,application/pdf"
+                                     ngf-pattern="'image/*,application/pdf'">
+                                    {{ vm.getFileInfoMessage(vm.deduction.filename, vm.deduction.memo, vm.deduction.fileId, vm.fileInfo, vm.deduction.tempDropFile) }}
+                                </div>
+                                <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+                            </div>
+                        </div>
+                    </form>
+</div>
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="pull-right" style="padding-right: 12px;">
+                        <a class="btn btn-default" href="#/{{ vm.sectionName }}/contracts/{{ vm.contractNumber }}/payments">Back</a>
+                        <input type="submit" value="Save" class="btn btn-default pull-right" ng-click="vm.myForm.$setPristine(); vm.addDeduction(vm.deduction)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

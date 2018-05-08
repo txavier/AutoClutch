@@ -1,0 +1,40 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Work Order History</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<br/>
+<div class="row">
+    <div class="col-lg-12">
+        <label class="control-label">{{ vm.totalItems }} Total Work Order Histories</label>
+    </div>
+</div>
+<div class="row col-lg-12">
+    <table class="table table-striped">
+        <tr>
+            <th>
+                <a data-ng-click="vm.setSortOrder('workOrderFilename')">Work Order FileName</a>
+            </th>
+            <th>
+                <a data-ng-click="vm.setSortOrder('dateIssued')">Date</a>
+            </th>      
+            <th></th>      
+        </tr>
+        <tr ng-repeat="entity in vm.entities">
+            <td>
+                {{ entity.workOrderFilename.split('\\')[entity.workOrderFilename.split('\\').length - 1] }}
+            </td>
+            <td>
+                {{ entity.dateIssued | date:'M/d/yyyy' }}
+            </td>
+            <td>
+                <a class="btn btn-default" href="#/{{ vm.sectionName }}/contracts/{{ vm.contractNumber }}/work-orders/{{ vm.workOrderNumber }}/work-order-history-pdf/{{ entity.workOrderHistoryId }}">Go</a>
+            </td>
+        </tr>
+    </table>
+    <div class="form-group">
+        <ul uib-pagination total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.currentPage" ng-change="vm.pageChanged()" max-size="7" boundary-links="true"
+                    rotate="false"></ul>
+    </div>
+</div>

@@ -1,0 +1,157 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Change Order</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <dep-contract-details data-ng-model="vm.contract" is-open="vm.openContractDetails" data-ng-click="vm.expandContractDetails()"></dep-contract-details>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <a ng-if="vm.changeOrder.memoPDF || vm.changeOrder.memoPDFFileId" 
+           class="btn btn-default" 
+           href="#/{{ vm.contract.section.name }}/contracts/{{ vm.contract.contractNumber }}/change-orders/{{ vm.changeOrder.changeOrderId }}/change-order-pdf">
+            View Change Order File
+        </a>
+    </div>
+</div>
+<br />
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <form name="vm.myForm" confirm-on-exit>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>
+                            Contract Number
+                        </label>
+                        <input type="text" class="form-control" data-ng-model="vm.contract.contractNumber" data-ng-disabled="true" />
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Change Order Type
+                        </label>
+                        <!--<xs-auto-input data-ng-disabled="true" data-ng-model="vm.changeOrder.changeOrderType" disabled="disabled" array-of-objects="vm.changeOrderTypes" array-display-key="name" editable="false" inner-class="form-control" live-search="false"></xs-auto-input>-->
+                        <input type="text" class="form-control" data-ng-model="vm.changeOrder.changeOrderType.name" data-ng-disabled="true" />
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Change Order Number
+                        </label>
+                        <input type="text" class="form-control" disabled="disabled" data-ng-model="vm.changeOrder.changeOrderNumber" />
+                    </div>
+                    <div class="form-group">
+                        <label>Identification Date</label>
+                        <input type="text" class="form-control" disabled="disabled" value="{{ vm.changeOrder.identificationDate | date:'M/d/yyyy' }}" />
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-control" rows="5" data-ng-model="vm.changeOrder.description" data-ng-disabled="vm.user.engineerRole"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Reason for Change Order</label>
+                        <textarea class="form-control" rows="5" data-ng-model="vm.changeOrder.reasonForChangeOrder" data-ng-disabled="vm.user.engineerRole"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Comments</label>
+                        <textarea class="form-control" rows="5" data-ng-model="vm.changeOrder.comment" data-ng-disabled="vm.user.engineerRole" />
+                    </div>
+                </div>
+                <div class="col-lg-6" style="padding-right: 12px;">
+                    <div class="form-group" data-ng-if="!vm.timeExtensionInvisible">
+                        <label>
+                            Engineer's Estimate
+                        </label>
+                        <input type="text" class="form-control" data-ng-model="vm.changeOrder.engineerEstimate" data-blur-currency data-ng-disabled="vm.user.engineerRole"/>
+                    </div>
+                    <div class="form-group"  data-ng-if="!vm.timeExtensionInvisible">
+                        <label>
+                            Proposal Date
+                        </label>
+                        <xs-auto-input data-ng-model="vm.changeOrder.proposalDate" calendar="true" access="sectionChief, areaEngineer" access-permission-type="AtLeastOne" data-ng-disabled="vm.user.engineerRole" />
+                    </div>
+                    <div class="form-group" data-ng-if="!vm.timeExtensionInvisible">
+                        <label>
+                            Proposal Amount
+                        </label>
+                        <input type="text" class="form-control" data-ng-model="vm.changeOrder.proposalAmount" data-blur-currency data-ng-disabled="vm.user.engineerRole"/>
+                    </div>
+                    <div class="form-group" data-ng-if="!vm.timeExtensionInvisible">
+                        <label>
+                            BWT Approval Date
+                        </label>
+                        <xs-auto-input data-ng-model="vm.changeOrder.bwtApprovalDate" calendar="true"  access="sectionChief, areaEngineer" access-permission-type="AtLeastOne" data-ng-disabled="vm.user.engineerRole" />
+                    </div>
+                    <div class="form-group" data-ng-if="!vm.timeExtensionInvisible">
+                        <label>
+                            BWT Approval Amount
+                        </label>
+                        <input type="text" class="form-control" data-ng-model="vm.changeOrder.bwtApprovalAmount" data-blur-currency data-ng-disabled="vm.user.engineerRole"/>
+                    </div>
+                    <div class="form-group" data-ng-if="vm.timeExtensionVisible">
+                        <label>
+                            Extension Date
+                        </label>
+                        <xs-auto-input data-ng-model="vm.changeOrder.extensionDate" calendar="true"  access="sectionChief, areaEngineer" access-permission-type="AtLeastOne"/>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Registered
+                        </label>
+                        <xs-auto-input data-ng-model="vm.changeOrder.registered" calendar="true"  access="sectionChief, areaEngineer" access-permission-type="AtLeastOne" data-ng-disabled="vm.user.engineerRole" />
+                    </div>
+                    <div class="form-group" data-ng-if="!vm.timeExtensionInvisible">
+                        <label>
+                            Registered Amount
+                        </label>
+                        <input type="text" class="form-control" data-ng-model="vm.changeOrder.registeredAmount" data-blur-currency data-ng-disabled="vm.user.engineerRole"/>
+                    </div>
+                    <div class="form-group" access="admin, sectionChief" access-permission-type="AtLeastOne" access-hidden="true" data-ng-if="vm.changeOrder.contract.contractTypeId != 1">
+                        <label>
+                            Change Order PDF
+                            <a ng-if="vm.changeOrder.memoPDF || vm.changeOrder.memoPDFFileId"
+                               access="admin, sectionChief"
+                               access-permission-type="AtLeastOne"
+                               access-hidden="true"
+                               ng-really-click="vm.deleteChangeOrderFile(vm.changeOrder.changeOrderId)"
+                               ng-really-message='Are you sure you want to remove this change order document?'>
+                                (Delete Change Order File)
+                            </a>
+                        </label>
+                        <div ng-model="vm.changeOrder.tempDropFile"
+                             data-ng-if="!(vm.changeOrder.memoPDF || vm.changeOrder.memoPDFFileId)"
+                             ngf-drop="vm.upload(vm.changeOrder.tempDropFile)"
+                             ngf-select class="drop-box"
+                             ngf-drag-over-class="'dragover'"
+                             ngf-multiple="true"
+                             ngf-allow-dir="true"
+                             ngf-max-size="10GB"
+                             ngf-max-total-size="10GB"
+                             accept="image/*,application/pdf"
+                             ngf-pattern="'image/*,application/pdf'"
+                             access="admin, sectionChief"
+                             access-permission-type="AtLeastOne">
+                            {{ vm.getFileInfoMessage(vm.changeOrder.filename, vm.changeOrder.memoPDF, vm.changeOrder.memoPDFFileId, vm.fileInfo, vm.changeOrder.tempDropFile) }}
+                        </div>
+                        <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="pull-right" style="padding-right: 12px;">
+                    <a class="btn btn-default" href="#/{{ vm.sectionName }}/contracts/{{ vm.contractNumber }}/change-orders">Back</a>
+                    <input type="submit" value="Save" class="btn btn-default"
+                           ng-click="vm.myForm.$setPristine(); vm.updateEntity('changeOrders', vm.changeOrder.changeOrderId, vm.changeOrder)" data-ng-disabled="vm.disableAll"
+                           access="admin, sectionChief, areaEngineer, engineer" access-permission-type="AtLeastOne" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

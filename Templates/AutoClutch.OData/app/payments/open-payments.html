@@ -1,0 +1,57 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Open Payments</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <label class="control-label">{{ vm.totalItems }} Total Payments</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="form-group">
+            <table class="table table-striped">
+                <tr>
+                    <th>
+                        <a data-ng-click="vm.setSortOrder('contract/contractNumber')">Contract</a>
+                    </th>
+                    <th>
+                        <a data-ng-click="vm.setSortOrder('paymentNumber')">Payment</a>
+                    </th>
+                    <th>
+                        <a data-ng-click="vm.setSortOrder('paymentType/name')">Type</a>
+                    </th>
+                    <th>
+                        <a data-ng-click="vm.setSortOrder('paymentIn')">In</a>
+                    </th>
+                    <th>
+                        <a data-ng-click="vm.setSortOrder('paymentOut')">Out</a>
+                    </th>
+                </tr>
+                <tr ng-repeat="payment in vm.entities">
+                    <td>
+                        {{ payment.contract.contractNumber }}
+                    </td>
+                    <td>
+                        <a href="#/{{ payment.contract.section.name }}/contracts/{{ payment.contract.contractNumber }}/payments/{{ payment.paymentId }}">
+                            {{ payment.paymentNumber }}
+                        </a>
+                    </td>
+                    <td>
+                        {{ payment.paymentType.name }}
+                    </td>
+                    <td>
+                        {{ payment.paymentIn | date:'M/d/yyyy'}}
+                    </td>
+                    <td>
+                        {{ payment.paymentOut | date:'M/d/yyyy'}}
+                    </td>
+                </tr>
+            </table>
+            <ul uib-pagination total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.currentPage" ng-change="vm.pageChanged()" max-size="7" boundary-links="true"
+                        rotate="false"></ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">User Action Logs</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row col-lg-12">
+    <label class="control-label">{{ vm.totalItems }} Total User Action Logs</label>
+</div>
+<div class="row col-lg-12">
+    <table class="table table-striped">
+        <tr>
+            <th>
+                <a data-ng-click="vm.setSortOrder('body')">Notification</a>
+            </th>
+            <th>
+                <a data-ng-click="vm.setSortOrder('dateTime')">Date</a>
+            </th>
+            <th>
+                Summary of Changes To This Object
+            </th>
+        </tr>
+        <tr ng-repeat="systemNotification in vm.entities">
+            <td>
+                {{ systemNotification.body }}
+            </td>
+            <td>
+                {{ systemNotification.date | date:'M/d/yyyy h:mm a' }}
+                ({{ systemNotification.date | moment: 'fromNow'  }})
+            </td>
+            <td>
+                <a class="btn btn-default" data-ng-disabled="systemNotification.recordId == 0" href="#/history/{{ systemNotification.typeFullName }}/{{ systemNotification.recordId }}">Summary of Changes</a>
+            </td>
+        </tr>
+    </table>
+    <div class="form-group">
+        <ul uib-pagination total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.currentPage" ng-change="vm.pageChanged()" max-size="7" boundary-links="true"
+                    rotate="false"></ul>
+    </div>
+</div>

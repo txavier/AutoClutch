@@ -1,0 +1,51 @@
+﻿<h2>Audit History</h2>
+<div class="history-block">
+    <div id="historyList">
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    <input type="checkbox" data-ng-model="vm.expandedAll" />
+                </th>
+                <th>
+                    <a data-ng-click="vm.setSortOrder('body')">History</a>
+                </th>
+                <th>
+                    <a data-ng-click="vm.setSortOrder('date')">Date</a>
+                </th>
+                <th>
+                    <a href="#">Full History</a>
+                </th>
+            </tr>
+            <tr ng-repeat="history in vm.entities">
+                <!--<td>
+                    {{ history }}
+                </td>-->
+                <td>
+                    <input type="checkbox" data-ng-model="history.expanded" />
+                </td>
+                <td>
+                    {{ history.userName || '[No UserName Recorded]' }} {{ history.eventType }} "{{ history.typeFullName.split('.')[history.typeFullName.split('.').length-1] }}" #{{ history.recordId }} on {{ history.date | date:'M/d/yyyy h:mm a' }}
+                    ({{ history.date | moment: 'fromNow'  }}).
+                    <table class="table table-striped" ng-if="history.expanded || vm.expandedAll">
+                        <tr data-ng-repeat="detail in history.details">
+                            <td>
+                                {{ '"' + detail.propertyName + '"' }} was {{ history.eventType == 'Added' || detail.oldValue == null ? 'set' : 'changed from "' + detail.oldValue + '"'}} to {{ '"' + detail.newValue + '"'}}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    {{ history.date | date:'M/d/yyyy h:mm a' }}
+                    ({{ history.date | moment: 'fromNow'  }})
+                </td>
+                <td>
+                    <a href="#/history/{{ history.typeFullName }}/{{ history.recordId }}" class="btn btn-default">Full History</a>
+                </td>
+            </tr>
+        </table>
+        <div class="form-group">
+            <ul uib-pagination total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.currentPage" ng-change="vm.pageChanged()" max-size="7" boundary-links="true"
+                        rotate="false"></ul>
+        </div>
+    </div>
+</div>

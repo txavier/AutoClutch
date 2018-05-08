@@ -159,3 +159,7 @@ $RECYCLE.BIN/
 /Auto.Repo/Packages
 /Auto.Service/Packages
 /Templates/.vscode
+.vs/AutoClutch/v15/Server/sqlite3/storage.ide
+.vs/AutoClutch/v15/Server/sqlite3/db.lock
+.vs/AutoClutch/v15/Server/sqlite3/storage.ide-shm
+.vs/AutoClutch/v15/Server/sqlite3/storage.ide-wal

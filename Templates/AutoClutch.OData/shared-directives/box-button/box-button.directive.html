@@ -1,0 +1,130 @@
+﻿<div class="col-md-2 col-sm-2 box0" 
+     data-ng-blur="vm.editorEnabled('placeholder', false); focusInput=true"  
+     title="{{ vm.editorEnabled('placeholder') ? 'Click heading to end edit mode' : 'Click heading to edit' }}" 
+     data-toggle="tooltip">
+    <div class="box1" data-ng-class="{'box1-disabled': vm.ngDisabled, 'box1-blocked-out': vm.blockedOut}" >
+        <span class="" data-ng-click="vm.editorEnabled('placeholder', null, true)"><b>{{ vm.title }}</b></span>
+        <div ng-if="vm.dropDown && vm.arrayOfObjects">
+            <!-- If this dropdown is disabled then only show the text, not the disabled drop down input control. -->
+            <div data-ng-if="vm.ngDisabled">
+                {{vm.arrayDisplayKey ? vm.filterThis(vm.arrayOfObjects, vm.arrayValueKey, vm.arrayDisplayKey, vm.model) : vm.model}}
+            </div>
+            <div data-ng-if="!vm.ngDisabled">
+                <div ng-if="!vm.editable && vm.liveSearch && !vm.arrayValueKey && vm.arrayOfObjects.length > 0">
+                    <ol class="nya-bs-select" data-ng-model="vm.model" data-ng-change="vm.updateModel(vm.model)" data-live-search="true" style="width:83%"
+                        disabled="vm.ngDisabled">
+                        <li nya-bs-option="object in vm.arrayOfObjects">
+                            <a data-ng-if="vm.arrayDisplayKey && vm.arrayOfObjects[0][vm.arrayDisplayKey]">
+                                {{ object[vm.arrayDisplayKey] }}
+                            </a>
+                            <a data-ng-if="!vm.arrayDisplayKey">
+                                {{ object }}
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+                <div ng-if="!vm.liveSearch && !vm.editable && (vm.arrayValueKey == undefined) && vm.arrayOfObjects.length > 0">
+                    <ol class="nya-bs-select" data-ng-model="vm.model" data-ng-change="vm.updateModel(vm.model)" data-live-search="false" style="width:83%"
+                        disabled="vm.ngDisabled">
+                        <li nya-bs-option="object in vm.arrayOfObjects">
+                            <a data-ng-if="vm.arrayDisplayKey && vm.arrayOfObjects[0][vm.arrayDisplayKey]">
+                                {{ object[vm.arrayDisplayKey] }}
+                            </a>
+                            <a data-ng-if="!vm.arrayDisplayKey">
+                                {{ object }}
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+                <div ng-if="!vm.liveSearch && !vm.editable && vm.arrayValueKey && vm.arrayOfObjects.length > 0 && vm.arrayOfObjects[0][vm.arrayDisplayKey]">
+                    <ol class="nya-bs-select" data-ng-model="vm.model" data-ng-change="vm.updateModel(vm.model)" data-live-search="false" style="width:83%"
+                        disabled="vm.ngDisabled">
+                        <li nya-bs-option="object in vm.arrayOfObjects" data-value="object[vm.arrayValueKey]">
+                            <a data-ng-if="vm.arrayDisplayKey && vm.arrayOfObjects[0][vm.arrayDisplayKey]">
+                                {{ object[vm.arrayDisplayKey] }}
+                            </a>
+                            <a data-ng-if="!vm.arrayDisplayKey">
+                                {{ object }}
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+                <div ng-if="vm.liveSearch && !vm.editable && vm.arrayValueKey && vm.arrayOfObjects.length > 0 && !vm.arrayDisplayNum">
+                    <ol class="nya-bs-select" data-ng-model="vm.model" data-ng-change="vm.updateModel(vm.model)" data-live-search="true" style="width:83%"
+                        disabled="vm.ngDisabled">
+                        <li nya-bs-option="object in vm.arrayOfObjects" data-value="object[vm.arrayValueKey]">
+                            <a data-ng-if="vm.arrayDisplayKey && vm.arrayOfObjects[0][vm.arrayDisplayKey]">
+                                {{ object[vm.arrayDisplayKey] }}
+                            </a>
+                            <a data-ng-if="!vm.arrayDisplayKey">
+                                {{ object }}
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+                <div ng-if="vm.liveSearch && !vm.editable && vm.arrayValueKey && vm.arrayOfObjects.length > 0 && vm.arrayDisplayNum">
+                    <ol class="nya-bs-select" data-ng-model="vm.model" data-ng-change="vm.updateModel(vm.model)" data-live-search="true" style="width:83%"
+                        disabled="vm.ngDisabled">
+                        <li nya-bs-option="object in vm.arrayOfObjects" data-value="object[vm.arrayValueKey]">
+                            <a data-ng-if="vm.arrayDisplayKey && vm.arrayOfObjects[0][vm.arrayDisplayKey]">
+                                {{ object[vm.arrayDisplayKey] }}{{object[vm.arrayDisplayKey] !== 'Not Set' ? ' - (' + object[vm.arrayDisplayNum] + ')' : ''}}
+                            </a>
+                            <a data-ng-if="!vm.arrayDisplayKey">
+                                {{ object }}
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+                <div ng-if="vm.editable">
+                    <input type="text"
+                           data-ng-model="vm.model"
+                           data-ng-change="vm.updateModel(vm.model)"
+                           uib-typeahead="object as object[vm.arrayDisplayKey] for object in vm.arrayOfObjects | filter:{ {{ vm.arrayDisplayKey }}:$viewValue}"
+                           class="{{ vm.innerClass }}"
+                           placeholder="{{ vm.placeholder }}" />
+                </div>
+            </div>
+        </div>
+        <div ng-if="!vm.dropDown && vm.isCalendar != true">
+            <div class="" data-ng-blur="vm.editorEnabled('placeholder', false); focusInput=true">
+                <div class="row" id="auto-input">
+                    <div data-ng-if="!vm.bbType" class="" data-ng-hide="vm.editorEnabled('placeholder')" data-ng-click="vm.editorEnabled('placeholder', true)">{{ vm.model }}</div>
+                    <div data-ng-if="vm.bbType == 'currency'" class="" data-ng-hide="vm.editorEnabled('placeholder')" data-ng-click="vm.editorEnabled('placeholder', true)">{{ vm.model | currency }}</div>
+                    <div data-ng-if="vm.bbType == 'tel'" class="" data-ng-hide="vm.editorEnabled('placeholder')" data-ng-click="vm.editorEnabled('placeholder', true)">{{ vm.model | tel }}</div>
+                    <div data-ng-if="vm.bbType == 'percentage'" class="" data-ng-hide="vm.editorEnabled('placeholder')" data-ng-click="vm.editorEnabled('placeholder', true)">{{ vm.model.toFixed(0) }}%</div>
+                    <!--<input class="col-lg-10 auto-input-borderless-input" focus-me="focusInput" data-ng-show="vm.editorEnabled('placeholder')"--> 
+                    <!-- Only show the input box if the title and model is not set or if the editor is set as enabled by a click on the heading and if 
+                        the box is not set to disabled. -->
+                    <input class="form-control" 
+                           focus-me="focusInput" 
+                           data-ng-show="((vm.title != '' && (vm.model == undefined || vm.model == null)) || vm.editorEnabled('placeholder')) && !vm.ngDisabled"
+                           data-ng-change="vm.editorEnabled('placeholder', true); vm.updateModel(vm.model)"
+                           ng-model-options="{updateOn: 'blur'}"
+                           data-ng-blur="vm.editorEnabled('placeholder', false)"
+                           data-ng-model="vm.model" />
+                    <button class="btn enabled-override"
+                            data-clipboard-snippet=""
+                            ngclipboard
+                            data-clipboard-text="{{ vm.model }}"
+                            data-ng-if="vm.copyToClipboard"
+                            title="Click to copy {{ vm.model }}"
+                            data-toggle="tooltip">
+                        <img class="clippy" width="13" src="content/img/clippy.svg" alt="Copy to clipboard">
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div ng-if="vm.isCalendar == true">
+            <div data-ng-if="vm.ngDisabled">
+                {{ vm.model | date:'MM/dd/yyyy' }}
+            </div>
+            <div data-ng-if="!vm.ngDisabled">
+                <input type="text" data-ng-focus="vm.showDateTimePicker = true" class="form-control" data-ng-model="vm.model" mo-date-input="MM/DD/YYYY" 
+                       value="{{ vm.model | date:'MM/dd/yyyy' }}" />
+                <input type="submit" class="btn btn-default" value="Close Calendar" data-ng-click="vm.showDateTimePicker = false" data-ng-show="vm.showDateTimePicker" />
+                <datetimepicker data-ng-show="vm.showDateTimePicker" data-ng-model="vm.model" data-datetimepicker-config="{ minView: 'day' }"
+                                data-ng-change="vm.updateModel(vm.model)"></datetimepicker>
+            </div>
+        </div>
+    </div>
+</div>

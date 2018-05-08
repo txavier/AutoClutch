@@ -1,0 +1,19 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Contract Report</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <report ng-if="vm.parameters.length > 0" report-name="ContractReport" format="pdf"
+            parameters="vm.parameters">
+    </report>
+</div>
+
+<!--<div class="row">
+    <report report-path="/CTMS/Reports/ContractReport" report-server-name="lfkbwtlabdev01" format="pdf"
+            parameters="[{ key:'Section', value:'2'}, { key:'Engineer', value:'19'}, { key:'Engineer', value:'11'}, 
+            { key:'Engineer', value:'9'}, {key:'Engineer', value:'8'}, { key: 'Engineer', value: '6'}, 
+            { key:'Engineer', value:'20'}, { key:'Engineer', value:'10'}]">
+    </report>
+</div>-->

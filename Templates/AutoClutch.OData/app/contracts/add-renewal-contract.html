@@ -1,0 +1,58 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Contract</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <form role="form" name="vm.myForm">
+                    <div class="col-lg-11">
+                        <div class="form-group">
+                            <label>
+                                Contract Number
+                            </label>
+                            <input type="text" disabled="disabled" class="form-control" data-ng-model="vm.contract.contractNumber" />
+                        </div>
+                        <div class="form-group">
+                            <label>Engineer</label>
+                            <xs-auto-input data-ng-model="vm.contract.engineerId"
+                                           array-of-objects="vm.engineers" 
+                                           array-value-key="engineerId"
+                                           array-display-key="name" 
+                                           editable="false" 
+                                           inner-class="form-control" 
+                                           live-search="true" 
+                                           name="engineer"
+                                           required></xs-auto-input>
+                        </div>
+                        <div class="form-group">
+                            <label>Original Contract Value</label>
+                            <input type="text" class="form-control" data-ng-model="vm.contract.originalContractValue" data-blur-currency/>
+                        </div>
+                        <div class="form-group">
+                            <label>Parts and Material Value</label>
+                            <input type="text" class="form-control" data-ng-model="vm.contract.originalPartsMaterialValue" data-blur-currency/>
+                        </div>
+                        <div class="form-group">
+                            <label>Renewal End Date</label>
+                            <xs-auto-input data-ng-model="vm.contract.renewalEndDate" inner-class="form-control" calendar="true"></xs-auto-input>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="pull-right" style="padding-right: 12px;">
+                        <back-button inner-class="btn btn-default"></back-button>
+                        <input type="submit" value="Save" class="btn btn-default" ng-click="vm.addContract(vm.contract)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

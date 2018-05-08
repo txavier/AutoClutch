@@ -1,0 +1,128 @@
+﻿<div ng-if="vm.dropDown">
+    <!--<div ng-if="!vm.editable && vm.liveSearch && !vm.arrayValueKey && vm.arrayDisplayKey && vm.arrayOfObjects.length > 0 && vm.arrayOfObjects[0][vm.arrayDisplayKey]">
+        <ol class="nya-bs-select" 
+            data-ng-model="vm.model" 
+            data-live-search="true" 
+            data-ng-change="vm.updateModel(vm.model)" 
+            style="width:83%" 
+            disabled="vm.ngDisabled">
+            <li nya-bs-option="object in vm.arrayOfObjects">
+                <a>
+                    {{ object[vm.arrayDisplayKey] }}
+                </a>
+            </li>
+        </ol>
+    </div>-->
+    <div ng-if="!vm.editable && vm.arrayValueKey && vm.arrayDisplayKey && vm.arrayOfObjects.length > 0 && vm.arrayOfObjects[0][vm.arrayDisplayKey] && vm.arrayDisplayNum">
+        <ol class="nya-bs-select"
+            data-ng-model="vm.model"
+            data-live-search="{{ vm.liveSearch ? 'true' : 'false'}}"
+            data-ng-change="vm.updateModel(vm.model)"
+            style="width:83%"
+            disabled="vm.ngDisabled">
+            <li nya-bs-option="object in vm.arrayOfObjects" data-value="object[vm.arrayValueKey]">
+                <a>
+                    {{ object[vm.arrayDisplayKey] }}{{object[vm.arrayDisplayKey] !== 'Not Set' ? ' - (' + object[vm.arrayDisplayNum] + ')' : ''}}
+                </a>
+            </li>
+        </ol>
+    </div>
+    <div ng-if="!vm.editable && vm.arrayValueKey && vm.arrayDisplayKey && vm.arrayOfObjects.length > 0 && vm.arrayOfObjects[0][vm.arrayDisplayKey] && !vm.arrayDisplayNum">
+        <ol class="nya-bs-select"
+            data-ng-model="vm.model"
+            data-live-search="{{ vm.liveSearch ? 'true' : 'false'}}"
+            data-ng-change="vm.updateModel(vm.model)"
+            style="width:83%"
+            disabled="vm.ngDisabled">
+            <li nya-bs-option="object in vm.arrayOfObjects" data-value="object[vm.arrayValueKey]">
+                <a>
+                    {{ object[vm.arrayDisplayKey] }}
+                </a>
+            </li>
+        </ol>
+    </div>
+    <div ng-if="!vm.editable && !vm.arrayValueKey && vm.arrayDisplayKey && vm.arrayOfObjects.length > 0 && vm.arrayOfObjects[0][vm.arrayDisplayKey]">
+        <ol class="nya-bs-select"
+            data-ng-model="vm.model"
+            data-live-search="{{ vm.liveSearch ? 'true' : 'false'}}"
+            data-ng-change="vm.updateModel(vm.model)"
+            style="width:83%"
+            disabled="vm.ngDisabled">
+            <li nya-bs-option="object in vm.arrayOfObjects" >
+                <a>
+                    {{ object[vm.arrayDisplayKey] }}
+                </a>
+            </li>
+        </ol>
+    </div>
+    <!--<div ng-if="!vm.liveSearch && !vm.editable && vm.arrayDisplayKey && vm.arrayOfObjects.length > 0 && vm.arrayOfObjects[0][vm.arrayDisplayKey]">
+        <ol class="nya-bs-select" 
+            data-ng-model="vm.model" 
+            data-ng-change="vm.updateModel(vm.model)" 
+            data-live-search="false" 
+            style="width:83%" 
+            disabled="vm.ngDisabled">
+            <li nya-bs-option="object in vm.arrayOfObjects">
+                <a>
+                    {{ object[vm.arrayDisplayKey] }}
+                </a>
+            </li>
+        </ol>
+    </div>-->
+    <div ng-if="vm.editable">
+        <input type="text"
+               data-ng-model="vm.model"
+               uib-typeahead="object as object[vm.arrayDisplayKey] for object in vm.arrayOfObjects | filter:$viewValue"
+               class="{{ vm.innerClass }}" 
+               placeholder="{{ vm.placeholder }}"
+               data-ng-disabled="vm.ngDisabled" />
+    </div>
+</div>
+<div ng-if="!vm.dropDown && vm.isCalendar != true">
+    <div class="" data-ng-blur="vm.editorEnabled('placeholder', false); focusInput=true">
+        <div class="row" id="auto-input">
+            <div class="col-lg-2" data-ng-click="vm.editorEnabled('placeholder', null, true)"><b>{{ vm.title }}</b></div>
+            <div class="col-lg-10 pull-left" data-ng-hide="vm.editorEnabled('placeholder')" style="{{ vm.model ? '' : 'color:#989898'}}" data-ng-click="vm.editorEnabled('placeholder', true)">{{ vm.model ? vm.model : 'Click to edit' }}</div>
+            <input class="col-lg-10 auto-input-borderless-input" 
+                   focus-me="focusInput" 
+                   data-ng-show="vm.editorEnabled('placeholder')" 
+                   data-ng-change="vm.editorEnabled('placeholder', true); vm.updateModel(vm.model)" 
+                   ng-model-options="{ updateOn: 'blur', debounce: {'blur': 700 }}" 
+                   data-ng-blur="vm.editorEnabled('placeholder', false)"
+                   data-ng-model="vm.model"
+                   data-ng-disabled="vm.ngDisabled"
+                   />
+        </div>
+    </div>
+</div>
+<div ng-if="vm.isCalendar == true">
+    <input type="text" 
+           data-ng-focus="vm.showDateTimePicker = true" 
+           class="form-control" 
+           data-ng-model="vm.model" 
+           mo-date-input="MM/DD/YYYY" 
+           value="{{ vm.model | date: 'MM/dd/yyyy' }}" 
+           data-ng-disabled="vm.ngDisabled" />
+    <input type="submit" 
+           class="btn btn-default" 
+           value="Close Calendar" 
+           data-ng-click="vm.showDateTimePicker = false" 
+           data-ng-show="vm.showDateTimePicker" 
+           data-ng-disabled="vm.ngDisabled" />
+    <datetimepicker data-ng-show="vm.showDateTimePicker" 
+                    data-ng-model="vm.model" 
+                    style="box-shadow: 0 6px 12px rgba(0,0,0,.175); background: white;" 
+                    data-datetimepicker-config="{ minView: 'day' }"
+                    data-ng-disabled="vm.ngDisabled"></datetimepicker>
+    <!--Below is the preferred method but there is a small problem of multiple of these directives in the same page opening up a different calendar when another one is selected-->
+    <!--<div class="dropdown">
+        <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#">
+            <div class="input-group">
+                <input type="text" class="form-control" mo-date-input="MM/DD/YYYY" data-ng-model="vm.model"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <datetimepicker data-ng-model="vm.model" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'day' }" />
+        </ul>
+    </div>-->
+</div>

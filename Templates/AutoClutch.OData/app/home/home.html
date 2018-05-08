@@ -1,0 +1,1003 @@
+﻿<dep-home-procurement data-ng-if="vm.isProcurementSection"></dep-home-procurement>
+<div data-ng-if="!vm.isProcurementSection">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Dashboard</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div data-ng-if="vm.divisionChiefDashboard">
+        <div class="row" data-ng-if="!vm.isOverview()">
+            <div class="col-lg-4 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa  fa-certificate fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.activeWorkOrders }}</div>
+                                <div>Active Work Orders</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/work-orders">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-bolt fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.openChangeOrders }}</div>
+                                <div>Open Change Orders</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/change-orders">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pull-right">
+                <div class="panel panel-orange">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-money fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.openPayments }}</div>
+                                <div>Open Payments</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/payments/open">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-hourglass-end fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.expiringContracts }}</div>
+                                <div>Expiring Contracts</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/contracts/expiringContracts">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pull-left">
+                <div class="panel panel-red">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-circle-o-notch fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.lowFundContracts }}</div>
+                                <div>Low Fund Contracts</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/contracts/lowFundContracts">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pull-left">
+                <div class="panel panel-violet">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-chain-broken fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.missingPaymentPdf }}</div>
+                                <div>Missing Payment PDF</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/payments/missingPdf">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pull-left" data-ng-if="vm.isTopLevelUser()">
+                <div class="panel panel-violet">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-chain-broken fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.missingSpec }}</div>
+                                <div>Missing Specification</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/contracts/missingSpec">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row" data-ng-if="vm.isOverview()">
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa  fa-certificate fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.activeWorkOrders }}</div>
+                                <div>Active Work Orders</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/work-orders">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 pull-right">
+                <div class="panel panel-orange">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-money fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.openPayments }}</div>
+                                <div>Open Payments</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/payments/open">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-hourglass-end fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.expiringContracts }}</div>
+                                <div>Expiring Contracts</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/contracts/expiringContracts">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 pull-left">
+                <div class="panel panel-red">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-circle-o-notch fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.lowFundContracts }}</div>
+                                <div>Low Fund Contracts</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/contracts/lowFundContracts">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row" data-ng-if="!vm.isOverview()">
+            <div class="col-lg-8 col-sm-12 ng-scope" id="doughnut-chart" data-ng-show="vm.loggedInUser.superUser">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Work Orders Per Section</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas id="bar" class="chart chart-bar" chart-data="vm.barData" chart-labels="vm.barLabels"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-sm-12 ng-scope" id="doughnut-chart">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Work Orders Per Registered Contract</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas id="bar" class="chart chart-bar" chart-data="vm.workOrdersPerContractBarData"
+                                    chart-labels="vm.workOrdersPerContractBarLabels" chart-series="vm.workOrdersPerContractBarSeries"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-sm-12 ng-scope" id="doughnut-chart" data-ng-if="vm.vm.loggedInUser.sectionChiefRole">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Active Work Orders Per Engineer</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas id="bar" class="chart chart-bar" chart-data="vm.barData" chart-labels="vm.barLabels"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-ng-if="true" class="col-lg-4 col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bell fa-fw"></i> Notifications Panel
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a href="#/history/{{ message.typeFullName }}/{{ message.recordId }}" class="list-group-item userActionLog"
+                               data-ng-repeat="message in vm.userActionLogs">
+                                <i class="fa fa-tasks fa-fw"></i> {{ message.body }}
+                                <span class="pull-right text-muted small">
+                                    <em>
+                                        {{ message.date | date:'M/d/yyyy h:mm a' }}
+                                        ({{ message.date | moment: 'fromNow'  }})
+                                    </em>
+                                </span>
+                            </a>
+                            <!--<a href="#" class="list-group-item" data-ng-repeat="message in vm.messages">
+                                <i class="fa fa-users fa-fw"></i> {{ message.body }}
+                                <span class="pull-right text-muted small">
+                                    <em>
+                                        {{ message.date | date:'M/d/yyyy h:mm a' }}
+                                        ({{ message.date | moment: 'fromNow'  }})
+                                    </em>
+                                </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-tasks fa-fw"></i> New Technical Review
+                                <span class="pull-right text-muted small">
+                                    <em>43 minutes ago</em>
+                                </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-building fa-fw"></i> New Facility Added
+                                <span class="pull-right text-muted small">
+                                    <em>9:49 AM</em>
+                                </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-envelope fa-fw"></i> Email Sent to Admin Group 30 Day Facility Elapse
+                                <span class="pull-right text-muted small">
+                                    <em>Yesterday</em>
+                                </span>
+                            </a>-->
+                        </div>
+                        <!-- /.list-group -->
+                        <a href="#/user-action-logs" class="btn btn-default btn-block">View All User Action Logs</a>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+            </div>
+            <!--<div class="col-lg-8 col-sm-12 ng-scope" id="doughnut-chart">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Contracts Per Engineer</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas id="bar" class="chart chart-bar" chart-data="vm.barData" chart-labels="vm.barLabels"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+            <!--<div class="col-lg-4 col-sm-12 ng-scope" data-ng-if="vm.isTopLevelUser()" id="doughnut-chart" access="admin" access-permission-type="AtLeastOne" access-hidden="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Contracts Per Section</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas id="doughnut" class="chart chart-doughnut" chart-data="vm.doughnutData" chart-labels="vm.doughnutLabels" chart-legend="true"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+        <!-- /.row -->
+        <div class="row" data-ng-if="vm.isOverview()">
+            <div class="col-lg-8 col-sm-12 ng-scope" id="doughnut-chart" data-ng-show="vm.loggedInUser.superUser">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Work Orders Per Section</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas id="bar" class="chart chart-bar" chart-data="vm.barData" chart-labels="vm.barLabels"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-sm-12 ng-scope" id="doughnut-chart">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Work Orders Per Registered Contract</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas id="bar" class="chart chart-bar" chart-data="vm.workOrdersPerContractBarData"
+                                    chart-labels="vm.workOrdersPerContractBarLabels" chart-series="vm.workOrdersPerContractBarSeries"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-ng-if="true" class="col-lg-4 col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bell fa-fw"></i> Notifications Panel
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a href="#/history/{{ message.typeFullName }}/{{ message.recordId }}" class="list-group-item userActionLog"
+                               data-ng-repeat="message in vm.userActionLogs">
+                                <i class="fa fa-tasks fa-fw"></i> {{ message.body }}
+                                <span class="pull-right text-muted small">
+                                    <em>
+                                        {{ message.date | date:'M/d/yyyy h:mm a' }}
+                                        ({{ message.date | moment: 'fromNow'  }})
+                                    </em>
+                                </span>
+                            </a>
+                            <!--<a href="#" class="list-group-item" data-ng-repeat="message in vm.messages">
+                                <i class="fa fa-users fa-fw"></i> {{ message.body }}
+                                <span class="pull-right text-muted small">
+                                    <em>
+                                        {{ message.date | date:'M/d/yyyy h:mm a' }}
+                                        ({{ message.date | moment: 'fromNow'  }})
+                                    </em>
+                                </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-tasks fa-fw"></i> New Technical Review
+                                <span class="pull-right text-muted small">
+                                    <em>43 minutes ago</em>
+                                </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-building fa-fw"></i> New Facility Added
+                                <span class="pull-right text-muted small">
+                                    <em>9:49 AM</em>
+                                </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-envelope fa-fw"></i> Email Sent to Admin Group 30 Day Facility Elapse
+                                <span class="pull-right text-muted small">
+                                    <em>Yesterday</em>
+                                </span>
+                            </a>-->
+                        </div>
+                        <!-- /.list-group -->
+                        <a href="#/user-action-logs" class="btn btn-default btn-block">View All User Action Logs</a>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+            </div>
+            <div class="col-lg-8 col-sm-12 ng-scope" id="doughnut-chart">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Active Work Orders Per Engineer</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas id="bar" class="chart chart-bar" chart-data="vm.barData" chart-labels="vm.barLabels"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="col-lg-8 col-sm-12 ng-scope" id="doughnut-chart">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Contracts Per Engineer</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas id="bar" class="chart chart-bar" chart-data="vm.barData" chart-labels="vm.barLabels"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+            <!--<div class="col-lg-4 col-sm-12 ng-scope" data-ng-if="vm.isTopLevelUser()" id="doughnut-chart" access="admin" access-permission-type="AtLeastOne" access-hidden="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Contracts Per Section</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas id="doughnut" class="chart chart-doughnut" chart-data="vm.doughnutData" chart-labels="vm.doughnutLabels" chart-legend="true"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+
+    <div data-ng-if="vm.sectionChiefDashboard">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa  fa-certificate fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.activeWorkOrders }}</div>
+                                <div>Active Work Orders</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/work-orders">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-bolt fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.openChangeOrders }}</div>
+                                <div>Open Change Orders</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/change-orders">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pull-right">
+                <div class="panel panel-orange">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-money fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.openPayments }}</div>
+                                <div>Open Payments</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/payments/open">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-hourglass-end fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.expiringContracts }}</div>
+                                <div>Expiring Contracts</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/contracts/expiringContracts">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pull-left">
+                <div class="panel panel-red">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-circle-o-notch fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.lowFundContracts }}</div>
+                                <div>Low Fund Contracts</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/contracts/lowFundContracts">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pull-left">
+                <div class="panel panel-violet">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-chain-broken fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.missingPaymentPdf }}</div>
+                                <div>Missing Payment PDF</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/payments/missingPdf">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pull-left" data-ng-if="vm.isTopLevelUser()">
+                <div class="panel panel-violet">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-chain-broken fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.missingSpec }}</div>
+                                <div>Missing Specification</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/contracts/missingSpec">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <!--<div class="col-lg-8 col-sm-12 ng-scope" id="doughnut-chart" data-ng-show="vm.loggedInUser.superUser">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Work Orders Per Section</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas id="bar" class="chart chart-bar" chart-data="vm.barData" chart-labels="vm.barLabels"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+            <div class="col-lg-12 col-sm-12 ng-scope" id="doughnut-chart">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Work Orders Per Registered Contract</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas id="bar" class="chart chart-bar" chart-data="vm.workOrdersPerContractBarData"
+                                    chart-labels="vm.workOrdersPerContractBarLabels" chart-series="vm.workOrdersPerContractBarSeries"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-sm-12 ng-scope" id="doughnut-chart" data-ng-if="vm.isTopLevelUser()">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Active Work Orders Per Engineer</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas id="bar" class="chart chart-bar" chart-data="vm.barData" chart-labels="vm.barLabels"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-ng-if="true" class="col-lg-4 col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bell fa-fw"></i> Notifications Panel
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a href="#/history/{{ message.typeFullName }}/{{ message.recordId }}" class="list-group-item userActionLog"
+                               data-ng-repeat="message in vm.userActionLogs">
+                                <i class="fa fa-tasks fa-fw"></i> {{ message.body }}
+                                <span class="pull-right text-muted small">
+                                    <em>
+                                        {{ message.date | date:'M/d/yyyy h:mm a' }}
+                                        ({{ message.date | moment: 'fromNow'  }})
+                                    </em>
+                                </span>
+                            </a>
+                            <!--<a href="#" class="list-group-item" data-ng-repeat="message in vm.messages">
+                                <i class="fa fa-users fa-fw"></i> {{ message.body }}
+                                <span class="pull-right text-muted small">
+                                    <em>
+                                        {{ message.date | date:'M/d/yyyy h:mm a' }}
+                                        ({{ message.date | moment: 'fromNow'  }})
+                                    </em>
+                                </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-tasks fa-fw"></i> New Technical Review
+                                <span class="pull-right text-muted small">
+                                    <em>43 minutes ago</em>
+                                </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-building fa-fw"></i> New Facility Added
+                                <span class="pull-right text-muted small">
+                                    <em>9:49 AM</em>
+                                </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-envelope fa-fw"></i> Email Sent to Admin Group 30 Day Facility Elapse
+                                <span class="pull-right text-muted small">
+                                    <em>Yesterday</em>
+                                </span>
+                            </a>-->
+                        </div>
+                        <!-- /.list-group -->
+                        <a href="#/user-action-logs" class="btn btn-default btn-block">View All User Action Logs</a>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+            </div>
+            <!--<div class="col-lg-8 col-sm-12 ng-scope" id="doughnut-chart">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Contracts Per Engineer</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas id="bar" class="chart chart-bar" chart-data="vm.barData" chart-labels="vm.barLabels"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+            <div class="col-lg-4 col-sm-12 ng-scope" data-ng-if="false" id="doughnut-chart" access="admin" access-permission-type="AtLeastOne" access-hidden="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Contracts Per Section</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas id="doughnut" class="chart chart-doughnut" chart-data="vm.doughnutData" chart-labels="vm.doughnutLabels" chart-legend="true"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+
+    <div data-ng-if="vm.engineerDashboard">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa  fa-certificate fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.activeWorkOrders }}</div>
+                                <div>Active Work Orders</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/work-orders">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-bolt fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.openChangeOrders }}</div>
+                                <div>Open Change Orders</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/change-orders">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pull-right">
+                <div class="panel panel-orange">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-money fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.openPayments }}</div>
+                                <div>Open Payments</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/payments/open">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-hourglass-end fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.expiringContracts }}</div>
+                                <div>Expiring Contracts</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/contracts/expiringContracts">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pull-left">
+                <div class="panel panel-red">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-circle-o-notch fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.lowFundContracts }}</div>
+                                <div>Low Fund Contracts</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/contracts/lowFundContracts">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pull-left">
+                <div class="panel panel-violet">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-chain-broken fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.missingPaymentPdf }}</div>
+                                <div>Missing Payment PDF</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/payments/missingPdf">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pull-left" data-ng-if="vm.isTopLevelUser()">
+                <div class="panel panel-violet">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-chain-broken fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">{{ vm.missingSpec }}</div>
+                                <div>Missing Specification</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#/contracts/missingSpec">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <!--<div class="col-lg-8 col-sm-12 ng-scope" id="doughnut-chart" data-ng-show="vm.loggedInUser.superUser">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Work Orders Per Section</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas id="bar" class="chart chart-bar" chart-data="vm.barData" chart-labels="vm.barLabels"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+            <div class="col-lg-12 col-sm-12 ng-scope" id="doughnut-chart">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Work Orders Per Registered Contract</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas id="bar" class="chart chart-bar" chart-data="vm.workOrdersPerContractBarData"
+                                    chart-labels="vm.workOrdersPerContractBarLabels" chart-series="vm.workOrdersPerContractBarSeries"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-sm-12 ng-scope" id="doughnut-chart" data-ng-if="vm.isTopLevelUser()">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Active Work Orders Per Engineer</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas id="bar" class="chart chart-bar" chart-data="vm.barData" chart-labels="vm.barLabels"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-ng-if="true" class="col-lg-4 col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bell fa-fw"></i> Notifications Panel
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a href="#/history/{{ message.typeFullName }}/{{ message.recordId }}" class="list-group-item userActionLog"
+                               data-ng-repeat="message in vm.userActionLogs">
+                                <i class="fa fa-tasks fa-fw"></i> {{ message.body }}
+                                <span class="pull-right text-muted small">
+                                    <em>
+                                        {{ message.date | date:'M/d/yyyy h:mm a' }}
+                                        ({{ message.date | moment: 'fromNow'  }})
+                                    </em>
+                                </span>
+                            </a>
+                            <!--<a href="#" class="list-group-item" data-ng-repeat="message in vm.messages">
+                                <i class="fa fa-users fa-fw"></i> {{ message.body }}
+                                <span class="pull-right text-muted small">
+                                    <em>
+                                        {{ message.date | date:'M/d/yyyy h:mm a' }}
+                                        ({{ message.date | moment: 'fromNow'  }})
+                                    </em>
+                                </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-tasks fa-fw"></i> New Technical Review
+                                <span class="pull-right text-muted small">
+                                    <em>43 minutes ago</em>
+                                </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-building fa-fw"></i> New Facility Added
+                                <span class="pull-right text-muted small">
+                                    <em>9:49 AM</em>
+                                </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-envelope fa-fw"></i> Email Sent to Admin Group 30 Day Facility Elapse
+                                <span class="pull-right text-muted small">
+                                    <em>Yesterday</em>
+                                </span>
+                            </a>-->
+                        </div>
+                        <!-- /.list-group -->
+                        <a href="#/user-action-logs" class="btn btn-default btn-block">View All User Action Logs</a>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+            </div>
+            <!--<div class="col-lg-8 col-sm-12 ng-scope" id="doughnut-chart">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Contracts Per Engineer</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas id="bar" class="chart chart-bar" chart-data="vm.barData" chart-labels="vm.barLabels"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+            <div class="col-lg-4 col-sm-12 ng-scope" data-ng-if="false" id="doughnut-chart" access="admin" access-permission-type="AtLeastOne" access-hidden="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Contracts Per Section</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas id="doughnut" class="chart chart-doughnut" chart-data="vm.doughnutData" chart-labels="vm.doughnutLabels" chart-legend="true"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+</div>

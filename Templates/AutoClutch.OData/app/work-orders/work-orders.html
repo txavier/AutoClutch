@@ -1,0 +1,160 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Work Orders</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row" data-ng-if="vm.contractNumber">
+    <div class="col-lg-12" style="padding-right: 13px;">
+        <dep-contract-details data-ng-model="vm.contract" is-open="vm.openContractDetails" data-ng-click="vm.expandContractDetails()"></dep-contract-details>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <uib-accordion close-others="vm.oneAtATime">
+            <div uib-accordion-group class="panel-default" heading="Static Header, initially expanded" is-open="vm.status.isFirstOpen" is-disabled="vm.status.isFirstDisabled">
+                <uib-accordion-heading>
+                    Filter <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.status.isFirstOpen, 'glyphicon-chevron-right': !vm.status.isFirstOpen}"></i>
+
+                </uib-accordion-heading>
+                <div class="row mtbox">
+                    <div class="form-group" style="padding-left:14px;" data-ng-if="vm.contractNumber">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>
+                                    Status
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <xs-auto-input data-ng-model="vm.selectedWorkOrderStatus.workOrderStatusId" 
+                                               array-of-objects="vm.workOrderStatuses" 
+                                               array-display-key="name" 
+                                               array-value-key="workOrderStatusId"
+                                               editable="false"
+                                               inner-class="form-control" 
+                                               live-search="false" 
+                                               data-ng-change="vm.filterWorkorders()"></xs-auto-input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="padding-left:14px;">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Location</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <xs-auto-input data-ng-model="vm.selectedLocation.locationId" 
+                                               array-of-objects="vm.locations" 
+                                               array-display-key="facility" 
+                                               array-value-key="locationId"
+                                               editable="false" 
+                                               inner-class="form-control" 
+                                               live-search="true" 
+                                               data-ng-change="vm.filterWorkorders()">
+                                </xs-auto-input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="padding-left:14px;" data-ng-if="!vm.contractNumber">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Engineer</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <xs-auto-input data-ng-model="vm.selectedEngineer.engineerId" 
+                                               array-of-objects="vm.engineers" 
+                                               array-display-key="name" 
+                                               array-value-key="engineerId"
+                                               editable="false" 
+                                               inner-class="form-control" 
+                                               live-search="true" 
+                                               data-ng-change="vm.filterWorkorders()">
+                                </xs-auto-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </uib-accordion>
+    </div>
+</div>
+<div class="row" style="padding-bottom: 14px;" data-ng-if="vm.contractNumber">
+    <div class="col-lg-12">
+        <a class="btn btn-default" href="#/{{ vm.contract.section.name }}/contracts/{{ vm.contract.contractNumber }}/add-work-order">Add Work Order</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <label class="control-label">{{ vm.totalItems }} Total Work Orders</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="form-group">
+            <table class="table table-striped">
+                <tr>
+                    <th>
+                        <a data-ng-click="vm.setSortOrder('workOrderNumber')">Engineer's WO No</a>
+                    </th>
+                    <th access="admin, sectionChief, areaEngineer" access-permission-type="AtLeastOne" access-hidden="true">
+                        <a data-ng-click="vm.setSortOrder('contract/engineer/name')">Engineer</a>
+                    </th>
+                    <th>
+                        <a data-ng-click="vm.setSortOrder('cmmsWorkOrderNumber,workOrderNumber')">CMMS WO No</a>
+                    </th>
+                    <th>
+                        <a data-ng-click="vm.setSortOrder('workOrderStatus/name,workOrderNumber')">Status</a>
+                    </th>
+                    <th>
+                        <a data-ng-click="vm.setSortOrder('location/facility,workOrderNumber')">Facility</a>
+                    </th>
+                    <th>
+                        <a data-ng-click="vm.setSortOrder('issuedDate,workOrderNumber')">Issued Date</a>
+                    </th>
+                    <th>
+                        <a data-ng-click="vm.setSortOrder('repairCompletionDate,workOrderNumber')">Completion Date</a>
+                    </th>
+                    <th>
+                        <a data-ng-click="vm.setSortOrder('repairDescription,workOrderNumber')">Repair Description</a>
+                    </th>
+                </tr>
+                <tr ng-repeat="workOrder in vm.entities">
+                    <td>
+                        <a href="#/{{ workOrder.contract.section.name }}/contracts/{{ workOrder.contract.contractNumber }}/work-orders/{{ workOrder.workOrderNumber }}?currentPage={{vm.currentPage}}&set={{vm.orderBy}}">
+                            {{ workOrder.workOrderNumber }}
+                        </a>
+                    </td>
+                    <td access="admin, sectionChief, areaEngineer" access-permission-type="AtLeastOne" access-hidden="true">
+                        {{ workOrder.contract.engineer.name }}
+                    </td>
+                    <td>
+                        {{ workOrder.cmmsWorkOrderNumber }}
+                    </td>
+                    <td>
+                        {{ workOrder.workOrderStatus.name }}
+                    </td>
+                    <td>
+                        {{ workOrder.location.facility }}
+                    </td>
+                    <td>
+                        {{ workOrder.issuedDate | date:'M/d/yyyy' }}
+                    </td>
+                    <td>
+                        {{ workOrder.repairCompletionDate | date:'M/d/yyyy' }}
+                    </td>
+                    <td>
+                        {{ workOrder.repairDescription }}
+                    </td>
+                </tr>
+            </table>
+            <ul uib-pagination total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.currentPage" ng-change="vm.pageChanged()" max-size="7" boundary-links="true"
+                        rotate="false"></ul>
+        </div>
+    </div>
+</div>

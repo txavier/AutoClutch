@@ -1,0 +1,136 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Add Work Order</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <form name = "vm.myForm" role="form" confirm-on-exit>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label>
+                                Contract Number
+                            </label>
+                            <input type="text" class="form-control" data-ng-model="vm.workOrder.contract.contractNumber" data-ng-disabled="true" />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Engineer's Work Order Number
+                            </label>
+                            <input type="text" class="form-control" data-ng-model="vm.workOrder.workOrderNumber" data-ng-disabled="true" />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                CMMS Work Order Number
+                            </label>
+                            <input type="text" class="form-control" data-ng-model="vm.workOrder.cmmsWorkOrderNumber" />
+                        </div>
+                        <div class="form-group">
+                            <label>Facility</label>
+                            <xs-auto-input data-ng-model="vm.workOrder.locationId" 
+                                           array-of-objects="vm.locations" 
+                                           array-display-key="facility"
+                                           array-value-key="locationId"
+                                           editable="false" 
+                                           inner-class="form-control" 
+                                           live-search="true" 
+                                           data-ng-change="vm.setObject(vm.workOrder, 'location', 'locationId', vm.locations, vm.workOrder.locationId); vm.getNewWorkOrderNumber(vm.workOrder.contractId, vm.workOrder.location.locationId)"></xs-auto-input>
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Person</label>
+                            <input type="text" data-ng-disabled="true" class="form-control" data-ng-model="vm.workOrder.location.contactPerson" />
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="text" data-ng-disabled="true" class="form-control" data-ng-model="vm.workOrder.location.phoneNumber" 
+                                   ui-mask="(999) 999-9999"  ui-mask-placeholder ui-mask-placeholder-char="_" required/> 
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" data-ng-disabled="true" class="form-control" data-ng-model="vm.workOrder.location.emailAddress" />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Repair Type
+                            </label>
+                            <xs-auto-input data-ng-model="vm.workOrder.repairTypeId" 
+                                           array-of-objects="vm.repairTypes" 
+                                           array-display-key="name" 
+                                           array-value-key="repairTypeId" 
+                                           inner-class="form-control" 
+                                           data-ng-change="vm.setObject(vm.workOrder, 'repairType', 'repairTypeId', vm.repairTypes, vm.workOrder.repairTypeId)"
+                                           required></xs-auto-input>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Service Type
+                            </label>
+                            <xs-auto-input data-ng-model="vm.workOrder.serviceTypeId" 
+                                           array-of-objects="vm.serviceTypes" 
+                                           array-display-key="name" 
+                                           array-value-key="serviceTypeId" 
+                                           inner-class="form-control" 
+                                           data-ng-change="vm.setObject(vm.workOrder, 'serviceType', 'serviceTypeId', vm.serviceTypes, vm.workOrder.serviceTypeId)"
+                                           required></xs-auto-input>
+                        </div>
+                        <div class="form-group">
+                            <label>CMMS Asset ID</label>
+                            <input type="text" class="form-control" data-ng-model="vm.workOrder.cmmsAssetID" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6" style="padding-right: 12px;">
+                        <div class="form-group">
+                            <label>Asset Serial Number</label>
+                            <input type="text" class="form-control" data-ng-model="vm.workOrder.assetSerialNumber" />
+                        </div>
+                        <div class="form-group">
+                            <label>Work Order Issued Date</label>
+                            <input type="text" class="form-control" value="{{ vm.workOrder.issuedDate | date:'MM/dd/yyyy' }}" data-ng-disabled="true" />
+                        </div>
+                        <div class="form-group">
+                            <label>Repair Description</label>
+                            <textarea class="form-control" rows="5" data-ng-model="vm.workOrder.repairDescription" />
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Email
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label>To</label>
+                                    <input type="text" class="form-control" data-ng-model="vm.workOrderEmail.to" />
+                                </div>
+                                <div class="form-group">
+                                    <label>CC</label>
+                                    <input type="text" class="form-control" data-ng-model="vm.workOrderEmail.cc" />
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Body</label>
+                                    <textarea class="form-control" rows="5" data-ng-model="vm.workOrderEmail.body"
+                                              data-ng-disabled="!vm.sendEmailUpdate" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" data-ng-model="vm.sendEmailUpdate" />&nbsp;Send Update Email
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="pull-right" style="padding-right: 12px;">
+                        <back-button inner-class="btn btn-default"></back-button>
+                        <input type="submit" value="Save" class="btn btn-default" ng-click="vm.myForm.$setPristine(); vm.addEntity(vm.workOrder)" data-ng-disabled="vm.disableAll" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

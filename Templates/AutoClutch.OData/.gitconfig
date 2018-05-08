@@ -1,0 +1,12 @@
+[url "https://github.com/"]
+        insteadOf = git@github.com:
+[url "https://"]
+        insteadOf = git://
+[http]
+	proxy = http://localhost:53128/
+	sslVerify = false
+    sslCAinfo = /bin/curl-ca-bundle.crt
+[https]
+	proxy = http://localhost:53128/
+[url "http://"]
+	insteadOf = git://

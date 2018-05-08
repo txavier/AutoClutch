@@ -1,0 +1,76 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Payment</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row" data-ng-if="vm.contract.contractTypeId !== 4">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <form role="form">
+                    <div class="col-lg-11">
+                        <div class="form-group">
+                            <label>
+                                List all prevailing wage subcontractors used during this payment period.
+                            </label>
+                            <textarea class="form-control" rows="5" data-ng-model="vm.PrevailingSubcontractors" ng-model-options="{ debounce: 700 }"/>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                List all non-prevailing wage subcontractors used during this payment period.
+                            </label>
+                            <textarea class="form-control" rows="5" data-ng-model="vm.nonPrevailingSubcontractors" ng-model-options="{ debounce: 700 }" />
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model-options="{ debounce: 700 }" data-ng-model="vm.payrollQuestion" />
+                                Payroll certifications for the entire period have been received from the prime contractor and all its subcontractors used during this payment period on the above referenced contract. A sample week is attached.
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model-options="{ debounce: 700 }" data-ng-model="vm.minimumQuestion" />
+                                A minimum of a 5% sample of each payroll has been reviewed. The wages paid appear to be in compliance with the most current prevailing wage rates. The titles used by the contractor and the subcontractors appear to be consistent with the work done during this period.
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model-options="{ debounce: 700 }" data-ng-model="vm.signInQuestion" />
+                                Sign-in/Sign-out sheets for the contractor and all subcontractors used during this payroll period are also on site and have been retained. A sample sign-in/sign-out sheet is attached for a date within the sample payroll.
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model-options="{ debounce: 700 }" data-ng-model="vm.copyQuestion" />
+                                A copy of this prevailing wage memorandum will be sent to the ACCO’s office to the attention of Santo Cimino – Deputy ACCO, Contract Opportunities/WMBE Program.  Mr. Cimino’s copy includes a sample payroll and a sample sign-in/sign-out sheet for the prime contractor and all subcontractors used during this payroll period.</label>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                If unable to certify any of the previous, provide reason why below.
+                            </label>
+                            <input type="text" class="form-control" ng-model-options="{ debounce: 700 }" data-ng-model="vm.reason" data-ng-disabled="vm.payrollQuestion && vm.minimumQuestion && vm.signInQuestion && vm.copyQuestion" />
+                        </div>
+                        <back-button inner-class="btn btn-default"></back-button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <!--If this contract is a blanket order contract, contractTypeId === 4, then load up the receiving report payment report.-->
+    <report ng-if="vm.contract.contractTypeId === 4" report-name="ReceivingReport" format="pdf" parameters="[{ key: 'PaymentId', value: vm.paymentId }]"></report>
+    <report ng-if="vm.contractId && vm.paymentNumber && vm.contract.contractTypeId !== 4" report-name="PaymentReport" format="pdf"
+            parameters="[
+            { key: 'ContractId', value: vm.contractId}, 
+            { key: 'PaymentNumber', value: vm.paymentNumber}, 
+            { key: 'PrevailingSubcontractors', value: vm.PrevailingSubcontractors }, 
+            { key: 'NonPrevailingSubcontractors', value: vm.nonPrevailingSubcontractors }, 
+            { key: 'Question1', value: vm.payrollQuestion }, 
+            { key: 'Question2', value: vm.minimumQuestion }, 
+            { key: 'Question3', value: vm.signInQuestion }, 
+            { key: 'Question4', value: vm.copyQuestion}, 
+            { key: 'Reason', value: vm.reason || '' }]">
+    </report>
+</div>

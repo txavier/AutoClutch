@@ -1,0 +1,36 @@
+{
+  "name": "logToServer.js",
+  "main": "logToServer.js",
+  "version": "1.0.1",
+  "authors": [
+    "mperdeck <mperdeck@gmail.com>"
+  ],
+  "description": "AngularJs module that logs uncaught exceptions, AJAX timeouts and other events from your client side code to your server side log.",
+  "keywords": [
+    "logging",
+    "logger",
+    "debugging",
+    "development",
+    "angularjs",
+    "angular",
+    "exceptions"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/mperdeck/JSNLog.AngularJS",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "1.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.1",
+    "commit": "1f97638bfc4db6133bac24101252b542232a8917"
+  },
+  "_source": "https://github.com/mperdeck/JSNLog.AngularJS.git",
+  "_target": "~1.0.1",
+  "_originalSource": "logToServer.js"
+}

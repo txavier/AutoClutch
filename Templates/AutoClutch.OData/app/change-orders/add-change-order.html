@@ -1,0 +1,65 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Change Order</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <form role="form" name="vm.myForm" confirm-on-exit>
+                    <div class="col-lg-11">
+                        <div class="form-group">
+                            <label>
+                                Contract Number
+                            </label>
+                            <input type="text" class="form-control" data-ng-model="vm.changeOrder.contract.contractNumber" data-ng-disabled="true" />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Change Order Type
+                            </label>
+                            <xs-auto-input data-ng-model="vm.changeOrder.changeOrderTypeId" array-of-objects="vm.changeOrderTypes" array-display-key="name" 
+                                           array-value-key="changeOrderTypeId" editable="false" inner-class="form-control" live-search="false"
+                                           data-ng-change="vm.initializeNewChangeOrder()" name ='change order type' required></xs-auto-input>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Change Order Number
+                            </label>
+                            <input type="text" class="form-control" disabled="disabled" data-ng-model="vm.changeOrder.changeOrderNumber" />
+                        </div>
+                        <div class="form-group">
+                            <label>Identification Date</label>
+                            <xs-auto-input data-ng-model="vm.changeOrder.identificationDate" calendar="true" />
+                        </div>
+                        <div class="form-group" data-ng-if="vm.changeOrder.changeOrderTypeId == 3">
+                            <label>Extension Date</label>
+                            <xs-auto-input data-ng-model="vm.changeOrder.extensionDate" calendar="true" required/>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" rows="5" data-ng-model="vm.changeOrder.description" />
+                        </div>
+                        <div class="form-group">
+                            <label>Reason for Change Order</label>
+                            <textarea class="form-control" rows="5" data-ng-model="vm.changeOrder.reasonForChangeOrder" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="pull-right" style="padding-right: 12px;">
+                        <a class="btn btn-default" href="#/{{ vm.sectionName }}/contracts/{{ vm.contractNumber }}">Back</a>
+                        <input type="submit" value="Save" class="btn btn-default" ng-click="vm.myForm.$setPristine(); vm.addChangeOrder(vm.changeOrder)" data-ng-disabled="vm.disableAll"
+                               access="admin, sectionChief, areaEngineer, engineer" access-permission-type="AtLeastOne" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

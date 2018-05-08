@@ -1,0 +1,63 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Contractors Contacts</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row col-lg-12">
+    <a class="btn btn-default" href="#/contractors/{{ vm.contractorName }}/add-contractor-contact-person">Add Contact Person</a>
+</div>
+<div class="row col-lg-12">
+    <label class="control-label">{{ vm.totalItems }} Total Contacts</label>
+</div>
+<div class="row col-lg-12">
+    <table class="table table-striped">
+        <tr>
+            <th>
+                <a data-ng-click="vm.setSortOrder('firstName')">First Name</a>
+            </th>
+            <th>
+                <a data-ng-click="vm.setSortOrder('lastName')">Last Name</a>
+            </th>
+            <th>
+                <a data-ng-click="vm.setSortOrder('phoneNumber')">Phone Number</a>
+            </th>
+            <th>
+                <a data-ng-click="vm.setSortOrder('emailAddress')">Email Address</a>
+            </th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <tr ng-repeat="contractorContactPerson in vm.entities">
+            <td>
+                {{ contractorContactPerson.firstName }}
+            </td>
+            <td>
+                {{ contractorContactPerson.lastName }}
+            </td>
+            <td>
+                {{ contractorContactPerson.phoneNumber | tel }}
+            </td>
+            <td>
+                {{ contractorContactPerson.emailAddress }}
+            </td>
+            <td>
+                <a class="btn btn-default" href="#/contractors/{{ vm.contractorName }}/update-contractor-contact-person/{{ contractorContactPerson.contractorContactPersonId }}">
+                    Edit
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-default" data-ng-click="vm.deleteEntity(contractorContactPerson.contractorContactPersonId)">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    </table>
+    <div class="form-group">
+        <ul uib-pagination total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.currentPage" ng-change="vm.pageChanged()" max-size="7" boundary-links="true"
+                    rotate="false"></ul>
+    </div>
+    <div class="form-group">
+        <a class="btn btn-default" href="#/update-contractor/{{ vm.contractorName }}">Back</a>
+    </div>
+</div>

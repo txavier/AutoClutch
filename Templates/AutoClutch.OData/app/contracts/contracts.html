@@ -1,0 +1,108 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Contracts</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row" style="padding-bottom: 14px;" data-ng-if="!vm.customQueryName">
+    <div class="col-lg-12">
+        <a class="btn btn-default" href="#/{{ vm.sectionName }}/add-contract" access="admin, sectionChief" 
+           access-permission-type="AtLeastOne" access-hidden="true">Add Contract</a>
+    </div>
+</div>
+<div class="row" data-ng-if="!vm.customQueryName">
+    <div class="col-lg-12">
+        <uib-accordion close-others="vm.oneAtATime">
+            <div uib-accordion-group class="panel-default" heading="Static Header, initially expanded" is-open="vm.status.isFirstOpen" is-disabled="vm.status.isFirstDisabled">
+                <uib-accordion-heading>
+                    Filter <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.status.isFirstOpen, 'glyphicon-chevron-right': !vm.status.isFirstOpen}"></i>
+                    
+                </uib-accordion-heading>
+                <div class="row mtbox">
+                    <div class="form-group" style="padding-left:14px;" data-ng-if="!vm.disableEngineerDropDown">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>
+                                    Engineer
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <xs-auto-input data-ng-model="vm.selectedEngineerId" array-of-objects="vm.engineers" array-display-key="name" array-value-key="engineerId"
+                                               editable="false" inner-class="form-control" live-search="true" data-ng-change="vm.filterContracts()"></xs-auto-input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="padding-left:14px;">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Contract Status</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <xs-auto-input data-ng-model="vm.selectedContractStatusId" array-of-objects="vm.contractStatuses" array-display-key="name" 
+                                               editable="false" inner-class="form-control" live-search="false" array-value-key="contractStatusId" 
+                                               data-ng-change="vm.filterContracts()">
+                                </xs-auto-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </uib-accordion>
+    </div>
+</div>
+<div class="row" >
+    <div class="col-lg-12">
+        <label class="control-label">{{ vm.totalItems }} Total Contracts</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="form-group">
+            <table class="table table-striped">
+                <tr>
+                    <th>
+                        <a data-ng-click="vm.setSortOrder('contractNumber')">Contract Number</a>
+                    </th>
+                    <th>
+                        <a data-ng-click="vm.setSortOrder('contractDescription')">Description</a>
+                    </th>
+                    <th>
+                        <a data-ng-click="vm.setSortOrder('actualEndDateDisplay')">Actual End Date</a>
+                    </th>
+                    <th>
+                        <a data-ng-click="vm.setSortOrder('contractBalanceDisplay')">Remaining Balance</a>
+                    </th>
+                    <th>
+                        <a data-ng-click="vm.setSortOrder('contractStatus/name')">Status</a>
+                    </th>
+                </tr>
+                <tr ng-repeat="contract in vm.contracts">
+                    <td>
+                        <a href="#/{{ contract.section.name }}/contracts/{{ contract.contractNumber }}?currentPage={{vm.currentPage}}">{{ contract.contractNumber }}</a>
+                    </td>
+                    <td>
+                        {{ contract.contractDescription }}
+                    </td>
+                    <td data-ng-class="{'highlightRed': contract.highlightActualEndDateDisplay}">
+                        {{ contract.actualEndDateDisplay | date:'M/d/yyyy'}}
+                    </td>
+                    <td data-ng-class="{'highlightRed': contract.highlightRemainingBalanceDisplay}"
+                        data-toggle="tooltip" 
+                        data-placement="top"
+                        title="Red indicates that either the overall contract balance or the remaining parts and materials balance is at 25% of the current contract balance or the remaining parts and materials balance.">
+                        {{ contract.contractBalanceDisplay | currency  }}
+                    </td>
+                    <td>
+                        {{ contract.contractStatus.name }}
+                    </td>
+                </tr>
+            </table>
+            <ul data-ng-if="!vm.customQueryName" uib-pagination total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.currentPage" ng-change="vm.pageChanged()" max-size="7" boundary-links="true"
+                        rotate="false"></ul>
+        </div>
+    </div>
+</div>
