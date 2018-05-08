@@ -22,10 +22,13 @@ using System.Web.Http.Validation.Providers;
 
 [assembly: WebActivatorEx.PostApplicationStartMethod(typeof($safeprojectname$.App_Start.StructuremapWebApi), "Start")]
 
-namespace $safeprojectname$.App_Start {
-    public static class StructuremapWebApi {
-        public static void Start() {
-			var container = StructuremapMvc.StructureMapDependencyScope.Container;
+namespace $safeprojectname$.App_Start
+{
+    public static class StructuremapWebApi
+    {
+        public static void Start()
+        {
+            var container = StructuremapMvc.StructureMapDependencyScope.Container;
             GlobalConfiguration.Configuration.DependencyResolver = new StructureMapWebApiDependencyResolver(container);
 
             var dataAnnotationsModelValidatorProvider = new DataAnnotationsModelValidatorProvider();

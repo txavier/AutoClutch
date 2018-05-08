@@ -15,7 +15,7 @@ namespace $safeprojectname$
     {
         private IContainer _Container;
 
-        public StructuremapDataAnnotationsModelValidatorWebApi(IEnumerable<ModelValidatorProvider> validatorProviders, ValidationAttribute attribute, IContainer container) 
+        public StructuremapDataAnnotationsModelValidatorWebApi(IEnumerable<ModelValidatorProvider> validatorProviders, ValidationAttribute attribute, IContainer container)
             : base(validatorProviders, attribute)
         {
             _Container = container;

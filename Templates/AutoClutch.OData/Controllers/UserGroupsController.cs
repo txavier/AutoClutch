@@ -16,14 +16,14 @@ using System.Web.OData.Routing;
 
 namespace $safeprojectname$.Controllers
 {
-    public class FilesController : ODataApiController<file>
+    public class UserGroupsController : ODataApiController<userGroup>
     {
-        private IService<file> _fileService;
+        private IService<userGroup> _userGroupService;
 
-        public FilesController(IService<file> fileService, ILogService<file> logService)
-            : base(fileService, logService)
+        public UserGroupsController(IService<userGroup> userGroupService, ILogService<userGroup> logService)
+            : base(userGroupService, logService)
         {
-            _fileService = fileService;
+            _userGroupService = userGroupService;
         }
     }
 }

@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
     <Name>AutoClutch.OData</Name>
-    <Description>OData template for AutoClutch.</Description>
+    <Description>OData layer for AutoClutch</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
@@ -15,7 +15,7 @@
     <PreviewImage>__PreviewImage.png</PreviewImage>
   </TemplateData>
   <TemplateContent>
-    <Project TargetFileName="ContractTrackingManagement.csproj" File="ContractTrackingManagement.csproj" ReplaceParameters="true">
+    <Project TargetFileName="FileTrackingManagement.OData.csproj" File="FileTrackingManagement.OData.csproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="false" TargetFileName=".bowerrc">.bowerrc</ProjectItem>
       <ProjectItem ReplaceParameters="false" TargetFileName=".gitconfig">.gitconfig</ProjectItem>
       <Folder Name="app" TargetFolderName="app">
@@ -265,7 +265,6 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="XmlDocumentationProvider.cs">XmlDocumentationProvider.cs</ProjectItem>
         </Folder>
       </Folder>
-      <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
       <Folder Name="Content" TargetFolderName="Content">
         <ProjectItem ReplaceParameters="true" TargetFileName="angular-chart.css">angular-chart.css</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="animations.css">animations.css</ProjectItem>
@@ -295,66 +294,25 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="AboutController.cs">AboutController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="AuthorizationController.cs">AuthorizationController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="BaseApiController.cs">BaseApiController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="BudgetCodesController.cs">BudgetCodesController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="BudgetCodesODataController.cs">BudgetCodesODataController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ChangeOrdersController.cs">ChangeOrdersController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ChangeOrdersODataController.cs">ChangeOrdersODataController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ChangeOrderTypesController.cs">ChangeOrderTypesController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ChangeOrderTypesODataController.cs">ChangeOrderTypesODataController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ContractCategoriesController.cs">ContractCategoriesController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ContractCategoriesODataController.cs">ContractCategoriesODataController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ContractorContactPersonsController.cs">ContractorContactPersonsController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ContractorContactPersonsODataController.cs">ContractorContactPersonsODataController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ContractorsController.cs">ContractorsController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ContractorsODataController.cs">ContractorsODataController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ContractsController.cs">ContractsController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ContractsODataController.cs">ContractsODataController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ContractStatuses.cs">ContractStatuses.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ContractStatusesODataController.cs">ContractStatusesODataController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ContractTypesController.cs">ContractTypesController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ContractTypesODataController.cs">ContractTypesODataController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="DashboardController.cs">DashboardController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="DashboardODataController.cs">DashboardODataController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="DeductionsController.cs">DeductionsController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="DeductionsODataController.cs">DeductionsODataController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="DeductionTypesController.cs">DeductionTypesController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="DeductionTypesODataController.cs">DeductionTypesODataController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="EngineerContractsController.cs">EngineerContractsController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="EngineersController.cs">EngineersController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="EngineersControllerOData.cs">EngineersControllerOData.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="FileGroupsController.cs">FileGroupsController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="FilesController.cs">FilesController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="HistoriesController.cs">HistoriesController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="HomeController.cs">HomeController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="LocationsController.cs">LocationsController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="LocationsODataController.cs">LocationsODataController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ObjectCodesController.cs">ObjectCodesController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ObjectCodesODataController.cs">ObjectCodesODataController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MetricsController.cs">MetricsController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ODataApiController.cs">ODataApiController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="PaymentAttachmentsController.cs">PaymentAttachmentsController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="PaymentsController.cs">PaymentsController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="PaymentsODataController.cs">PaymentsODataController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="PaymentTypesController.cs">PaymentTypesController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ReceivingReportDetailsController.cs">ReceivingReportDetailsController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ReceivingReportDetailsODataController.cs">ReceivingReportDetailsODataController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="RepairTypesController.cs">RepairTypesController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="RepairTypesODataController.cs">RepairTypesODataController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ReportingCategoriesController.cs">ReportingCategoriesController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ReportingCategoriesODataController.cs">ReportingCategoriesODataController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ProjectsController.cs">ProjectsController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ReportsController.cs">ReportsController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ReportViewerController.cs">ReportViewerController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="SectionsController.cs">SectionsController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="SectionsODataController.cs">SectionsODataController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ServiceTypesController.cs">ServiceTypesController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ServiceTypesODataController.cs">ServiceTypesODataController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="SettingsController.cs">SettingsController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="SharepointFilesController.cs">SharepointFilesController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="StatusesController.cs">StatusesController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="TimelineItemsController.cs">TimelineItemsController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="UserActionLogsController.cs">UserActionLogsController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="UserGroupsController.cs">UserGroupsController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="UsersController.cs">UsersController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="UsersUserGroupsController.cs">UsersUserGroupsController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ValuesController.cs">ValuesController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="WorkOrderHistoriesController.cs">WorkOrderHistoriesController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="WorkOrderHistoriesODataController.cs">WorkOrderHistoriesODataController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="WorkOrdersController.cs">WorkOrdersController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="WorkOrdersODataController.cs">WorkOrdersODataController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="WorkOrderStatusesController.cs">WorkOrderStatusesController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="WorkOrderStatusesODataController.cs">WorkOrderStatusesODataController.cs</ProjectItem>
       </Folder>
       <Folder Name="DependencyResolution" TargetFolderName="DependencyResolution">
         <ProjectItem ReplaceParameters="true" TargetFileName="IoC.cs">IoC.cs</ProjectItem>
@@ -425,16 +383,15 @@
       </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="Global.asax">Global.asax</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Global.asax.cs">Global.asax.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="gulpfile.js">gulpfile.js</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="karma.conf.js">karma.conf.js</ProjectItem>
-      <ProjectItem ReplaceParameters="false" TargetFileName="karma.ps1">karma.ps1</ProjectItem>
+      <Folder Name="HangfireConfiguration" TargetFolderName="HangfireConfiguration">
+        <ProjectItem ReplaceParameters="true" TargetFileName="HangfireAuthorizationFilter.cs">HangfireAuthorizationFilter.cs</ProjectItem>
+      </Folder>
       <Folder Name="Models" TargetFolderName="Models" />
       <ProjectItem ReplaceParameters="true" TargetFileName="MvcReportViewer.aspx">MvcReportViewer.aspx</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="MvcReportViewerErrorPage.html">MvcReportViewerErrorPage.html</ProjectItem>
       <Folder Name="NuGet" TargetFolderName="NuGet">
         <ProjectItem ReplaceParameters="true" TargetFileName="readme.txt">readme.txt</ProjectItem>
       </Folder>
-      <ProjectItem ReplaceParameters="true" TargetFileName="package.json">package.json</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Project_Readme.html">Project_Readme.html</ProjectItem>
       <Folder Name="Properties" TargetFolderName="Properties">
@@ -550,6 +507,7 @@
       <Folder Name="Views" TargetFolderName="Views">
         <ProjectItem ReplaceParameters="true" TargetFileName="_ViewStart.cshtml">_ViewStart.cshtml</ProjectItem>
         <Folder Name="About" TargetFolderName="About" />
+        <Folder Name="BaseApi" TargetFolderName="BaseApi" />
         <Folder Name="Home" TargetFolderName="Home">
           <ProjectItem ReplaceParameters="true" TargetFileName="Index.cshtml">Index.cshtml</ProjectItem>
         </Folder>
@@ -590,293 +548,7 @@
       <ProjectItem ReplaceParameters="true" TargetFileName="Web.Debug.config">Web.Debug.config</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Web.Release.config">Web.Release.config</ProjectItem>
       <Folder Name="wwwroot" TargetFolderName="wwwroot">
-        <Folder Name="lib" TargetFolderName="lib">
-          <Folder Name="angular" TargetFolderName="angular">
-            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="angular-csp.css">angular-csp.css</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="angular.js">angular.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="angular.min.js">angular.min.js</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="angular.min.js.gzip">angular.min.js.gzip</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="angular.min.js.map">angular.min.js.map</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="index.js">index.js</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="LICENSE.md">LICENSE.md</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="package.json">package.json</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
-          </Folder>
-          <Folder Name="angular-animate" TargetFolderName="angular-animate">
-            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="angular-animate.js">angular-animate.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="angular-animate.min.js">angular-animate.min.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="angular-animate.min.js.map">angular-animate.min.js.map</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="index.js">index.js</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="LICENSE.md">LICENSE.md</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="package.json">package.json</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
-          </Folder>
-          <Folder Name="angular-bootstrap" TargetFolderName="angular-bootstrap">
-            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName=".gitignore">.gitignore</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName=".npmignore">.npmignore</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="index.js">index.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="package.json">package.json</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="ui-bootstrap-csp.css">ui-bootstrap-csp.css</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="ui-bootstrap-tpls.js">ui-bootstrap-tpls.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="ui-bootstrap-tpls.min.js">ui-bootstrap-tpls.min.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="ui-bootstrap.js">ui-bootstrap.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="ui-bootstrap.min.js">ui-bootstrap.min.js</ProjectItem>
-          </Folder>
-          <Folder Name="angular-bootstrap-datetimepicker" TargetFolderName="angular-bootstrap-datetimepicker">
-            <Folder Name="src" TargetFolderName="src">
-              <Folder Name="css" TargetFolderName="css">
-                <ProjectItem ReplaceParameters="true" TargetFileName="datetimepicker.css">datetimepicker.css</ProjectItem>
-                <ProjectItem ReplaceParameters="true" TargetFileName="datetimepicker.css.map">datetimepicker.css.map</ProjectItem>
-              </Folder>
-              <Folder Name="js" TargetFolderName="js">
-                <ProjectItem ReplaceParameters="true" TargetFileName="datetimepicker.js">datetimepicker.js</ProjectItem>
-              </Folder>
-              <Folder Name="scss" TargetFolderName="scss">
-                <ProjectItem ReplaceParameters="false" TargetFileName="_core.scss">_core.scss</ProjectItem>
-                <ProjectItem ReplaceParameters="false" TargetFileName="_variables.scss">_variables.scss</ProjectItem>
-                <ProjectItem ReplaceParameters="false" TargetFileName="datetimepicker.scss">datetimepicker.scss</ProjectItem>
-              </Folder>
-            </Folder>
-          </Folder>
-          <Folder Name="angular-chart.js" TargetFolderName="angular-chart.js">
-            <Folder Name="dist" TargetFolderName="dist">
-              <ProjectItem ReplaceParameters="true" TargetFileName="angular-chart.js">angular-chart.js</ProjectItem>
-              <ProjectItem ReplaceParameters="false" TargetFileName="angular-chart.js.tar.gz">angular-chart.js.tar.gz</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="angular-chart.min.js">angular-chart.min.js</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="angular-chart.min.js.map">angular-chart.min.js.map</ProjectItem>
-            </Folder>
-          </Folder>
-          <Folder Name="angular-loading-bar" TargetFolderName="angular-loading-bar">
-            <Folder Name="build" TargetFolderName="build">
-              <ProjectItem ReplaceParameters="true" TargetFileName="loading-bar.css">loading-bar.css</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="loading-bar.js">loading-bar.js</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="loading-bar.min.css">loading-bar.min.css</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="loading-bar.min.js">loading-bar.min.js</ProjectItem>
-            </Folder>
-          </Folder>
-          <Folder Name="angular-mocks" TargetFolderName="angular-mocks">
-            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="angular-mocks.js">angular-mocks.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="LICENSE.md">LICENSE.md</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="ngAnimateMock.js">ngAnimateMock.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="ngMock.js">ngMock.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="ngMockE2E.js">ngMockE2E.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="package.json">package.json</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
-          </Folder>
-          <Folder Name="angular-query-builder" TargetFolderName="angular-query-builder">
-            <ProjectItem ReplaceParameters="true" TargetFileName="angular-query-builder.js">angular-query-builder.js</ProjectItem>
-            <Folder Name="css" TargetFolderName="css">
-              <ProjectItem ReplaceParameters="true" TargetFileName="styles.css">styles.css</ProjectItem>
-            </Folder>
-            <Folder Name="fonts" TargetFolderName="fonts">
-              <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.eot">glyphicons-halflings-regular.eot</ProjectItem>
-              <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.svg">glyphicons-halflings-regular.svg</ProjectItem>
-              <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.ttf">glyphicons-halflings-regular.ttf</ProjectItem>
-              <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.woff">glyphicons-halflings-regular.woff</ProjectItem>
-            </Folder>
-            <Folder Name="template" TargetFolderName="template">
-              <ProjectItem ReplaceParameters="true" TargetFileName="queryBuilderDirective.html">queryBuilderDirective.html</ProjectItem>
-            </Folder>
-          </Folder>
-          <Folder Name="angular-route" TargetFolderName="angular-route">
-            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="angular-route.js">angular-route.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="angular-route.min.js">angular-route.min.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="angular-route.min.js.map">angular-route.min.js.map</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="index.js">index.js</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="LICENSE.md">LICENSE.md</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="package.json">package.json</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
-          </Folder>
-          <Folder Name="angular-sanitize" TargetFolderName="angular-sanitize">
-            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="angular-sanitize.js">angular-sanitize.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="angular-sanitize.min.js">angular-sanitize.min.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="angular-sanitize.min.js.map">angular-sanitize.min.js.map</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="index.js">index.js</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="LICENSE.md">LICENSE.md</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="package.json">package.json</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
-          </Folder>
-          <Folder Name="angular-ui-mask" TargetFolderName="angular-ui-mask">
-            <Folder Name="dist" TargetFolderName="dist">
-              <ProjectItem ReplaceParameters="true" TargetFileName="mask.js">mask.js</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="mask.min.js">mask.min.js</ProjectItem>
-            </Folder>
-          </Folder>
-          <Folder Name="AngularJS-Toaster" TargetFolderName="AngularJS-Toaster">
-            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="index.js">index.js</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="LICENSE">LICENSE</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="package.json">package.json</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="toaster.css">toaster.css</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="toaster.js">toaster.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="toaster.min.css">toaster.min.css</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="toaster.min.js">toaster.min.js</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="toaster.scss">toaster.scss</ProjectItem>
-          </Folder>
-          <Folder Name="angulartics" TargetFolderName="angulartics">
-            <Folder Name="dist" TargetFolderName="dist">
-              <ProjectItem ReplaceParameters="true" TargetFileName="angulartics.min.js">angulartics.min.js</ProjectItem>
-            </Folder>
-          </Folder>
-          <Folder Name="angulartics-piwik" TargetFolderName="angulartics-piwik">
-            <Folder Name="dist" TargetFolderName="dist">
-              <ProjectItem ReplaceParameters="true" TargetFileName="angulartics-piwik.min.js">angulartics-piwik.min.js</ProjectItem>
-            </Folder>
-            <Folder Name="src" TargetFolderName="src">
-              <ProjectItem ReplaceParameters="true" TargetFileName="angulartics-piwik.js">angulartics-piwik.js</ProjectItem>
-            </Folder>
-          </Folder>
-          <Folder Name="bootstrap" TargetFolderName="bootstrap">
-            <Folder Name="dist" TargetFolderName="dist">
-              <Folder Name="css" TargetFolderName="css">
-                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-theme.css">bootstrap-theme.css</ProjectItem>
-                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-theme.css.map">bootstrap-theme.css.map</ProjectItem>
-                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-theme.min.css">bootstrap-theme.min.css</ProjectItem>
-                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-theme.min.css.map">bootstrap-theme.min.css.map</ProjectItem>
-                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.css">bootstrap.css</ProjectItem>
-                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.css.map">bootstrap.css.map</ProjectItem>
-                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.min.css">bootstrap.min.css</ProjectItem>
-                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.min.css.map">bootstrap.min.css.map</ProjectItem>
-              </Folder>
-              <Folder Name="fonts" TargetFolderName="fonts">
-                <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.eot">glyphicons-halflings-regular.eot</ProjectItem>
-                <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.svg">glyphicons-halflings-regular.svg</ProjectItem>
-                <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.ttf">glyphicons-halflings-regular.ttf</ProjectItem>
-                <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.woff">glyphicons-halflings-regular.woff</ProjectItem>
-                <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.woff2">glyphicons-halflings-regular.woff2</ProjectItem>
-              </Folder>
-              <Folder Name="js" TargetFolderName="js">
-                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.js">bootstrap.js</ProjectItem>
-                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.min.js">bootstrap.min.js</ProjectItem>
-                <ProjectItem ReplaceParameters="true" TargetFileName="npm.js">npm.js</ProjectItem>
-              </Folder>
-            </Folder>
-          </Folder>
-          <Folder Name="chart.js" TargetFolderName="chart.js">
-            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName=".codeclimate.yml">.codeclimate.yml</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName=".eslintignore">.eslintignore</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName=".eslintrc">.eslintrc</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName=".npmignore">.npmignore</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName=".travis.yml">.travis.yml</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="composer.json">composer.json</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="config.jshintrc">config.jshintrc</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="CONTRIBUTING.md">CONTRIBUTING.md</ProjectItem>
-            <Folder Name="dist" TargetFolderName="dist">
-              <ProjectItem ReplaceParameters="true" TargetFileName="Chart.bundle.js">Chart.bundle.js</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="Chart.bundle.min.js">Chart.bundle.min.js</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="Chart.js">Chart.js</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="Chart.min.js">Chart.min.js</ProjectItem>
-            </Folder>
-            <ProjectItem ReplaceParameters="true" TargetFileName="gulpfile.js">gulpfile.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="karma.conf.ci.js">karma.conf.ci.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="karma.conf.js">karma.conf.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="karma.coverage.conf.js">karma.coverage.conf.js</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="LICENSE.md">LICENSE.md</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="package.json">package.json</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
-          </Folder>
-          <Folder Name="clipboard" TargetFolderName="clipboard">
-            <Folder Name="dist" TargetFolderName="dist">
-              <ProjectItem ReplaceParameters="true" TargetFileName="clipboard.min.js">clipboard.min.js</ProjectItem>
-            </Folder>
-          </Folder>
-          <Folder Name="jquery" TargetFolderName="jquery">
-            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.js">jquery.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.min.js">jquery.min.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.min.map">jquery.min.map</ProjectItem>
-          </Folder>
-          <Folder Name="logToServer.js" TargetFolderName="logToServer.js">
-            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="logToServer.js">logToServer.js</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
-          </Folder>
-          <Folder Name="modernizr" TargetFolderName="modernizr">
-            <ProjectItem ReplaceParameters="true" TargetFileName="modernizr.js">modernizr.js</ProjectItem>
-          </Folder>
-          <Folder Name="momentjs" TargetFolderName="momentjs">
-            <Folder Name="min" TargetFolderName="min">
-              <ProjectItem ReplaceParameters="true" TargetFileName="locales.js">locales.js</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="locales.min.js">locales.min.js</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="moment-with-locales.js">moment-with-locales.js</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="moment-with-locales.min.js">moment-with-locales.min.js</ProjectItem>
-              <ProjectItem ReplaceParameters="true" TargetFileName="moment.min.js">moment.min.js</ProjectItem>
-            </Folder>
-          </Folder>
-          <Folder Name="ng-file-upload" TargetFolderName="ng-file-upload">
-            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName=".versions">.versions</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="FileAPI.flash.swf">FileAPI.flash.swf</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="FileAPI.js">FileAPI.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="FileAPI.min.js">FileAPI.min.js</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="LICENSE">LICENSE</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="ng-file-upload-all.js">ng-file-upload-all.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="ng-file-upload-all.min.js">ng-file-upload-all.min.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="ng-file-upload-shim.js">ng-file-upload-shim.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="ng-file-upload-shim.min.js">ng-file-upload-shim.min.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="ng-file-upload.js">ng-file-upload.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="ng-file-upload.min.js">ng-file-upload.min.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="package.js">package.js</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
-          </Folder>
-          <Folder Name="ng-file-upload-shim" TargetFolderName="ng-file-upload-shim">
-            <ProjectItem ReplaceParameters="true" TargetFileName=".bower.json">.bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="bower.json">bower.json</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="FileAPI.flash.swf">FileAPI.flash.swf</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="FileAPI.js">FileAPI.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="FileAPI.min.js">FileAPI.min.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="ng-file-upload-all.js">ng-file-upload-all.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="ng-file-upload-all.min.js">ng-file-upload-all.min.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="ng-file-upload-shim.js">ng-file-upload-shim.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="ng-file-upload-shim.min.js">ng-file-upload-shim.min.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="ng-file-upload.js">ng-file-upload.js</ProjectItem>
-            <ProjectItem ReplaceParameters="true" TargetFileName="ng-file-upload.min.js">ng-file-upload.min.js</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
-          </Folder>
-          <Folder Name="ngclipboard" TargetFolderName="ngclipboard">
-            <Folder Name="dist" TargetFolderName="dist">
-              <ProjectItem ReplaceParameters="true" TargetFileName="ngclipboard.min.js">ngclipboard.min.js</ProjectItem>
-            </Folder>
-          </Folder>
-          <Folder Name="nya-bootstrap-select" TargetFolderName="nya-bootstrap-select">
-            <Folder Name="dist" TargetFolderName="dist">
-              <Folder Name="css" TargetFolderName="css">
-                <ProjectItem ReplaceParameters="true" TargetFileName="nya-bs-select.css">nya-bs-select.css</ProjectItem>
-                <ProjectItem ReplaceParameters="true" TargetFileName="nya-bs-select.min.css">nya-bs-select.min.css</ProjectItem>
-              </Folder>
-              <Folder Name="js" TargetFolderName="js">
-                <ProjectItem ReplaceParameters="true" TargetFileName="nya-bs-select.js">nya-bs-select.js</ProjectItem>
-                <ProjectItem ReplaceParameters="false" TargetFileName="test.jin.back">test.jin.back</ProjectItem>
-              </Folder>
-            </Folder>
-          </Folder>
-          <Folder Name="respond" TargetFolderName="respond">
-            <ProjectItem ReplaceParameters="true" TargetFileName="respond.min.js">respond.min.js</ProjectItem>
-          </Folder>
-          <Folder Name="stacktrace-js" TargetFolderName="stacktrace-js">
-            <Folder Name="dist" TargetFolderName="dist">
-              <ProjectItem ReplaceParameters="true" TargetFileName="stacktrace.min.js">stacktrace.min.js</ProjectItem>
-            </Folder>
-          </Folder>
-        </Folder>
+        <Folder Name="lib" TargetFolderName="lib" />
       </Folder>
     </Project>
   </TemplateContent>

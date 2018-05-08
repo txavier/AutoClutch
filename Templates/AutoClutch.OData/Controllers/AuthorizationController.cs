@@ -17,40 +17,40 @@ namespace $safeprojectname$.Controllers
             _AuthorizeService = AuthorizeService;
         }
 
-        public IHttpActionResult Get(bool? loginRequired, string permissionCheckType, string requiredPermissions, string uri, string parameters)
-        {
-            List<KeyValuePair<string, string>> parameterList = null;
+        //public IHttpActionResult Get(bool? loginRequired, string permissionCheckType, string requiredPermissions, string uri, string parameters)
+        //{
+        //    List<KeyValuePair<string, string>> parameterList = null;
 
-            if (parameters != null)
-            {
-                parameters = parameters.Replace("\"", "");
+        //    if (parameters != null)
+        //    {
+        //        parameters = parameters.Replace("\"", "");
 
-                var nameValueCollection = HttpUtility.ParseQueryString(parameters);
+        //        var nameValueCollection = HttpUtility.ParseQueryString(parameters);
 
-                parameterList = new List<KeyValuePair<string, string>>();
+        //        parameterList = new List<KeyValuePair<string, string>>();
 
-                for (int index = 0; index < nameValueCollection.Count; index++)
-                {
-                    var key = nameValueCollection.Keys[index];
-                    var value = nameValueCollection[index];
+        //        for (int index = 0; index < nameValueCollection.Count; index++)
+        //        {
+        //            var key = nameValueCollection.Keys[index];
+        //            var value = nameValueCollection[index];
 
-                    parameterList.Add(new KeyValuePair<string, string>(key, value));
-                }
-            }
+        //            parameterList.Add(new KeyValuePair<string, string>(key, value));
+        //        }
+        //    }
 
-            var result = _AuthorizeService.IsAuthorizedStrategy(User.Identity.Name.Split("\\".ToCharArray()).LastOrDefault(), loginRequired, permissionCheckType, requiredPermissions, uri, parameterList);
+        //    var result = _AuthorizeService.IsAuthorizedStrategy(User.Identity.Name.Split("\\".ToCharArray()).LastOrDefault(), loginRequired, permissionCheckType, requiredPermissions, uri, parameterList);
 
-            return Ok(result);
-        }
+        //    return Ok(result);
+        //}
 
-        [Route("getWithParams")]
-        [HttpPost]
-        public IHttpActionResult GetWithParams(bool? loginRequired, string permissionCheckType, string requiredPermissions, string uri, List<KeyValuePair<string, string>> parameters)
-        {
-            var result = _AuthorizeService.IsAuthorizedStrategy(User.Identity.Name.Split("\\".ToCharArray()).LastOrDefault(), loginRequired, permissionCheckType, requiredPermissions, uri, parameters);
+        //[Route("getWithParams")]
+        //[HttpPost]
+        //public IHttpActionResult GetWithParams(bool? loginRequired, string permissionCheckType, string requiredPermissions, string uri, List<KeyValuePair<string, string>> parameters)
+        //{
+        //    var result = _AuthorizeService.IsAuthorizedStrategy(User.Identity.Name.Split("\\".ToCharArray()).LastOrDefault(), loginRequired, permissionCheckType, requiredPermissions, uri, parameters);
 
-            return Ok(result);
-        }
+        //    return Ok(result);
+        //}
 
     }
 }

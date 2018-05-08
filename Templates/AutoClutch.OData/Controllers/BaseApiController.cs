@@ -1,6 +1,4 @@
-﻿using $safeprojectname$.Core.Objects;
-using $safeprojectname$.DependencyResolution;
-using Elmah;
+﻿using Elmah;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +12,9 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using System.Diagnostics;
 using System.Diagnostics.Contracts;
-using $safeprojectname$.Core.Interfaces;
 using AutoClutch.Core.Interfaces;
 using AutoClutch.Core.Objects;
+
 
 namespace $safeprojectname$.Controllers
 {
@@ -27,7 +25,7 @@ namespace $safeprojectname$.Controllers
 
         private ILogService<TEntity> _logService;
 
-        public BaseApiController(IService<TEntity> service, 
+        public BaseApiController(IService<TEntity> service,
             ILogService<TEntity> logService = null)
         {
             _service = service;
@@ -71,13 +69,13 @@ namespace $safeprojectname$.Controllers
         // For sorting http://jasonwatmore.com/post/2014/07/16/Dynamic-LINQ-Using-strings-to-sort-by-properties-and-child-object-properties.aspx
         [HttpGet]
         public virtual IHttpActionResult Get(
-            string sort = null, 
-            string expand = null, 
-            string fields = null, 
-            string q = null, 
-            int page = 1, 
-            int perPage = Int32.MaxValue, 
-            string search = null, 
+            string sort = null,
+            string expand = null,
+            string fields = null,
+            string q = null,
+            int page = 1,
+            int perPage = Int32.MaxValue,
+            string search = null,
             string searchFields = null,
             bool count = false)
         {
@@ -252,7 +250,7 @@ namespace $safeprojectname$.Controllers
 
             bool appendToPreviousQuery = false;
 
-            if(currentQuery == null)
+            if (currentQuery == null)
             {
                 appendToPreviousQuery = false;
 
@@ -292,7 +290,7 @@ namespace $safeprojectname$.Controllers
                     parameterCounter++;
                 }
 
-                if(fullTextSearchFields.Any())
+                if (fullTextSearchFields.Any())
                 {
                     currentQuery += ")";
                 }
@@ -510,7 +508,7 @@ namespace $safeprojectname$.Controllers
         /// http://aspnetwebstack.codeplex.com/workitem/1480
         /// </remarks>
         [HttpDelete]
-        public virtual async Task<IHttpActionResult> Delete(int id, bool? softDelete=null)
+        public virtual async Task<IHttpActionResult> Delete(int id, bool? softDelete = null)
         {
             try
             {
