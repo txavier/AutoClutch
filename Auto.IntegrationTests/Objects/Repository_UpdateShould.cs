@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AutoClutch.Test.Data;
+using System;
 
 namespace AutoClutch.Repo.Objects.Tests
 {
@@ -132,17 +133,36 @@ namespace AutoClutch.Repo.Objects.Tests
                 facility = facilityRepository2.Get(filter: i => i.facilityId == facility.facilityId).SingleOrDefault();
 
                 // Change the name of the user and put the object into the facility model.
-                facility.locationId = location2.locationId;
+                facility.locationId = location.locationId;
 
                 // If facility.location is set to location2 then an exception will be thrown.  This is the correct behavior.
+                facility.location = location;
+
+                bool exceptionCaught = false;
 
                 // Act.
-                facilityRepository2.Update(facility);
+                try
+                {
+                    facilityRepository2.Update(facility);
+                }
+                catch(Exception ex)
+                {
+                    // Assert.
+                    Assert.IsTrue(true, "There was an exception caught when trying to add a duplicate to the database.  This is correct, duplicates are not being caught.");
 
-                // Assert.
-                facility = context2.facilities.SingleOrDefault(i => i.facilityId == facility.facilityId);
+                    exceptionCaught = true;
+                }
 
-                Assert.AreEqual(facility.location.contactUserId, userId);
+                if(!exceptionCaught)
+                {
+                    Assert.IsFalse(false, "There was no exception caught when trying to add a duplicate to the database.  This is incorrect, duplicates are not being caught.");
+                }
+
+
+                //// Assert.
+                //facility = context2.facilities.SingleOrDefault(i => i.facilityId == facility.facilityId);
+
+                //Assert.AreEqual(facility.location.contactUserId, userId);
             }
             finally
             {

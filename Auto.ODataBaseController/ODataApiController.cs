@@ -5,16 +5,19 @@ using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using System.Web.OData;
-using System.Web.OData.Extensions;
+using System.Web.OData.Query;
+using System.Data.Entity;
+using System.Web.Http.Controllers;
+using System.Net.Http;
 
 namespace AutoClutch.Controller
 {
     public class ODataApiController<TEntity> : ODataController
-        where TEntity : class
+        where TEntity : class, new()
     {
         private IService<TEntity> _service;
 
@@ -32,15 +35,58 @@ namespace AutoClutch.Controller
             _service = service;
         }
 
-        [HttpGet]
+         [HttpGet]
         [EnableQuery]
-        public virtual IQueryable<TEntity> Get()
+        public virtual IHttpActionResult Get()
         {
+            // If the user included a calculated value in his $filter or $select
+            // query options then the entire table has to be brought into memory
+            // to be calculated properly using ToList() before being returned to 
+            // the user.
+            if (NotMappedPropertiesInQueryOptions(Request).Any())
+            {
+                // This is very slow.
+                var result = _service.Queryable().ToList();
+
+                return Ok(result);
+            }
+
             var queryable = _service.Queryable();
 
-            return queryable;
+            return Ok(queryable);
         }
 
+private static IEnumerable<KeyValuePair<string, string>> NotMappedPropertiesInQueryOptions(HttpRequestMessage request)
+        {
+            // As of 5/17/2017 unable to use Delegate Decompiler because it fails 
+            // when a computed property uses recursion.
+            // Use DelegateDecompiler to be able to query on computed properties.
+            //var queryable = _service.Queryable().Decompile();
+
+            var notMappedProperties = (new TEntity()).GetType().GetProperties()
+                .Where(i => i.CustomAttributes.Any(j => j.AttributeType.Name.Equals("NotMappedAttribute")))
+                .Select(j => j.Name);
+
+            // If there aren't any mapped properties then we can stop here.
+            if (!notMappedProperties.Any())
+            {
+                return new List<KeyValuePair<string, string>>();
+            }
+
+            // If $select has a not mapped attribute then to .toList().
+            var queryNameValuePairs = request.GetQueryNameValuePairs();
+
+            var concernedQuerys = queryNameValuePairs.Where(i => i.Key.Equals("$select") || i.Key.Equals("$filter") || i.Key.Equals("$orderby"));
+            // If there is no select, orderby or filter query options then we can stop here.
+            if (!concernedQuerys.Any())
+            {
+                return new List<KeyValuePair<string, string>>();
+            }
+
+            var resultSet = concernedQuerys.Where(i => notMappedProperties.Intersect(i.Value.Split(", ".ToCharArray())).Any());
+
+            return resultSet;
+        }
         //[EnableQuery]
         //public SingleResult<TEntity> Get([FromODataUri] int key)
         //{
@@ -49,11 +95,11 @@ namespace AutoClutch.Controller
         //}
         [HttpGet]
         [EnableQuery]
-        public virtual TEntity Get([FromODataUri] int key)
+        public virtual IHttpActionResult Get([FromODataUri] int key)
         {
             var result = _service.Find(key);
 
-            return result;
+            return Ok(result);
         }
 
         [HttpPost]
@@ -66,7 +112,7 @@ namespace AutoClutch.Controller
                     return BadRequest(ModelState);
                 }
 
-                var result = await _service.AddAsync(entity, User.Identity.Name?.Split("\\".ToCharArray()).FirstOrDefault());
+                var result = await _service.AddAsync(entity, User.Identity.Name?.Split("\\".ToCharArray()).LastOrDefault());
 
                 if (_service.Errors.Any())
                 {
@@ -110,7 +156,7 @@ namespace AutoClutch.Controller
 
                 try
                 {
-                    await _service.UpdateAsync(entityFromDatabase, User.Identity.Name?.Split("\\".ToCharArray()).FirstOrDefault());
+                    await _service.UpdateAsync(entityFromDatabase, User.Identity.Name?.Split("\\".ToCharArray()).LastOrDefault());
 
                     if (_service.Errors.Any())
                     {
@@ -156,7 +202,7 @@ namespace AutoClutch.Controller
 
                 try
                 {
-                    update = await _service.UpdateAsync(update, User.Identity.Name?.Split("\\".ToCharArray()).FirstOrDefault());
+                    update = await _service.UpdateAsync(update, User.Identity.Name?.Split("\\".ToCharArray()).LastOrDefault());
 
                     if (_service.Errors.Any())
                     {
@@ -202,7 +248,7 @@ namespace AutoClutch.Controller
                     return NotFound();
                 }
 
-                await _service.DeleteAsync(key, User.Identity.Name?.Split("\\".ToCharArray()).FirstOrDefault());
+                await _service.DeleteAsync(key, User.Identity.Name?.Split("\\".ToCharArray()).LastOrDefault());
 
                 if (_service.Errors.Any())
                 {
