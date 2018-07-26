@@ -31,7 +31,7 @@
     @Scripts.Render("~/bundles/jquery")
 
     <!-- Piwik -->
-    <script type="text/javascript">
+    @*<script type="text/javascript">
         var _paq = _paq || [];
         // _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
@@ -43,7 +43,7 @@
             g.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);
         })();
     </script>
-    <noscript><p><img src="//[Web Server]/piwik/piwik.php?idsite=4&rec=1" style="border:0;" alt="" /></p></noscript>
+    <noscript><p><img src="//[Web Server]/piwik/piwik.php?idsite=4&rec=1" style="border:0;" alt="" /></p></noscript>*@
     <!-- End Piwik Code -->
 </head>
 
@@ -455,14 +455,14 @@
         <!-- /#page-wrapper -->
     </div>
 
-    @Scripts.Render("~/bundles/angular")
+    @*@Scripts.Render("~/bundles/angular")
     <script src="~/wwwroot/lib/nya-bootstrap-select/dist/js/nya-bs-select.js"></script>
     @Scripts.Render("~/bundles/angular-third-party")
     @Scripts.Render("~/bundles/angular-shared-directives")
     @Scripts.Render("~/bundles/angular-app")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/sbAdmin")
-    @Scripts.Render("~/bundles/angular-third-party-datepicker-moment-shared-directives-moment-filter")
+    @Scripts.Render("~/bundles/angular-third-party-datepicker-moment-shared-directives-moment-filter")*@
     @RenderSection("scripts", required: false)
 
 </body>

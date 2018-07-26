@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Dispatcher;
+using Microsoft.Net.Http;
 
 namespace $safeprojectname$.DependencyResolution
 {

@@ -2,7 +2,6 @@
 using $safeprojectname$.Models;
 using System.Threading.Tasks;
 using $safeprojectname$.Objects;
-using AutoClutch.Core.Interfaces;
 
 namespace $safeprojectname$.Interfaces
 {

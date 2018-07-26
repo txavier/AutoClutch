@@ -87,7 +87,6 @@ namespace $safeprojectname$.Controllers
 
             return resultSet;
         }
-
         //[EnableQuery]
         //public SingleResult<TEntity> Get([FromODataUri] int key)
         //{
@@ -120,10 +119,12 @@ namespace $safeprojectname$.Controllers
                     return RetrieveErrorResult(_service.Errors);
                 }
 
+                var castkey = _service.GetEntityIdObject(entity) as int?;
+
                 // If a logging service has been injected then use it.
-                if (_logService != null)
+                if (_logService != null && castkey != null)
                 {
-                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), EventType.Added, loggedInUserName: User?.Identity?.Name, useToString: true);
+                    //await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), EventType.Added, loggedInUserName: User?.Identity?.Name, useToString: true);
                 }
 
                 return Created(result);
@@ -187,7 +188,7 @@ namespace $safeprojectname$.Controllers
         }
 
         [HttpPut]
-        public virtual async Task<IHttpActionResult> Put([FromODataUri] int key, TEntity update)
+        public virtual async Task<IHttpActionResult> Put([FromODataUri] String key, TEntity update)
         {
             try
             {
@@ -196,36 +197,31 @@ namespace $safeprojectname$.Controllers
                     return BadRequest(ModelState);
                 }
 
-                if (key != (int)_service.GetEntityIdObject(update))
+                //remove once database only contains int keys
+                try
                 {
-                    return BadRequest();
+                    if (key != (string)_service.GetEntityIdObject(update))
+                    {
+                        return BadRequest();
+                    }
+                }
+                catch (InvalidCastException ex)
+                {
+
                 }
 
                 try
                 {
-                    await _service.UpdateAsync(update, User.Identity.Name?.Split("\\".ToCharArray()).LastOrDefault());
+                    update = await _service.UpdateAsync(update, User.Identity.Name?.Split("\\".ToCharArray()).LastOrDefault());
 
                     if (_service.Errors.Any())
                     {
                         return RetrieveErrorResult(_service.Errors);
                     }
-
-                    // If a logging service has been injected then use it.
-                    if (_logService != null)
-                    {
-                        await _logService.InfoAsync(update, (int)_service.GetEntityIdObject(update), EventType.Modified, loggedInUserName: User?.Identity?.Name, useToString: true);
-                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EntityExists(key))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    throw;
                 }
 
                 return Updated(update);
@@ -259,7 +255,7 @@ namespace $safeprojectname$.Controllers
                 // If a logging service has been injected then use it.
                 if (_logService != null)
                 {
-                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), EventType.Deleted, loggedInUserName: User?.Identity?.Name, useToString: true);
+                    //await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), EventType.Deleted, loggedInUserName: User?.Identity?.Name, useToString: true);
                 }
 
                 return StatusCode(HttpStatusCode.NoContent);

@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
     <Name>AutoClutch.Core</Name>
-    <Description>AutoClutch Core layer template.</Description>
+    <Description>&lt;No description available&gt;</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
@@ -15,31 +15,30 @@
     <PreviewImage>__PreviewImage.png</PreviewImage>
   </TemplateData>
   <TemplateContent>
-    <Project TargetFileName="WebX.Core.csproj" File="WebX.Core.csproj" ReplaceParameters="true">
+    <Project TargetFileName="AutoClutchTemplate.Core.csproj" File="AutoClutchTemplate.Core.csproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="true" TargetFileName="App.config">App.config</ProjectItem>
+      <Folder Name="Documents" TargetFolderName="Documents">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ELMAH-1.2-db-SQLServer.sql">ELMAH-1.2-db-SQLServer.sql</ProjectItem>
+      </Folder>
       <Folder Name="Interfaces" TargetFolderName="Interfaces">
         <ProjectItem ReplaceParameters="true" TargetFileName="IAuthorizeService.cs">IAuthorizeService.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IEnvironmentConfigSettingsGetter.cs">IEnvironmentConfigSettingsGetter.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ILogService.cs">ILogService.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IMetricsService.cs">IMetricsService.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ISettingService.cs">ISettingService.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ITrackerEnabledService.cs">ITrackerEnabledService.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IUserApiService.cs">IUserApiService.cs</ProjectItem>
       </Folder>
       <Folder Name="Models" TargetFolderName="Models">
-        <ProjectItem ReplaceParameters="true" TargetFileName="author.cs">author.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="blogCategory.cs">blogCategory.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="blogEntry.cs">blogEntry.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="blogTag.cs">blogTag.cs</ProjectItem>
         <Folder Name="Partials" TargetFolderName="Partials">
           <ProjectItem ReplaceParameters="true" TargetFileName="blogEntry.cs">blogEntry.cs</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="engineer.cs">engineer.cs</ProjectItem>
         </Folder>
         <ProjectItem ReplaceParameters="true" TargetFileName="setting.cs">setting.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="user.cs">user.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="user.cs_bak">user.cs_bak</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="userActionLog.cs">userActionLog.cs</ProjectItem>
       </Folder>
       <Folder Name="Objects" TargetFolderName="Objects">
-        <ProjectItem ReplaceParameters="true" TargetFileName="EventType.cs">EventType.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="RequirementCheck.cs">RequirementCheck.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MetricsData.cs">MetricsData.cs</ProjectItem>
       </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
       <Folder Name="Properties" TargetFolderName="Properties">
@@ -47,6 +46,7 @@
       </Folder>
       <Folder Name="Services" TargetFolderName="Services">
         <ProjectItem ReplaceParameters="true" TargetFileName="AuthorizeService.cs">AuthorizeService.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MetricsService.cs">MetricsService.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="SettingService.cs">SettingService.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="TrackerEnabledService.cs">TrackerEnabledService.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="UserActionLogService.cs">UserActionLogService.cs</ProjectItem>

@@ -1,6 +1,6 @@
 ﻿using AutoClutch.Core.Interfaces;
 using AutoClutch.Core.Interfaces;
-using OTPS.Core.Models;
+using AutoClutchTemplate.Core.Models;
 using $safeprojectname$.DependencyResolution;
 using System;
 using System.Collections.Generic;

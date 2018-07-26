@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
     <Name>AutoClutch.Infrastructure</Name>
-    <Description>AutoClutch infrastructure layer template.</Description>
+    <Description>&lt;No description available&gt;</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
@@ -15,16 +15,14 @@
     <PreviewImage>__PreviewImage.png</PreviewImage>
   </TemplateData>
   <TemplateContent>
-    <Project TargetFileName="WebX.Infrastructure.csproj" File="WebX.Infrastructure.csproj" ReplaceParameters="true">
+    <Project TargetFileName="AutoClutchTemplate.Infrastructure.csproj" File="AutoClutchTemplate.Infrastructure.csproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="true" TargetFileName="App.config">App.config</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="App.Debug.config">App.Debug.config</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="App.Release.config">App.Release.config</ProjectItem>
       <Folder Name="Data" TargetFolderName="Data">
         <ProjectItem ReplaceParameters="true" TargetFileName="EfDataDbContext.cs">EfDataDbContext.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="EfDataDbContext.cs_bak">EfDataDbContext.cs_bak</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="TrackingConfig.cs">TrackingConfig.cs</ProjectItem>
-      </Folder>
-      <Folder Name="Getters" TargetFolderName="Getters">
-        <ProjectItem ReplaceParameters="true" TargetFileName="EnvironmentConfigSettingsGetter.cs">EnvironmentConfigSettingsGetter.cs</ProjectItem>
       </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
       <Folder Name="Properties" TargetFolderName="Properties">

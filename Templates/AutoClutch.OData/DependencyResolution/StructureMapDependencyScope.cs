@@ -21,8 +21,9 @@ namespace $safeprojectname$.DependencyResolution
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
+    using CommonServiceLocator;
 
-    using Microsoft.Practices.ServiceLocation;
+    //using Microsoft.Practices.ServiceLocation;
 
     using StructureMap;
 
@@ -58,11 +59,7 @@ namespace $safeprojectname$.DependencyResolution
         {
             get
             {
-                if (HttpContext != null)
-                {
-                    return (IContainer)HttpContext.Items[NestedContainerKey];
-                }
-                return null;
+                return (IContainer)HttpContext.Items[NestedContainerKey];
             }
             set
             {
@@ -78,10 +75,8 @@ namespace $safeprojectname$.DependencyResolution
         {
             get
             {
-                return (System.Web.HttpContext.Current == null
-                ? null
-                : (Container.TryGetInstance<HttpContextBase>() ??
-                    new HttpContextWrapper(System.Web.HttpContext.Current)));
+                var ctx = Container.TryGetInstance<HttpContextBase>();
+                return ctx ?? (System.Web.HttpContext.Current == null ? null : new HttpContextWrapper(System.Web.HttpContext.Current));
             }
         }
 

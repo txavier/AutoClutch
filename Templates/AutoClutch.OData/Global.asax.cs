@@ -4,6 +4,7 @@ using System.Web.Http;
 using System.Web.Http.Dispatcher;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Data.Entity;
 
 namespace $safeprojectname$
 {
@@ -22,16 +23,6 @@ namespace $safeprojectname$
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            // http://cdroulers.com/blog/2015/03/03/structuremap-3-and-asp-net-web-api-2/
-            //container = IoC.Initialize();
-
-            //GlobalConfiguration.Configuration.Services.Replace(typeof(IHttpControllerActivator), new StructureMapWebApiControllerActivator(container));
-        }
-
-        protected void Application_End()
-        {
-            //container.Dispose();
         }
     }
 

@@ -1,9 +1,8 @@
 /* 
- * JSNLog 2.24.0
+ * JSNLog 2.28.0
  * Open source under the MIT License.
- * Copyright 2016 Mattijs Perdeck All rights reserved.
+ * Copyright 2012-2017 Mattijs Perdeck All rights reserved.
  */
-/// <reference path="Definitions/jsnlog_interfaces.d.ts"/>
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -86,6 +85,14 @@ function JL(loggerName) {
     // and may create a new request id for the log request, causing confusion
     // in the log.
     JL.requestId = '';
+    // Number uniquely identifying every log entry within the request.
+    JL.entryId = 0;
+    // Allow property injection of these classes, to enable unit testing
+    JL._createXMLHttpRequest = function () { return new XMLHttpRequest(); };
+    JL._getTime = function () { return (new Date).getTime(); };
+    JL._console = console;
+    // ----- private variables
+    JL._appenderNames = [];
     /**
     Copies the value of a property from one object to the other.
     This is used to copy property values as part of setOption for loggers and appenders.
@@ -122,15 +129,6 @@ function JL(loggerName) {
         // Note that undefined==null (!)
         if (!(JL.enabled == null)) {
             if (!JL.enabled) {
-                return false;
-            }
-        }
-        // If maxMessages is not null or undefined, then if it is 0, then return false.
-        // Note that maxMessages contains number of messages that are still allowed to send.
-        // It is decremented each time messages are sent. It can be negative when batch size > 1.
-        // Note that undefined==null (!)
-        if (!(JL.maxMessages == null)) {
-            if (JL.maxMessages < 1) {
                 return false;
             }
         }
@@ -190,7 +188,7 @@ function JL(loggerName) {
         }
         return logObject;
     }
-    var StringifiedLogObject = (function () {
+    var StringifiedLogObject = /** @class */ (function () {
         // * msg - 
         //      if the logObject is a scalar (after possible function evaluation), this is set to
         //      string representing the scalar. Otherwise it is left undefined.
@@ -248,7 +246,9 @@ function JL(loggerName) {
                     else {
                         finalString = JSON.stringify(actualLogObject);
                     }
-                    return new StringifiedLogObject(null, actualLogObject, finalString);
+                    // Set the msg field to "" instead of null. Some Winston transports
+                    // assume that the msg field is not null.
+                    return new StringifiedLogObject("", actualLogObject, finalString);
                 }
             default:
                 return new StringifiedLogObject("unknown", null, "unknown");
@@ -300,7 +300,7 @@ function JL(loggerName) {
         return "fatal";
     }
     // ---------------------
-    var Exception = (function () {
+    var Exception = /** @class */ (function () {
         // data replaces message. It takes not just strings, but also objects and functions, just like the log function.
         // internally, the string representation is stored in the message property (inherited from Error)
         //
@@ -322,27 +322,50 @@ function JL(loggerName) {
     // <object> instanceof Error);
     Exception.prototype = new Error();
     // ---------------------
-    var LogItem = (function () {
+    var LogItem = /** @class */ (function () {
         // l: level
         // m: message
         // n: logger name
         // t (timeStamp) is number of milliseconds since 1 January 1970 00:00:00 UTC
+        // u: number uniquely identifying this entry for this request.
         //
         // Keeping the property names really short, because they will be sent in the
         // JSON payload to the server.
-        function LogItem(l, m, n, t) {
+        function LogItem(l, m, n, t, u) {
             this.l = l;
             this.m = m;
             this.n = n;
             this.t = t;
+            this.u = u;
         }
         return LogItem;
     }());
     JL.LogItem = LogItem;
-    // ---------------------
-    var Appender = (function () {
+    function newLogItem(levelNbr, message, loggerName) {
+        JL.entryId++;
+        return new LogItem(levelNbr, message, loggerName, JL._getTime(), JL.entryId);
+    }
+    function clearTimer(timer) {
+        if (timer.id) {
+            clearTimeout(timer.id);
+            timer.id = null;
+        }
+    }
+    function setTimer(timer, timeoutMs, callback) {
+        var that = this;
+        if (!timer.id) {
+            timer.id = setTimeout(function () {
+                // use call to ensure that the this as used inside sendBatch when it runs is the
+                // same this at this point.
+                callback.call(that);
+            }, timeoutMs);
+        }
+    }
+    var Appender = /** @class */ (function () {
         // sendLogItems takes an array of log items. It will be called when
         // the appender has items to process (such as, send to the server).
+        // sendLogItems will call successCallback after the items have been successfully sent.
+        //
         // Note that after sendLogItems returns, the appender may truncate
         // the LogItem array, so the function has to copy the content of the array
         // in some fashion (eg. serialize) before returning.
@@ -356,7 +379,9 @@ function JL(loggerName) {
             this.storeInBufferLevel = -2147483648;
             this.bufferSize = 0; // buffering switch off by default
             this.batchSize = 1;
+            this.maxBatchSize = 20;
             this.batchTimeout = 2147483647;
+            this.sendTimeout = 5000;
             // Holds all log items with levels higher than storeInBufferLevel 
             // but lower than level. These items may never be sent.
             this.buffer = [];
@@ -365,35 +390,109 @@ function JL(loggerName) {
             this.batchBuffer = [];
             // Holds the id of the timer implementing the batch timeout.
             // Can be null.
-            this.batchTimeoutTimer = null;
-        }
-        Appender.prototype.clearTimeoutTimer = function () {
-            if (this.batchTimeoutTimer) {
-                clearTimeout(this.batchTimeoutTimer);
-                this.batchTimeoutTimer = null;
+            // This is an object, so it can be passed to a method that updated the timer variable.
+            this.batchTimeoutTimer = { id: null };
+            // Holds the id of the timer implementing the send timeout.
+            // Can be null.
+            this.sendTimeoutTimer = { id: null };
+            // Number of log items that has been skipped due to batch buffer at max size,
+            // since appender creation or since creation of the last "skipped" warning log entry.
+            this.nbrLogItemsSkipped = 0;
+            // Will be 0 if no log request is outstanding at the moment.
+            // Otherwise the number of log items in the outstanding request.
+            this.nbrLogItemsBeingSent = 0;
+            var emptyNameErrorMessage = "Trying to create an appender without a name or with an empty name";
+            // This evaluates to true if appenderName is either null or undefined!
+            // Do not check here if the name is "", because that would stop you creating the 
+            // default appender.
+            if (appenderName == undefined) {
+                throw emptyNameErrorMessage;
             }
-        };
-        ;
-        Appender.prototype.addLogItemToBuffer = function (logItem) {
-            this.batchBuffer.push(logItem);
+            if (JL._appenderNames.indexOf(appenderName) != -1) {
+                // If user passed in "", that will now have been picked up as a duplicate
+                // because default appender also uses "".
+                if (!appenderName) {
+                    throw emptyNameErrorMessage;
+                }
+                throw "Multiple appenders use the same name " + appenderName;
+            }
+            JL._appenderNames.push(appenderName);
+        }
+        Appender.prototype.addLogItemsToBuffer = function (logItems) {
+            // If the batch buffer has reached its maximum limit, 
+            // skip the log item and increase the "skipped items" counter.
+            if (this.batchBuffer.length >= this.maxBatchSize) {
+                this.nbrLogItemsSkipped += logItems.length;
+                return;
+            }
+            // If maxMessages is not null or undefined, then decrease it by the batch size.
+            // This can result in a negative maxMessages.
+            // Note that undefined==null (!)
+            //
+            // Note that we may be sending more messages than the maxMessages limit allows,
+            // if we stored trace messages. Rationale is the buffer for trace messages is limited,
+            // and if we cut off at exactly maxMessages, we'd also loose the high severity message
+            // that caused the trace messages to be sent (unless we cater for this specifically, which
+            // is more complexity).
+            //
+            // If there are multiple appenders sending the same message, maxMessage will be decreased
+            // by each appender for the same message. This is:
+            // 1) only appenders know whether a message will actually be sent (based on storeInBufferLevel),
+            //    so the loggers couldn't do this update;
+            // 2) if you have multiple appenders hitting the same server, this may be what you want.
+            //
+            // In most cases there is only 1 appender, so this then doesn't matter.
+            if (!(JL.maxMessages == null)) {
+                if (JL.maxMessages < 1) {
+                    return;
+                }
+                JL.maxMessages -= logItems.length;
+            }
+            this.batchBuffer = this.batchBuffer.concat(logItems);
             // If this is the first item in the buffer, set the timer
             // to ensure it will be sent within the timeout period.
             // If it is not the first item, leave the timer alone so to not to 
             // increase the timeout for the first item.
             //
             // To determine if this is the first item, look at the timer variable.
-            // Do not look at the buffer lenght, because we also put items in the buffer
+            // Do not look at the buffer length, because we also put items in the buffer
             // via a concat (bypassing this function).
+            //
+            // The setTimer method only sets the timer if it is not already running.
             var that = this;
-            if (!this.batchTimeoutTimer) {
-                this.batchTimeoutTimer = setTimeout(function () {
-                    // use call to ensure that the this as used inside sendBatch when it runs is the
-                    // same this at this point.
-                    that.sendBatch.call(that);
-                }, this.batchTimeout);
-            }
+            setTimer(this.batchTimeoutTimer, this.batchTimeout, function () {
+                that.sendBatch.call(that);
+            });
         };
         ;
+        Appender.prototype.batchBufferHasOverdueMessages = function () {
+            for (var i = 0; i < this.batchBuffer.length; i++) {
+                var messageAgeMs = JL._getTime() - this.batchBuffer[i].t;
+                if (messageAgeMs > this.batchTimeout) {
+                    return true;
+                }
+            }
+            return false;
+        };
+        // Returns true if no more message will ever be added to the batch buffer,
+        // but the batch buffer has messages now - so if there are not enough to make up a batch,
+        // and there is no batch timeout, then they will never be sent. This is especially important if 
+        // maxMessages was reached while jsnlog.js was retrying sending messages to the server.
+        Appender.prototype.batchBufferHasStrandedMessage = function () {
+            return (!(JL.maxMessages == null)) && (JL.maxMessages < 1) && (this.batchBuffer.length > 0);
+        };
+        Appender.prototype.sendBatchIfComplete = function () {
+            if ((this.batchBuffer.length >= this.batchSize) ||
+                this.batchBufferHasOverdueMessages() ||
+                this.batchBufferHasStrandedMessage()) {
+                this.sendBatch();
+            }
+        };
+        Appender.prototype.onSendingEnded = function () {
+            clearTimer(this.sendTimeoutTimer);
+            this.nbrLogItemsBeingSent = 0;
+            this.sendBatchIfComplete();
+        };
         Appender.prototype.setOptions = function (options) {
             copyProperty("level", options, this);
             copyProperty("ipRegex", options, this);
@@ -403,9 +502,18 @@ function JL(loggerName) {
             copyProperty("storeInBufferLevel", options, this);
             copyProperty("bufferSize", options, this);
             copyProperty("batchSize", options, this);
+            copyProperty("maxBatchSize", options, this);
             copyProperty("batchTimeout", options, this);
+            copyProperty("sendTimeout", options, this);
             if (this.bufferSize < this.buffer.length) {
                 this.buffer.length = this.bufferSize;
+            }
+            if (this.maxBatchSize < this.batchSize) {
+                throw new JL.Exception({
+                    "message": "maxBatchSize cannot be smaller than batchSize",
+                    "maxBatchSize": this.maxBatchSize,
+                    "batchSize": this.batchSize
+                });
             }
             return this;
         };
@@ -439,7 +547,7 @@ function JL(loggerName) {
                 // Ignore the log item completely
                 return;
             }
-            logItem = new LogItem(levelNbr, message, loggerName, (new Date).getTime());
+            logItem = newLogItem(levelNbr, message, loggerName);
             if (levelNbr < this.level) {
                 // Store in the hold buffer. Do not send.
                 if (this.bufferSize > 0) {
@@ -451,23 +559,21 @@ function JL(loggerName) {
                 }
                 return;
             }
-            if (levelNbr < this.sendWithBufferLevel) {
-                // Want to send the item, but not the contents of the buffer
-                this.addLogItemToBuffer(logItem);
-            }
-            else {
-                // Want to send both the item and the contents of the buffer.
-                // Send contents of buffer first, because logically they happened first.
+            // Want to send the item
+            this.addLogItemsToBuffer([logItem]);
+            if (levelNbr >= this.sendWithBufferLevel) {
+                // Want to send the contents of the buffer.
+                //
+                // Send the buffer AFTER sending the high priority item.
+                // If you were to send the high priority item after the buffer,
+                // if we're close to maxMessages or maxBatchSize,
+                // then the trace messages in the buffer could crowd out the actual high priority item.
                 if (this.buffer.length) {
-                    this.batchBuffer = this.batchBuffer.concat(this.buffer);
+                    this.addLogItemsToBuffer(this.buffer);
                     this.buffer.length = 0;
                 }
-                this.addLogItemToBuffer(logItem);
             }
-            if (this.batchBuffer.length >= this.batchSize) {
-                this.sendBatch();
-                return;
-            }
+            this.sendBatchIfComplete();
         };
         ;
         // Processes the batch buffer
@@ -475,32 +581,45 @@ function JL(loggerName) {
         // Make this public, so it can be called from outside the library,
         // when the page is unloaded.
         Appender.prototype.sendBatch = function () {
-            this.clearTimeoutTimer();
+            // Do not clear the batch timer if you don't go ahead here because
+            // a send is already in progress. Otherwise the messages that were stopped from going out
+            // may get ignored because the batch timer never went off.
+            if (this.nbrLogItemsBeingSent > 0) {
+                return;
+            }
+            clearTimer(this.batchTimeoutTimer);
             if (this.batchBuffer.length == 0) {
                 return;
             }
-            if (!(JL.maxMessages == null)) {
-                if (JL.maxMessages < 1) {
-                    return;
+            // Decided at this point to send contents of the buffer
+            this.nbrLogItemsBeingSent = this.batchBuffer.length;
+            var that = this;
+            setTimer(this.sendTimeoutTimer, this.sendTimeout, function () {
+                that.onSendingEnded.call(that);
+            });
+            this.sendLogItems(this.batchBuffer, function () {
+                // Log entries have been successfully sent to server
+                // Remove the first (nbrLogItemsBeingSent) items in the batch buffer, because they are the ones
+                // that were sent.
+                that.batchBuffer.splice(0, that.nbrLogItemsBeingSent);
+                // If items had to be skipped, add a WARN message
+                if (that.nbrLogItemsSkipped > 0) {
+                    that.batchBuffer.push(newLogItem(getWarnLevel(), "Lost " + that.nbrLogItemsSkipped + " messages. Either connection with the server was down or logging was disabled via the enabled option. Reduce lost messages by increasing the ajaxAppender option maxBatchSize.", that.appenderName));
+                    that.nbrLogItemsSkipped = 0;
                 }
-            }
-            // If maxMessages is not null or undefined, then decrease it by the batch size.
-            // This can result in a negative maxMessages.
-            // Note that undefined==null (!)
-            if (!(JL.maxMessages == null)) {
-                JL.maxMessages -= this.batchBuffer.length;
-            }
-            this.sendLogItems(this.batchBuffer);
-            this.batchBuffer.length = 0;
+                that.onSendingEnded.call(that);
+            });
         };
         return Appender;
     }());
     JL.Appender = Appender;
     // ---------------------
-    var AjaxAppender = (function (_super) {
+    var AjaxAppender = /** @class */ (function (_super) {
         __extends(AjaxAppender, _super);
         function AjaxAppender(appenderName) {
-            return _super.call(this, appenderName, AjaxAppender.prototype.sendLogItemsAjax) || this;
+            var _this = _super.call(this, appenderName, AjaxAppender.prototype.sendLogItemsAjax) || this;
+            _this.xhr = JL._createXMLHttpRequest();
+            return _this;
         }
         AjaxAppender.prototype.setOptions = function (options) {
             copyProperty("url", options, this);
@@ -508,7 +627,7 @@ function JL(loggerName) {
             _super.prototype.setOptions.call(this, options);
             return this;
         };
-        AjaxAppender.prototype.sendLogItemsAjax = function (logItems) {
+        AjaxAppender.prototype.sendLogItemsAjax = function (logItems, successCallback) {
             // JSON.stringify is only supported on IE8+
             // Use try-catch in case we get an exception here.
             //
@@ -532,6 +651,21 @@ function JL(loggerName) {
             // is only called when it tries to log something, so the requestId has to be 
             // determined right at the start of request processing.
             try {
+                // Do not send logs, if JL.enabled is set to false.
+                //
+                // Do not call successCallback here. After each timeout, jsnlog will retry sending the message.
+                // If jsnlog gets re-enabled, it will then log the number of messages logged.
+                // If it doesn't get re-enabled, amount of cpu cycles wasted is minimal.
+                if (!allow(this)) {
+                    return;
+                }
+                // If a request is in progress, abort it.
+                // Otherwise, it may call the success callback, which will be very confusing.
+                // It may also stop the inflight request from resulting in a log at the server.
+                var xhrState = this.xhr.readyState;
+                if ((xhrState != 0) && (xhrState != 4)) {
+                    this.xhr.abort();
+                }
                 // Only determine the url right before you send a log request.
                 // Do not set the url when constructing the appender.
                 //
@@ -546,10 +680,21 @@ function JL(loggerName) {
                 if (this.url) {
                     ajaxUrl = this.url;
                 }
-                // Send the json to the server. 
-                // Note that there is no event handling here. If the send is not
-                // successful, nothing can be done about it.
-                var xhr = this.getXhr(ajaxUrl);
+                this.xhr.open('POST', ajaxUrl);
+                this.xhr.setRequestHeader('Content-Type', 'application/json');
+                this.xhr.setRequestHeader('JSNLog-RequestId', JL.requestId);
+                var that = this;
+                this.xhr.onreadystatechange = function () {
+                    // On most browsers, if the request fails (eg. internet is gone),
+                    // it will set xhr.readyState == 4 and xhr.status != 200 (0 if request could not be sent) immediately.
+                    // However, Edge and IE will not change the readyState at all if the internet goes away while waiting
+                    // for a response.
+                    // Some servers will return a 204 (success, no content) when the JSNLog endpoint
+                    // returns the empty response. So check on any code in the 2.. range, not just 200.
+                    if ((that.xhr.readyState == 4) && (that.xhr.status >= 200 && that.xhr.status < 300)) {
+                        successCallback();
+                    }
+                };
                 var json = {
                     r: JL.requestId,
                     lg: logItems
@@ -558,77 +703,47 @@ function JL(loggerName) {
                 // first try the callback on the appender
                 // then the global defaultBeforeSend callback
                 if (typeof this.beforeSend === 'function') {
-                    this.beforeSend.call(this, xhr, json);
+                    this.beforeSend.call(this, this.xhr, json);
                 }
                 else if (typeof JL.defaultBeforeSend === 'function') {
-                    JL.defaultBeforeSend.call(this, xhr, json);
+                    JL.defaultBeforeSend.call(this, this.xhr, json);
                 }
                 var finalmsg = JSON.stringify(json);
-                xhr.send(finalmsg);
+                this.xhr.send(finalmsg);
             }
             catch (e) { }
-        };
-        // Creates the Xhr object to use to send the log request.
-        // Sets out to create an Xhr object that can be used for CORS.
-        // However, if there seems to be no CORS support on the browser,
-        // returns a non-CORS capable Xhr.
-        AjaxAppender.prototype.getXhr = function (ajaxUrl) {
-            var xhr = new XMLHttpRequest();
-            // Check whether this xhr is CORS capable by checking whether it has
-            // withCredentials. 
-            // "withCredentials" only exists on XMLHTTPRequest2 objects.
-            if (!("withCredentials" in xhr)) {
-                // Just found that no XMLHttpRequest2 available.
-                // Check if XDomainRequest is available.
-                // This only exists in IE, and is IE's way of making CORS requests.
-                if (typeof XDomainRequest != "undefined") {
-                    // Note that here we're not setting request headers on the XDomainRequest
-                    // object. This is because this object doesn't let you do that:
-                    // http://blogs.msdn.com/b/ieinternals/archive/2010/05/13/xdomainrequest-restrictions-limitations-and-workarounds.aspx
-                    // This means that for IE8 and IE9, CORS logging requests do not carry request ids.
-                    var xdr = new XDomainRequest();
-                    xdr.open('POST', ajaxUrl);
-                    return xdr;
-                }
-            }
-            // At this point, we're going with XMLHttpRequest, whether it is CORS capable or not.
-            // If it is not CORS capable, at least will handle the non-CORS requests.
-            xhr.open('POST', ajaxUrl);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.setRequestHeader('JSNLog-RequestId', JL.requestId);
-            return xhr;
         };
         return AjaxAppender;
     }(Appender));
     JL.AjaxAppender = AjaxAppender;
     // ---------------------
-    var ConsoleAppender = (function (_super) {
+    var ConsoleAppender = /** @class */ (function (_super) {
         __extends(ConsoleAppender, _super);
         function ConsoleAppender(appenderName) {
             return _super.call(this, appenderName, ConsoleAppender.prototype.sendLogItemsConsole) || this;
         }
         ConsoleAppender.prototype.clog = function (logEntry) {
-            console.log(logEntry);
+            JL._console.log(logEntry);
         };
         ConsoleAppender.prototype.cerror = function (logEntry) {
-            if (console.error) {
-                console.error(logEntry);
+            if (JL._console.error) {
+                JL._console.error(logEntry);
             }
             else {
                 this.clog(logEntry);
             }
         };
         ConsoleAppender.prototype.cwarn = function (logEntry) {
-            if (console.warn) {
-                console.warn(logEntry);
+            if (JL._console.warn) {
+                JL._console.warn(logEntry);
             }
             else {
                 this.clog(logEntry);
             }
         };
         ConsoleAppender.prototype.cinfo = function (logEntry) {
-            if (console.info) {
-                console.info(logEntry);
+            if (JL._console.info) {
+                JL._console.info(logEntry);
             }
             else {
                 this.clog(logEntry);
@@ -642,16 +757,24 @@ function JL(loggerName) {
         // Live with this, seeing that it works fine on FF and Chrome, which
         // will be much more popular with developers.
         ConsoleAppender.prototype.cdebug = function (logEntry) {
-            if (console.debug) {
-                console.debug(logEntry);
+            if (JL._console.debug) {
+                JL._console.debug(logEntry);
             }
             else {
                 this.cinfo(logEntry);
             }
         };
-        ConsoleAppender.prototype.sendLogItemsConsole = function (logItems) {
+        ConsoleAppender.prototype.sendLogItemsConsole = function (logItems, successCallback) {
             try {
-                if (!console) {
+                // Do not send logs, if JL.enabled is set to false
+                //
+                // Do not call successCallback here. After each timeout, jsnlog will retry sending the message.
+                // If jsnlog gets re-enabled, it will then log the number of messages logged.
+                // If it doesn't get re-enabled, amount of cpu cycles wasted is minimal.
+                if (!allow(this)) {
+                    return;
+                }
+                if (!JL._console) {
                     return;
                 }
                 var i;
@@ -681,12 +804,13 @@ function JL(loggerName) {
             }
             catch (e) {
             }
+            successCallback();
         };
         return ConsoleAppender;
     }(Appender));
     JL.ConsoleAppender = ConsoleAppender;
     // --------------------
-    var Logger = (function () {
+    var Logger = /** @class */ (function () {
         function Logger(loggerName) {
             this.loggerName = loggerName;
             // Create seenRexes, otherwise this logger will use the seenRexes
@@ -774,12 +898,9 @@ function JL(loggerName) {
                     // Pass message to all appenders
                     // Note that these appenders could be Winston transports
                     // https://github.com/flatiron/winston
-                    //
-                    // These transports do not take the logger name as a parameter.
-                    // So add it to the meta information, so even Winston transports will
-                    // store this info.
                     compositeMessage.meta = compositeMessage.meta || {};
-                    compositeMessage.meta.loggerName = this.loggerName;
+                    // Note that if the user is logging an object, compositeMessage.meta will hold a reference to that object.
+                    // Do not add fields to compositeMessage.meta, otherwise the user's object will get that field out of the blue.
                     i = this.appenders.length - 1;
                     while (i >= 0) {
                         this.appenders[i].log(levelToString(level), compositeMessage.msg, compositeMessage.meta, function () { }, level, compositeMessage.finalString, this.loggerName);
@@ -810,8 +931,14 @@ function JL(loggerName) {
     // -----------------------
     // In the browser, the default appender is the AjaxAppender.
     // Under nodejs (where there is no "window"), use the ConsoleAppender instead.
-    var defaultAppender = new AjaxAppender("");
-    if (typeof window === 'undefined') {
+    // 
+    // Do NOT create an AjaxAppender object if you are not on a browser (that is, window is not defined).
+    // That would try to create an XmlHttpRequest object, which will crash outside a browser.
+    var defaultAppender;
+    if (typeof window !== 'undefined') {
+        defaultAppender = new AjaxAppender("");
+    }
+    else {
         defaultAppender = new ConsoleAppender("");
     }
     // Create root logger
@@ -828,6 +955,9 @@ function JL(loggerName) {
     });
 })(JL || (JL = {}));
 if (typeof exports !== 'undefined') {
+    // Allows SystemJs to import jsnlog.js. See
+    // https://github.com/mperdeck/jsnlog.js/issues/56
+    exports.__esModule = true;
     exports.JL = JL;
 }
 // Support AMD module format
@@ -864,12 +994,13 @@ if (typeof window !== 'undefined' && !window.onerror) {
 if (typeof window !== 'undefined' && !window.onunhandledrejection) {
     window.onunhandledrejection = function (event) {
         // Send object with all data to server side log, using severity fatal, 
-        // from logger "onerrorLogger"
+        // from logger "onerrorLogger".
+        // Need to check both event.reason.message and event.message,
+        // because SystemJs wraps exceptions and throws a new object which doesn't have a reason property.
+        // See https://github.com/systemjs/systemjs/issues/1309
         JL("onerrorLogger").fatalException({
             "msg": "unhandledrejection",
-            "errorMsg": event.reason ? event.reason.message : null
+            "errorMsg": event.reason ? event.reason.message : event.message || null
         }, event.reason);
-        // Tell browser to run its own error handler as well   
-        return false;
     };
 }

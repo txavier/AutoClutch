@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
     <Name>AutoClutch.OData</Name>
-    <Description>OData web app template for AutoClutch.</Description>
+    <Description>&lt;No description available&gt;</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
@@ -15,7 +15,7 @@
     <PreviewImage>__PreviewImage.png</PreviewImage>
   </TemplateData>
   <TemplateContent>
-    <Project TargetFileName="OTPS.OData.csproj" File="OTPS.OData.csproj" ReplaceParameters="true">
+    <Project TargetFileName="AutoClutchTemplate.OData.csproj" File="AutoClutchTemplate.OData.csproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="false" TargetFileName=".bowerrc">.bowerrc</ProjectItem>
       <ProjectItem ReplaceParameters="false" TargetFileName=".gitconfig">.gitconfig</ProjectItem>
       <Folder Name="app" TargetFolderName="app">
@@ -230,6 +230,22 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="HelpPage.css">HelpPage.css</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="HelpPageAreaRegistration.cs">HelpPageAreaRegistration.cs</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="HelpPageConfigurationExtensions.cs">HelpPageConfigurationExtensions.cs</ProjectItem>
+          <Folder Name="ModelDescriptions" TargetFolderName="ModelDescriptions">
+            <ProjectItem ReplaceParameters="true" TargetFileName="CollectionModelDescription.cs">CollectionModelDescription.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="ComplexTypeModelDescription.cs">ComplexTypeModelDescription.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="DictionaryModelDescription.cs">DictionaryModelDescription.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="EnumTypeModelDescription.cs">EnumTypeModelDescription.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="EnumValueDescription.cs">EnumValueDescription.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="IModelDocumentationProvider.cs">IModelDocumentationProvider.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="KeyValuePairModelDescription.cs">KeyValuePairModelDescription.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="ModelDescription.cs">ModelDescription.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="ModelDescriptionGenerator.cs">ModelDescriptionGenerator.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="ModelNameAttribute.cs">ModelNameAttribute.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="ModelNameHelper.cs">ModelNameHelper.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="ParameterAnnotation.cs">ParameterAnnotation.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="ParameterDescription.cs">ParameterDescription.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="SimpleTypeModelDescription.cs">SimpleTypeModelDescription.cs</ProjectItem>
+          </Folder>
           <Folder Name="Models" TargetFolderName="Models">
             <ProjectItem ReplaceParameters="true" TargetFileName="HelpPageApiModel.cs">HelpPageApiModel.cs</ProjectItem>
           </Folder>
@@ -248,14 +264,22 @@
               <ProjectItem ReplaceParameters="true" TargetFileName="Api.cshtml">Api.cshtml</ProjectItem>
               <Folder Name="DisplayTemplates" TargetFolderName="DisplayTemplates">
                 <ProjectItem ReplaceParameters="true" TargetFileName="ApiGroup.cshtml">ApiGroup.cshtml</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="CollectionModelDescription.cshtml">CollectionModelDescription.cshtml</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="ComplexTypeModelDescription.cshtml">ComplexTypeModelDescription.cshtml</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="DictionaryModelDescription.cshtml">DictionaryModelDescription.cshtml</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="EnumTypeModelDescription.cshtml">EnumTypeModelDescription.cshtml</ProjectItem>
                 <ProjectItem ReplaceParameters="true" TargetFileName="HelpPageApiModel.cshtml">HelpPageApiModel.cshtml</ProjectItem>
                 <ProjectItem ReplaceParameters="true" TargetFileName="ImageSample.cshtml">ImageSample.cshtml</ProjectItem>
                 <ProjectItem ReplaceParameters="true" TargetFileName="InvalidSample.cshtml">InvalidSample.cshtml</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="KeyValuePairModelDescription.cshtml">KeyValuePairModelDescription.cshtml</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="ModelDescriptionLink.cshtml">ModelDescriptionLink.cshtml</ProjectItem>
                 <ProjectItem ReplaceParameters="true" TargetFileName="Parameters.cshtml">Parameters.cshtml</ProjectItem>
                 <ProjectItem ReplaceParameters="true" TargetFileName="Samples.cshtml">Samples.cshtml</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="SimpleTypeModelDescription.cshtml">SimpleTypeModelDescription.cshtml</ProjectItem>
                 <ProjectItem ReplaceParameters="true" TargetFileName="TextSample.cshtml">TextSample.cshtml</ProjectItem>
               </Folder>
               <ProjectItem ReplaceParameters="true" TargetFileName="Index.cshtml">Index.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="ResourceModel.cshtml">ResourceModel.cshtml</ProjectItem>
             </Folder>
             <Folder Name="Shared" TargetFolderName="Shared">
               <ProjectItem ReplaceParameters="true" TargetFileName="_Layout.cshtml">_Layout.cshtml</ProjectItem>
@@ -264,12 +288,76 @@
           </Folder>
           <ProjectItem ReplaceParameters="true" TargetFileName="XmlDocumentationProvider.cs">XmlDocumentationProvider.cs</ProjectItem>
         </Folder>
+        <Folder Name="MvcElmahDashboard" TargetFolderName="MvcElmahDashboard">
+          <Folder Name="Code" TargetFolderName="Code">
+            <ProjectItem ReplaceParameters="true" TargetFileName="ElmahDashboardContext.cs">ElmahDashboardContext.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="ElmahError.cs">ElmahError.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="ElmahErrorCounters.cs">ElmahErrorCounters.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="ElmahErrorItem.cs">ElmahErrorItem.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="ExternalServiceConfig.cs">ExternalServiceConfig.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="HeartBeatService.cs">HeartBeatService.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="RequeueCache.cs">RequeueCache.cs</ProjectItem>
+          </Folder>
+          <Folder Name="Controllers" TargetFolderName="Controllers">
+            <ProjectItem ReplaceParameters="true" TargetFileName="HomeController.cs">HomeController.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="LogsController.cs">LogsController.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="SharedController.cs">SharedController.cs</ProjectItem>
+          </Folder>
+          <Folder Name="Models" TargetFolderName="Models">
+            <Folder Name="Home" TargetFolderName="Home">
+              <ProjectItem ReplaceParameters="true" TargetFileName="DailyStatsModel.cs">DailyStatsModel.cs</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="HourlyStatsModel.cs">HourlyStatsModel.cs</ProjectItem>
+            </Folder>
+            <Folder Name="Logs" TargetFolderName="Logs">
+              <ProjectItem ReplaceParameters="true" TargetFileName="DetailsModel.cs">DetailsModel.cs</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="IndexModel.cs">IndexModel.cs</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="ItemDetailsModel.cs">ItemDetailsModel.cs</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="ItemsModel.cs">ItemsModel.cs</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="PrevNextRequest.cs">PrevNextRequest.cs</ProjectItem>
+            </Folder>
+          </Folder>
+          <ProjectItem ReplaceParameters="true" TargetFileName="MvcElmahDashboardAreaRegistration.cs">MvcElmahDashboardAreaRegistration.cs</ProjectItem>
+          <Folder Name="Views" TargetFolderName="Views">
+            <ProjectItem ReplaceParameters="true" TargetFileName="_ViewStart.cshtml">_ViewStart.cshtml</ProjectItem>
+            <Folder Name="Home" TargetFolderName="Home">
+              <ProjectItem ReplaceParameters="true" TargetFileName="DailyStats.cshtml">DailyStats.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="HourlyStats.cshtml">HourlyStats.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="Index.cshtml">Index.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="Index_scripts.cshtml">Index_scripts.cshtml</ProjectItem>
+            </Folder>
+            <Folder Name="Logs" TargetFolderName="Logs">
+              <ProjectItem ReplaceParameters="true" TargetFileName="Details.cshtml">Details.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="Details_scripts.cshtml">Details_scripts.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="Index.cshtml">Index.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="Index_scripts.cshtml">Index_scripts.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="ItemDetailsPart.cshtml">ItemDetailsPart.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="ItemsPart.cshtml">ItemsPart.cshtml</ProjectItem>
+            </Folder>
+            <Folder Name="Shared" TargetFolderName="Shared">
+              <ProjectItem ReplaceParameters="true" TargetFileName="_Layout.cshtml">_Layout.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="_scripts.cshtml">_scripts.cshtml</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="_styles.cshtml">_styles.cshtml</ProjectItem>
+            </Folder>
+            <ProjectItem ReplaceParameters="true" TargetFileName="web.config">web.config</ProjectItem>
+          </Folder>
+        </Folder>
       </Folder>
       <Folder Name="Content" TargetFolderName="Content">
         <ProjectItem ReplaceParameters="true" TargetFileName="angular-chart.css">angular-chart.css</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="animations.css">animations.css</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-grid.css">bootstrap-grid.css</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-grid.css.map">bootstrap-grid.css.map</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-grid.min.css">bootstrap-grid.min.css</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-grid.min.css.map">bootstrap-grid.min.css.map</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-reboot.css">bootstrap-reboot.css</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-reboot.css.map">bootstrap-reboot.css.map</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-reboot.min.css">bootstrap-reboot.min.css</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-reboot.min.css.map">bootstrap-reboot.min.css.map</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.css">bootstrap.css</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.css.map">bootstrap.css.map</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.min.css">bootstrap.min.css</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.min.css.map">bootstrap.min.css.map</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="datetimepicker.css">datetimepicker.css</ProjectItem>
         <Folder Name="img" TargetFolderName="img">
           <ProjectItem ReplaceParameters="false" TargetFileName="clippy.svg">clippy.svg</ProjectItem>
@@ -307,6 +395,8 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="ValuesController.cs">ValuesController.cs</ProjectItem>
       </Folder>
       <Folder Name="DependencyResolution" TargetFolderName="DependencyResolution">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ControllerConvention.cs">ControllerConvention.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DefaultRegistry.cs">DefaultRegistry.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IoC.cs">IoC.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="StructuremapDataAnnotationsModelValidator.cs">StructuremapDataAnnotationsModelValidator.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="StructuremapDataAnnotationsModelValidatorWebApi.cs">StructuremapDataAnnotationsModelValidatorWebApi.cs</ProjectItem>
@@ -367,11 +457,6 @@
             <ProjectItem ReplaceParameters="false" TargetFileName="font-awesome.scss">font-awesome.scss</ProjectItem>
           </Folder>
         </Folder>
-        <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.eot">glyphicons-halflings-regular.eot</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.svg">glyphicons-halflings-regular.svg</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.ttf">glyphicons-halflings-regular.ttf</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.woff">glyphicons-halflings-regular.woff</ProjectItem>
-        <ProjectItem ReplaceParameters="false" TargetFileName="glyphicons-halflings-regular.woff2">glyphicons-halflings-regular.woff2</ProjectItem>
       </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="Global.asax">Global.asax</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Global.asax.cs">Global.asax.cs</ProjectItem>
@@ -379,11 +464,10 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="HangfireAuthorizationFilter.cs">HangfireAuthorizationFilter.cs</ProjectItem>
       </Folder>
       <Folder Name="Models" TargetFolderName="Models" />
+      <ProjectItem ReplaceParameters="true" TargetFileName="MvcElmahDashboard_Readme.html">MvcElmahDashboard_Readme.html</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="MvcReportViewer.aspx">MvcReportViewer.aspx</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="MvcReportViewerErrorPage.html">MvcReportViewerErrorPage.html</ProjectItem>
-      <Folder Name="NuGet" TargetFolderName="NuGet">
-        <ProjectItem ReplaceParameters="true" TargetFileName="readme.txt">readme.txt</ProjectItem>
-      </Folder>
+      <Folder Name="NuGet" TargetFolderName="NuGet" />
       <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Project_Readme.html">Project_Readme.html</ProjectItem>
       <Folder Name="Properties" TargetFolderName="Properties">
@@ -413,21 +497,43 @@
         </Folder>
         <ProjectItem ReplaceParameters="true" TargetFileName="angular.js">angular.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="angular.min.js">angular.min.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.bundle.js">bootstrap.bundle.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.bundle.js.map">bootstrap.bundle.js.map</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.bundle.min.js">bootstrap.bundle.min.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.bundle.min.js.map">bootstrap.bundle.min.js.map</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.js">bootstrap.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.js.map">bootstrap.js.map</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.min.js">bootstrap.min.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.min.js.map">bootstrap.min.js.map</ProjectItem>
         <Folder Name="chartjs" TargetFolderName="chartjs">
           <ProjectItem ReplaceParameters="true" TargetFileName="chart.min.js">chart.min.js</ProjectItem>
         </Folder>
         <ProjectItem ReplaceParameters="true" TargetFileName="datetimepicker.js">datetimepicker.js</ProjectItem>
+        <Folder Name="esm" TargetFolderName="esm">
+          <ProjectItem ReplaceParameters="true" TargetFileName="popper-utils.js">popper-utils.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="popper-utils.js.map">popper-utils.js.map</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="popper-utils.min.js">popper-utils.min.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="popper-utils.min.js.map">popper-utils.min.js.map</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="popper.js">popper.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="popper.js.map">popper.js.map</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="popper.min.js">popper.min.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="popper.min.js.map">popper.min.js.map</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="index.d.ts">index.d.ts</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="jquery-1.10.2.intellisense.js">jquery-1.10.2.intellisense.js</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="jquery-1.10.2.js">jquery-1.10.2.js</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="jquery-1.10.2.min.js">jquery-1.10.2.min.js</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="jquery-1.10.2.min.map">jquery-1.10.2.min.map</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="jquery-3.3.1.intellisense.js">jquery-3.3.1.intellisense.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="jquery-3.3.1.js">jquery-3.3.1.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="jquery-3.3.1.min.js">jquery-3.3.1.min.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="jquery-3.3.1.min.map">jquery-3.3.1.min.map</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="jquery-3.3.1.slim.js">jquery-3.3.1.slim.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="jquery-3.3.1.slim.min.js">jquery-3.3.1.slim.min.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="jquery-3.3.1.slim.min.map">jquery-3.3.1.slim.min.map</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="jsnlog.js">jsnlog.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="jsnlog.js.map">jsnlog.js.map</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="jsnlog.min.js">jsnlog.min.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="loading-bar.min.js">loading-bar.min.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="modernizr-2.6.2.js">modernizr-2.6.2.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="modernizr-2.8.3.js">modernizr-2.8.3.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="moment.min.js">moment.min.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="MvcReportViewer.js">MvcReportViewer.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="nya-bs-select.js">nya-bs-select.js</ProjectItem>
@@ -441,10 +547,31 @@
             <ProjectItem ReplaceParameters="true" TargetFileName="raphael-min.js">raphael-min.js</ProjectItem>
           </Folder>
         </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="popper-utils.js">popper-utils.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="popper-utils.js.map">popper-utils.js.map</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="popper-utils.min.js">popper-utils.min.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="popper-utils.min.js.map">popper-utils.min.js.map</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="popper.js">popper.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="popper.js.map">popper.js.map</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="popper.min.js">popper.min.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="popper.min.js.map">popper.min.js.map</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="README.md">README.md</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="respond.js">respond.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="respond.matchmedia.addListener.js">respond.matchmedia.addListener.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="respond.matchmedia.addListener.min.js">respond.matchmedia.addListener.min.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="respond.min.js">respond.min.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="sb-admin-2.js">sb-admin-2.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="toaster.min.js">toaster.min.js</ProjectItem>
+        <Folder Name="umd" TargetFolderName="umd">
+          <ProjectItem ReplaceParameters="true" TargetFileName="popper-utils.js">popper-utils.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="popper-utils.js.map">popper-utils.js.map</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="popper-utils.min.js">popper-utils.min.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="popper-utils.min.js.map">popper-utils.min.js.map</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="popper.js">popper.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="popper.js.map">popper.js.map</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="popper.min.js">popper.min.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="popper.min.js.map">popper.min.js.map</ProjectItem>
+        </Folder>
         <ProjectItem ReplaceParameters="true" TargetFileName="url.js">url.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="window-on-error.js">window-on-error.js</ProjectItem>
       </Folder>
@@ -495,10 +622,23 @@
         </Folder>
         <ProjectItem ReplaceParameters="true" TargetFileName="shared-directives.js">shared-directives.js</ProjectItem>
       </Folder>
+      <Folder Name="SqlServerTypes" TargetFolderName="SqlServerTypes">
+        <ProjectItem ReplaceParameters="true" TargetFileName="Loader.cs">Loader.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="readme.htm">readme.htm</ProjectItem>
+        <Folder Name="x64" TargetFolderName="x64">
+          <ProjectItem ReplaceParameters="false" TargetFileName="msvcr120.dll">msvcr120.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="SqlServerSpatial140.dll">SqlServerSpatial140.dll</ProjectItem>
+        </Folder>
+        <Folder Name="x86" TargetFolderName="x86">
+          <ProjectItem ReplaceParameters="false" TargetFileName="msvcr120.dll">msvcr120.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="SqlServerSpatial140.dll">SqlServerSpatial140.dll</ProjectItem>
+        </Folder>
+      </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="Startup.cs">Startup.cs</ProjectItem>
       <Folder Name="Views" TargetFolderName="Views">
         <ProjectItem ReplaceParameters="true" TargetFileName="_ViewStart.cshtml">_ViewStart.cshtml</ProjectItem>
         <Folder Name="About" TargetFolderName="About" />
+        <Folder Name="AllData" TargetFolderName="AllData" />
         <Folder Name="BaseApi" TargetFolderName="BaseApi" />
         <Folder Name="Home" TargetFolderName="Home">
           <ProjectItem ReplaceParameters="true" TargetFileName="Index.cshtml">Index.cshtml</ProjectItem>
@@ -534,6 +674,7 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="_AngularLayout.cshtml">_AngularLayout.cshtml</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="Error.cshtml">Error.cshtml</ProjectItem>
         </Folder>
+        <Folder Name="UserApi" TargetFolderName="UserApi" />
         <ProjectItem ReplaceParameters="true" TargetFileName="Web.config">Web.config</ProjectItem>
       </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="Web.config">Web.config</ProjectItem>

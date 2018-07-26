@@ -53,12 +53,6 @@ namespace $safeprojectname$.App_Start
             StructureMapDependencyScope = new StructureMapDependencyScope(container);
             DependencyResolver.SetResolver(StructureMapDependencyScope);
             DynamicModuleUtility.RegisterModule(typeof(StructureMapScopeModule));
-
-            /* Allows setter injection in validation attributes*/
-            DataAnnotationsModelValidatorProvider.RegisterDefaultAdapterFactory((metadata, context, attribute) => new StructureMapDataAnnotationsModelValidator(metadata, context, attribute, container));
-
-            /* Allows setter injection in IValidatableObject viewModels*/
-            DataAnnotationsModelValidatorProvider.RegisterDefaultValidatableObjectAdapterFactory((metadata, context) => new StructureMapValidatableObjectAdapterFactory(metadata, context, container));
         }
 
         #endregion

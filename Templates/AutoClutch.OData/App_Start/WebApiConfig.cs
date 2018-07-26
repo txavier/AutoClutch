@@ -1,7 +1,7 @@
 ﻿using Microsoft.OData.Edm;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using OTPS.Core.Models;
+using AutoClutchTemplate.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,9 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.OData.Builder;
 using System.Web.OData.Extensions;
+using AutoClutchTemplate.Core.Objects;
+using System.Net.Http.Formatting;
+using System.Threading.Tasks;
 
 namespace $safeprojectname$
 {
@@ -73,19 +76,40 @@ namespace $safeprojectname$
             concatenatePreviousFiles.Parameter<int>("projectId");
             concatenatePreviousFiles.Returns<IHttpActionResult>();
 
+            var getTopFiveBudgetCodes = builder.Function("getTopFiveBudgetCodes");
+            getTopFiveBudgetCodes.Returns<IHttpActionResult>();
+            getTopFiveBudgetCodes.Returns<MetricsData>();
+
+
+            var getByKeyString = builder.Function("getByKeyString");
+            getByKeyString.Parameter<string>("Key");
+            getByKeyString.Returns<IHttpActionResult>();
+
+            var selectBudObj = builder.Function("SelectBudObj");
+            selectBudObj.Returns<String[]>();
+
             //var getPermitsPerPlant = builder.Function("GetPermitsPerPlant");
             //getPermitsPerPlant.Returns<IHttpActionResult>();
             //getPermitsPerPlant.Returns<MetricsData>();
 
-            builder.EntitySet<user>("users");
+            //builder.EntitySet<user>("users");
             builder.EntitySet<setting>("settings");
+            //builder.EntitySet<User>("Users");
 
-            SetNotMappedTypes<user>(builder);
+            //SetNotMappedTypes<user>(builder);
             SetNotMappedTypes<setting>(builder);
+            //SetNotMappedTypes<User>(builder);
 
             return builder.GetEdmModel();
         }
 
+
+        /// <summary>
+        /// This method tells odata that the properties that have custom attributes should be marked as 
+        /// Not mapped so that odata doesnt try to evaluate them.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="builder"></param>
         private static void SetNotMappedTypes<T>(ODataModelBuilder builder)
         {
             var notMappedProperties = (typeof(T)).GetProperties().Where(i => i.CustomAttributes.Any(j => j.AttributeType.Name == "NotMappedAttribute"));

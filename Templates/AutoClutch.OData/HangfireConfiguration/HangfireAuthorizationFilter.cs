@@ -20,11 +20,11 @@ namespace $safeprojectname$.HangfireConfiguration
 
             var container = IoC.Initialize();
 
-            var _userService = container.GetInstance<IService<Core.Models.user>>();
+            //var _userService = container.GetInstance<IService<Core.Models.user>>();
 
             var userName = context.Authentication.User.Identity.Name.Split('\\').LastOrDefault();
 
-            var user = _userService.Queryable().Where(i => i.userName == userName).FirstOrDefault();
+            //var user = _userService.Queryable().Where(i => i.userName == userName).FirstOrDefault();
 
             //if (user != null && user.authorizationPriorityLevel == 1)
             //{

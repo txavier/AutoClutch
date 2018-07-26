@@ -1,4 +1,5 @@
 ﻿using AutoClutch.Core.Interfaces;
+using AutoClutchTemplate.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -15,7 +16,7 @@ namespace $safeprojectname$
         {
             //TrackerEnabledDbContext.Common.Configuration.GlobalTrackingConfig.SetSoftDeletableCriteria<ISoftDeletable>(entity => entity.IsDeleted);
 
-            modelBuilder.Entity<user>().TrackAllProperties();
+            //modelBuilder.Entity<user>().TrackAllProperties();
 
             modelBuilder.Entity<setting>().TrackAllProperties();
 
