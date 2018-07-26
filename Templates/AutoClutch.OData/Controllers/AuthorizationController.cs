@@ -1,4 +1,4 @@
-﻿using $safeprojectname$.Core.Interfaces;
+﻿using OTPS.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

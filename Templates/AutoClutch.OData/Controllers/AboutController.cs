@@ -1,4 +1,4 @@
-﻿using $safeprojectname$.Core.Interfaces;
+﻿using OTPS.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,8 @@ namespace $safeprojectname$.Controllers
         [HttpGet]
         public IHttpActionResult getVersion()
         {
-            var result = _environmentConfigSettingsGetter.GetVersion();
+            //var result = _environmentConfigSettingsGetter.GetVersion();
+            var result = "-1.0";
 
             return Ok(result);
         }

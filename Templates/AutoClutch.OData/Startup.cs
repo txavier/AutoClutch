@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Web;
-using $safeprojectname$.Core.Interfaces;
 using $safeprojectname$.DependencyResolution;
 using Hangfire;
 using Hangfire.StructureMap;

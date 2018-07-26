@@ -1,7 +1,7 @@
-﻿using $safeprojectname$.Core.Models;
-using Microsoft.OData.Edm;
+﻿using Microsoft.OData.Edm;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using OTPS.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,23 +79,9 @@ namespace $safeprojectname$
 
             builder.EntitySet<user>("users");
             builder.EntitySet<setting>("settings");
-            builder.EntitySet<file>("files");
-            builder.EntitySet<fileGroup>("fileGroups");
-            builder.EntitySet<project>("projects");
-            builder.EntitySet<status>("statuses");
-            builder.EntitySet<timelineItem>("timelineItems");
-            builder.EntitySet<userGroup>("userGroups");
-            builder.EntitySet<userUserGroup>("userUserGroups");
 
             SetNotMappedTypes<user>(builder);
             SetNotMappedTypes<setting>(builder);
-            SetNotMappedTypes<file>(builder);
-            SetNotMappedTypes<fileGroup>(builder);
-            SetNotMappedTypes<project>(builder);
-            SetNotMappedTypes<status>(builder);
-            SetNotMappedTypes<timelineItem>(builder);
-            SetNotMappedTypes<userGroup>(builder);
-            SetNotMappedTypes<userUserGroup>(builder);
 
             return builder.GetEdmModel();
         }

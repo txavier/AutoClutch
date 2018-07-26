@@ -19,6 +19,7 @@
 namespace $safeprojectname$.DependencyResolution
 {
     using CompositionRoot;
+    using OTPS.CompositionRoot;
     using StructureMap;
 
     public static class IoC

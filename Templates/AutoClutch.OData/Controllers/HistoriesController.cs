@@ -1,4 +1,4 @@
-﻿using $safeprojectname$.Core.Interfaces;
+﻿using OTPS.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,9 +35,13 @@ namespace $safeprojectname$.Controllers
         [HttpGet]
         public IHttpActionResult GetLogDetails(string typeFullName, int id, string propertyName)
         {
-            var result = _trackerEnabledService.GetLogDetails(typeFullName, id, propertyName);
+            //var result = _trackerEnabledService.GetLogDetails(typeFullName, id, propertyName);
 
-            return Ok(result);
+            throw new NotImplementedException();
+
+            //return Ok(result);
+
+            return Ok();
         }
 
 

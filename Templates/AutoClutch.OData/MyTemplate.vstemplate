@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
     <Name>AutoClutch.OData</Name>
-    <Description>OData layer for AutoClutch</Description>
+    <Description>OData web app template for AutoClutch.</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
@@ -15,7 +15,7 @@
     <PreviewImage>__PreviewImage.png</PreviewImage>
   </TemplateData>
   <TemplateContent>
-    <Project TargetFileName="FileTrackingManagement.OData.csproj" File="FileTrackingManagement.OData.csproj" ReplaceParameters="true">
+    <Project TargetFileName="OTPS.OData.csproj" File="OTPS.OData.csproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="false" TargetFileName=".bowerrc">.bowerrc</ProjectItem>
       <ProjectItem ReplaceParameters="false" TargetFileName=".gitconfig">.gitconfig</ProjectItem>
       <Folder Name="app" TargetFolderName="app">
@@ -295,23 +295,15 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="AuthorizationController.cs">AuthorizationController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="BaseApiController.cs">BaseApiController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="DashboardODataController.cs">DashboardODataController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="FileGroupsController.cs">FileGroupsController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="FilesController.cs">FilesController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="HistoriesController.cs">HistoriesController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="HomeController.cs">HomeController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="MetricsController.cs">MetricsController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ODataApiController.cs">ODataApiController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ProjectsController.cs">ProjectsController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ReportsController.cs">ReportsController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ReportViewerController.cs">ReportViewerController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="SettingsController.cs">SettingsController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="SharepointFilesController.cs">SharepointFilesController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="StatusesController.cs">StatusesController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="TimelineItemsController.cs">TimelineItemsController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="UserActionLogsController.cs">UserActionLogsController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="UserGroupsController.cs">UserGroupsController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="UsersController.cs">UsersController.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="UsersUserGroupsController.cs">UsersUserGroupsController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ValuesController.cs">ValuesController.cs</ProjectItem>
       </Folder>
       <Folder Name="DependencyResolution" TargetFolderName="DependencyResolution">

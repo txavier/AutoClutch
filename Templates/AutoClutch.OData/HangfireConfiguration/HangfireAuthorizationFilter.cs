@@ -26,10 +26,10 @@ namespace $safeprojectname$.HangfireConfiguration
 
             var user = _userService.Queryable().Where(i => i.userName == userName).FirstOrDefault();
 
-            if (user != null && user.authorizationPriorityLevel == 1)
-            {
-                return true;
-            }
+            //if (user != null && user.authorizationPriorityLevel == 1)
+            //{
+            //    return true;
+            //}
 
             return false;
         }
