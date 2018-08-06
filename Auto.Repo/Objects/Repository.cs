@@ -448,10 +448,8 @@ namespace AutoClutch.Repo
                     SaveChanges(loggedInUserName);
 
                     var id = GetEntityIdObject(entity);
-
-                    TEntity baseEntity = Find(id);
-
-                    return baseEntity;
+                    
+                    return entity;
                 }
                 else
                 {
