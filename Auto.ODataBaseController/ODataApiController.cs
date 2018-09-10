@@ -35,7 +35,7 @@ namespace AutoClutch.Controller
             _service = service;
         }
 
-         [HttpGet]
+        [HttpGet]
         [EnableQuery]
         public virtual IHttpActionResult Get()
         {
@@ -56,7 +56,7 @@ namespace AutoClutch.Controller
             return Ok(queryable);
         }
 
-private static IEnumerable<KeyValuePair<string, string>> NotMappedPropertiesInQueryOptions(HttpRequestMessage request)
+        private static IEnumerable<KeyValuePair<string, string>> NotMappedPropertiesInQueryOptions(HttpRequestMessage request)
         {
             // As of 5/17/2017 unable to use Delegate Decompiler because it fails 
             // when a computed property uses recursion.
@@ -237,7 +237,7 @@ private static IEnumerable<KeyValuePair<string, string>> NotMappedPropertiesInQu
             }
         }
 
-        public async Task<IHttpActionResult> Delete([FromODataUri] int key)
+        public async Task<IHttpActionResult> Delete([FromODataUri] int key, bool? softDelete = null)
         {
             try
             {
@@ -248,7 +248,7 @@ private static IEnumerable<KeyValuePair<string, string>> NotMappedPropertiesInQu
                     return NotFound();
                 }
 
-                await _service.DeleteAsync(key, User.Identity.Name?.Split("\\".ToCharArray()).LastOrDefault());
+                await _service.DeleteAsync(key, User.Identity.Name?.Split("\\".ToCharArray()).LastOrDefault(), softDelete ?? false);
 
                 if (_service.Errors.Any())
                 {
@@ -258,7 +258,7 @@ private static IEnumerable<KeyValuePair<string, string>> NotMappedPropertiesInQu
                 // If a logging service has been injected then use it.
                 if (_logService != null)
                 {
-                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), EventType.Deleted, loggedInUserName: User?.Identity?.Name, useToString: true);
+                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), (softDelete ?? false) ? EventType.SoftDeleted : EventType.Deleted, loggedInUserName: User?.Identity?.Name?.Split("\\".ToCharArray()).LastOrDefault(), useToString: true);
                 }
 
                 return StatusCode(HttpStatusCode.NoContent);
