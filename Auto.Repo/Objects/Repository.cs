@@ -864,7 +864,12 @@ namespace AutoClutch.Repo
             if (disposing)
             {
                 // Free managed objects.
-                _context.Dispose();
+                
+                // The below logic has been commented out because it has been discovered that 
+                // disposing the context here is bad practice.  The disposal of the injected
+                // context should be taken care of the component that initiated that resource, 
+                // the dependency injecter (https://cpratt.co/idisposable-and-dependency-injection/).
+                // _context.Dispose();
             }
 
             // Release any unmanaged objects.
