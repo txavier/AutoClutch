@@ -95,9 +95,9 @@ namespace AutoClutch.Controller
         //}
         [HttpGet]
         [EnableQuery]
-        public virtual IHttpActionResult Get([FromODataUri] int key)
+        public virtual async Task<IHttpActionResult> Get([FromODataUri] int key)
         {
-            var result = _service.Find(key);
+            var result = await _service.FindAsync(key);
 
             return Ok(result);
         }
