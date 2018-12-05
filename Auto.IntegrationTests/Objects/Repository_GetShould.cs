@@ -24,7 +24,7 @@ namespace AutoClutch.Repo.Objects.Tests
                 // Add a facility with that locationId.
                 var facility = new facility() { name = "facility1", facilityType = "Commercial", location = location };
 
-                var facilityRepository = new Repository<facility>(context);
+                var facilityRepository = new EFRepository<facility>(context);
 
                 facilityRepository.Add(facility, "xingl");
 
@@ -93,7 +93,7 @@ namespace AutoClutch.Repo.Objects.Tests
                 // Add a facility with that locationId.
                 var facility = new facility() { name = "facility1", facilityType = "Commercial", location = location };
 
-                var facilityRepository = new Repository<facility>(context);
+                var facilityRepository = new EFRepository<facility>(context);
 
                 facilityRepository.Add(facility, "xingl");
 
@@ -162,7 +162,7 @@ namespace AutoClutch.Repo.Objects.Tests
                 // Add a facility with that locationId.
                 var facility = new facility() { name = "facility1", facilityType = "Commercial", location = location };
 
-                var facilityRepository = new Repository<facility>(context);
+                var facilityRepository = new EFRepository<facility>(context);
 
                 facilityRepository.Add(facility, "xingl");
 

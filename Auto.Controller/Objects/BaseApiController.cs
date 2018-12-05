@@ -13,13 +13,13 @@ namespace AutoClutch.Controller
     public class BaseApiController<TEntity> : ApiController
         where TEntity : class
     {
-        private IService<TEntity> _service;
+        private IEFService<TEntity> _service;
 
         private ILogService<TEntity> _logService;
 
         private IAutoClutchAuthorizationService _autoClutchAuthorizationService;
 
-        public BaseApiController(IService<TEntity> service,
+        public BaseApiController(IEFService<TEntity> service,
             ILogService<TEntity> logService = null,
             IAutoClutchAuthorizationService autoClutchAuthorizationService = null)
         {
@@ -30,7 +30,7 @@ namespace AutoClutch.Controller
             _autoClutchAuthorizationService = autoClutchAuthorizationService;
         }
 
-        public BaseApiController(IService<TEntity> service)
+        public BaseApiController(IEFService<TEntity> service)
         {
             _service = service;
         }
@@ -455,7 +455,7 @@ namespace AutoClutch.Controller
                 // If a logging service has been injected then use it.
                 if (_logService != null)
                 {
-                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), EventType.Modified, loggedInUserName: loggedInUserName, useToString: true);
+                    await _logService.InfoAsync(entity, id.ToString(), EventType.Modified, loggedInUserName: loggedInUserName, useToString: true);
                 }
 
                 //return StatusCode(HttpStatusCode.NoContent);
@@ -519,7 +519,7 @@ namespace AutoClutch.Controller
                 // If a logging service has been injected then use it.
                 if (_logService != null)
                 {
-                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), EventType.Added, loggedInUserName: loggedInUserName, useToString: true);
+                    await _logService.InfoAsync(entity, _service.GetEntityIdObject(entity).ToString(), EventType.Added, loggedInUserName: loggedInUserName, useToString: true);
                 }
 
                 // Null is passed because the entity coming back from the service layer is 
@@ -576,7 +576,7 @@ namespace AutoClutch.Controller
                 // If a logging service has been injected then use it.
                 if (_logService != null)
                 {
-                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), (softDelete ?? false) ? EventType.SoftDeleted : EventType.Deleted, loggedInUserName: loggedInUserName, useToString: true);
+                    await _logService.InfoAsync(entity, id.ToString(), (softDelete ?? false) ? EventType.SoftDeleted : EventType.Deleted, loggedInUserName: loggedInUserName, useToString: true);
                 }
 
                 return Ok(result);

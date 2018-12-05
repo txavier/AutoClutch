@@ -15,7 +15,7 @@ using AutoClutch.Core.Objects;
 
 namespace AutoClutch.Repo
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class EFRepository<TEntity> : IEFRepository<TEntity> where TEntity : class
     {
         private readonly DbContext _context;
 
@@ -61,7 +61,7 @@ namespace AutoClutch.Repo
             set { _context.Configuration.ValidateOnSaveEnabled = value; }
         }
 
-        public Repository(DbContext context)
+        public EFRepository(DbContext context)
         {
             if (context == null)
             {
@@ -448,7 +448,7 @@ namespace AutoClutch.Repo
                     SaveChanges(loggedInUserName);
 
                     var id = GetEntityIdObject(entity);
-                    
+
                     return entity;
                 }
                 else
@@ -847,7 +847,7 @@ namespace AutoClutch.Repo
             GC.SuppressFinalize(this);
         }
 
-        ~Repository()
+        ~EFRepository()
         {
             Dispose(false);
         }
@@ -862,7 +862,7 @@ namespace AutoClutch.Repo
             if (disposing)
             {
                 // Free managed objects.
-                
+
                 // The below logic has been commented out because it has been discovered that 
                 // disposing the context here is bad practice.  The disposal of the injected
                 // context should be taken care of the component that initiated that resource, 
@@ -874,6 +874,60 @@ namespace AutoClutch.Repo
             Errors = null;
 
             _disposed = true;
+        }
+
+        public TEntity Add(TEntity entity)
+        {
+            var result = this.Add(entity, null, dontSave: false);
+
+            return result;
+        }
+
+        public async Task<TEntity> AddAsync(TEntity entity, string loggedInUserName = null)
+        {
+            var result = await this.AddAsync(entity, loggedInUserName, dontSave: false);
+
+            return result;
+        }
+
+        public void Delete(object id, string loggedInUserName = null)
+        {
+            this.Delete((int)id, loggedInUserName, false);
+        }
+
+        public async Task<bool> DeleteAsync(object id, string loggedInUserName = null)
+        {
+            var result = await this.DeleteAsync((int)id, loggedInUserName, false);
+
+            return true;
+        }
+
+        public TEntity Update(object id, TEntity entity, string loggedInUserName = null)
+        {
+            if (entity == null)
+            {
+                Errors.Concat(new List<Error> { new Error { Description = "Please supply the entity that is to be updated.", Property = "entity" } });
+
+                return null;
+            }
+
+            var result = this.Update(entity, loggedInUserName);
+
+            return result;
+        }
+
+        public async Task<TEntity> UpdateAsync(object id, TEntity entity, string loggedInUserName = null)
+        {
+            if(entity == null)
+            {
+                Errors.Concat(new List<Error> { new Error { Description = "Please supply the entity that is to be updated.", Property = "entity" } });
+
+                return null;
+            }
+
+            var result = await this.UpdateAsync(entity, loggedInUserName);
+
+            return result;
         }
     }
 }

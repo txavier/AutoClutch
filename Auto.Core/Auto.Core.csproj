@@ -42,8 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\ILogService.cs" />
     <Compile Include="Interfaces\IService.cs" />
+    <Compile Include="Interfaces\ILogService.cs" />
+    <Compile Include="Interfaces\IEFService.cs" />
     <Compile Include="Interfaces\ISoftDeletable.cs" />
     <Compile Include="Interfaces\IValidation.cs" />
     <Compile Include="Models\userActionLog.cs" />

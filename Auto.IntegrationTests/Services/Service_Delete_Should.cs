@@ -26,9 +26,9 @@ namespace AutoClutch.IntegrationTests.Services
                 // Add a facility with that locationId.
                 var facility = new facility() { name = "facility1", facilityType = "Commercial", location = location };
 
-                var facilityRepository = new Repository<facility>(context);
+                var facilityRepository = new EFRepository<facility>(context);
 
-                var facilityService = new Service<facility>(facilityRepository);
+                var facilityService = new EFService<facility>(facilityRepository);
 
                 facilityService.Add(facility, "xingl");
 
@@ -49,12 +49,12 @@ namespace AutoClutch.IntegrationTests.Services
                 facilityService.Add(facility3, "theox");
 
                 // Act.
-                var result = new Service<facility>(new Repository<facility>(new AutoTestDataContext())).Delete(facility3.facilityId, softDelete: true);
+                var result = new EFService<facility>(new EFRepository<facility>(new AutoTestDataContext())).Delete(facility3.facilityId, loggedInUserName: "IntegrationTest", softDelete: true);
 
-                var shouldNotHaveIt = new Service<facility>(new Repository<facility>(new AutoTestDataContext())).Queryable()
+                var shouldNotHaveIt = new EFService<facility>(new EFRepository<facility>(new AutoTestDataContext())).Queryable()
                     .Where(i => i.facilityId == facility3.facilityId);
 
-                var shouldHaveIt = new Service<facility>(new Repository<facility>(new AutoTestDataContext())).Queryable(includeSoftDeleted: true)
+                var shouldHaveIt = new EFService<facility>(new EFRepository<facility>(new AutoTestDataContext())).Queryable(includeSoftDeleted: true)
                     .Where(i => i.facilityId == facility3.facilityId);
 
                 // Assert.
@@ -102,9 +102,9 @@ namespace AutoClutch.IntegrationTests.Services
                 // Add a facility with that locationId.
                 var facility = new facility() { name = "facility1", facilityType = "Commercial", location = location };
 
-                var facilityRepository = new Repository<facility>(context);
+                var facilityRepository = new EFRepository<facility>(context);
 
-                var facilityService = new Service<facility>(facilityRepository);
+                var facilityService = new EFService<facility>(facilityRepository);
 
                 facilityService.Add(facility, "xingl");
 
@@ -125,12 +125,12 @@ namespace AutoClutch.IntegrationTests.Services
                 facilityService.Add(facility3, "theox");
 
                 // Act.
-                var result = new Service<facility>(new Repository<facility>(new AutoTestDataContext())).DeleteAsync(facility3.facilityId, "theox", softDelete: true).Result;
+                var result = new EFService<facility>(new EFRepository<facility>(new AutoTestDataContext())).DeleteAsync(facility3.facilityId, "theox", softDelete: true).Result;
 
-                var shouldNotHaveIt = new Service<facility>(new Repository<facility>(new AutoTestDataContext())).Queryable()
+                var shouldNotHaveIt = new EFService<facility>(new EFRepository<facility>(new AutoTestDataContext())).Queryable()
                     .Where(i => i.facilityId == facility3.facilityId);
 
-                var shouldHaveIt = new Service<facility>(new Repository<facility>(new AutoTestDataContext())).Queryable(includeSoftDeleted: true)
+                var shouldHaveIt = new EFService<facility>(new EFRepository<facility>(new AutoTestDataContext())).Queryable(includeSoftDeleted: true)
                     .Where(i => i.facilityId == facility3.facilityId);
 
                 // Assert.

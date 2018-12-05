@@ -24,7 +24,7 @@ namespace AutoClutch.Repo.Objects.Tests
                 // Add a facility with that locationId.
                 var facility = new facility() { name = "facility1", facilityType = "Commercial", location = location };
 
-                var facilityRepository = new Repository<facility>(context);
+                var facilityRepository = new EFRepository<facility>(context);
 
                 facilityRepository.Add(facility, "xingl");
 
@@ -93,7 +93,7 @@ namespace AutoClutch.Repo.Objects.Tests
                 // Add a facility with that locationId.
                 var facility = new facility() { name = "facility1", facilityType = "Commercial", location = location };
 
-                var facilityRepository = new Repository<facility>(context);
+                var facilityRepository = new EFRepository<facility>(context);
 
                 facilityRepository.Add(facility, "xingl");
 
@@ -162,7 +162,7 @@ namespace AutoClutch.Repo.Objects.Tests
                 // Add a facility with that locationId.
                 var facility = new facility() { name = "facility1", facilityType = "Commercial", location = location };
 
-                var facilityRepository = new Repository<facility>(context);
+                var facilityRepository = new EFRepository<facility>(context);
 
                 facilityRepository.Add(facility, "xingl");
 
@@ -231,7 +231,7 @@ namespace AutoClutch.Repo.Objects.Tests
                 // Add a facility with that locationId.
                 var facility = new facility() { name = "facility1", facilityType = "Commercial", location = location };
 
-                var facilityRepository = new Repository<facility>(new AutoTestDataContextNonTrackerEnabled());
+                var facilityRepository = new EFRepository<facility>(new AutoTestDataContextNonTrackerEnabled());
 
                 facilityRepository.Add(facility, "xingl");
 
@@ -251,7 +251,7 @@ namespace AutoClutch.Repo.Objects.Tests
 
                 facilityRepository.Add(facility3, "theox");
 
-                facilityRepository = new Repository<facility>(new AutoTestDataContextNonTrackerEnabled());
+                facilityRepository = new EFRepository<facility>(new AutoTestDataContextNonTrackerEnabled());
 
                 // Act.
                 var retrievedFacility = facilityRepository.Get(filterString: "facilityType=\"Commercial\"", lazyLoadingEnabled: false, proxyCreationEnabled: false, autoDetectChanges: false);
@@ -303,7 +303,7 @@ namespace AutoClutch.Repo.Objects.Tests
                 // Add a facility with that locationId.
                 var facility = new facility() { name = "facility1", facilityType = "Commercial", location = location };
 
-                var facilityRepository = new Repository<facility>(new AutoTestDataContextNonTrackerEnabled());
+                var facilityRepository = new EFRepository<facility>(new AutoTestDataContextNonTrackerEnabled());
 
                 facilityRepository.Add(facility, "xingl");
 
@@ -323,7 +323,7 @@ namespace AutoClutch.Repo.Objects.Tests
 
                 facilityRepository.Add(facility3, "theox");
 
-                facilityRepository = new Repository<facility>(new AutoTestDataContextNonTrackerEnabled());
+                facilityRepository = new EFRepository<facility>(new AutoTestDataContextNonTrackerEnabled());
 
                 facilityRepository.ProxyCreationEnabled = false;
 
@@ -378,14 +378,14 @@ namespace AutoClutch.Repo.Objects.Tests
                 // Add a location with that userId.
                 var location = new location() { name = "location1", user = user };
 
-                var locationRepository = new Repository<location>(new AutoTestDataContext());
+                var locationRepository = new EFRepository<location>(new AutoTestDataContext());
 
                 location = locationRepository.Add(location);
 
                 // Add a facility with that locationId.
                 var facility = new facility() { name = "facility1", facilityType = "Commercial", locationId = location.locationId };
 
-                var facilityRepository = new Repository<facility>(new AutoTestDataContextNonTrackerEnabled());
+                var facilityRepository = new EFRepository<facility>(new AutoTestDataContextNonTrackerEnabled());
 
                 // Act.
                 facility = facilityRepository.Add(facility, "xingl");
@@ -435,7 +435,7 @@ namespace AutoClutch.Repo.Objects.Tests
                 // Add a facility with that locationId.
                 var facility = new facility() { name = "facility1", facilityType = "Commercial", location = location };
 
-                var facilityRepository = new Repository<facility>(new AutoTestDataContextNonTrackerEnabled());
+                var facilityRepository = new EFRepository<facility>(new AutoTestDataContextNonTrackerEnabled());
 
                 facilityRepository.Add(facility, "xingl");
 
@@ -455,7 +455,7 @@ namespace AutoClutch.Repo.Objects.Tests
 
                 facilityRepository.Add(facility3, "theox");
 
-                facilityRepository = new Repository<facility>(new AutoTestDataContextNonTrackerEnabled());
+                facilityRepository = new EFRepository<facility>(new AutoTestDataContextNonTrackerEnabled());
 
                 facilityRepository.ProxyCreationEnabled = false;
 

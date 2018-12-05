@@ -19,7 +19,7 @@ namespace AutoClutch.Repo.Objects.Tests
 
                 // Arrange.
                 // Add a user.
-                var userRepository = new Repository<user>(context);
+                var userRepository = new EFRepository<user>(context);
 
                 var user = new user() { name = "user1" };
 
@@ -29,21 +29,21 @@ namespace AutoClutch.Repo.Objects.Tests
                 var userId = user.userId;
 
                 // Add a location with that userId.
-                var locationRepository = new Repository<location>(context);
+                var locationRepository = new EFRepository<location>(context);
 
                 var location = new location() { name = "location1", contactUserId = user.userId };
 
                 locationRepository.Add(location);
 
                 // Add a facility with that locationId.
-                var facilityRepository = new Repository<facility>(context);
+                var facilityRepository = new EFRepository<facility>(context);
 
                 var facility = new facility() { name = "facility1", locationId = location.locationId };
 
                 facilityRepository.Add(facility);
 
                 // Get the facility back.
-                var facilityRepository2 = new Repository<facility>(context2);
+                var facilityRepository2 = new EFRepository<facility>(context2);
 
                 facility = facilityRepository2.Get(filter: i => i.facilityId == facility.facilityId).SingleOrDefault();
 
@@ -100,7 +100,7 @@ namespace AutoClutch.Repo.Objects.Tests
 
                 // Arrange.
                 // Add a user.
-                var userRepository = new Repository<user>(context);
+                var userRepository = new EFRepository<user>(context);
 
                 var user = new user() { name = "user1" };
 
@@ -110,7 +110,7 @@ namespace AutoClutch.Repo.Objects.Tests
                 var userId = user.userId;
 
                 // Add a location with that userId.
-                var locationRepository = new Repository<location>(context);
+                var locationRepository = new EFRepository<location>(context);
 
                 var location = new location() { name = "location1", contactUserId = user.userId };
 
@@ -121,14 +121,14 @@ namespace AutoClutch.Repo.Objects.Tests
                 locationRepository.Add(location2);
 
                 // Add a facility with that locationId.
-                var facilityRepository = new Repository<facility>(context);
+                var facilityRepository = new EFRepository<facility>(context);
 
                 var facility = new facility() { name = "facility1", locationId = location.locationId };
 
                 facilityRepository.Add(facility);
 
                 // Get the facility back.
-                var facilityRepository2 = new Repository<facility>(context2);
+                var facilityRepository2 = new EFRepository<facility>(context2);
 
                 facility = facilityRepository2.Get(filter: i => i.facilityId == facility.facilityId).SingleOrDefault();
 
@@ -193,7 +193,7 @@ namespace AutoClutch.Repo.Objects.Tests
             // Arrange.
             var context = new AutoTestDataContext();
 
-            var userRepository = new Repository<user>(context);
+            var userRepository = new EFRepository<user>(context);
 
             var user = new user() { name = "user1", userId = -1 };
 

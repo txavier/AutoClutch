@@ -26,9 +26,9 @@ namespace AutoClutch.Service.Services.IntegrationTests
                 // Add a facility with that locationId.
                 var facility = new facility() { name = "facility1", facilityType = "Commercial", location = location };
 
-                var facilityRepository = new Repository<facility>(context);
+                var facilityRepository = new EFRepository<facility>(context);
 
-                var facilityService = new Service<facility>(facilityRepository);
+                var facilityService = new EFService<facility>(facilityRepository);
 
                 facilityService.Add(facility, "xingl");
 
@@ -60,13 +60,13 @@ namespace AutoClutch.Service.Services.IntegrationTests
 
                 facilityService.LazyLoadingEnabled = false;
 
-                var newFacilityService = new Service<facility>(new Repository<facility>(new AutoTestDataContextNonTrackerEnabled()));
+                var newFacilityService = new EFService<facility>(new EFRepository<facility>(new AutoTestDataContextNonTrackerEnabled()));
 
                 newFacilityService.ProxyCreationEnabled = true;
 
                 newFacilityService.LazyLoadingEnabled = true;
 
-                var newFacilityService2 = new Service<facility>(new Repository<facility>(new AutoTestDataContextNonTrackerEnabled()));
+                var newFacilityService2 = new EFService<facility>(new EFRepository<facility>(new AutoTestDataContextNonTrackerEnabled()));
 
                 newFacilityService2.ProxyCreationEnabled = false;
 
@@ -124,9 +124,9 @@ namespace AutoClutch.Service.Services.IntegrationTests
                 // Add a facility with that locationId.
                 var facility = new facility() { name = "facility1", facilityType = "Commercial", location = location };
 
-                var facilityRepository = new Repository<facility>(context);
+                var facilityRepository = new EFRepository<facility>(context);
 
-                var facilityService = new Service<facility>(facilityRepository);
+                var facilityService = new EFService<facility>(facilityRepository);
 
                 facilityService.Add(facility, "xingl");
 
@@ -134,9 +134,9 @@ namespace AutoClutch.Service.Services.IntegrationTests
 
                 context = new AutoTestDataContextNonTrackerEnabled();
 
-                facilityRepository = new Repository<facility>(context);
+                facilityRepository = new EFRepository<facility>(context);
 
-                facilityService = new Service<facility>(facilityRepository);
+                facilityService = new EFService<facility>(facilityRepository);
 
                 var newfacility = new facility();
 

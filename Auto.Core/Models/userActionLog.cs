@@ -19,7 +19,7 @@ namespace AutoClutch.Core.Models
 
         public string typeFullName { get; set; }
 
-        public int recordId { get; set; }
+        public string recordId { get; set; }
 
         public int eventType { get; set; }
 

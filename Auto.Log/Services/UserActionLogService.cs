@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace AutoClutch.Log.Services
 {
-    public class UserActionLogService : Service<userActionLog>, ILogService, IService<userActionLog>
+    public class UserActionLogService : EFService<userActionLog>, ILogService, IEFService<userActionLog>
     {
-        public UserActionLogService(IRepository<userActionLog> userActionLogRepository)
+        public UserActionLogService(IEFRepository<userActionLog> userActionLogRepository)
             : base(userActionLogRepository)
         {
 
@@ -24,7 +24,7 @@ namespace AutoClutch.Log.Services
             ErrorSignal.FromCurrentContext().Raise(ex);
         }
 
-        public userActionLog Info(string typeName, string typeFullName, int recordId, EventType eventType, string message, string entityName, string loggedInUserName)
+        public userActionLog Info(string typeName, string typeFullName, string recordId, EventType eventType, string message, string entityName, string loggedInUserName)
         {
             loggedInUserName = loggedInUserName?.Split("\\".ToCharArray())?.LastOrDefault();
 
@@ -35,7 +35,7 @@ namespace AutoClutch.Log.Services
             return result;
         }
 
-        public async Task<userActionLog> InfoAsync(string typeName, string typeFullName, int recordId, EventType eventType, string message, string entityName, string loggedInUserName, string toString = null)
+        public async Task<userActionLog> InfoAsync(string typeName, string typeFullName, string recordId, EventType eventType, string message, string entityName, string loggedInUserName, string toString = null)
         {
             loggedInUserName = loggedInUserName?.Split("\\".ToCharArray())?.LastOrDefault();
 
@@ -46,7 +46,7 @@ namespace AutoClutch.Log.Services
             return result;
         }
 
-        private static userActionLog GetUserActionLog(string typeName, string typeFullName, int recordId, EventType eventType, string message, string entityName, string loggedInUserName, string toString = null)
+        private static userActionLog GetUserActionLog(string typeName, string typeFullName, string recordId, EventType eventType, string message, string entityName, string loggedInUserName, string toString = null)
         {
             var result = new userActionLog
             {
@@ -68,7 +68,7 @@ namespace AutoClutch.Log.Services
             return result;
         }
 
-        private static string GetMessage(string typeName, int recordId, EventType eventType, string message = null, string entityName = null, string loggedInUserName = null, string toString = null)
+        private static string GetMessage(string typeName, string recordId, EventType eventType, string message = null, string entityName = null, string loggedInUserName = null, string toString = null)
         {
             loggedInUserName = loggedInUserName?.Split("\\".ToCharArray())?.LastOrDefault();
 
@@ -130,12 +130,12 @@ namespace AutoClutch.Log.Services
     public class UserActionLogService<TEntity> : UserActionLogService, ILogService<TEntity>
         where TEntity : class
     {
-        public UserActionLogService(IRepository<userActionLog> userActionLogRepository)
+        public UserActionLogService(IEFRepository<userActionLog> userActionLogRepository)
             : base(userActionLogRepository)
         {
         }
 
-        public async Task<userActionLog> InfoAsync(TEntity entity, int recordId, EventType eventType, string message = null, string entityName = null, string loggedInUserName = null, bool useToString = false)
+        public async Task<userActionLog> InfoAsync(TEntity entity, string recordId, EventType eventType, string message = null, string entityName = null, string loggedInUserName = null, bool useToString = false)
         {
             loggedInUserName = loggedInUserName?.Split("\\".ToCharArray())?.LastOrDefault();
 
@@ -150,7 +150,7 @@ namespace AutoClutch.Log.Services
             return result;
         }
 
-        public userActionLog Info(TEntity entity, int recordId, EventType eventType, string message = null, string entityName = null, string loggedInUserName = null)
+        public userActionLog Info(TEntity entity, string recordId, EventType eventType, string message = null, string entityName = null, string loggedInUserName = null)
         {
             loggedInUserName = loggedInUserName?.Split("\\".ToCharArray())?.LastOrDefault();
 

@@ -122,7 +122,7 @@ namespace AutoClutch.Controller
                 // If a logging service has been injected then use it.
                 if (_logService != null)
                 {
-                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), EventType.Added, loggedInUserName: User?.Identity?.Name, useToString: true);
+                    await _logService.InfoAsync(entity, _service.GetEntityIdObject(entity).ToString(), EventType.Added, loggedInUserName: User?.Identity?.Name, useToString: true);
                 }
 
                 return Created(result);
@@ -156,11 +156,17 @@ namespace AutoClutch.Controller
 
                 try
                 {
-                    await _service.UpdateAsync(entityFromDatabase, User.Identity.Name?.Split("\\".ToCharArray()).LastOrDefault());
+                    var update = await _service.UpdateAsync(entityFromDatabase, User.Identity.Name?.Split("\\".ToCharArray()).LastOrDefault());
 
                     if (_service.Errors.Any())
                     {
                         return RetrieveErrorResult(_service.Errors);
+                    }
+
+                    // If a logging service has been injected then use it.
+                    if (_logService != null)
+                    {
+                        await _logService.InfoAsync(update, key.ToString(), EventType.Modified, loggedInUserName: User?.Identity?.Name, useToString: true);
                     }
                 }
                 catch (DbUpdateConcurrencyException)
@@ -212,7 +218,7 @@ namespace AutoClutch.Controller
                     // If a logging service has been injected then use it.
                     if (_logService != null)
                     {
-                        await _logService.InfoAsync(update, (int)_service.GetEntityIdObject(update), EventType.Modified, loggedInUserName: User?.Identity?.Name, useToString: true);
+                        await _logService.InfoAsync(update, key.ToString(), EventType.Modified, loggedInUserName: User?.Identity?.Name, useToString: true);
                     }
                 }
                 catch (DbUpdateConcurrencyException)
@@ -258,7 +264,7 @@ namespace AutoClutch.Controller
                 // If a logging service has been injected then use it.
                 if (_logService != null)
                 {
-                    await _logService.InfoAsync(entity, (int)_service.GetEntityIdObject(entity), (softDelete ?? false) ? EventType.SoftDeleted : EventType.Deleted, loggedInUserName: User?.Identity?.Name?.Split("\\".ToCharArray()).LastOrDefault(), useToString: true);
+                    await _logService.InfoAsync(entity, key.ToString(), (softDelete ?? false) ? EventType.SoftDeleted : EventType.Deleted, loggedInUserName: User?.Identity?.Name?.Split("\\".ToCharArray()).LastOrDefault(), useToString: true);
                 }
 
                 return StatusCode(HttpStatusCode.NoContent);
@@ -273,7 +279,7 @@ namespace AutoClutch.Controller
 
         private bool EntityExists(int key)
         {
-            var result = _service.Exists(key);
+            var result = _service.Find(key) != null;
 
             return result;
         }

@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace AutoClutch.Core
 {
-    public class Service<TEntity> : IService<TEntity> where TEntity : class, new()
+    public class EFService<TEntity> : IEFService<TEntity> where TEntity : class, new()
     {
-        private readonly IRepository<TEntity> _repository;
+        private readonly IEFRepository<TEntity> _repository;
 
         public IEnumerable<Error> Errors { get; set; }
 
@@ -49,17 +49,21 @@ namespace AutoClutch.Core
             set { _repository.ValidateOnSaveEnabled = value; }
         }
 
-        public Service(IRepository<TEntity> repository)
+        public EFService(IEFRepository<TEntity> repository)
         {
             this._repository = repository;
 
             Errors = new List<Error>();
         }
 
-        public virtual async Task<TEntity> FindAsync(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true,
+        [Obsolete("Find(object, null, null, null, null) is deprecated, please use FindAsync(entityId, includeSoftDeleted) instead.")]
+        public virtual async Task<TEntity> FindAsync(object entityId, bool? lazyLoadingEnabled, bool? proxyCreationEnabled, bool autoDetectChangesEnabled = true,
             bool? includeSoftDeleted = null)
         {
-            var entity = await _repository.FindAsync(entityId, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled);
+            lazyLoadingEnabled = lazyLoadingEnabled ?? true;
+            proxyCreationEnabled = proxyCreationEnabled ?? true;
+
+            var entity = await _repository.FindAsync(entityId, lazyLoadingEnabled: lazyLoadingEnabled.Value, proxyCreationEnabled: proxyCreationEnabled.Value, autoDetectChangesEnabled: autoDetectChangesEnabled);
 
             // If this is an entity with an interface ISoftdeletable and it is 
             // set to deleted then dont indicate that this object exists unless
@@ -72,9 +76,22 @@ namespace AutoClutch.Core
             return entity;
         }
 
-        public virtual TEntity Find(object entityId, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool? includeSoftDeleted = null)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entityId"></param>
+        /// <param name="lazyLoadingEnabled">The default value for this is true.</param>
+        /// <param name="proxyCreationEnabled">The default value for this is true.</param>
+        /// <param name="autoDetectChangesEnabled"></param>
+        /// <param name="includeSoftDeleted"></param>
+        /// <returns></returns>
+        [Obsolete("Find(object, null, null, null, null) is deprecated, please use Find(entityId, includeSoftDeleted) instead.")]
+        public virtual TEntity Find(object entityId, bool? lazyLoadingEnabled, bool? proxyCreationEnabled, bool autoDetectChangesEnabled = true, bool? includeSoftDeleted = null)
         {
-            var entity = _repository.Find(entityId, lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled);
+            lazyLoadingEnabled = lazyLoadingEnabled ?? true;
+            proxyCreationEnabled = proxyCreationEnabled ?? true;
+
+            var entity = _repository.Find(entityId, lazyLoadingEnabled: lazyLoadingEnabled.Value, proxyCreationEnabled: proxyCreationEnabled.Value, autoDetectChangesEnabled: autoDetectChangesEnabled);
 
             // If this is an entity with an interface ISoftdeletable and it is 
             // set to deleted then dont indicate that this object exists unless
@@ -561,7 +578,7 @@ namespace AutoClutch.Core
         }
 
         // Dispose(bool disposing) above has code to free unmanaged resources.
-        ~Service()
+        ~EFService()
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             Dispose(false);
@@ -580,6 +597,62 @@ namespace AutoClutch.Core
         public virtual string GetEntityKeyName(TEntity entity)
         {
             var result = _repository.GetEntityKeyName(entity);
+
+            return result;
+        }
+
+        public TEntity Add(TEntity entity, string loggedInUserName = null)
+        {
+            var result = Add(entity, loggedInUserName, true);
+
+            return result;
+        }
+
+        public async Task<TEntity> AddAsync(TEntity entity, string loggedInUserName = null)
+        {
+            var result = await AddAsync(entity, loggedInUserName, true);
+
+            return result;
+        }
+
+        public TEntity Delete(int id, string loggedInUserName = null, bool softDelete = false)
+        {
+            var result = Delete(id, loggedInUserName, softDelete, false);
+
+            return result;
+        }
+
+        public async Task<TEntity> DeleteAsync(int id, string loggedInUserName = null, bool softDelete = false)
+        {
+            var result = await DeleteAsync(id, loggedInUserName, softDelete, false);
+
+            return result;
+        }
+
+        public TEntity Update(TEntity entity, string loggedInUserName = null)
+        {
+            var result = Update(entity, loggedInUserName: loggedInUserName, lazyLoadingEnabled: true);
+
+            return result;
+        }
+
+        public async Task<TEntity> UpdateAsync(TEntity entity, string loggedInUserName = null)
+        {
+            var result = await UpdateAsync(entity, loggedInUserName: loggedInUserName, lazyLoadingEnabled: true);
+
+            return result;
+        }
+
+        public TEntity Find(object entityId, bool? includeSoftDeleted = null)
+        {
+            var result = Find(entityId, null, null, includeSoftDeleted: includeSoftDeleted);
+
+            return result;
+        }
+
+        public async Task<TEntity> FindAsync(object entityId, bool? includeSoftDeleted = null)
+        {
+            var result = await FindAsync(entityId, null, null, includeSoftDeleted: includeSoftDeleted);
 
             return result;
         }

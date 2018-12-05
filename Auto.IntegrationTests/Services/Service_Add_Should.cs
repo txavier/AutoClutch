@@ -23,7 +23,7 @@ namespace AutoClutch.Service.Services.IntegrationTests
             Errors = new List<Error>();
         }
 
-        public bool IsValid(TEntity entity, string loggedInUserName = null, IService<TEntity> service = null)
+        public bool IsValid(TEntity entity, string loggedInUserName = null, IEFService<TEntity> service = null)
         {
             ((List<Error>)Errors).Add(new Error { Description = "Validation event", Property = "Property" });
 
@@ -53,11 +53,11 @@ namespace AutoClutch.Service.Services.IntegrationTests
                 // Add a facility with that locationId.
                 var facility = new facility() { name = "facility1", facilityType = "Commercial", location = location };
 
-                var facilityRepository = new Repository<facility>(context);
+                var facilityRepository = new EFRepository<facility>(context);
 
                 var validation = new CustomValidation<facility>();
 
-                var facilityService = new Service<facility>(facilityRepository);
+                var facilityService = new EFService<facility>(facilityRepository);
 
                 facilityService.Validation = validation;
 

@@ -7,6 +7,6 @@ namespace AutoClutch.Core
     public interface IValidation<TEntity> where TEntity : class, new()
     {
         IEnumerable<Error> Errors { get; set; }
-        bool IsValid(TEntity entity, string loggedInUserName = null, IService<TEntity> service = null);
+        bool IsValid(TEntity entity, string loggedInUserName = null, IEFService<TEntity> service = null);
     }
 }
