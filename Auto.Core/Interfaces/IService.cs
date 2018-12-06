@@ -18,8 +18,8 @@ namespace AutoClutch.Core.Interfaces
         Task<TEntity> DeleteAsync(int id, string loggedInUserName = null, bool softDelete = false);
         void Dispose();
         IQueryable<TEntity> Queryable(bool? includeSoftDeleted = default(bool?));
-        TEntity Update(TEntity entity, string loggedInUserName = null);
-        Task<TEntity> UpdateAsync(TEntity entity, string loggedInUserName = null);
+        TEntity Update(object entityId, TEntity entity, string loggedInUserName = null);
+        Task<TEntity> UpdateAsync(object entityId, TEntity entity, string loggedInUserName = null);
         TEntity Find(object entityId, bool? includeSoftDeleted = default(bool?));
         Task<TEntity> FindAsync(object entityId, bool? includeSoftDeleted = default(bool?));
         object GetEntityIdObject(TEntity entity, bool? includeSoftDeleted = default(bool?));

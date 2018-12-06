@@ -156,7 +156,7 @@ namespace AutoClutch.Controller
 
                 try
                 {
-                    var update = await _service.UpdateAsync(entityFromDatabase, User.Identity.Name?.Split("\\".ToCharArray()).LastOrDefault());
+                    var update = await _service.UpdateAsync(key, entityFromDatabase, User.Identity.Name?.Split("\\".ToCharArray()).LastOrDefault());
 
                     if (_service.Errors.Any())
                     {
@@ -208,7 +208,7 @@ namespace AutoClutch.Controller
 
                 try
                 {
-                    update = await _service.UpdateAsync(update, User.Identity.Name?.Split("\\".ToCharArray()).LastOrDefault());
+                    update = await _service.UpdateAsync(key, update, User.Identity.Name?.Split("\\".ToCharArray()).LastOrDefault());
 
                     if (_service.Errors.Any())
                     {

@@ -104,6 +104,7 @@ namespace AutoClutch.Core
             return entity;
         }
 
+        [Obsolete("This method has been deprecated in favor of the Queryable() method.")]
         public virtual IEnumerable<TEntity> GetAll(bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool? includeSoftDeleted = null)
         {
             var result = _repository.GetAll(lazyLoadingEnabled: lazyLoadingEnabled, proxyCreationEnabled: proxyCreationEnabled, autoDetectChangesEnabled: autoDetectChangesEnabled);
@@ -314,6 +315,7 @@ namespace AutoClutch.Core
         /// a string of searchParameters that follow the form "name:facility2", "state:state3".
         /// </param>
         /// <returns></returns>
+        [Obsolete("This method has been deprecated in favor of the Queryable() method.")]
         public virtual IEnumerable<TEntity> Get(
             System.Linq.Expressions.Expression<Func<TEntity, bool>> filter = null,
             string filterString = null,
@@ -360,6 +362,7 @@ namespace AutoClutch.Core
             return result;
         }
 
+        [Obsolete("This method has been deprecated in favor of the Queryable() method.  Please use Queryable().Count(...) for in the future this method may be removed.")]
         public virtual int GetCount(
             System.Linq.Expressions.Expression<Func<TEntity, bool>> filter = null,
             string filterString = null,
@@ -655,6 +658,20 @@ namespace AutoClutch.Core
             var result = await FindAsync(entityId, null, null, includeSoftDeleted: includeSoftDeleted);
 
             return result;
+        }
+
+        public TEntity Update(object entityId, TEntity entity, string loggedInUserName = null)
+        {
+            entity = Update(entity, loggedInUserName, true);
+
+            return entity;
+        }
+
+        public async Task<TEntity> UpdateAsync(object entityId, TEntity entity, string loggedInUserName = null)
+        {
+            entity = await UpdateAsync(entity, loggedInUserName);
+
+            return entity;
         }
     }
 }

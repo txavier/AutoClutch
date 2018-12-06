@@ -286,7 +286,7 @@ namespace AutoClutch.Repo
             return entity;
         }
 
-        public async Task<string> DeleteAsync(string id, string loggedInUserName)
+        public virtual async Task<string> DeleteAsync(string id, string loggedInUserName)
         {
             HttpResponseMessage response = await _currentHttpClient.DeleteAsync(_uri + id);
 
@@ -333,28 +333,30 @@ namespace AutoClutch.Repo
             GC.SuppressFinalize(this);
         }
 
-        public TEntity Add(TEntity entity, string loggedInUserName = null)
+        #endregion
+
+        public virtual TEntity Add(TEntity entity, string loggedInUserName = null)
         {
             var result = AddAsync(entity, loggedInUserName).Result;
 
             return result;
         }
 
-        public TEntity Update(string id, TEntity entity, string loggedInUserName = null)
+        public virtual TEntity Update(string id, TEntity entity, string loggedInUserName = null)
         {
             var result = UpdateAsync(id, entity, loggedInUserName).Result;
 
             return result;
         }
 
-        public string Delete(string id, string loggedInUserName = null)
+        public virtual string Delete(string id, string loggedInUserName = null)
         {
             var result = DeleteAsync(id, loggedInUserName).Result;
 
             return result;
         }
 
-        public TEntity Find(string id)
+        public virtual TEntity Find(string id)
         {
             var result = FindAsync(id).Result;
 
@@ -370,8 +372,40 @@ namespace AutoClutch.Repo
             return entity;
         }
 
-        #endregion
+        public virtual TEntity Add(TEntity entity)
+        {
+            entity = Add(entity, null);
 
+            return entity;
+        }
+
+        public virtual void Delete(object id, string loggedInUserName = null)
+        {
+            Delete(id.ToString(), loggedInUserName);
+
+            return;
+        }
+
+        public virtual async Task<bool> DeleteAsync(object id, string loggedInUserName = null)
+        {
+            var result = await DeleteAsync(id.ToString(), loggedInUserName);
+
+            return !string.IsNullOrWhiteSpace(result);
+        }
+
+        public virtual TEntity Update(object id, TEntity entity, string loggedInUserName = null)
+        {
+            var result = Update(id.ToString(), entity, loggedInUserName);
+
+            return result;
+        }
+
+        public virtual async Task<TEntity> UpdateAsync(object id, TEntity entity, string loggedInUserName = null)
+        {
+            var result = await UpdateAsync(id.ToString(), entity, loggedInUserName);
+
+            return result;
+        }
 
     }
 }

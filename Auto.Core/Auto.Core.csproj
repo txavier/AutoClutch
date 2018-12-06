@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IODataRepository.cs" />
     <Compile Include="Interfaces\IODataService.cs" />
     <Compile Include="Interfaces\IService.cs" />
     <Compile Include="Interfaces\ILogService.cs" />

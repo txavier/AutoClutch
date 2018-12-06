@@ -7,14 +7,11 @@ using System.Threading.Tasks;
 
 namespace AutoClutch.Repo.Interfaces
 {
-    public interface IODataRepository<TEntity> : IDisposable
+    public interface IODataRepository<TEntity> : IRepository<TEntity>, IDisposable
        where TEntity : class
     {
-        IEnumerable<Error> Errors { get; set; }
         HttpClient currentHttpClient { get; set; }
-        IQueryable<TEntity> Queryable();
         void SetUri(string uriString, int format = 1);
-        Task<TEntity> AddAsync(TEntity entity, string loggedInUserName = null);
         Task<TEntity> UpdateAsync(string id, TEntity entity, string loggedInUserName = null);
         Task<string> DeleteAsync(string id, string loggedInUserName = null);
         TEntity Add(TEntity entity, string loggedInUserName = null);

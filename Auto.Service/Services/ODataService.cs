@@ -84,7 +84,101 @@ namespace AutoClutch.Core
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
+        
         #endregion
+
+        public TEntity Add(TEntity entity, string loggedInUserName = null)
+        {
+            entity = AddAsync(entity, loggedInUserName).Result;
+
+            return entity;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="loggedInUserName"></param>
+        /// <param name="softDelete">Softdelete is ignored in this context.</param>
+        /// <returns></returns>
+        public TEntity Delete(int id, string loggedInUserName = null, bool softDelete = false)
+        {
+            var entity = Find(id, softDelete);
+
+            var result = _repository.DeleteAsync(id.ToString(), loggedInUserName).Result;
+
+            return entity;
+        }
+
+        public async Task<TEntity> DeleteAsync(int id, string loggedInUserName = null, bool softDelete = false)
+        {
+            var entity = Find(id, softDelete);
+
+            var result = await _repository.DeleteAsync(id.ToString(), loggedInUserName);
+
+            return entity;
+        }
+
+        /// <summary>
+        /// Returns an IQueryable of this set.
+        /// </summary>
+        /// <param name="includeSoftDeleted">IncludeSoftDeleted is ignored in this context.</param>
+        /// <returns></returns>
+        public IQueryable<TEntity> Queryable(bool? includeSoftDeleted = null)
+        {
+            var result = _repository.Queryable();
+
+            return result;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="includeSoftDeleted">IncludeSoftDeleted is ignored in this context.</param>
+        /// <returns></returns>
+        public TEntity Find(object entityId, bool? includeSoftDeleted = null)
+        {
+            var result = _repository.Find(entityId.ToString());
+
+            return result;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="includeSoftDeleted">IncludeSoftDeleted is ignored in this context.</param>
+        /// <returns></returns>
+        public async Task<TEntity> FindAsync(object entityId, bool? includeSoftDeleted = null)
+        {
+            var result = await _repository.FindAsync(entityId.ToString());
+
+            return result;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="includeSoftDeleted">IncludeSoftDeleted is ignored in this context.</param>
+        /// <returns></returns>
+        public object GetEntityIdObject(TEntity entity, bool? includeSoftDeleted = null)
+        {
+            Errors.Concat(new List<Error> { new Error { Description = "Unable to retrieve the entityId object in the OData context.", Property = "entity" } });
+
+            return null;
+        }
+
+        public TEntity Update(object entityId, TEntity entity, string loggedInUserName = null)
+        {
+            entity = _repository.Update(entityId.ToString(), entity, loggedInUserName);
+
+            return entity;
+        }
+
+        public async Task<TEntity> UpdateAsync(object entityId, TEntity entity, string loggedInUserName = null)
+        {
+            entity = await UpdateAsync(entityId.ToString(), entity, loggedInUserName);
+
+            return entity;
+        }
     }
 }

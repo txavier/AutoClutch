@@ -17,7 +17,7 @@ namespace AutoClutch.Repo
     /// http://stackoverflow.com/questions/2038808/the-remote-server-returned-an-error-401-unauthorized
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public class MsCrmRestRepository<TEntity> : ODataRepository<TEntity>, IODataRepository<TEntity> where TEntity : class
+    public class MsCrmRestRepository<TEntity> : ODataRepository<TEntity> where TEntity : class
     {
         public MsCrmRestRepository()
             : base()
