@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.Repo", "Auto.Repo\Auto.Repo.csproj", "{DBF36A7C-7697-41A0-86C6-80A0623026AE}"
 EndProject
@@ -78,5 +78,8 @@ Global
 		{BC02EF5E-9BEC-41DF-8189-7AFDFFD4957F} = {02DFAD48-FC0F-423F-9A8F-E7E26FE7F803}
 		{DA88F473-E68E-4BFB-985B-42D549A59AB5} = {02DFAD48-FC0F-423F-9A8F-E7E26FE7F803}
 		{E43317CB-E226-454A-A4B4-757D5C8B6A59} = {02DFAD48-FC0F-423F-9A8F-E7E26FE7F803}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E85AD121-FF9D-4F1E-97BA-7C5947AEF2E1}
 	EndGlobalSection
 EndGlobal

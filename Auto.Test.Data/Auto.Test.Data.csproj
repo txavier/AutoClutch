@@ -79,6 +79,8 @@
       <DependentUpon>201805071923081_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CaseStatus.cs" />
+    <Compile Include="Models\CaseStatusXmlObject.cs" />
     <Compile Include="Models\facility.cs" />
     <Compile Include="Models\location.cs" />
     <Compile Include="Models\user.cs" />

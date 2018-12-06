@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace AutoClutch.Controller
 {
+    [Obsolete("This class, BaseApiController, has been deprecated. Please use the Auto.ODataApiController class going forward.")]
     public class BaseApiController<TEntity> : ApiController
         where TEntity : class
     {

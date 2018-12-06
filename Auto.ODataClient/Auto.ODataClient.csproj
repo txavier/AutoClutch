@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Linq2Rest" Version="4.1.0" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Auto.Repo\Auto.Repo.csproj" />
+  </ItemGroup>
+
+</Project>
