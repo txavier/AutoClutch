@@ -197,17 +197,43 @@ namespace $safeprojectname$.Controllers
                     return BadRequest(ModelState);
                 }
 
-                //remove once database only contains int keys
-                try
-                {
-                    if (key != (string)_service.GetEntityIdObject(update))
-                    {
-                        return BadRequest();
-                    }
-                }
-                catch (InvalidCastException ex)
-                {
+                var id = _service.GetEntityIdObject(update) as string;
 
+                if (id != null)
+                {
+                    //remove once database only contains int keys
+                    try
+                    {
+                        if (key != (string)_service.GetEntityIdObject(update))
+                        {
+                            return BadRequest();
+                        }
+                    }
+                    catch (InvalidCastException ex)
+                    {
+                        _logService?.Info(ex);
+
+                        return InternalServerError(ex);
+
+                    }
+                } else
+                {
+                    try
+                    {
+                        var temp = _service.GetEntityIdObject(update);
+
+                        if (key != _service.GetEntityIdObject(update).ToString())
+                        {
+                            return BadRequest();
+                        }
+                    }
+                    catch (InvalidCastException ex)
+                    {
+                        _logService?.Info(ex);
+
+                        return InternalServerError(ex);
+
+                    }
                 }
 
                 try

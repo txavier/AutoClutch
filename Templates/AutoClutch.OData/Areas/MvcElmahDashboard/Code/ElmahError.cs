@@ -49,7 +49,7 @@ namespace $safeprojectname$.Areas.MvcElmahDashboard.Code
         public virtual string TimeAgoText
         {
             get
-            {
+            { 
                 var ta = this.TimeAgo;
 
                 if (ta.Days >= 3)
@@ -57,7 +57,7 @@ namespace $safeprojectname$.Areas.MvcElmahDashboard.Code
                     return String.Format("{0} days ago", ta.Days, ta.Hours, ta.Minutes, ta.Seconds, ta.TotalSeconds);
                 }
                 else if (ta.Days >= 1)
-                {
+                { 
                     return String.Format("{0} days, {1} hours ago", ta.Days, ta.Hours, ta.Minutes, ta.Seconds, ta.TotalSeconds);
                 }
                 else if (ta.Hours >= 12)

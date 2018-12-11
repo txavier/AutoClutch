@@ -31,7 +31,7 @@ namespace $safeprojectname$.HangfireConfiguration
             //    return true;
             //}
 
-            return false;
+            return true;
         }
     }
 }

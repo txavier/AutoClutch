@@ -6,11 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using AutoClutchTemplate.Core.Services;
+using OTPS.Core.Services;
 using System.Web.OData;
 using System.Web.OData.Routing;
-using AutoClutchTemplate.Core.Interfaces;
-using AutoClutchTemplate.Core.Objects;
+using OTPS.Core.Interfaces;
+using OTPS.Core.Objects;
 
 namespace $safeprojectname$.Controllers
 {
@@ -23,5 +23,23 @@ namespace $safeprojectname$.Controllers
         {
             _metricsService = metricsService;
         }
-    }
+
+        [HttpGet]
+        [Route("getTopFiveBudgetCodes")]
+        public MetricsData GetTopFiveBudgetCodes()
+        {
+            var result = _metricsService.getTopFiveBudgetCodes();
+
+            return result;
+        }
+
+		[HttpGet]
+		[Route("getBottomFiveBudgetCodes")]
+		public MetricsData GetBottomFiveBudgetCodes()
+		{
+			var result = _metricsService.getBottomFiveBudgetCodes();
+
+			return result;
+		}
+	}
 }

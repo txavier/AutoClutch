@@ -58,7 +58,7 @@ namespace $safeprojectname$.Areas.MvcElmahDashboard.Controllers
                 return View(model);
             }
         }
-
+        
         public ActionResult DailyStats()
         {
             using (var context = new ElmahDashboardContext())
@@ -86,7 +86,7 @@ namespace $safeprojectname$.Areas.MvcElmahDashboard.Controllers
         public ActionResult Heartbeat()
         {
             Response.CacheControl = "no-cache";
-            Response.AddHeader("Pragma", "no-cache");
+            Response.AddHeader("Pragma", "no-cache"); 
             Response.Expires = -1;
             if (HeartBeatService.Beat())
                 return new HttpStatusCodeResult(HttpStatusCode.OK, "Heartbeat succeeded");

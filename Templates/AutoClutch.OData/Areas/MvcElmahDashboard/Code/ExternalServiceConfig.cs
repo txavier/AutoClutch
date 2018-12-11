@@ -13,8 +13,8 @@ namespace $safeprojectname$.Areas.MvcElmahDashboard.Code
         public ExternalServiceConfig(string configuration)
         {
             if (configuration != null)
-            {
-                foreach (var pair in configuration.Split(';').Select(p => p.Split(new char[] { '=' }, 2)))
+            { 
+                foreach(var pair in configuration.Split(';').Select(p => p.Split(new char[] {'='}, 2)))
                 {
                     config[pair[0]] = pair[1];
                 }

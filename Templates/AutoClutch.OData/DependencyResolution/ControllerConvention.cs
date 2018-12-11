@@ -15,8 +15,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace $safeprojectname$.DependencyResolution
-{
+namespace $safeprojectname$.DependencyResolution {
     using System;
     using System.Web.Mvc;
     using StructureMap;

@@ -2,17 +2,17 @@ using System.Web.Mvc;
 
 namespace $safeprojectname$.Areas.MvcElmahDashboard
 {
-    public class MvcElmahDashboardAreaRegistration : AreaRegistration
+    public class MvcElmahDashboardAreaRegistration : AreaRegistration 
     {
-        public override string AreaName
+        public override string AreaName 
         {
-            get
+            get 
             {
                 return "MvcElmahDashboard";
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context)
+        public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
                 name: "MvcElmahDashboard_default",

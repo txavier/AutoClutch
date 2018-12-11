@@ -14,9 +14,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>$safeprojectname$</RootNamespace>
     <AssemblyName>$safeprojectname$</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
@@ -141,8 +141,8 @@
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.MappingAPI, Version=6.1.0.10, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.MappingAPI.6.1.0.10\lib\net45\EntityFramework.MappingAPI.dll</HintPath>
+    <Reference Include="EntityFramework.MappingAPI, Version=6.1.0.9, Culture=neutral, PublicKeyToken=7ee2e825d201459e, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.MappingAPI.6.1.0.9\lib\net45\EntityFramework.MappingAPI.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
@@ -571,7 +571,9 @@
     <Folder Include="NuGet\" />
     <Folder Include="Views\About\" />
     <Folder Include="Views\AllData\" />
+    <Folder Include="Views\AuditLog\" />
     <Folder Include="Views\BaseApi\" />
+    <Folder Include="Views\ContractSummary\" />
     <Folder Include="Views\UserApi\" />
     <Folder Include="wwwroot\lib\" />
   </ItemGroup>
@@ -631,8 +633,59 @@
     <Compile Include="Areas\MvcElmahDashboard\Models\Logs\PrevNextRequest.cs" />
     <Compile Include="Areas\MvcElmahDashboard\MvcElmahDashboardAreaRegistration.cs" />
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\AllDataController.cs" />
+    <Compile Include="Controllers\AllocationsController.cs" />
+    <Compile Include="Controllers\AuditLogsController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\Batch_RepCatsController.cs" />
+    <Compile Include="Controllers\BudgetAddController.cs" />
+    <Compile Include="Controllers\BudgetDeleteController.cs" />
+    <Compile Include="Controllers\BudgetModHistoryController.cs" />
+    <Compile Include="Controllers\ContractSummaryController.cs" />
+    <Compile Include="Controllers\ContractApiController.cs" />
+    <Compile Include="Controllers\CT_Mod_HistoryTotalController.cs" />
+    <Compile Include="Controllers\CurrentCommitedController.cs" />
+    <Compile Include="Controllers\GetTotalController.cs" />
+    <Compile Include="Controllers\LineController.cs" />
+    <Compile Include="Controllers\PurchaseController.cs" />
+    <Compile Include="Controllers\SingleTypeController.cs" />
+    <Compile Include="Controllers\TotalInitialAllocationController.cs" />
+    <Compile Include="Controllers\TotalUncommitedController.cs" />
     <Compile Include="Controllers\MetricsController.cs" />
+    <Compile Include="Controllers\Batch_RepCat_BudgetsController.cs" />
+    <Compile Include="Controllers\Bulk_ChemicalsController.cs" />
+    <Compile Include="Controllers\ContractsController.cs" />
+    <Compile Include="Controllers\Contract_HistorysController.cs" />
+    <Compile Include="Controllers\contract_paysController.cs" />
+    <Compile Include="Controllers\contract_pay_historysController.cs" />
+    <Compile Include="Controllers\CT_Mod_HistorysController.cs" />
+    <Compile Include="Controllers\Mod_BudgetsController.cs" />
+    <Compile Include="Controllers\Mod_IntrasController.cs" />
+    <Compile Include="Controllers\Modi_BatchsController.cs" />
+    <Compile Include="Controllers\Modi_LocsController.cs" />
+    <Compile Include="Controllers\TracksController.cs" />
+    <Compile Include="Controllers\UserApiController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\T_RecsController.cs" />
+    <Compile Include="Controllers\T_Loc_Share_BKsController.cs" />
+    <Compile Include="Controllers\T_Loc_Share_baksController.cs" />
+    <Compile Include="Controllers\T_Loc_SharesController.cs" />
+    <Compile Include="Controllers\T_Loc_BudgetsController.cs" />
+    <Compile Include="Controllers\T_LOCController.cs" />
+    <Compile Include="Controllers\sp_linesController.cs" />
+    <Compile Include="Controllers\sp_BudgetCodesController.cs" />
+    <Compile Include="Controllers\ReqList_BudgetsController.cs" />
+    <Compile Include="Controllers\ReqListsController.cs" />
+    <Compile Include="Controllers\Ref_VendorsController.cs" />
+    <Compile Include="Controllers\Ref_OrderTypesController.cs" />
+    <Compile Include="Controllers\Ref_ObjectChemicalCodesController.cs" />
+    <Compile Include="Controllers\Ref_ObjectAllocTypesController.cs" />
+    <Compile Include="Controllers\Ref_DocumentsController.cs" />
+    <Compile Include="Controllers\QAS_DATAsController.cs" />
+    <Compile Include="Controllers\Multi_Year_PosController.cs" />
+    <Compile Include="Controllers\Multi_Year_GrandsController.cs" />
+    <Compile Include="Controllers\Mod_LogbooksController.cs" />
+    <Compile Include="Controllers\sp_objectsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\DashboardODataController.cs" />
     <Compile Include="Controllers\ODataApiController.cs" />
@@ -1075,6 +1128,44 @@
     <Content Include="Scripts\jsnlog.js.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ContractTrackingManagement.CompositionRoot\ContractTrackingManagement.CompositionRoot.csproj">
+      <Project>{797d6c6d-0f6d-4fe6-a407-74e6cc8b967d}</Project>
+      <Name>ContractTrackingManagement.CompositionRoot</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ContractTrackingManagement.Core\ContractTrackingManagement.Core.csproj">
+      <Project>{3b826046-ac3c-4f1f-9a74-7a7cf8c47a19}</Project>
+      <Name>ContractTrackingManagement.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileTrackingManagement.CompositionRoot\FileTrackingManagement.CompositionRoot.csproj">
+      <Project>{E283F18B-B4E6-4256-9B33-FCF5E2AA359A}</Project>
+      <Name>FileTrackingManagement.CompositionRoot</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OTPS.CompositionRoot\OTPS.CompositionRoot.csproj">
+      <Project>{FA8AE37F-C6D8-44D8-9C86-CA80F8F78AA9}</Project>
+      <Name>OTPS.CompositionRoot</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OTPS.Core\OTPS.Core.csproj">
+      <Project>{765e9941-8cc7-4017-809a-4e7dc8c4d4e6}</Project>
+      <Name>OTPS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OTPS.OData.Core\OTPS.OData.Core.csproj">
+      <Project>{4D96A24F-2EFD-4041-8969-16C0C50B77F8}</Project>
+      <Name>OTPS.OData.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Scavenger.CompositionRoot\Scavenger.CompositionRoot.csproj">
+      <Project>{3C66E9C1-C35B-4C9A-AC7A-C63E24C9AF13}</Project>
+      <Name>Scavenger.CompositionRoot</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Scavenger.Core\Scavenger.Core.csproj">
+      <Project>{1487C1B2-EACA-48A1-97D0-F2617FEEC9FB}</Project>
+      <Name>Scavenger.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Scavenger.Infrastructure\Scavenger.Infrastructure.csproj">
+      <Project>{8D764AC5-4F98-4EAF-A85A-5146C643ED30}</Project>
+      <Name>Scavenger.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1090,16 +1181,6 @@
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AutoClutchTemplate.CompositionRoot\AutoClutchTemplate.CompositionRoot.csproj">
-      <Project>{0b102ffa-04d3-474a-a51d-16d083acf071}</Project>
-      <Name>AutoClutchTemplate.CompositionRoot</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AutoClutchTemplate.Core\AutoClutchTemplate.Core.csproj">
-      <Project>{931B429C-6AC4-4AE7-9EA3-A5F6AC5FD7C5}</Project>
-      <Name>AutoClutchTemplate.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -1120,7 +1201,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53195</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53195/</IISUrl>
+          <IISUrl>http://localhost/OTPS.OData</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

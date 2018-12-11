@@ -17,7 +17,7 @@ namespace $safeprojectname$.Areas.MvcElmahDashboard.Code
         { }
 
         public ElmahDashboardContext(string connectionName)
-            : this(ConfigurationManager.ConnectionStrings[connectionName])
+            :this(ConfigurationManager.ConnectionStrings[connectionName])
         { }
 
         public ElmahDashboardContext(ConnectionStringSettings connectionStringSettings)
@@ -147,7 +147,7 @@ namespace $safeprojectname$.Areas.MvcElmahDashboard.Code
             sql.Append(" FROM [{ElmahSchema}].[ELMAH_Error] WITH (NOLOCK)");
             sql.Append(" WHERE [Sequence] > @p0 AND [TimeUtc] >= @p1");
 
-            using (var cmd = this.CreateCommand(sql.ToString(), new object[] { afterSequence, sinceUtc }))
+            using (var cmd = this.CreateCommand(sql.ToString(), new object[] {afterSequence, sinceUtc}))
             using (var reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
@@ -233,13 +233,13 @@ namespace $safeprojectname$.Areas.MvcElmahDashboard.Code
             instance.Application = reader.GetString(1);
             instance.Host = reader.GetString(2);
             instance.Type = reader.GetString(3);
-            instance.Source = reader.GetString(4);
+            instance.Source= reader.GetString(4);
             instance.Message = reader.GetString(5);
             instance.User = reader.GetString(6);
             instance.StatusCode = reader.GetInt32(7);
             instance.TimeUtc = DateTime.SpecifyKind(reader.GetDateTime(8), DateTimeKind.Utc);
             instance.Sequence = reader.GetInt32(9);
-            instance.RowNum = rowNum;
+            instance.RowNum = rowNum; 
             if (includeDetails)
             {
                 instance.AllXml = System.Xml.Linq.XDocument.Parse(reader.GetString(10));

@@ -15,12 +15,11 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace $safeprojectname$.DependencyResolution
-{
+namespace $safeprojectname$.DependencyResolution {
     using StructureMap;
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
-
+	
     //public class DefaultRegistry : Registry {
     //    #region Constructors and Destructors
 
@@ -29,7 +28,7 @@ namespace $safeprojectname$.DependencyResolution
     //            scan => {
     //                scan.TheCallingAssembly();
     //                scan.WithDefaultConventions();
-    //	scan.With(new ControllerConvention());
+				//	scan.With(new ControllerConvention());
     //            });
     //        //For<IExample>().Use<Example>();
     //    }

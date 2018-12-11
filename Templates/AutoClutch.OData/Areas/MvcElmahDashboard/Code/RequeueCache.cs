@@ -39,7 +39,7 @@ namespace $safeprojectname$.Areas.MvcElmahDashboard.Code
             lock (this.SyncRoot)
             {
                 var found = false;
-                var foundItem = new Tuple<TKey, TValue>(default(TKey), default(TValue));
+                var foundItem = new Tuple<TKey,TValue>(default(TKey), default(TValue));
                 foreach (var item in cache)
                 {
                     if (item.Item1.Equals(key))

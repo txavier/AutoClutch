@@ -4,7 +4,6 @@ using System.Net.Http.Headers;
 using System.Web.Http.Description;
 using $safeprojectname$.Areas.HelpPage.ModelDescriptions;
 
-
 namespace $safeprojectname$.Areas.HelpPage.Models
 {
     /// <summary>

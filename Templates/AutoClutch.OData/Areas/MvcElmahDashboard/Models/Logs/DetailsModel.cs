@@ -10,13 +10,13 @@ namespace $safeprojectname$.Areas.MvcElmahDashboard.Models.Logs
         public Guid Id { get; set; }
 
         public String Application { get; set; }
-
+        
         public String Host { get; set; }
-
+        
         public String Source { get; set; }
-
+        
         public String Type { get; set; }
-
+        
         public String Search { get; set; }
 
         public dynamic UserAgentInfoProvider { get; set; }
