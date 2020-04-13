@@ -114,11 +114,22 @@ namespace AutoClutch.Repo
         {
             try
             {
-                SetContextConfiguration(lazyLoadingEnabled, proxyCreationEnabled, autoDetectChangesEnabled);
+                 if (entityId is Array)
+                {
+                    var entityIdArray = (object[])entityId;
 
-                var result = _dbSet.Find(entityId);
-
-                return result;
+                    SetContextConfiguration(lazyLoadingEnabled, proxyCreationEnabled, autoDetectChangesEnabled);
+                    
+                    var result = _dbSet.Find(entityIdArray);
+                    return result;
+                }
+                else
+                {
+                    SetContextConfiguration(lazyLoadingEnabled, proxyCreationEnabled, autoDetectChangesEnabled);
+                    
+                    var result = _dbSet.Find(entityId);
+                    return result;
+                }
             }
             finally
             {
@@ -217,8 +228,9 @@ namespace AutoClutch.Repo
                 if (skip.HasValue && orderBy == null && orderByString == null)
                 {
                     var entityKeyName = GetEntityKeyName(resultQueryable.First());
+                    var keyNameList = entityKeyName.Split(',');
 
-                    resultQueryable = resultQueryable.OrderBy(entityKeyName);
+                    resultQueryable = resultQueryable.OrderBy(keyNameList.FirstOrDefault());
                 }
 
                 resultQueryable = resultQueryable.Skip(skip.Value).Take(take.Value);
@@ -506,7 +518,7 @@ namespace AutoClutch.Repo
         public string GetEntityKeyName(TEntity entity)
         {
             var result = ((IObjectContextAdapter)_context).ObjectContext.CreateObjectSet<TEntity>().EntitySet.ElementType.
-                KeyMembers.Select(k => k.Name).ToArray().FirstOrDefault();
+                KeyMembers.Select(k => k.Name).Aggregate((current, next) => current + "," + next);
 
             return result;
         }
@@ -519,12 +531,12 @@ namespace AutoClutch.Repo
         public object GetEntityIdObject(TEntity entity)
         {
             Type type = typeof(TEntity);
-
             var keyName = GetEntityKeyName(entity);
+            var keyNameList = keyName.Split(',');
 
-            var result = type.GetProperty(keyName).GetValue(entity, null);
+            var resultList = keyNameList.Select(i => type.GetProperty(i).GetValue(entity, null)).ToArray();
 
-            return result;
+            return resultList;
         }
 
         /// <summary>
