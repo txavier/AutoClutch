@@ -686,6 +686,29 @@ namespace AutoClutch.Repo
 
             return entity;
         }
+        
+        public virtual TEntity Delete(object id, string loggedInUserName = null, bool dontSave = false)
+        {
+            if (id is Array)
+            {
+                var entityIdArray = (object[])id;
+
+                var entity = _dbSet.Find(entityIdArray);
+
+                this.Delete(entity, loggedInUserName, false);
+
+                return entity;
+            }
+            else
+            {
+                var entity = _dbSet.Find(id);
+
+                var result = Delete(entity, dontSave: dontSave);
+
+                return entity;
+            }
+
+        }
 
         public virtual async Task<TEntity> DeleteAsync(int id, string loggedInUserName = null, bool dontSave = false)
         {
@@ -904,7 +927,20 @@ namespace AutoClutch.Repo
 
         public void Delete(object id, string loggedInUserName = null)
         {
-            this.Delete((int)id, loggedInUserName, false);
+            if (id is Array)
+            {
+                var entityIdArray = (object[])id;
+
+                var entity = _dbSet.Find(entityIdArray);
+
+                this.Delete(entity, loggedInUserName, false);
+            }
+            else
+            {
+                var entity = _dbSet.Find(id);
+
+                var result = Delete(entity);
+            }
         }
 
         public async Task<bool> DeleteAsync(object id, string loggedInUserName = null)
