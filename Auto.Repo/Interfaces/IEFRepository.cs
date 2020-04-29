@@ -24,6 +24,7 @@ namespace AutoClutch.Repo.Interfaces
         Task<TEntity> AddAsync(TEntity entity, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false);
         IEnumerable<TEntity> AddRange(IEnumerable<TEntity> entities, string loggedInUserName = null, bool lazyLoadingEnabled = true, bool proxyCreationEnabled = true, bool autoDetectChangesEnabled = true, bool dontSave = false);
         TEntity Delete(TEntity entity, string loggedInUserName = null, bool dontSave = false);
+        TEntity Delete(object id, string loggedInUserName = null, bool dontSave = false);
         TEntity Delete(int id, string loggedInUserName = null, bool dontSave = false);
         Task<TEntity> DeleteAsync(int id, string loggedInUserName = null, bool dontSave = false);
         void Dispose();
